@@ -25,15 +25,15 @@ local get_taglist = function(s)
     -- The actual png icons
     -- I do have the svgs, but inkscape does a better job of scaling
     local ghost = gears.surface.load_uncached(
-                        gfs.get_configuration_dir() .. "icons/taglist/ghost.png")
+                        gfs.get_configuration_dir() .. "assets/icons/taglist/ghost.png")
     local ghost_icon = gears.color.recolor_image(ghost, beautiful.xcolor6)
 
     local dot = gears.surface.load_uncached(
-                         gfs.get_configuration_dir() .. "icons/taglist/dot.png")
+                         gfs.get_configuration_dir() .. "assets/icons/taglist/dot.png")
     local dot_icon = gears.color.recolor_image(dot, beautiful.xcolor8)
     
     local pacman = gears.surface.load_uncached(
-                           gfs.get_configuration_dir() .. "icons/taglist/pacman.png")
+                           gfs.get_configuration_dir() .. "assets/icons/taglist/pacman.png")
     local pacman_icon = gears.color.recolor_image(pacman, beautiful.xcolor3)
 
     -- Function to update the tags

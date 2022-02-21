@@ -39,20 +39,20 @@ theme.lighter_bg = "#162026"
 theme.dash_fg = "#666c79"
 
 -- Titlebar
-local icon_path = gfs.get_configuration_dir() .. "icons/"
+local icon_path = gfs.get_configuration_dir() .. "assets/icons/"
 local titlebar_icon_dir = icon_path .. "titlebar/"
 
 -- PFP
-theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "images/pfp.png")
+theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "assets/images/pfp.png")
 
 -- Wallpaper
-theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "images/bg.png")
+theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "assets/images/bg.png")
 
 -- Awesome Logo
-theme.awesome_logo = gears.surface.load_uncached(gfs.get_configuration_dir() .. "icons/awesome.png")
+theme.awesome_logo = gears.surface.load_uncached(gfs.get_configuration_dir() .. "assets/icons/awesome.png")
 
 -- Notifications icon
-theme.notification_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "icons/notification.png")
+theme.notification_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "assets/icons/notification.png")
 
 -- Fonts
 theme.font_name = "Iosevka "
@@ -62,7 +62,7 @@ theme.icon_font = theme.icon_font_name .. "18"
 theme.font_taglist = theme.icon_font_name .. "13"
 
 -- Background Colors
-theme.bg_dark = theme.xcolor0
+theme.bg_dark = theme.darker_bg
 theme.bg_normal = theme.xbackground
 theme.bg_focus = theme.xcolor0
 theme.bg_urgent = theme.xcolor8
@@ -172,7 +172,7 @@ theme.menu_bg_focus = theme.lighter_bg
 theme.menu_fg_focus = theme.xforeground
 theme.menu_bg_normal = theme.xbackground
 theme.menu_fg_normal = theme.xforeground
-theme.menu_submenu_icon = gears.filesystem.get_configuration_dir() .. "theme/icons/submenu.png"
+theme.menu_submenu_icon = gears.filesystem.get_configuration_dir() .. "assets/icons/submenu.png"
 theme.menu_height = dpi(20)
 theme.menu_width = dpi(130)
 theme.menu_border_color = theme.xcolor8
