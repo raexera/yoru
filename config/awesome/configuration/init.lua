@@ -21,9 +21,9 @@ discord = "discord"
 launcher = "rofi -show drun"
 
 -- Weather API
-openweathermap_key = ""
-openweathermap_city_id = ""
-weather_units = ""
+openweathermap_key = "eaf60d2e3c3652df3ca54365b46c236e"
+openweathermap_city_id = "1650357"
+weather_units = "metric"
 
 -- Global Vars
 screen_width = awful.screen.focused().geometry.width

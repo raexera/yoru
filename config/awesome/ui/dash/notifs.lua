@@ -169,9 +169,9 @@ local create_notif = function(icon, n, width)
             margins = dpi(6),
             widget = wibox.container.margin
         },
-        -- bg = beautiful.xcolor0,
+        bg = beautiful.xcolor0,
         shape = helpers.rrect(dpi(4)),
-        forced_height = dpi(72),
+        forced_height = dpi(104),
         widget = wibox.container.background
     }
 

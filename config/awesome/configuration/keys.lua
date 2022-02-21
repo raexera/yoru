@@ -101,9 +101,10 @@ awful.keyboard.append_global_keybindings({
               {description = "show help", group = "awesome"}),
     awful.key({modkey}, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
-    awful.key({modkey}, "x",
-              function() require("ui.pop.exitscreen").exit_screen_show() end,
-              {description = "show exit screen", group = "awesome"}),
+    awful.key({modkey}, "x", function() 
+        lock_screen_show() 
+    end,
+              {description = "toggle lock screen", group = "awesome"}),
     awful.key({modkey, "Control"}, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({modkey, "Shift"}, "q", awesome.quit,

@@ -306,7 +306,7 @@ local slide = rubato.timed{
     pos = dpi(10),
     rate = 60,
     intro = 0.025,
-    duration = 0.5,
+    duration = 0.3,
     easing = rubato.quadratic,
     awestore_compat = true,
     subscribed = function(pos) notifs.y = pos end
@@ -322,7 +322,7 @@ end)
 
 notifs_show = function()
     notifs.visible = true
-    slide:set(dpi(445))
+    slide:set(dpi(448))
     notifs_status = false
 end
 
