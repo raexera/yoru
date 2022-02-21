@@ -1,0 +1,89 @@
+configuration {
+	modi:				    "run,drun,Kill:~/.config/rofi/scripts/kill.sh";
+	font:				    "Iosevka 9";
+	display-drun: 			"Apps";
+	display-run: 			"Run";
+	drun-display-format:    "{name}";
+	sidebar-mode: 			true;
+}
+
+@theme "/dev/null"
+
+* {
+	bg:				#061115;
+	fg:				#d9d7d6;
+	accent:			#1c252c;
+    inactive:       #484e5b;
+    hightlight:     #6791c9;
+
+	background-color: @bg;
+	text-color:	@fg;
+}
+window {
+    width: 30%;
+	border: 2px;
+    border-radius: 4px;
+	border-color: @accent;
+}
+
+inputbar {
+    margin: 24px 0 24px 24px;
+}
+
+prompt, entry {
+	text-color: @fg;
+	padding: 8px;
+}
+
+prompt {
+    background-color: @accent;
+    text-color: @hightlight;
+	border-radius: 4px 0 0 4px;
+}
+
+listview {
+	columns: 1;
+	lines: 12;
+	cycle: false;
+	dynamic: true;
+	layout: vertical;
+    margin: 0 24px 14px 24px;
+}
+
+element {
+	orientation: vertical;
+	padding: 8px 8px;
+}
+
+element-text {
+    expand: true;
+	vertical-align: 0.5;
+	background-color: inherit;
+	text-color: inherit;
+}
+
+element selected {
+	background-color: @accent;
+	text-color: @fg;
+	border-radius: 4px;
+}
+
+mode-switcher {
+    background-color: @accent;
+    padding: 0 0 4px 0;
+}
+
+button {
+    text-color: @inactive;
+	background-color: @accent;
+    padding: 6px 6px 6px 6px;
+	border-radius: 0;
+    horizontal-align: 0.5;
+}
+
+button selected {
+    text-color: @hightlight;
+    background-color: @bg;
+	border-radius: 0 0 4px 4px;
+}
+

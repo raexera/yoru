@@ -1,0 +1,8 @@
+require("signal.battery")
+require("signal.brightness")
+require("signal.volume")
+require("signal.cpu")
+require("signal.ram")
+require("signal.todo")
+require("signal.weather")
+require("signal.playerctl")

@@ -1,0 +1,89 @@
+## Import files (Colors,Etc)
+import:
+  - ~/.config/alacritty/aesthetic/colors.yml
+
+## Set environment variables
+env:
+  TERM: alacritty
+  WINIT_X11_SCALE_FACTOR: '1.0'
+
+## Font
+font:
+  normal:
+    family: Iosevka
+    style: Medium
+
+  bold:
+    family: Iosevka
+    style: Bold
+
+  italic:
+    family: Iosevka
+    style: Italic
+
+  bold_italic:
+    family: Iosevka
+    style: Bold Italic
+
+  size: 11
+
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: 0
+
+draw_bold_text_with_bright_colors: true
+
+## Terminal window settings
+window:
+  opacity: 1.0
+  padding:
+    x: 20
+    y: 20
+
+  dynamic_padding: true
+  decorations: full
+  startup_mode: Windowed
+  dynamic_title: true
+  title: Alacritty
+
+## Live config reload
+live_config_reload: true
+
+class:
+  instance: Alacritty
+  general: Alacritty
+
+## Scroll
+scrolling:
+  history: 10000
+
+# Visual
+visual_bell:
+  animation: EaseOutExpo
+  duration: 0.5
+  color: "#ffffff"
+
+##Selection
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+## Cs
+cursor:
+  style: 'Underline'
+  thickness: 0.20
+
+## Shell
+shell:
+  program: /usr/bin/zsh
+
+## Mouse
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+
+  hide_when_typing: true
