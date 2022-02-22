@@ -15,14 +15,6 @@
 
 
 
-
-# If you come from bash you might have to change your $PATH.
-# export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
-# export TODO_PATH="$HOME/.todo"
-
-# # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=7
-
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
 
@@ -74,17 +66,6 @@ src() {
 	zrecompile -p "$compfile"
 	exec zsh
 }
-
-# # Ditch Nano, join the NeoVim Team
-# export EDITOR=/usr/bin/nvim
-# export SUDO_EDITOR=/usr/bin/nvim
-# export VISUAL=/usr/bin/nvim
-
-# # Firefox plz
-# export BROWSER=/usr/bin/firefox
-
-# # Lang
-# export LANG=en_US.UTF-8
 
 # completion
 setopt CORRECT

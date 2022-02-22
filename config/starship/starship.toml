@@ -1,0 +1,65 @@
+add_newline = true
+
+format = """
+($username)[@](bold white)($hostname)
+($directory)
+"""
+
+right_format = """$all"""
+
+
+[username]
+disabled = false
+show_always = true
+style_user = "bold white"
+format = "[$user]($style)"
+
+[hostname]
+disabled = false
+ssh_only = false
+style = "bold white"
+format =  "[$hostname]($style)"
+
+[directory]
+disabled = false
+truncation_length = 1
+home_symbol = "~"
+format = "[$path](bold cyan)[/](bold green) "
+
+[character]
+success_symbol = ""
+error_symbol = "[](bold red)"
+
+[git_branch]
+symbol = " "
+style = "bold blue"
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = "🔖 "
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = "[🍒 PICKING](bold red)"
+
+[git_metrics]
+added_style = "bold blue"
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "bold cyan"
+conflicted = "= "
+ahead = "⇡ ${count} "
+behind = "⇣ ${count} "
+diverged = "⇕ "
+up_to_date = ""
+untracked = "? "
+stashed = "$ "
+modified = "! "
+staged = '[++\($count\)](green)'
+renamed = "» "
+deleted = " "
+
+[cmd_duration]
+disabled = true

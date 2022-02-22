@@ -4,7 +4,10 @@ local beautiful = require("beautiful")
 local bling = require("module.bling")
 
 -- Enable Playerctl Module from Bling
-Playerctl = bling.signal.playerctl.lib()
+playerctl = bling.signal.playerctl.lib {
+    ignore = {"firefox", "qutebrowser", "chromium", "brave"},
+    update_on_activity = true
+}
 
 -- Enable Tag Preview Module from Bling
 bling.widget.tag_preview.enable {

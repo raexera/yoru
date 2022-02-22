@@ -54,7 +54,7 @@ Fyi, I use night colorscheme, and it's so beautiful.
         $ sudo systemctl start acpid.service
         ```
 
-3. Install needed fonts
+2. Install needed fonts
 
    You will need to install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
 
@@ -65,7 +65,7 @@ Fyi, I use night colorscheme, and it's so beautiful.
 
    Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`.
   
-4. Install my AwesomeWM configuration files
+3. Install my AwesomeWM configuration files
 
     > Clone this repository
 
@@ -81,6 +81,9 @@ Fyi, I use night colorscheme, and it's so beautiful.
     $ mkdir -p $HOME/.local/bin/ && cp -r ./bin/* $HOME/.local/bin/
     $ cp -r ./misc/* $HOME/
    ```
+
+4. Lastly, log out from your current desktop session and log in into AwesomeWM.
+
 </details>
 <br>
 

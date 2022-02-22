@@ -24,7 +24,7 @@ local music_text = wibox.widget{
 }
 
 local music_art = wibox.widget {
-    image = gears.filesystem.get_configuration_dir() .. "images/no_music.png",
+    image = gears.filesystem.get_configuration_dir() .. "assets/images/no_music.png",
     resize = true,
     widget = wibox.widget.imagebox
 }

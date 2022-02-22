@@ -36,18 +36,16 @@ shift = "Shift"
 ctrl = "Control"
 
 -- Set Wallpaper
-gears.wallpaper.maximized(beautiful.wallpaper, s, false, nil)
-
--- bling.module.tiled_wallpaper("", s, {
---         fg = beautiful.xcolor8,
---         bg = beautiful.xbackground,
---         offset_y = 20,
---         offset_x = 20,
---         font = "Iosevka",
---         font_size = 13,
---         padding = 100,
---         zickzack = true
--- })
+bling.module.tiled_wallpaper("", s, {
+        fg = beautiful.lighter_bg,
+        bg = beautiful.xbackground,
+        offset_y = 20,
+        offset_x = 20,
+        font = "Iosevka",
+        font_size = 14,
+        padding = 100,
+        zickzack = true
+})
 
 -- Get Bling Config
 require("configuration.bling")

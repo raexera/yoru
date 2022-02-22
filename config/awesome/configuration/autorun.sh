@@ -8,8 +8,8 @@ function run {
 }
 
 # music
-run mpd
-run mpDris2 # add playerctl support to mpd
+# run mpd
+# run mpDris2 # add playerctl support to mpd
 
 # compositor
 run picom --config $HOME/.config/picom/picom.conf
