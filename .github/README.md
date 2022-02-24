@@ -27,7 +27,7 @@ Fyi, I use night colorscheme, and it's so beautiful.
 <details open>
 <summary><strong>S E T U P</strong></summary>
 
-1. Install dependencies and enable services
+1. Install dependencies
 
    + Dependencies
 
@@ -37,22 +37,10 @@ Fyi, I use night colorscheme, and it's so beautiful.
 
          ```shell
          $ yay -S awesome-git picom-ibhagwan-git alacritty rofi \
-         acpi acpid acpi_call xfce4-power-manager inotify-tools \
-         jq redshift mpd mpdris2-git mpc ncmpcpp polkit-gnome \
-         brightnessctl alsa-utils pulseaudio pulseaudio-alsa playerctl-git \
-         lua lua53 luarocks todo-bin
+         acpi acpid acpi_call inotify-tools polkit-gnome lua lua53 luarocks todo-bin \
+         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa playerctl-git \
          ```
-   + Services
 
-        ```shell
-        # For automatically launching mpd on login
-        $ systemctl --user enable mpd.service
-        $ systemctl --user start mpd.service
-
-        # For charger plug/unplug events (if you have a battery)
-        $ sudo systemctl enable acpid.service
-        $ sudo systemctl start acpid.service
-        ```
 
 2. Install needed fonts
 
@@ -70,7 +58,7 @@ Fyi, I use night colorscheme, and it's so beautiful.
     > Clone this repository
 
    ```shell
-   $ git clone --recurse-submodules https://github.com/rxyhn/AwesomeWM-Dotfiles.git
+   $ git clone https://github.com/rxyhn/AwesomeWM-Dotfiles.git
    $ cd AwesomeWM-Dotfiles
    ```
 

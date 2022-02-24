@@ -12,7 +12,7 @@ local brightness_subscribe_script = [[
 
 local brightness_script = [[
    sh -c "
-   light -G
+   brightnessctl i | grep -oP '\(\K[^%\)]+'
 "]]
 
 local emit_brightness_info = function()

@@ -7,18 +7,8 @@ function run {
   fi
 }
 
-# music
-# run mpd
-# run mpDris2 # add playerctl support to mpd
-
 # compositor
-run picom --config $HOME/.config/picom/picom.conf
-
-# redshift
-run redshift
-
-# power manager
-run xfce4-power-manager
+run picom --experimental-backends --config $HOME/.config/picom/picom.conf
 
 # auth
 run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
