@@ -3,6 +3,18 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local bling = require("module.bling")
 
+-- Set Wallpaper
+bling.module.tiled_wallpaper("", s, {
+    fg = beautiful.lighter_bg,
+    bg = beautiful.xbackground,
+    offset_y = 6,
+    offset_x = 18,
+    font = "Iosevka",
+    font_size = 17,
+    padding = 70,
+    zickzack = true
+})
+
 -- Enable Playerctl Module from Bling
 playerctl = bling.signal.playerctl.lib {
     ignore = {"firefox", "qutebrowser", "chromium", "brave"},

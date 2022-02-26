@@ -13,7 +13,7 @@ awful.spawn.with_shell("~/.config/awesome/configuration/autorun.sh")
 -- Default Applications
 terminal = "alacritty"
 browser = "firefox"
-filemanager = "thunar"
+filemanager = "nautilus"
 vscode = "code"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
@@ -23,7 +23,7 @@ launcher = "rofi -show drun"
 -- Weather API
 openweathermap_key = "" -- API Key
 openweathermap_city_id = "" -- City ID
-weather_units = "" -- Unit
+weather_units = "metric" -- Unit
 
 -- Global Vars
 screen_width = awful.screen.focused().geometry.width
@@ -34,18 +34,6 @@ modkey = "Mod4"
 altkey = "Mod1"
 shift = "Shift"
 ctrl = "Control"
-
--- Set Wallpaper
-bling.module.tiled_wallpaper("", s, {
-        fg = beautiful.lighter_bg,
-        bg = beautiful.xbackground,
-        offset_y = 20,
-        offset_x = 20,
-        font = "Iosevka",
-        font_size = 14,
-        padding = 100,
-        zickzack = true
-})
 
 -- Get Bling Config
 require("configuration.bling")

@@ -38,7 +38,7 @@ Fyi, I use night colorscheme, and it's so beautiful.
          ```shell
          $ yay -S awesome-git picom-ibhagwan-git alacritty rofi \
          acpi acpid acpi_call inotify-tools polkit-gnome lua lua53 luarocks todo-bin \
-         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa playerctl-git \
+         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa playerctl-git 
          ```
 
 
@@ -79,10 +79,10 @@ Fyi, I use night colorscheme, and it's so beautiful.
 
 ## Acknowledgements.
 - Contributors
-   + **[ner0z](https://github.com/ner0z)** for the aesthetic dashboard and some widgets.
+   + **[ner0z](https://github.com/ner0z)** for some widgets.
 
 - Thanks to
-   + [JavaCafe01's Dotfiles](https://github.com/JavaCafe01/dotfiles)
+   + [JavaCafe01 Dotfiles](https://github.com/JavaCafe01/dotfiles)
 
 <br>
 <br>
