@@ -59,8 +59,8 @@ ruled.client.connect_signal("request::rules", function()
         id = "center_placement",
         rule_any = {
             type = {"dialog"},
-            class = {"Steam", "discord", "markdown_input", "scratchpad"},
-            instance = {"markdown_input", "scratchpad"},
+            class = {"Steam", "discord", "markdown_input"},
+            instance = {"markdown_input"},
             role = {"GtkFileChooserDialog", "conversation"}
         },
         properties = {placement = awful.placement.center}

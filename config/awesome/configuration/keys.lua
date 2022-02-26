@@ -136,22 +136,16 @@ awful.keyboard.append_global_keybindings({
               {description = "focus the previous screen", group = "screen"}),
 
     awful.key({modkey}, "Return", function() awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
+              {description = "open terminal", group = "launcher"}),
 
-    awful.key({modkey}, "s",
-              function() awesome.emit_signal("scratch::music") end,
-              {description = "open music", group = "scratchpad"}),
+    awful.key({modkey}, "d", function() awful.spawn(launcher) end,
+              {description = "open applications menu", group = "launcher"}),
 
-    awful.key({modkey}, "z", function() 
-              dash_toggle() end,
+    awful.key({modkey}, "z", function() dash_toggle() end,
               {description = "Toggle dashboard", group = "launcher"}),
 
     awful.key({modkey}, "f", function() awful.spawn(filemanager) end,
               {description = "open file browser", group = "launcher"}),
-
-    awful.key({modkey}, "v",
-              function() awesome.emit_signal("scratch::chat") end,
-              {description = "open chats", group = "scratchpad"}),
 
     awful.key({modkey}, "w", function() awful.spawn.with_shell(browser) end,
               {description = "open firefox", group = "launcher"}),

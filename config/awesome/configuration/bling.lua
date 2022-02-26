@@ -52,9 +52,4 @@ bling.widget.task_preview.enable {
     end
 }
 
-awful.keyboard.append_global_keybindings({
-    awful.key({modkey}, "d", function() awful.spawn(launcher) end,
-              {description = "show app launcher", group = "launcher"}),
-})
-
-require('ui.pop.window_switcher').enable()
+require('ui.widgets.window_switcher').enable()
