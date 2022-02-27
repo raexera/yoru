@@ -1,18 +1,35 @@
--- keys.lua
--- Contains Global Keys
+-- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
-local helpers = require("helpers")
--- Custom modules
-local machi = require("module.layout-machi")
-local bling = require("module.bling")
+
+-- Theme handling library
+local beautiful = require("beautiful")
+
 -- Theme library
 local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
+-- Notifications library
+local naughty = require("naughty")
+
+-- Bling
+local bling = require("module.bling")
+
+-- Machi
+local machi = require("module.layout-machi")
+
+-- Helpers
+local helpers = require("helpers")
+
 local keys = {}
+
+-- Default modkey.
+modkey = "Mod4"
+altkey = "Mod1"
+ctrl = "Control"
+shift = "Shift"
 
 -- Mouse Bindings
 awful.mouse.append_global_mousebindings({

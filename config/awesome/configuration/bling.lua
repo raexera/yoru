@@ -3,6 +3,8 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local bling = require("module.bling")
 
+bling.module.flash_focus.enable()
+
 -- Set Wallpaper
 bling.module.tiled_wallpaper("", s, {
     fg = beautiful.lighter_bg,
