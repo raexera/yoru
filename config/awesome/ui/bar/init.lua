@@ -1,5 +1,3 @@
--- wibar.lua
--- Wibar (top bar)
 local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
