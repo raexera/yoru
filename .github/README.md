@@ -36,9 +36,10 @@ Fyi, I use night colorscheme, and it's so beautiful.
          *Assuming your AUR helper is* `yay`
 
          ```shell
-         $ yay -S awesome-git picom-ibhagwan-git alacritty rofi \
-         acpi acpid acpi_call inotify-tools polkit-gnome lua lua53 luarocks todo-bin \
-         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa playerctl-git 
+         $ yay -S awesome-git picom-ibhagwan-git alacritty rofi todo-bin \
+         acpi acpid acpi_call inotify-tools polkit-gnome xdotool maim colord wireless_tools \
+         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa playerctl-git \
+         mpc mpd mpdris2 --needed 
          ```
 
 
