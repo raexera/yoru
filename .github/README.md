@@ -68,7 +68,7 @@ Fyi, I use night colorscheme, and it's so beautiful.
    ```shell
     $ mkdir -p $HOME/.config/ && cp -r ./config/* $HOME/.config/
     $ mkdir -p $HOME/.local/bin/ && cp -r ./bin/* $HOME/.local/bin/
-    $ cp -r ./misc/* $HOME/
+    $ cp -r ./misc/. $HOME/
    ```
 
 4. Lastly, log out from your current desktop session and log in into AwesomeWM.
