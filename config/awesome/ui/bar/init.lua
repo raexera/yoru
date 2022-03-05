@@ -69,12 +69,12 @@ local hourtextbox = wibox.widget.textclock("%H")
 hourtextbox.markup = helpers.colorize_text(hourtextbox.text, beautiful.xforeground)
 hourtextbox.align = "center"
 hourtextbox.valign = "center"
-hourtextbox.font = beautiful.font_name .. "medium 11"
+hourtextbox.font = beautiful.font_name .. "medium 12"
 
 local minutetextbox = wibox.widget.textclock("%M")
 minutetextbox.align = "center"
 minutetextbox.valign = "center"
-minutetextbox.font = beautiful.font_name .. "medium 11"
+minutetextbox.font = beautiful.font_name .. "medium 12"
 
 hourtextbox:connect_signal("widget::redraw_needed", function()
     hourtextbox.markup = helpers.colorize_text(hourtextbox.text,
@@ -169,8 +169,10 @@ local function boxed_widget2(widget)
     local boxed = wibox.widget{
         {
             widget,
-            top = dpi(5),
-            bottom = dpi(5),
+            top = dpi(4),
+            bottom = dpi(4),
+            left = dpi(2),
+            right = dpi(2),
             widget = wibox.container.margin
         },
         bg = beautiful.lighter_bg,
