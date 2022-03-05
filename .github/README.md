@@ -68,7 +68,7 @@ Fyi, I use night colorscheme, and it's so beautiful.
    ```shell
     $ mkdir -p $HOME/.config/ && cp -r ./config/* $HOME/.config/
     $ mkdir -p $HOME/.local/bin/ && cp -r ./bin/* $HOME/.local/bin/
-    $ cp -r ./misc/* $HOME/
+    $ cp -r ./misc/. $HOME/
    ```
 
 4. Lastly, log out from your current desktop session and log in into AwesomeWM.
@@ -79,11 +79,16 @@ Fyi, I use night colorscheme, and it's so beautiful.
 
 
 ## Acknowledgements.
-- Contributors
-   + **[ner0z](https://github.com/ner0z)** for some widgets.
 
-- Thanks to
-   + [JavaCafe01 Dotfiles](https://github.com/JavaCafe01/dotfiles)
+   - **Special thanks to**
+      + [ner0z](https://github.com/ner0z)
+      + [JavaCafe01](https://github.com/JavaCafe01)
+
+   - **Contributors**
+
+      <a href="https://github.com/rxyhn/AwesomeWM-Dotfiles/graphs/contributors">
+         <img src="https://contrib.rocks/image?repo=rxyhn/AwesomeWM-Dotfiles" />
+      </a>
 
 <br>
 <br>

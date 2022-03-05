@@ -1,31 +1,37 @@
 ## Import files (Colors,Etc)
 import:
-  - ~/.config/alacritty/aesthetic/colors.yml
+  - ~/.config/alacritty/night/colors.yml
 
 ## Set environment variables
 env:
-  TERM: alacritty
-  WINIT_X11_SCALE_FACTOR: '1.0'
+  TERM: xterm-256color
+
+## Terminal window settings
+window:
+  opacity: 1.0
+  padding:
+    x: 25
+    y: 25
 
 ## Font
 font:
   normal:
-    family: Iosevka
-    style: Medium
+    family: Iosevka Nerd Font Mono
+    style: Regular
 
   bold:
-    family: Iosevka
+    family: Iosevka Nerd Font Mono
     style: Bold
 
   italic:
-    family: Iosevka
+    family: Iosevka Nerd Font Mono
     style: Italic
 
   bold_italic:
-    family: Iosevka
+    family: Iosevka Nerd Font Mono
     style: Bold Italic
 
-  size: 11
+  size: 10
 
   offset:
     x: 0
@@ -35,31 +41,15 @@ font:
     x: 0
     y: 0
 
-draw_bold_text_with_bright_colors: true
-
-## Terminal window settings
-window:
-  opacity: 1.0
-  padding:
-    x: 20
-    y: 20
-
-  dynamic_padding: true
-  decorations: full
-  startup_mode: Windowed
-  dynamic_title: true
-  title: Alacritty
-
-## Live config reload
-live_config_reload: true
-
+# Class
 class:
   instance: Alacritty
   general: Alacritty
 
-## Scroll
+# Scrolling
 scrolling:
   history: 10000
+  multiplier: 3
 
 # Visual
 visual_bell:
@@ -67,23 +57,25 @@ visual_bell:
   duration: 0.5
   color: "#ffffff"
 
-##Selection
+# Selection
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: true
 
-## Cs
+# Cursor
 cursor:
   style: 'Underline'
-  thickness: 0.20
 
-## Shell
+# Shell
 shell:
   program: /usr/bin/zsh
 
-## Mouse
+# Mouse
 mouse:
   double_click: { threshold: 300 }
   triple_click: { threshold: 300 }
-
   hide_when_typing: true
+
+# Global Configuration
+live_config_reload: true
+draw_bold_text_with_bright_colors: true
