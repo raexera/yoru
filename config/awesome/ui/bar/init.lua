@@ -1,137 +1,54 @@
+-- Standard awesome library
 local awful = require("awful")
 local gears = require("gears")
+
+-- Widget library
 local wibox = require("wibox")
+
+-- Theme handling library
 local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+
+-- Helpers
 local helpers = require("helpers")
 
--- Awesome Icon
-local awesome_icon = wibox.widget {
-    {
+
+-- Bar
+--------
+
+local function boxed_widget(widget)
+    local boxed = wibox.widget{
         {
-            widget = wibox.widget.imagebox,
-            image = beautiful.awesome_logo,
-            resize = true
+            widget,
+            top = dpi(8),
+            bottom = dpi(5),
+            widget = wibox.container.margin
         },
-        margins = dpi(4),
-        widget = wibox.container.margin
-    },
-    shape = helpers.rrect(beautiful.border_radius),
-    bg = beautiful.wibar_bg,
-    widget = wibox.container.background
-}
+        bg = beautiful.xcolor0,
+        shape = helpers.rrect(dpi(4)),
+        widget = wibox.container.background
+    }
+    return boxed
+end
 
--- Battery
-local charge_icon = wibox.widget{
-    bg = beautiful.xcolor8,
-    widget = wibox.container.background,
-    visible = false
-}
+local function boxed_widget2(widget)
+    local boxed = wibox.widget{
+        {
+            widget,
+            top = dpi(4),
+            bottom = dpi(4),
+            left = dpi(2),
+            right = dpi(2),
+            widget = wibox.container.margin
+        },
+        bg = beautiful.lighter_bg,
+        shape = helpers.rrect(dpi(4)),
+        widget = wibox.container.background
+    }
+    return boxed
+end
 
-local batt = wibox.widget{
-    charge_icon,
-    color = {beautiful.xcolor2},
-    bg = beautiful.xcolor8 .. "88",
-    value = 50,
-    min_value = 0,
-    max_value = 100,
-    thickness = dpi(4),
-    padding = dpi(2),
-    -- rounded_edge = true,
-    start_angle = math.pi * 3 / 2,
-    widget = wibox.container.arcchart
-}
-
-awesome.connect_signal("signal::battery", function(value) 
-    local fill_color = beautiful.xcolor2
-
-    if value >= 11 and value <= 30 then
-        fill_color = beautiful.xcolor3
-    elseif value <= 10 then
-        fill_color = beautiful.xcolor1
-    end
-
-    batt.colors = {fill_color}
-    batt.value = value
-end)
-
-awesome.connect_signal("signal::charger", function(state)
-    if state then
-        charge_icon.visible = true
-    else
-        charge_icon.visible = false
-    end
-end)
-
--- Clock
-local hourtextbox = wibox.widget.textclock("%H")
-hourtextbox.markup = helpers.colorize_text(hourtextbox.text, beautiful.xforeground)
-hourtextbox.align = "center"
-hourtextbox.valign = "center"
-hourtextbox.font = beautiful.font_name .. "medium 12"
-
-local minutetextbox = wibox.widget.textclock("%M")
-minutetextbox.align = "center"
-minutetextbox.valign = "center"
-minutetextbox.font = beautiful.font_name .. "medium 12"
-
-hourtextbox:connect_signal("widget::redraw_needed", function()
-    hourtextbox.markup = helpers.colorize_text(hourtextbox.text,
-                                               beautiful.xforeground)
-end)
-
-minutetextbox:connect_signal("widget::redraw_needed", function()
-    minutetextbox.markup = helpers.colorize_text(minutetextbox.text,
-                                                 beautiful.xforeground)
-end)
-
-awesome.connect_signal("chcolor", function()
-    hourtextbox.markup = helpers.colorize_text(hourtextbox.text,
-                                               beautiful.xforeground)
-    minutetextbox.markup = helpers.colorize_text(minutetextbox.text,
-                                                 beautiful.xforeground)
-end)
-
-local clock = wibox.widget {
-    {hourtextbox, minutetextbox, layout = wibox.layout.fixed.vertical},
-    bg = beautiful.xcolor0 .. "00",
-    widget = wibox.container.background
-}
-
--- Tasklist
-local tasklist_buttons = gears.table.join(
-                             awful.button({}, 1, function(c)
-        if c == client.focus then
-            c.minimized = true
-        else
-            c:emit_signal("request::activate", "tasklist", {raise = true})
-        end
-    end), awful.button({}, 3, function()
-        awful.menu.client_list({theme = {width = 250}})
-    end), awful.button({}, 4, function() awful.client.focus.byidx(1) end),
-                             awful.button({}, 5, function()
-        awful.client.focus.byidx(-1)
-    end))
-
--- Notification center
-local notifs = wibox.widget{
-    markup = "",
-    font = beautiful.font_name .. "16",
-    align = "center",
-    valign = "center",
-    widget = wibox.widget.textbox
-}
-notifs.markup = helpers.colorize_text(notifs.text, beautiful.xcolor3)
-
-notifs:buttons(gears.table.join(
-    awful.button({}, 1, function()
-        notifs_toggle()
-    end)
-))
-
--- Create the Wibar -----------------------------------------------------------
---
 local wrap_widget = function(w)
     return {
         w,
@@ -150,41 +67,126 @@ local wrap_widget2 = function(w)
     }
 end
 
-local function boxed_widget(widget)
-    local boxed = wibox.widget{
-        {
-            widget,
-            top = dpi(8),
-            bottom = dpi(5),
-            widget = wibox.container.margin
-        },
-        bg = beautiful.xcolor0,
-        shape = helpers.rrect(dpi(4)),
-        widget = wibox.container.background
-    }
-
-    return boxed
-end
-local function boxed_widget2(widget)
-    local boxed = wibox.widget{
-        {
-            widget,
-            top = dpi(4),
-            bottom = dpi(4),
-            left = dpi(2),
-            right = dpi(2),
-            widget = wibox.container.margin
-        },
-        bg = beautiful.lighter_bg,
-        shape = helpers.rrect(dpi(4)),
-        widget = wibox.container.background
-    }
-
-    return boxed
-end
-
-
 screen.connect_signal("request::desktop_decoration", function(s)
+
+    -- Launcher
+    local awesome_icon = wibox.widget {
+        {
+            {
+                widget = wibox.widget.imagebox,
+                image = beautiful.awesome_logo,
+                resize = true
+            },
+            margins = dpi(4),
+            widget = wibox.container.margin
+        },
+        shape = helpers.rrect(beautiful.border_radius),
+        bg = beautiful.wibar_bg,
+        widget = wibox.container.background
+    }
+
+    awesome_icon:buttons(gears.table.join(
+        awful.button({}, 1, function ()
+            awful.spawn(launcher)
+        end)
+    ))
+
+    -- Tasklist
+    local tasklist_buttons = gears.table.join(
+                                awful.button({}, 1, function(c)
+            if c == client.focus then
+                c.minimized = true
+            else
+                c:emit_signal("request::activate", "tasklist", {raise = true})
+            end
+        end), awful.button({}, 3, function()
+            awful.menu.client_list({theme = {width = 250}})
+        end), awful.button({}, 4, function() awful.client.focus.byidx(1) end),
+                                awful.button({}, 5, function()
+            awful.client.focus.byidx(-1)
+        end))
+
+    -- Battery
+    local charge_icon = wibox.widget{
+        bg = beautiful.xcolor8,
+        widget = wibox.container.background,
+        visible = false
+    }
+
+    local batt = wibox.widget{
+        charge_icon,
+        color = {beautiful.xcolor2},
+        bg = beautiful.xcolor8 .. "88",
+        value = 50,
+        min_value = 0,
+        max_value = 100,
+        thickness = dpi(4),
+        padding = dpi(2),
+        -- rounded_edge = true,
+        start_angle = math.pi * 3 / 2,
+        widget = wibox.container.arcchart
+    }
+
+    awesome.connect_signal("signal::battery", function(value) 
+        local fill_color = beautiful.xcolor2
+
+        if value >= 11 and value <= 30 then
+            fill_color = beautiful.xcolor3
+        elseif value <= 10 then
+            fill_color = beautiful.xcolor1
+        end
+
+        batt.colors = {fill_color}
+        batt.value = value
+    end)
+
+    awesome.connect_signal("signal::charger", function(state)
+        if state then
+            charge_icon.visible = true
+        else
+            charge_icon.visible = false
+        end
+    end)
+
+    -- Time
+    local time_hour = wibox.widget{
+        font = beautiful.font_name .. "bold 12",
+        format = "%H",
+        align = "center",
+        valign = "center",
+        widget = wibox.widget.textclock
+    }
+
+    local time_min = wibox.widget{
+        font = beautiful.font_name .. "bold 12",
+        format = "%M",
+        align = "center",
+        valign = "center",
+        widget = wibox.widget.textclock
+    }
+
+    local time = wibox.widget{
+        time_hour,
+        time_min,
+        spacing = dpi(5),
+        layout = wibox.layout.fixed.vertical
+    }
+
+    -- Notification center
+    local notifs = wibox.widget{
+        markup = "",
+        font = beautiful.font_name .. "16",
+        align = "center",
+        valign = "center",
+        widget = wibox.widget.textbox
+    }
+    notifs.markup = helpers.colorize_text(notifs.text, beautiful.xcolor3)
+
+    notifs:buttons(gears.table.join(
+        awful.button({}, 1, function()
+            notifs_toggle()
+        end)
+    ))
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -321,7 +323,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
                             boxed_widget({
                             wrap_widget({
                                 wrap_widget2(batt), 
-                                boxed_widget2(clock), 
+                                boxed_widget2(time), 
                                 spacing = dpi(10), 
                                 layout = wibox.layout.fixed.vertical
                             }),
