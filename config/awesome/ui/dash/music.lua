@@ -80,8 +80,6 @@ awesome.connect_signal("bling::playerctl::status", function(playing)
         music_text.markup = helpers.colorize_text("Now Playing", beautiful.xforeground .. "cc")
     else
         music_text.markup = helpers.colorize_text("Music", beautiful.xforeground .. "cc")
-        music_artist.markup = helpers.colorize_text("Nothing Playing", beautiful.xforeground .. "e6")
-        music_title.markup = helpers.colorize_text("Nothing Playing", beautiful.xforeground .. "b3")
     end
 end)
 

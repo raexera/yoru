@@ -37,9 +37,8 @@ Fyi, I use night colorscheme, and it's so beautiful.
 
          ```shell
          $ yay -S awesome-git picom-jonaburg-fix alacritty rofi todo-bin \
-         acpi acpid acpi_call inotify-tools polkit-gnome xdotool maim colord \
-         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa playerctl-git \
-         mpc mpd mpdris2 --needed 
+         acpi acpid acpi_call jq inotify-tools polkit-gnome xdotool xclip maim colord \
+         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa playerctl --needed 
          ```
 
 
