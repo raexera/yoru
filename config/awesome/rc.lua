@@ -36,7 +36,7 @@ screen_width = awful.screen.focused().geometry.width
 screen_height = awful.screen.focused().geometry.height
 
 -- Autostart
-awful.spawn.with_shell("~/.config/awesome/configuration/autorun.sh")
+local autostart = require("configuration.autostart")
 
 -- Import Configuration
 require("configuration")
