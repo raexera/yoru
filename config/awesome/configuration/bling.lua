@@ -17,12 +17,6 @@ bling.module.tiled_wallpaper("", s, {
     zickzack = true
 })
 
--- Enable Playerctl Module from Bling
-playerctl = bling.signal.playerctl.lib {
-    ignore = {"firefox", "qutebrowser", "chromium", "brave"},
-    update_on_activity = true
-}
-
 -- Enable Tag Preview Module from Bling
 bling.widget.tag_preview.enable {
     show_client_content = false,

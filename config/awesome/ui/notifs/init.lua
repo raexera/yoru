@@ -19,9 +19,7 @@ naughty.connect_signal("request::icon", function(n, context, hints)
 
 end)
 
-require("ui.notifs.brightness")
-require("ui.notifs.playerctl")
-require("ui.notifs.volume")
+require("ui.notifs.popup")
 require("ui.notifs.notifications-center")
 
 naughty.config.defaults.ontop = true

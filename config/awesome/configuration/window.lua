@@ -22,7 +22,7 @@ require("module.better-resize")
 client.connect_signal("request::manage", function(c)
     if not c.icon then
         local i = gears.surface(gfs.get_configuration_dir() ..
-                                    "assets/icons/awesome.png")
+                                    "theme/assets/icons/awesome.png")
         c.icon = i._native
     end
 

@@ -39,20 +39,20 @@ theme.lighter_bg = "#162026"
 theme.dash_fg = "#666c79"
 
 -- Titlebar
-local icon_path = gfs.get_configuration_dir() .. "assets/icons/"
+local icon_path = gfs.get_configuration_dir() .. "theme/assets/icons/"
 local titlebar_icon_dir = icon_path .. "titlebar/"
 
 -- PFP
-theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "assets/images/pfp.png")
+theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/pfp.png")
 
 -- Wallpaper
-theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "assets/images/bg.png")
+theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/bg.png")
 
 -- Awesome Logo
-theme.awesome_logo = gears.surface.load_uncached(gfs.get_configuration_dir() .. "assets/icons/awesome.png")
+theme.awesome_logo = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/awesome.png")
 
 -- Notifications icon
-theme.notification_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "assets/icons/notification.png")
+theme.notification_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/notification.png")
 
 -- Fonts
 theme.font_name = "Iosevka "
@@ -144,6 +144,14 @@ theme.titlebar_maximized_button_focus_inactive  = titlebar_icon_dir .. "maximize
 theme.titlebar_maximized_button_normal_active = titlebar_icon_dir .. "default.svg"
 theme.titlebar_maximized_button_focus_active  = titlebar_icon_dir .. "maximized.svg"
 
+-- Pop up notifications
+theme.pop_size = dpi(180)
+theme.pop_bg = theme.xbackground
+theme.pop_bar_bg = theme.xcolor0
+theme.pop_vol_color = theme.xcolor4
+theme.pop_brightness_color = theme.xcolor3
+theme.pop_fg = theme.xforeground
+theme.pop_border_radius = dpi(6)
 
 -- Edge snap
 theme.snap_bg = theme.xcolor8
@@ -172,7 +180,7 @@ theme.menu_bg_focus = theme.lighter_bg
 theme.menu_fg_focus = theme.xforeground
 theme.menu_bg_normal = theme.xbackground
 theme.menu_fg_normal = theme.xforeground
-theme.menu_submenu_icon = gears.filesystem.get_configuration_dir() .. "assets/icons/submenu.png"
+theme.menu_submenu_icon = gears.filesystem.get_configuration_dir() .. "theme/assets/icons/submenu.svg"
 theme.menu_height = dpi(20)
 theme.menu_width = dpi(130)
 theme.menu_border_color = theme.xcolor8
