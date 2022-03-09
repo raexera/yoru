@@ -251,17 +251,16 @@ local uptime_label = wibox.widget{
     widget = wibox.widget.textbox
 }
 
-local uptime_value = wibox.widget.textbox()
-awful.widget.watch("sh -c 'uptime -p | sed 's/^...//' | sed 's/.d..../d/' | sed 's/.h...../h/' | sed 's/.m....../m/''", 60, function(_, stdout)
-    local out = stdout:gsub("^%s*(.-)%s*$", "%1")
-    uptime_value.text = out
-end)
-
 local uptime_text = wibox.widget {
     font = beautiful.font_name .. "bold 13",
+    markup = helpers.colorize_text("-", beautiful.xcolor5),
     valign = "center",
-    widget = uptime_value
+    widget = wibox.widget.textbox
 }
+
+awesome.connect_signal("signal::uptime", function(uptime_value)
+    uptime_text.markup = uptime_value
+end)
 
 local uptime_container = wibox.widget{
         separator,

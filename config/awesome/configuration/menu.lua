@@ -23,17 +23,15 @@ local powermenu = {
     {"Lock Screen", function() lock_screen_show() end}
 }
 
-local appmenu = {
-    {"Terminal", terminal}, 
-    {"Editor", vscode},
-    {"File Manager", filemanager},
-    {"Browser", browser},
-    {"Discord", discord}
-}
-
 local mymainmenu = awful.menu({
     items = {
-        {"AwesomeWM", awesomemenu, beautiful.awesome_logo}, {"Apps", appmenu}, {"Powermenu", powermenu}
+        {"Terminal", terminal, beautiful.awesome_logo}, 
+        {"Code Editor", vscode},
+        {"File Manager", filemanager},
+        {"Web Browser", browser},
+        {"Discord", discord},
+        {"AwesomeWM", awesomemenu}, 
+        {"Power Menu", powermenu}
     }
 })
 

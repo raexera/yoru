@@ -191,16 +191,17 @@ theme.tooltip_opacity = 1
 theme.tooltip_align = "top"
 
 -- Menu
-theme.menu_font = theme.font
+theme.menu_height = dpi(30)
+theme.menu_width = dpi(140)
+theme.menu_font = theme.font_name .. "medium 9"
 theme.menu_bg_focus = theme.lighter_bg
-theme.menu_fg_focus = theme.xforeground
 theme.menu_bg_normal = theme.xbackground
+theme.menu_fg_focus = theme.xforeground
 theme.menu_fg_normal = theme.xforeground
-theme.menu_submenu_icon = gears.filesystem.get_configuration_dir() .. "theme/assets/icons/submenu.svg"
-theme.menu_height = dpi(20)
-theme.menu_width = dpi(130)
 theme.menu_border_color = theme.xcolor8
 theme.menu_border_width = theme.border_width / 2
+theme.menu_submenu = "»  "
+theme.menu_submenu_icon = nil
 
 -- Hotkeys Pop Up
 theme.hotkeys_font = theme.font
