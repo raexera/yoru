@@ -83,10 +83,11 @@ local function toggle_pop()
 end
 
 awesome.connect_signal("signal::volume", function(value, muted)
-    pop_icon.markup = ""
+    pop_icon.markup = ""
     pop_bar.value = value
 
     if muted then
+        pop_icon.markup = ""
         pop_bar.color = beautiful.xcolor8
     else
         pop_bar.color = beautiful.pop_vol_color

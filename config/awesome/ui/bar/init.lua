@@ -91,6 +91,14 @@ screen.connect_signal("request::desktop_decoration", function(s)
         end)
     ))
 
+    awesome_icon:connect_signal("mouse::enter", function()
+        awesome_icon.bg = beautiful.lighter_bg
+    end)
+
+    awesome_icon:connect_signal("mouse::leave", function()
+        awesome_icon.bg = beautiful.transparent
+    end)
+
     -- Tasklist
     local tasklist_buttons = gears.table.join(
                                 awful.button({}, 1, function(c)
@@ -172,6 +180,21 @@ screen.connect_signal("request::desktop_decoration", function(s)
         layout = wibox.layout.fixed.vertical
     }
 
+    local stats_container = wibox.widget{
+        wrap_widget2(batt), 
+        boxed_widget2(time), 
+        spacing = dpi(10), 
+        layout = wibox.layout.fixed.vertical
+    }
+
+    stats_container:connect_signal("mouse::enter", function()
+        cal_tooltip_show()
+    end)
+
+    stats_container:connect_signal("mouse::leave", function()
+        cal_tooltip_hide()
+    end)
+
     -- Notification center
     local notifs = wibox.widget{
         markup = "",
@@ -193,7 +216,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
     -- Create layoutbox widget
     s.mylayoutbox = awful.widget.layoutbox(s)
-    
+
     local layoutbox = wibox.widget{
         s.mylayoutbox,
         right = dpi(9),
@@ -202,6 +225,12 @@ screen.connect_signal("request::desktop_decoration", function(s)
         bottom = dpi(6),
         widget = wibox.container.margin
     }
+
+    layoutbox:buttons(gears.table.join(
+        awful.button({}, 1, function ()
+            awful.layout.inc(1)
+        end)
+    ))
 
     -- Create the wibox
     s.mywibox = wibox({
@@ -322,8 +351,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
                         {
                             boxed_widget({
                             wrap_widget({
-                                wrap_widget2(batt), 
-                                boxed_widget2(time), 
+                                stats_container,
                                 spacing = dpi(10), 
                                 layout = wibox.layout.fixed.vertical
                             }),

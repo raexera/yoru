@@ -37,6 +37,7 @@ theme.xcolor15 = xrdb.color15
 theme.darker_bg = "#0a1419"
 theme.lighter_bg = "#162026"
 theme.dash_fg = "#666c79"
+theme.transparent = "#00000000"
 
 -- Titlebar
 local icon_path = gfs.get_configuration_dir() .. "theme/assets/icons/"
@@ -152,6 +153,21 @@ theme.pop_vol_color = theme.xcolor4
 theme.pop_brightness_color = theme.xcolor3
 theme.pop_fg = theme.xforeground
 theme.pop_border_radius = dpi(6)
+
+-- Tooltip
+theme.tooltip_height = dpi(490)
+theme.tooltip_width = dpi(310)
+theme.tooltip_bg     = theme.xbackground
+theme.tooltip_box_bg = theme.bg_secondary
+theme.tooltip_fg     = theme.xforeground
+theme.tooltip_box_fg = theme.xcolor8
+theme.tooltip_margin = dpi(15)
+theme.tooltip_box_margin = dpi(10)
+theme.tooltip_gap = dpi(10)
+theme.tooltip_border_radius = dpi(6)
+theme.tooltip_box_border_radius = dpi(3)
+theme.tooltip_border_width = dpi(0)
+theme.tooltip_border_color = theme.xcolor0
 
 -- Edge snap
 theme.snap_bg = theme.xcolor8

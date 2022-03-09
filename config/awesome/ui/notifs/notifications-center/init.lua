@@ -91,8 +91,8 @@ reset_notif_container = function()
     remove_notif_empty = true
 end
 
-remove_notif = function(box)
-    notif_container:remove_widgets(box)
+remove_notifbox = function(box)
+        notif_container:remove_widgets(box)
 
     if #notif_container.children == 0 then
         notif_container:insert(1, empty)
@@ -114,7 +114,7 @@ local create_notif = function(icon, n, width)
 
     dismiss:buttons(gears.table.join(
         awful.button({}, 1, function()
-            _G.remove_notif(box)
+            _G.remove_notifbox(box)
         end)
     ))
 
@@ -297,16 +297,15 @@ awful.placement.bottom_left(
     {
         honor_workarea = true,
         margins = {
-            bottom = 50,
             left = beautiful.wibar_width + 11
         }
     })
 
 local slide = rubato.timed{
-    pos = dpi(10),
+    pos = dpi(896),
     rate = 60,
     intro = 0.025,
-    duration = 0.3,
+    duration = 0.5,
     easing = rubato.quadratic,
     awestore_compat = true,
     subscribed = function(pos) notifs.y = pos end
@@ -327,7 +326,7 @@ notifs_show = function()
 end
 
 notifs_hide = function()
-    slide:set(dpi(10))
+    slide:set(dpi(896))
     notifs_status = true
 end
 
