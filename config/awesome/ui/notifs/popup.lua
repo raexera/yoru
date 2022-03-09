@@ -82,18 +82,23 @@ local function toggle_pop()
     end
 end
 
+local vol_first_time = true
 awesome.connect_signal("signal::volume", function(value, muted)
-    pop_icon.markup = ""
-    pop_bar.value = value
-
-    if muted then
-        pop_icon.markup = ""
-        pop_bar.color = beautiful.xcolor8
+    if vol_first_time then
+        vol_first_time = false
     else
-        pop_bar.color = beautiful.pop_vol_color
-    end
+        pop_icon.markup = ""
+        pop_bar.value = value
 
-    toggle_pop()
+        if muted then
+            pop_icon.markup = ""
+            pop_bar.color = beautiful.xcolor8
+        else
+            pop_bar.color = beautiful.pop_vol_color
+        end
+
+        toggle_pop()
+    end
 end)
 
 awesome.connect_signal("signal::brightness", function(value)

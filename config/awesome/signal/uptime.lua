@@ -6,24 +6,23 @@ local naughty = require("naughty")
 
 local uptime_script = [[
   sh -c "
-  cmd=$(uptime)
+    cmd=$(uptime)
 
-hr=$( echo $cmd | cut -d \":\" -f3 | awk '{print $NF}') 
-mt=$( echo $cmd | cut -d \":\" -f4 | cut -c1-2 )
-day=$(echo $cmd | grep day)
+    hr=$( echo $cmd | cut -d \":\" -f3 | awk '{print $NF}') 
+    mt=$( echo $cmd | cut -d \":\" -f4 | cut -c1-2 )
+    day=$(echo $cmd | grep day)
 
-if [ -z \"$day\" ]; then
-    hour=$(uptime -p | grep hour)
-  if [ -z \"$hour\" ]; then
-    uptime -p | awk '{print $2$3}' | cut -c1-3
-  else
-    echo \"${hr}h ${mt}m\"
-  fi
-else
-    day=$(echo $day | cut -d \" \" -f3)
-    echo \"${day}d ${hr}h ${mt}m\"
-fi
-
+    if [ -z \"$day\" ]; then
+      hour=$(uptime -p | grep hour)
+    if [ -z \"$hour\" ]; then
+      uptime -p | awk '{print $2$3}' | cut -c1-3
+    else
+      echo \"${hr}h ${mt}m\"
+    fi
+    else
+      day=$(echo $day | cut -d \" \" -f3)
+      echo \"${day}d ${hr}h ${mt}m\"
+    fi
   "]]
 
 local update_interval = 60
