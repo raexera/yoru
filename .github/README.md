@@ -22,6 +22,19 @@ Still quite messy, because i'm still learning Lua.
 
 Fyi, I use night colorscheme, and it's so beautiful.
 
+<h2></h2><br>
+
+**Here are some details about my setup:**
+
+| Programs   | Using             |
+| ---------- | ----------------- |
+| WM         | awesome           |
+| OS         | arch linux        |
+| Terminal   | alacritty         |
+| Editor     | neovim / vscode   |
+| Compositor | picom             |
+| Launcher   | rofi              |
+
 ### Here are the instructions you should follow to replicate my AwesomeWM setup.
 
 <details open>
@@ -77,7 +90,7 @@ Fyi, I use night colorscheme, and it's so beautiful.
 
 
 
-## Acknowledgements.
+## Acknowledgements
 
    - **Special thanks to**
       + [ner0z](https://github.com/ner0z)
@@ -86,7 +99,7 @@ Fyi, I use night colorscheme, and it's so beautiful.
    - **Contributors**
 
       <a href="https://github.com/rxyhn/AwesomeWM-Dotfiles/graphs/contributors">
-         <img src="https://contrib.rocks/image?repo=rxyhn/AwesomeWM-Dotfiles" />
+         <img src="assets/contributors.png">
       </a>
 
 <br>
