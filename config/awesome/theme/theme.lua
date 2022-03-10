@@ -77,10 +77,10 @@ theme.fg_minimize = theme.xcolor8
 theme.button_close = theme.xcolor1
 
 -- Borders
-theme.border_width = dpi(0)
+theme.border_width = dpi(5)
 theme.oof_border_width = dpi(0)
-theme.border_normal = theme.xbackground
-theme.border_focus = theme.xbackground
+theme.border_normal = theme.darker_bg
+theme.border_focus = theme.darker_bg
 theme.border_radius = dpi(3)
 theme.client_radius = dpi(3)
 theme.widget_border_width = dpi(3)
@@ -198,7 +198,7 @@ theme.menu_bg_focus = theme.lighter_bg
 theme.menu_bg_normal = theme.xbackground
 theme.menu_fg_focus = theme.xforeground
 theme.menu_fg_normal = theme.xforeground
-theme.menu_border_color = theme.xcolor8
+theme.menu_border_color = theme.darker_bg
 theme.menu_border_width = theme.border_width / 2
 theme.menu_submenu = "»  "
 theme.menu_submenu_icon = nil

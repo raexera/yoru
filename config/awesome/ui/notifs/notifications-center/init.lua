@@ -105,7 +105,7 @@ local create_notif = function(icon, n, width)
     local box = {}
 
     local dismiss = wibox.widget {
-        markup = "",
+        markup = helpers.colorize_text("", beautiful.xcolor1),
         font = beautiful.icon_font_name .. "9",
         align = "center",
         valign = "center",

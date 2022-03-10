@@ -13,32 +13,47 @@ configuration {
 	bg:				#061115;
 	fg:				#d9d7d6;
 	accent:			#1c252c;
-    inactive:       #484e5b;
-    hightlight:     #6791c9;
+	darker-bg:		#0A1419;
+    active:      	#484e5b;
+	rad:			4px;
 
 	background-color: @bg;
 	text-color:	@fg;
 }
+
 window {
     width: 30%;
-	border: 2px;
-    border-radius: 4px;
-	border-color: @accent;
+	border: 4px;
+	border-color: @darker-bg;
 }
 
 inputbar {
-    margin: 24px 0 24px 24px;
+	children: [ textbox, entry ];
+	expand: false;
+	margin: 20px 20px 0;
+	border-radius: @rad;
+	background-color: @darker-bg;
 }
 
-prompt, entry {
-	text-color: @fg;
-	padding: 8px;
-}
-
-prompt {
+textbox {
+    str: "";
+    expand: false;
+    padding: 0 1% 0;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    border-radius: @rad;
     background-color: @accent;
-    text-color: @hightlight;
-	border-radius: 4px 0 0 4px;
+    text-color: @bg;
+    font: "Material Icons 17";
+}
+
+
+entry{
+	expand: true;
+	padding: 2%;
+    placeholder: "Search";
+	border-radius: @rad;
+    background-color: @darker-bg;
 }
 
 listview {
@@ -47,7 +62,7 @@ listview {
 	cycle: false;
 	dynamic: true;
 	layout: vertical;
-    margin: 0 24px 14px 24px;
+    margin: 15px 20px 15px 20px;
 }
 
 element {
@@ -63,26 +78,25 @@ element-text {
 }
 
 element selected {
-	background-color: @accent;
+	background-color: @darker-bg;
 	text-color: @fg;
-	border-radius: 4px;
+	border-radius: @rad;
 }
 
 mode-switcher {
-    background-color: @accent;
+    background-color: @darker-bg;
     padding: 0 0 4px 0;
 }
 
 button {
-    text-color: @inactive;
-	background-color: @accent;
+    text-color: @accent;
+	background-color: @darker-bg;
     padding: 6px 6px 6px 6px;
-	border-radius: 0;
     horizontal-align: 0.5;
 }
 
 button selected {
-    text-color: @hightlight;
+    text-color: @active;
     background-color: @bg;
 	border-radius: 0 0 4px 4px;
 }

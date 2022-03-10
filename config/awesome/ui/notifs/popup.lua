@@ -101,10 +101,15 @@ awesome.connect_signal("signal::volume", function(value, muted)
     end
 end)
 
+local bri_first_time = true
 awesome.connect_signal("signal::brightness", function(value)
-    pop_icon.markup = ""
-    pop_bar.value = value
-    pop_bar.color = beautiful.pop_brightness_color
+    if bri_first_time then
+        bri_first_time = false
+    else
+        pop_icon.markup = ""
+        pop_bar.value = value
+        pop_bar.color = beautiful.pop_brightness_color
 
-    toggle_pop()
+        toggle_pop()
+    end
 end)

@@ -205,7 +205,7 @@ local time_min = wibox.widget{
 -- Wifi
 local wifi_status_icon = wibox.widget{
     markup = "Offline",
-    font = beautiful.icon_font_name .. "Round 15",
+    font = beautiful.icon_font_name .. "Round 14",
     valign = "center",
     align = "center",
     widget = wibox.widget.textbox
@@ -213,11 +213,11 @@ local wifi_status_icon = wibox.widget{
 
 local wifi = wibox.widget{
     wifi_status_icon,
-    forced_width = dpi(40),
-    forced_height = dpi(40),
+    forced_width = dpi(35),
+    forced_height = dpi(35),
     bg = beautiful.xcolor0,
     shape = helpers.rrect(beautiful.tooltip_box_border_radius),
-    shape_border_width = dpi(2.25),
+    shape_border_width = dpi(3),
     shape_border_color = beautiful.xcolor1,
     widget = wibox.container.background
 }
