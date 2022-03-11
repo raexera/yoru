@@ -23,31 +23,23 @@ local machi = require("module.layout-machi")
 -- Helpers
 local helpers = require("helpers")
 
-local keys = {}
-
 -- Default modkey.
 modkey = "Mod4"
 altkey = "Mod1"
 ctrl = "Control"
 shift = "Shift"
 
--- Mouse Bindings
-awful.mouse.append_global_mousebindings({
-    awful.button({}, 4, awful.tag.viewprev),
-    awful.button({}, 5, awful.tag.viewnext)
-})
-
 -- Client and Tabs Bindings
 awful.keyboard.append_global_keybindings({
-    awful.key({"Mod1"}, "a", function()
+    awful.key({altkey}, "a", function()
         bling.module.tabbed.pick_with_dmenu()
     end,
     {description = "pick client to add to tab group", group = "tabs"}),
-    awful.key({"Mod1"}, "s", function()
+    awful.key({altkey}, "s", function()
         bling.module.tabbed.iter()
     end,
     {description = "iterate through tabbing group", group = "tabs"}),
-    awful.key({"Mod1"}, "d", function()
+    awful.key({altkey}, "d", function()
         bling.module.tabbed.pop()
     end,
     {description = "remove focused client from tabbing group",group = "tabs"}),
@@ -87,7 +79,7 @@ awful.keyboard.append_global_keybindings({
         awful.client.swap.byidx(-1)
     end,
     {description = "swap with previous client by index", group = "client"}), 
-    awful.key({modkey}, "u", 
+    awful.key({modkey}, "u",
         awful.client.urgent.jumpto,
     {description = "jump to urgent client", group = "client"}),
     awful.key({altkey}, "Tab", function()
@@ -223,7 +215,8 @@ awful.keyboard.append_global_keybindings({
     {description = "increase the number of master clients", group = "layout"}),
     awful.key({modkey, "Shift"}, "l", function()
         awful.tag.incnmaster(-1, nil, true)
-    end, {description = "decrease the number of master clients", group = "layout"}),
+    end,
+    {description = "decrease the number of master clients", group = "layout"}),
     awful.key({modkey, "Control"}, "h", function()
         awful.tag.incncol(1, nil, true)
     end,
@@ -393,13 +386,42 @@ awful.keyboard.append_global_keybindings({
     }
 })
 
+-- Mouse bindings on desktop
+------------------------------
+
+awful.mouse.append_global_mousebindings({
+
+    -- Left click
+    awful.button({}, 1, function()
+        naughty.destroy_all_notifications()
+        if mymainmenu then
+            mymainmenu:hide()
+        end
+    end),
+
+    -- Right click
+    awful.button({}, 3, function()
+        mymainmenu:toggle()
+    end),
+
+    -- Side key
+    awful.button({}, 4, awful.tag.viewprev),
+    awful.button({}, 5, awful.tag.viewnext)
+
+})
+
+-- Mouse buttons on the client
+--------------------------------
+
 client.connect_signal("request::default_mousebindings", function()
     awful.mouse.append_client_mousebindings({
         awful.button({}, 1, function(c)
             c:activate{context = "mouse_click"}
-        end), awful.button({modkey}, 1, function(c)
+        end),
+        awful.button({modkey}, 1, function(c)
             c:activate{context = "mouse_click", action = "mouse_move"}
-        end), awful.button({modkey}, 3, function(c)
+        end),
+        awful.button({modkey}, 3, function(c)
             c:activate{context = "mouse_click", action = "mouse_resize"}
         end)
     })

@@ -284,7 +284,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         widget_template = {
             {
                 awful.widget.clienticon,
-                margins = dpi(6),
+                margins = dpi(8),
                 layout = wibox.container.margin
             },
             id = "background_role",
