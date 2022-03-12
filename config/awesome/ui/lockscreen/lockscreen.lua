@@ -27,7 +27,6 @@ local lock_screen = require("ui.lockscreen")
 
 lock_screen_box = wibox({visible = false, ontop = true, type = "splash", screen = screen.primary})
 awful.placement.maximize(lock_screen_box)
--- lock_screen_box.bg = beautiful.transparent
 lock_screen_box.bg = beautiful.xbackground .. "22"
 
 -- Add lockscreen to each screen
@@ -55,10 +54,10 @@ local pos_map = {
     ["to"] = {43, 44},
     ["1"] = {56, 58},
     ["2"] = {75, 77},
-    ["3"] = {61, 66},
+    ["3"] = {62, 66},
     ["4"] = {67, 70},
     ["5"] = {71, 74},
-    ["6"] = {59, 60},
+    ["6"] = {59, 61},
     ["7"] = {89, 93},
     ["8"] = {78, 82},
     ["9"] = {52, 55},
