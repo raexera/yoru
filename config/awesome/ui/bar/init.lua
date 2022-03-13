@@ -80,7 +80,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
             margins = dpi(4),
             widget = wibox.container.margin
         },
-        shape = helpers.rrect(beautiful.border_radius),
+        shape = helpers.rrect(beautiful.border_radius / 2),
         bg = beautiful.wibar_bg,
         widget = wibox.container.background
     }
@@ -278,7 +278,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         bg = beautiful.wibar_bg,
         style = {
             bg = beautiful.xcolor0,
-            shape = helpers.rrect(beautiful.border_radius)
+            shape = helpers.rrect(beautiful.border_radius / 2)
         },
         layout = {spacing = dpi(10), layout = wibox.layout.fixed.vertical},
         widget_template = {

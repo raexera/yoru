@@ -1,10 +1,10 @@
 configuration {
-	modi:				    "run,drun,Kill:~/.config/rofi/scripts/kill.sh";
-	font:				    "Iosevka 9";
+	modi:				    "drun";
 	display-drun: 			"Apps";
-	display-run: 			"Run";
 	drun-display-format:    "{name}";
-	sidebar-mode: 			true;
+	font:				    "Iosevka 9";
+	show-icons:              true;
+	icon-theme: 			"Papirus";
 }
 
 @theme "/dev/null"
@@ -15,16 +15,20 @@ configuration {
 	accent:			#1c252c;
 	darker-bg:		#0A1419;
     active:      	#484e5b;
-	rad:			4px;
+	rad:			10px;
 
 	background-color: @bg;
 	text-color:	@fg;
 }
 
 window {
+	transparency:                   "real";
+	text-color:                     @fg;
+  	location:                       center;
+    x-offset:                       0;
+    y-offset:                       0;
     width: 30%;
-	border: 4px;
-	border-color: @darker-bg;
+	border-radius: 10px;
 }
 
 inputbar {
@@ -57,47 +61,28 @@ entry{
 }
 
 listview {
-	columns: 1;
-	lines: 12;
+	columns: 3;
+	lines: 3;
 	cycle: false;
-	dynamic: true;
-	layout: vertical;
-    margin: 15px 20px 15px 20px;
+    margin: 1em;
 }
 
 element {
 	orientation: vertical;
-	padding: 8px 8px;
+	padding: 1em;
 }
 
-element-text {
-    expand: true;
-	vertical-align: 0.5;
+element-text, element-icon {
+	padding: 0.2em;
+	horizontal-align: 0.5;
 	background-color: inherit;
-	text-color: inherit;
 }
+
+element-icon { size: 36px; }
+listview, element, element selected, element-text, element-icon { cursor: pointer; }
 
 element selected {
 	background-color: @darker-bg;
 	text-color: @fg;
-	border-radius: @rad;
+	border-radius: 5px;
 }
-
-mode-switcher {
-    background-color: @darker-bg;
-    padding: 0 0 4px 0;
-}
-
-button {
-    text-color: @accent;
-	background-color: @darker-bg;
-    padding: 6px 6px 6px 6px;
-    horizontal-align: 0.5;
-}
-
-button selected {
-    text-color: @active;
-    background-color: @bg;
-	border-radius: 0 0 4px 4px;
-}
-

@@ -49,7 +49,7 @@ Fyi, I use night colorscheme, and it's so beautiful.
          *Assuming your AUR helper is* `yay`
 
          ```shell
-         $ yay -S awesome-git picom-jonaburg-fix alacritty rofi todo-bin \
+         yay -S awesome-git picom-jonaburg-fix alacritty rofi todo-bin \
          acpi acpid acpi_call jq inotify-tools polkit-gnome xdotool xclip maim colord \
          brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa playerctl --needed 
          ```
@@ -71,16 +71,16 @@ Fyi, I use night colorscheme, and it's so beautiful.
     > Clone this repository
 
    ```shell
-   $ git clone https://github.com/rxyhn/AwesomeWM-Dotfiles.git
-   $ cd AwesomeWM-Dotfiles
+   git clone https://github.com/rxyhn/AwesomeWM-Dotfiles.git
+   cd AwesomeWM-Dotfiles
    ```
 
     > Copy config and binaries files
 
    ```shell
-    $ mkdir -p $HOME/.config/ && cp -r ./config/* $HOME/.config/
-    $ mkdir -p $HOME/.local/bin/ && cp -r ./bin/* $HOME/.local/bin/
-    $ cp -r ./misc/. $HOME/
+    cp -r ./config/* ~/.config/
+    cp -r ./bin/* ~/.local/bin/
+    cp -r ./misc/. ~/
    ```
 
 4. Lastly, log out from your current desktop session and log in into AwesomeWM.

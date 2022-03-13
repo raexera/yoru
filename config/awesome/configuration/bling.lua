@@ -5,17 +5,17 @@ local bling = require("module.bling")
 
 bling.module.flash_focus.enable()
 
--- Set Wallpaper
-bling.module.tiled_wallpaper("", s, {
-    fg = beautiful.lighter_bg,
-    bg = beautiful.xbackground,
-    offset_y = 6,
-    offset_x = 18,
-    font = "Iosevka",
-    font_size = 17,
-    padding = 70,
-    zickzack = true
-})
+-- Set Tile Wallpaper
+-- bling.module.tiled_wallpaper("", s, {
+--     fg = beautiful.lighter_bg,
+--     bg = beautiful.xbackground,
+--     offset_y = 6,
+--     offset_x = 18,
+--     font = "Iosevka",
+--     font_size = 17,
+--     padding = 70,
+--     zickzack = true
+-- })
 
 -- Enable Tag Preview Module from Bling
 bling.widget.tag_preview.enable {

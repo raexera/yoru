@@ -1,8 +1,12 @@
 -- Standard awesome library
+local gears = require("gears")
+local naughty = require("naughty")
 local awful = require("awful")
 require("awful.autofocus")
 
-local naughty = require("naughty")
+-- Theme handling library
+local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -13,6 +17,12 @@ naughty.connect_signal("request::display_error", function(message, startup)
             (startup and " during startup!" or "!"),
         message = message
     }
+end)
+
+-- set wallpapers
+awful.screen.connect_for_each_screen(function(s)
+    gears.wallpaper.maximized(beautiful.wallpaper, s, false, nil)
+
 end)
 
 -- Screen Padding and Tags

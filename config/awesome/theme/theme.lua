@@ -39,10 +39,6 @@ theme.lighter_bg = "#162026"
 theme.dash_fg = "#666c79"
 theme.transparent = "#00000000"
 
--- Titlebar
-local icon_path = gfs.get_configuration_dir() .. "theme/assets/icons/"
-local titlebar_icon_dir = icon_path .. "titlebar/"
-
 -- PFP
 theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/pfp.png")
 
@@ -77,13 +73,13 @@ theme.fg_minimize = theme.xcolor8
 theme.button_close = theme.xcolor1
 
 -- Borders
-theme.border_width = dpi(5)
-theme.oof_border_width = dpi(0)
+theme.border_width = dpi(0)
+theme.oof_border_width = theme.border_width
 theme.border_normal = theme.darker_bg
 theme.border_focus = theme.darker_bg
-theme.border_radius = dpi(3)
-theme.client_radius = dpi(3)
-theme.widget_border_width = dpi(3)
+theme.border_radius = dpi(10)
+theme.client_radius = dpi(12)
+theme.widget_border_width = dpi(2)
 theme.widget_border_color = theme.lighter_bg
 
 -- Taglist
@@ -105,12 +101,11 @@ theme.taglist_bg_volatile = transparent
 theme.taglist_fg_volatile = theme.xcolor11
 theme.taglist_disable_icon = true
 
-theme.taglist_shape_focus = helpers.rrect(theme.border_radius)
-theme.taglist_shape_empty = helpers.rrect(theme.border_radius)
-theme.taglist_shape = helpers.rrect(theme.border_radius)
-theme.taglist_shape_urgent = helpers.rrect(theme.border_radius)
-theme.taglist_shape_volatile = helpers.rrect(theme.border_radius)
-
+theme.taglist_shape_focus = helpers.rrect(theme.border_radius / 2)
+theme.taglist_shape_empty = helpers.rrect(theme.border_radius / 2)
+theme.taglist_shape = helpers.rrect(theme.border_radius / 2)
+theme.taglist_shape_urgent = helpers.rrect(theme.border_radius / 2)
+theme.taglist_shape_volatile = helpers.rrect(theme.border_radius / 2)
 
 -- Tasklist
 theme.tasklist_font = theme.font
@@ -129,21 +124,8 @@ theme.tasklist_align = "center"
 
 -- Titlebars
 theme.titlebars_enabled = true
-theme.titlebar_bg_focus = theme.darker_bg
-theme.titlebar_bg_normal = theme.darker_bg
-theme.titlebar_fg_focus = theme.xbackground
-theme.titlebar_fg_normal = theme.xbackground
-theme.titlebar_size = dpi(30)
-theme.titlebar_position = "left"
-
-theme.titlebar_close_button_normal = titlebar_icon_dir .. "default.svg"
-theme.titlebar_close_button_focus  = titlebar_icon_dir .. "close.svg"
-theme.titlebar_minimize_button_normal = titlebar_icon_dir .. "default.svg"
-theme.titlebar_minimize_button_focus  = titlebar_icon_dir .. "minimize.svg"
-theme.titlebar_maximized_button_normal_inactive = titlebar_icon_dir .. "default.svg"
-theme.titlebar_maximized_button_focus_inactive  = titlebar_icon_dir .. "maximized.svg"
-theme.titlebar_maximized_button_normal_active = titlebar_icon_dir .. "default.svg"
-theme.titlebar_maximized_button_focus_active  = titlebar_icon_dir .. "maximized.svg"
+theme.titlebar_size = dpi(45)
+theme.titlebar_unfocused = theme.xcolor0
 
 -- Pop up notifications
 theme.pop_size = dpi(180)
@@ -263,8 +245,8 @@ theme.machi_editor_border_opacity = 0.25
 theme.machi_editor_active_opacity = 0.25
 
 -- Tag Preview
-theme.tag_preview_widget_border_radius = theme.border_radius
-theme.tag_preview_client_border_radius = theme.border_radius
+theme.tag_preview_widget_border_radius = theme.border_radius / 2
+theme.tag_preview_client_border_radius = theme.border_radius / 2
 theme.tag_preview_client_opacity = 0.1
 theme.tag_preview_client_bg = theme.xbackground
 theme.tag_preview_client_border_color = theme.lighter_bg
@@ -275,7 +257,7 @@ theme.tag_preview_widget_border_width = theme.widget_border_width * 0
 theme.tag_preview_widget_margin = dpi(10)
 
 -- Task Preview
-theme.task_preview_widget_border_radius = theme.border_radius
+theme.task_preview_widget_border_radius = theme.border_radius / 2
 theme.task_preview_widget_bg = theme.xbackground
 theme.task_preview_widget_border_color = theme.widget_border_color
 theme.task_preview_widget_border_width = theme.widget_border_width * 0

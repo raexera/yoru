@@ -183,7 +183,7 @@ local function draw_widget(
           content_fill_horizontal = true,
           widget = wibox.container.place
       },
-        bg = beautiful.xbackground,
+        bg = "#00000000",
         widget = wibox.container.background,
     })
 end
@@ -192,7 +192,7 @@ local enable = function(opts)
     local opts = opts or {}
 
     local type = opts.type or "thumbnail"
-    local background = beautiful.window_switcher_widget_bg or "#000000"
+    local background = beautiful.window_switcher_widget_bg or "#00000000"
     local border_width = beautiful.window_switcher_widget_border_width or dpi(3)
     local border_radius = beautiful.window_switcher_widget_border_radius
         or dpi(5)
@@ -240,7 +240,7 @@ local enable = function(opts)
     local scroll_next_key = opts.scroll_next_key or 5
 
     local window_switcher_box = wibox({
-        bg = beautiful.xbackground,
+        bg = "#00000000",
         visible = false,
         ontop = true,
         type = "splash",
@@ -254,7 +254,7 @@ local enable = function(opts)
             },
             shape_border_width = beautiful.widget_border_width,
             shape_border_color = beautiful.widget_border_color,
-            bg = beautiful.xbackground,
+            bg = "#00000000",
             shape = helpers.rrect(5),
             widget = wibox.container.background,
         },
