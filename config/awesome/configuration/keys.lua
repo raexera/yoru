@@ -29,6 +29,31 @@ altkey = "Mod1"
 ctrl = "Control"
 shift = "Shift"
 
+-- Launcher
+awful.keyboard.append_global_keybindings({
+        awful.key({modkey}, "Return", function()
+            awful.spawn(terminal)
+        end,
+        {description = "open terminal", group = "launcher"}),
+        awful.key({modkey}, "d", function()
+            awful.spawn(launcher)
+        end,
+        {description = "open applications menu", group = "launcher"}),
+        awful.key({modkey, shift}, "d", function()
+            dash_toggle()
+        end,
+        {description = "toggle dashboard", group = "launcher"}),
+        awful.key({modkey}, "f", function()
+            awful.spawn(filemanager)
+        end,
+        {description = "open file manager", group = "launcher"}),
+        awful.key({modkey}, "w", function()
+            awful.spawn.with_shell(browser)
+        end,
+        {description = "open web browser", group = "launcher"}),
+    
+})
+
 -- Client and Tabs Bindings
 awful.keyboard.append_global_keybindings({
     awful.key({altkey}, "a", function()
@@ -85,7 +110,7 @@ awful.keyboard.append_global_keybindings({
     awful.key({altkey}, "Tab", function()
         awesome.emit_signal("bling::window_switcher::turn_on")
     end,
-    {description = "Window Switcher", group = "client"})
+    {description = "window switcher", group = "client"})
 })
 
 -- Awesomewm
@@ -135,17 +160,16 @@ awful.keyboard.append_global_keybindings({
     end,
     {description = "take a screenshot", group = "awesome"}),
 
+    -- Lockscreen
+    awful.key({modkey}, "x", function() 
+        lock_screen_show() 
+    end,
+    {description = "lock screen", group = "awesome"}),
+
     -- Awesome stuff
     awful.key({modkey}, "F1", 
         hotkeys_popup.show_help,
     {description = "show help", group = "awesome"}),
-    awful.key({modkey}, "Escape", 
-        awful.tag.history.restore,
-    {description = "go back", group = "tag"}),
-    awful.key({modkey}, "x", function() 
-        lock_screen_show() 
-    end,
-    {description = "toggle lock screen", group = "awesome"}),
     awful.key({modkey, "Control"}, "r", 
         awesome.restart,
     {description = "reload awesome", group = "awesome"}),
@@ -178,28 +202,6 @@ awful.keyboard.append_global_keybindings({
     end,
     {description = "focus the previous screen", group = "screen"}),
 
-    -- Launcher
-    awful.key({modkey}, "Return", function()
-        awful.spawn(terminal)
-    end,
-    {description = "open terminal", group = "launcher"}),
-    awful.key({modkey}, "d", function()
-        awful.spawn(launcher)
-    end,
-    {description = "open applications menu", group = "launcher"}),
-    awful.key({modkey}, "z", function()
-        dash_toggle()
-    end,
-    {description = "Toggle dashboard", group = "launcher"}),
-    awful.key({modkey}, "f", function()
-        awful.spawn(filemanager)
-    end,
-    {description = "open file browser", group = "launcher"}),
-    awful.key({modkey}, "w", function()
-        awful.spawn.with_shell(browser)
-    end,
-    {description = "open firefox", group = "launcher"}),
-
     -- Layout
     awful.key({modkey}, "l", function()
         awful.tag.incmwfact(0.05)
@@ -228,11 +230,22 @@ awful.keyboard.append_global_keybindings({
     awful.key({modkey}, "space", function()
         awful.layout.inc(1)
     end,
-    {description = "select next", group = "layout"}),
+    {description = "select next layout", group = "layout"}),
     awful.key({modkey, "Shift"}, "space", function()
         awful.layout.inc(-1)
     end,
-    {description = "select previous", group = "layout"}),
+    {description = "select previous layout", group = "layout"}),
+
+    -- Tag
+    awful.key({ modkey, altkey}, "Left",
+        awful.tag.viewprev,
+    {description = "view previous", group = "tag"}),
+    awful.key({ modkey, altkey}, "Right",
+        awful.tag.viewnext,
+    {description = "view next", group = "tag"}),
+    awful.key({ modkey}, "Escape",
+        awful.tag.history.restore,
+    {description = "go back", group = "tag"}),
 
     -- Set Layout
     awful.key({modkey, "Control"}, "w", function()
@@ -265,23 +278,30 @@ client.connect_signal("request::default_keybindings", function()
         awful.key({modkey, "Shift"}, "f", function(c)
             c.fullscreen = not c.fullscreen
             c:raise()
-        end, {description = "toggle fullscreen", group = "client"}),
-        awful.key({modkey}, "q", function(c) c:kill() end,
-                  {description = "close", group = "client"}),
-        awful.key({modkey, "Control"}, "space", awful.client.floating.toggle,
-                  {description = "toggle floating", group = "client"}),
-        awful.key({modkey, "Control"}, "Return",
-                  function(c) c:swap(awful.client.getmaster()) end,
-                  {description = "move to master", group = "client"}),
-        awful.key({modkey}, "o", function(c) c:move_to_screen() end,
-                  {description = "move to screen", group = "client"}),
+        end, 
+        {description = "toggle fullscreen", group = "client"}),
+        awful.key({modkey}, "q", function(c) 
+            c:kill() 
+        end,
+        {description = "close", group = "client"}),
+        awful.key({modkey, "Control"}, "space", 
+            awful.client.floating.toggle,
+        {description = "toggle floating", group = "client"}),
+        awful.key({modkey, "Control"}, "Return", function(c) 
+            c:swap(awful.client.getmaster()) 
+        end,
+        {description = "move to master", group = "client"}),
+        awful.key({modkey}, "o", function(c) 
+            c:move_to_screen() end,
+        {description = "move to screen", group = "client"}),
         awful.key({modkey, shift}, "b", function(c)
             c.floating = not c.floating
             c.width = 400
             c.height = 200
             awful.placement.bottom_right(c)
             c.sticky = not c.sticky
-        end, {description = "toggle keep on top", group = "client"}),
+        end,
+        {description = "toggle keep on top", group = "client"}),
 
         awful.key({modkey}, "n", function(c)
             -- The client currently has the input focus, so it cannot be
@@ -397,6 +417,11 @@ awful.mouse.append_global_mousebindings({
         if mymainmenu then
             mymainmenu:hide()
         end
+    end),
+
+    -- Right click
+    awful.button({}, 2, function()
+        dash_toggle()
     end),
 
     -- Right click
