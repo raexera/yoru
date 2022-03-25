@@ -7,7 +7,10 @@ local dpi = xresources.apply_dpi
 local bling = require("module.bling")
 local helpers = require("helpers")
 
--- Shape buttons
+
+-- Helpers
+-------------
+
 local function create_title_button(c, color_focus, color_unfocus, shp)
     local tb = wibox.widget {
         forced_width = dpi(20),
@@ -37,41 +40,20 @@ local function create_title_button(c, color_focus, color_unfocus, shp)
     return tb
 end
 
--- Text buttons
-local function create_text_title_button(c, symbol, font, color_focus, color_unfocus)
-    local tb = wibox.widget {
-        align = "center",
-        valign = "center",
-        font = font,
-        -- Initialize with the "unfocused" color
-        markup = symbol,
-        -- Increase the width of the textbox in order to make it easier to click. It does not affect the size of the symbol itself.
-        forced_width = dpi(20),
-        widget = wibox.widget.textbox
+local wrap_widget = function(w)
+    return {
+        w,
+        top = dpi(20),
+        widget = wibox.container.margin
     }
-
-    local function update()
-        if client.focus == c then
-            tb.markup = helpers.colorize_text(symbol, color_focus)
-        else
-            tb.markup = helpers.colorize_text(symbol, color_unfocus)
-        end
-    end
-    update()
-
-    c:connect_signal("focus", update)
-    c:connect_signal("unfocus", update)
-
-    tb:connect_signal("mouse::enter", function() tb.markup = helpers.colorize_text(symbol, color_focus .. 55) end)
-    tb:connect_signal("mouse::leave", function() tb.markup = helpers.colorize_text(symbol, color_focus) end)
-
-    tb.visible = true
-    return tb
 end
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
-    -- buttons for the titlebar
+
+
+    -- Buttons for the titlebar
+    ------------------------------
 
     local buttons = gears.table.join(awful.button({}, 1, function()
         c:emit_signal("request::activate", "titlebar", {raise = true})
@@ -89,41 +71,30 @@ client.connect_signal("request::titlebars", function(c)
         awful.mouse.client.resize(c)
     end))
 
-    -- Shapes
 
-        local circle = function(width, height)
-            return function(cr) gears.shape.circle(cr, width, height) end
-        end
+    -- Titlebars shapes
+    ----------------------
 
-    -- Buttons
-
-        local love = create_text_title_button(c, "", "Material Icons 11", beautiful.xcolor1, beautiful.titlebar_unfocused)
-        love:connect_signal("button::press", function() c:kill() end)
-
-        local float = create_title_button(c, beautiful.xcolor4, beautiful.titlebar_unfocused, circle(dpi(11), dpi(11)))
-        float:connect_signal("button::press", function() awful.client.floating.toggle(c) end)
-
-        local max = create_title_button(c, beautiful.xcolor5, beautiful.titlebar_unfocused, circle(dpi(11), dpi(11)))
-        max:connect_signal("button::press", function() c.maximized = not c.maximized end)
-
-    local wrap_widget = function(w)
-        return {
-            w,
-            top = dpi(20),
-            widget = wibox.container.margin
-        }
+    local ci = function(width, height)
+        return function(cr) gears.shape.circle(cr, width, height) end
     end
 
-    local wrap_text_widget = function(w)
-        return {
-            w,
-            top = dpi(5),
-            right = dpi(5),
-            widget = wibox.container.margin
-        }
-    end
 
-    -- Titlebar setup
+    -- Create titlebars buttons
+    ------------------------------
+
+    local close = create_title_button(c, beautiful.xcolor1, beautiful.titlebar_unfocused, ci(dpi(11), dpi(11)))
+    close:connect_signal("button::press", function() c:kill() end)
+
+    local float = create_title_button(c, beautiful.xcolor4, beautiful.titlebar_unfocused, ci(dpi(11), dpi(11)))
+    float:connect_signal("button::press", function() awful.client.floating.toggle(c) end)
+
+    local max = create_title_button(c, beautiful.xcolor5, beautiful.titlebar_unfocused, ci(dpi(11), dpi(11)))
+    max:connect_signal("button::press", function() c.maximized = not c.maximized end)
+
+
+    -- Titlebars setup
+    --------------------
 
     awful.titlebar(c, {
         position = "top",
@@ -131,8 +102,8 @@ client.connect_signal("request::titlebars", function(c)
         bg = "#00000000",
     }):setup{
             {   -- left
-                wrap_text_widget({
-                    love,
+                wrap_widget({
+                    close,
                     left = dpi(25),
                     widget = wibox.container.margin
                 }),
