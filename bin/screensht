@@ -1,133 +1,120 @@
-#!/bin/bash
+#!/bin/sh
+# stolen from snap
 
 <<screensht
 
- _____ _____ _____ _____ _____ _____ _____ _____ _____
-|   __|     | __  |   __|   __|   | |   __|  |  |_   _|
-|__   |   --|    -|   __|   __| | | |__   |     | | |
-|_____|_____|__|__|_____|_____|_|___|_____|__|__| |_|
-      ~ Script to take screenshots with maim ~
+ 		_____ _____ _____ _____ _____ _____ _____ _____ _____
+	   |   __|     | __  |   __|   __|   | |   __|  |  |_   _|
+	   |__   |   --|    -|   __|   __| | | |__   |     | | |
+	   |_____|_____|__|__|_____|_____|_|___|_____|__|__| |_|
+	~ Script to take screenshots using maim and AwesomeWM API ~
 
 screensht
 
 
-# =============================================
+screenshot_dir=$(xdg-user-dir PICTURES)/Screenshots/
 
-# Directory
-_SCREENSHOT_DIR_=$HOME/Pictures/Screenshots
-_ORIGINAL_DIR_=$_SCREENSHOT_DIR_/Original
-
-# Color
-_FG_COLOR_='#1d1f21'
-_BG_COLOR_='#c5c8c6'
-_BG_SIZE_=10
-
-# Border Size Applied when value greater than or equal 3
-_BORDER_SIZE_=0
-_SHADOW_SIZE_='50x10+0+10'  # [ weight ] x [ radius ] + [ horizontal ] x [ vertical ]
-_ROUNDED_CORNER_=4
-
-# =============================================
-
-# List of Colors
-Light_Red="\033[1;31m"
-Light_Green="\033[1;32m"
-Yellow="\033[1;33m"
-Light_Blue="\033[1;34m"
-Light_Purple="\033[1;35m"
-Light_Cyan="\033[1;36m"
-NoColor="\033[0m"
-
-
-function check() {
-    if [[ $? -eq 1 && ${PIPESTATUS[0]} -eq 1 ]]; then
-        exit 1
-    fi
+# Check save directory
+# Create it if it doesn't exist
+function check_dir() {
+	if [ ! -d "$screenshot_dir" ];
+	then
+		mkdir -p "$screenshot_dir"
+	fi
 }
 
-function get_latest_img() { 
-    _LATEST_IMAGE_=$(/bin/ls -th $_SCREENSHOT_DIR_ | grep -vE '.screensht.png$' | grep -E '.png$' | head -n 1)
+# Main function
+function shot() {
 
-    if [[ $( echo "$_LATEST_IMAGE_" | wc -w ) -eq 0 ]]; then
-        exit 1
-    else
-        _LATEST_IMAGE_="$_SCREENSHOT_DIR_/$_LATEST_IMAGE_"
-    fi
+	check_dir
+
+	file_loc="${screenshot_dir}screensht_$(date +%y-%m-%d_%H:%M:%S).png"
+	
+	maim_command="$1"
+	notif_message="$2"
+
+	# Execute maim command
+	${maim_command} "${file_loc}"
+
+	# Exit if the user cancels the screenshot
+	# So it means there's no new screenshot image file
+	if [ ! -f "${file_loc}" ];
+	then
+		exit;
+	fi
+
+	# Copy to clipboard
+	xclip -selection clipboard -t image/png -i "${screenshot_dir}"/`ls -1 -t "${screenshot_dir}" | head -1` &
+
+	awesome-client "
+
+	-- IMPORTANT NOTE: THIS PART OF THE SCRIPT IS LUA!
+	naughty = require('naughty')
+	awful = require('awful')
+	beautiful = require('beautiful')
+	dpi = beautiful.xresources.apply_dpi
+
+	local open_image = naughty.action {
+		name = 'Open',
+	   	icon_only = false,
+	}
+
+	local open_folder = naughty.action {
+		name = 'Open Folder',
+	   	icon_only = false,
+	}
+
+	local delete_image = naughty.action {
+		name = 'Delete',
+	   	icon_only = false,
+	}
+
+	-- Execute the callback when 'Open' is pressed
+	open_image:connect_signal('invoked', function()
+		awful.spawn('xdg-open ' .. '${file_loc}', false)
+	end)
+
+	open_folder:connect_signal('invoked', function()
+		awful.spawn('xdg-open ' .. '${screenshot_dir}', false)
+	end)
+
+	-- Execute the callback when 'Delete' is pressed
+	delete_image:connect_signal('invoked', function()
+		awful.spawn('gio trash ' .. '${file_loc}', false)
+	end)
+
+	-- Show notification
+	naughty.notification ({
+		app_name = 'Screenshot Tool',
+		icon = '${file_loc}',
+		timeout = 10,
+		title = '<b>Screensht!</b>',
+		message = '${notif_message}',
+		actions = { open_image, open_folder, delete_image }
+	})
+	"
+
 }
 
-function convert() {
-    _target_file_=$( echo "$_LATEST_IMAGE_" | sed 's/.png/.screensht.png/g'  )
+# Check the args passed
+if [ -z "$1" ] || ([ "$1" != 'full' ] && [ "$1" != 'area' ]);
+then
+	echo "
+	Requires an argument:
+	area 	- Area screenshot
+	full 	- Fullscreen screenshot
 
-    if [[ $_BORDER_SIZE_ -ge 3 ]]; then
-        magick convert "$_LATEST_IMAGE_" \
-            -format 'roundrectangle 1,1 %[fx:w+4],%[fx:h+4] '"$_ROUNDED_CORNER_"','"$_ROUNDED_CORNER_"''\
-            info: > $_SCREENSHOT_DIR_/_rounded_.mvg
-        check
-
-        magick convert "$_LATEST_IMAGE_" -border $_BORDER_SIZE_ -alpha transparent \
-            -background none -fill white -stroke none -strokewidth 0 \
-            -draw "@"$_SCREENSHOT_DIR_"/_rounded_.mvg" $_SCREENSHOT_DIR_/_rounded_mask_.png
-        check
-
-        magick convert "$_LATEST_IMAGE_" -border $_BORDER_SIZE_ -alpha transparent \
-            -background none -fill none -stroke $_FG_COLOR_ -strokewidth $_BORDER_SIZE_ \
-            -draw "@"$_SCREENSHOT_DIR_"/_rounded_.mvg" $_SCREENSHOT_DIR_/_rounded_overlay_.png
-        check
-
-        magick convert "$_LATEST_IMAGE_" -alpha set -bordercolor none -border $_BORDER_SIZE_  \
-            $_SCREENSHOT_DIR_/_rounded_mask_.png -compose DstIn -composite \
-            $_SCREENSHOT_DIR_/_rounded_overlay_.png -compose Over -composite \
-            "$_target_file_" && \
-        rm -f $_SCREENSHOT_DIR_/_rounded_*
-        check
-    else
-        magick convert "$_LATEST_IMAGE_" \( +clone  -alpha extract -draw 'fill black polygon 0,0 0,'"$_ROUNDED_CORNER_"' '"$_ROUNDED_CORNER_"',0 fill white circle '"$_ROUNDED_CORNER_"','"$_ROUNDED_CORNER_"' '"$_ROUNDED_CORNER_"',0' \
-        \( +clone -flip \) -compose Multiply -composite \
-        \( +clone -flop \) -compose Multiply -composite \
-        \) -alpha off -compose CopyOpacity -composite -compose over "$_target_file_"
-        check
-    fi
-
-    magick convert "$_target_file_" \( +clone -background black -shadow $_SHADOW_SIZE_ \) +swap -background none -layers merge +repage "$_target_file_" \
-    && magick convert "$_target_file_" -bordercolor $_BG_COLOR_ -border $_BG_SIZE_ "$_target_file_"
-    check
-
-    magick convert "$_target_file_" -gravity North -background $_BG_COLOR_ -splice 0x$(( $_BG_SIZE_ / 2 )) "$_target_file_"
-    check
-
-    magick convert "$_target_file_" -profile /usr/share/color/icc/colord/sRGB.icc "$_target_file_"
-    check
-}
-
-function summary() {
-    _runtime_job_=$(($2-$1))
-    hours=$((_runtime_job_ / 3600)); minutes=$(( (_runtime_job_ % 3600) / 60 )); seconds=$(( (_runtime_job_ % 3600) % 60 ))
-
-    if [[ $3 != "failed" ]]; then
-        xclip -selection clipboard -t image/png -i $_target_file_ && notify-send -u normal -t 3000 "Awesome-Maim: $_target_file_ Copied"
-    fi
-}
-
-function main() {
-    _start_job_=$(date +%Y.%m.%d-%H.%M.%S)
-    
-    maim -u -b 3 -m 5 -s ~/Pictures/Screenshots/$_start_job_.png> /dev/null 2>&1
-    check
-
-    get_latest_img
-
-    convert
-
-	mv $_LATEST_IMAGE_ ~/Pictures/Screenshots/Original/
-    notify-send -i ~/Pictures/Screenshots/Original/$_start_job_.png "Screenshot Taken" "saved to ~/Pictures/Screenshots"
-    _end_job_=$(date +%s)
-}
-
-
-if [[ ! -d "$_SCREENSHOT_DIR_" || ! -d "$_ORIGINAL_DIR_" ]]; then
-	mkdir -p "$_SCREENSHOT_DIR_"
-    mkdir -p "$_ORIGINAL_DIR_"
+	Example:
+	./screensht area
+	./screensht full
+	"
+elif [ "$1" = 'full' ];
+then
+	msg="Full screenshot saved and copied to clipboard!"
+	shot 'maim -u -m 5' "${msg}"
+elif [ "$1" = 'area' ];
+then
+	msg='Area screenshot saved and copied to clipboard!'
+	shot 'maim -u -b 2 -m 5 -s' "${msg}"
 fi
 
-clear
-main

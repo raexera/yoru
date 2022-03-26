@@ -1,0 +1,70 @@
+# DIRECTORY
+# ---
+ncmpcpp_directory = ~/.config/ncmpcpp
+lyrics_directory  = ~/.config/ncmpcpp/lyrics
+mpd_music_dir     = ~/Music
+
+# GENERAL
+# ---
+external_editor                  = nvim
+message_delay_time               = 1
+playlist_disable_highlight_delay = 2
+autocenter_mode                  = "yes"
+centered_cursor                  = "yes"
+ignore_leading_the               = "yes"
+allow_for_physical_item_deletion = "no"
+connected_message_on_startup = "yes"
+cyclic_scrolling = "yes"
+mouse_support = "yes"
+mouse_list_scroll_whole_page = "yes"
+lines_scrolled = "1"
+playlist_shorten_total_times = "yes"
+playlist_display_mode = "columns"
+browser_display_mode = "columns"
+search_engine_display_mode = "columns"
+playlist_editor_display_mode = "columns"
+user_interface = "classic"
+follow_now_playing_lyrics = "yes"
+display_bitrate = "no"
+startup_screen = "playlist"
+
+# VISUALIZER
+# ---
+visualizer_data_source = "/tmp/mpd.fifo"
+visualizer_output_name = "Visualizer"
+visualizer_in_stereo = "no"
+visualizer_sync_interval = "30"
+visualizer_type = "ellipse"
+visualizer_fps = "60"
+visualizer_look = ●▮
+visualizer_color = "33,39,63,75,81,99,117,153,189"
+
+# PROGRESS BAR
+# ---
+progressbar_look = "   "
+progressbar_color = "black"
+progressbar_elapsed_color = "yellow"
+
+# COLORS
+# ---
+main_window_color = "blue"
+color1 = "white"
+color2 = "blue"
+
+# UI VISIBILITY
+# ---
+header_visibility = "no"
+statusbar_visibility = "no"
+titles_visibility = "no"
+
+# UI APPEARANCE
+# ---
+now_playing_prefix = "$b$8$7 "
+now_playing_suffix = "  $/b$8"
+current_item_prefix = "$b$7$/b$3 "
+current_item_suffix = "  $8"
+song_status_format= "$7%t"
+song_list_format = "$8%a - %t$R  %l"
+song_columns_list_format = "(53)[white]{tr} (45)[blue]{a}"
+song_library_format = {{%a - %t} (%b)}|{%f}
+song_window_title_format = "Music"

@@ -10,9 +10,14 @@ local function run_once(cmd)
                              findme, cmd), false)
 end
 
--- picom
+-- music
+run_once("mpd")
+run_once("mpDris2")
 
-run_once("picom --experimental-backends --config " ..
-             gears.filesystem.get_configuration_dir() .. "theme/picom.conf")
+-- picom
+run_once("picom --experimental-backends --config " .. theme_dir .. "picom.conf")
+
+-- auth
+run_once("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 
 return autostart

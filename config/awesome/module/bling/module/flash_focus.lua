@@ -5,7 +5,7 @@ local op = beautiful.flash_focus_start_opacity or 0.6
 local stp = beautiful.flash_focus_step or 0.01
 
 local flashfocus = function(c)
-    if c then
+    if c and #c.screen.clients > 1 then
         c.opacity = op
         local q = op
         local g = gears.timer({

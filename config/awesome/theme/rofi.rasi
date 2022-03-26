@@ -1,8 +1,8 @@
 configuration {
-	modi:				    "drun";
+	modi:					"drun";
 	display-drun: 			"Apps";
 	drun-display-format:    "{name}";
-	font:				    "Iosevka 9";
+	font:				    "Iosevka 8";
 	show-icons:              true;
 	icon-theme: 			"Papirus";
 }
@@ -13,30 +13,30 @@ configuration {
 	bg:				#061115;
 	fg:				#d9d7d6;
 	accent:			#1c252c;
-	darker-bg:		#0A1419;
+	darkerAccent:	#162026;
     active:      	#484e5b;
-	rad:			10px;
+	rad:			12px;
 
 	background-color: @bg;
 	text-color:	@fg;
 }
 
 window {
-	transparency:                   "real";
-	text-color:                     @fg;
-  	location:                       center;
-    x-offset:                       0;
-    y-offset:                       0;
-    width: 30%;
-	border-radius: 10px;
+	transparency: "real";
+	height: 94%;
+    width: 22%;
+	location: west;
+	x-offset: 7%;
+	y-offset: 0%;
+	border-radius: @rad;
 }
 
 inputbar {
 	children: [ textbox, entry ];
 	expand: false;
-	margin: 20px 20px 0;
+	margin: 20px 20px 0 20px;
 	border-radius: @rad;
-	background-color: @darker-bg;
+	background-color: @darkerAccent;
 }
 
 textbox {
@@ -51,20 +51,19 @@ textbox {
     font: "Material Icons 17";
 }
 
-
 entry{
 	expand: true;
 	padding: 2%;
     placeholder: "Search";
 	border-radius: @rad;
-    background-color: @darker-bg;
+    background-color: @darkerAccent;
 }
 
 listview {
-	columns: 3;
-	lines: 3;
+	columns: 2;
+	lines: 2;
 	cycle: false;
-    margin: 1em;
+    margin: 20px;
 }
 
 element {
@@ -78,11 +77,11 @@ element-text, element-icon {
 	background-color: inherit;
 }
 
-element-icon { size: 36px; }
+element-icon { size: 48px; }
 listview, element, element selected, element-text, element-icon { cursor: pointer; }
 
 element selected {
-	background-color: @darker-bg;
+	background-color: @darkerAccent;
 	text-color: @fg;
-	border-radius: 5px;
+	border-radius: @rad;
 }

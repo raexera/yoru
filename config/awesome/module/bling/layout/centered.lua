@@ -8,36 +8,26 @@ mylayout.name = "centered"
 function mylayout.arrange(p)
     local area = p.workarea
     local t = p.tag or screen[p.screen].selected_tag
-    local mwfact = t.master_width_factor
     local nmaster = math.min(t.master_count, #p.clients)
     local nslaves = #p.clients - nmaster
 
-    local master_area_width = area.width * mwfact
-    local slave_area_width = area.width - master_area_width
-    local master_area_x = area.x + 0.5 * slave_area_width
+    local master_area_width = area.width * t.master_width_factor
+    if t.master_count == 0 then master_area_width = 0 end
+    local slave_width = 0.5 * (area.width - master_area_width)
+    local master_area_x = area.x + slave_width
 
-    local number_of_left_sided_slaves = math.floor(nslaves / 2)
-    local number_of_right_sided_slaves = nslaves - number_of_left_sided_slaves
-    local left_iterator = 0
-    local right_iterator = 0
 
-    -- Special case: no maters -> rrelapse into awesomes fair layout
-    if t.master_count == 0 then
-        awful.layout.suit.fair.arrange(p)
-        return
-    end
-
-    -- Special case: one slave -> relapse into awesomes masterstack tile layout
-    if nslaves == 1 then
-        awful.layout.suit.tile.right.arrange(p)
-        return
-    end
-
-    -- Special case: no slaves -> fullscreen master area
-    if nslaves < 1 then
-        master_area_width = area.width
+    -- Special case: few slaves -> make masters take more space - unless requested otherwise!
+    if nslaves < 2 and t.master_fill_policy ~= "master_width_factor" then
         master_area_x = area.x
+
+        if nslaves == 1 then
+            slave_width = area.width - master_area_width
+        else
+            master_area_width = area.width
+        end
     end
+
 
     -- iterate through masters
     for idx = 1, nmaster do
@@ -52,8 +42,14 @@ function mylayout.arrange(p)
         p.geometries[c] = g
     end
 
+
     -- iterate through slaves
-    for idx = 1, nslaves do -- idx=nmaster+1,#p.clients do
+    local number_of_left_sided_slaves = math.floor(nslaves / 2)
+    local number_of_right_sided_slaves = nslaves - number_of_left_sided_slaves
+    local left_iterator = 0
+    local right_iterator = 0
+
+    for idx = 1, nslaves do
         local c = p.clients[idx + nmaster]
         local g
         if idx % 2 == 0 then
@@ -62,17 +58,17 @@ function mylayout.arrange(p)
                 y = area.y
                     + left_iterator
                         * (area.height / number_of_left_sided_slaves),
-                width = slave_area_width / 2,
+                width = slave_width,
                 height = area.height / number_of_left_sided_slaves,
             }
             left_iterator = left_iterator + 1
         else
             g = {
-                x = area.x + master_area_width + slave_area_width / 2,
+                x = master_area_x + master_area_width,
                 y = area.y
                     + right_iterator
                         * (area.height / number_of_right_sided_slaves),
-                width = slave_area_width / 2,
+                width = slave_width,
                 height = area.height / number_of_right_sided_slaves,
             }
             right_iterator = right_iterator + 1

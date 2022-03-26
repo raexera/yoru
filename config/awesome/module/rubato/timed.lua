@@ -44,11 +44,12 @@ local function simulate_easing(pos, duration, intro, intro_e, outro, outro_e, m,
 	local ps_pos = pos
 	local dx
 
+
 	-- Key for cacheing results
-	local key = string.format("%f %f %f %s %f %s %s %s",
+	local key = string.format("%f %f %f %s %f %s %f %f",
 		pos, duration,
-		intro, intro_e,
-		outro, outro_e,
+		intro, tostring(intro_e),
+		outro, tostring(outro_e),
 		m, b)
 
 	-- Short circuits if it's already done the calculation
@@ -106,22 +107,24 @@ local function timed(args)
 	obj.easing_inter = args.easing_inter or obj.easing
 
 	--dev interface changes
-	obj.log = args.log or false
+	obj.log = args.log or function() end
 	obj.awestore_compat = args.awestore_compat or false
 
 	--animation logic changes
-	obj.override_simulate = args.override_simulate or true
-	obj.rapid_set = args.rapid_set ~= nil and args.rapid_set or obj.awestore_compat
-
-	obj.rate = args.rate or RUBATO_DEF_RATE or 30
-	obj.override_dt = args.override_dt or RUBATO_OVERRIDE_DT or true
+	obj.override_simulate = args.override_simulate or false
+	--[[ rapid_set is allowed by awestore but I don't like it, so it's bound to awestore_compat if not explicitly set
+	override_dt doesn't work well with big animations or scratchpads (blame awesome not me) (probably) so that too is
+	is tied to awestore_compat if not explicitly set, then to the default value ]]
+	obj.rapid_set = args.rapid_set == nil and obj.awestore_compat or args.rapid_set
+	obj.override_dt = args.override_dt == nil and (not obj.awestore_compat and RUBATO_OVERRIDE_DT) or args.override_dt
 
 	-- hidden properties
 	obj._props = {
-		target = obj.pos
+		target = obj.pos,
+		rate = args.rate or RUBATO_DEF_RATE
 	}
 
-	-- annoying awestore compatibility
+	-- awestore compatibility
 	if obj.awestore_compat then
 		obj._initial = obj.pos
 		obj._last = 0
@@ -134,36 +137,38 @@ local function timed(args)
 
 	end
 
-	--TODO: fix double pos thing
-	-- Variables used in calculation
-	local time = 0
-	local dt = 1 / obj.rate
-	local dx = 0
-	local m
-	local b
-	local is_inter --whether or not it's in an intermittent state
+	-- Variables used in calculation, defined once bcz less operations
+	local time = 0				   -- current time
+	local dt = 1 / obj._props.rate -- change in time
+	local dx = 0 				   -- value of slope at current time
+	local m						   -- slope
+	local b						   -- y-intercept
+	local is_inter				   --whether or not it's in an intermittent state
 
-	local last_frame_time = 0 --the time before the last frame
-	local raw_dt = dt
+	local last_frame_time --the time at the last frame
+	local frame_time = dt --duration of the last frame (placeholder)
 
 	-- Variables used in simulation
-	local ps_pos
-	local coef
-
+	local ps_pos -- pseudoposition
+	local coef	 -- corrective coefficient TODO: apply to plateau
 
 	-- The timer that does all the animating
-	local timer = gears.timer()
+	local timer = gears.timer { timeout = dt }
 	timer:connect_signal("timeout", function()
 
 		-- Find the correct dt if it's not already correct
-		if (obj.override_dt) then
-			dt = os.clock() - last_frame_time
+		if (obj.override_dt and last_frame_time) then
+			frame_time = os.clock() - last_frame_time
 
-			if (raw_dt < dt) then timer.timeout = dt
-			else dt = raw_dt end
-
-			last_frame_time = os.clock()
+			--[[ if frame time is bigger than dt, we must readjust dt by the difference
+			between dt and the last frame. Basically, dt + (frame_time - dt) which just
+			results in frame_time ]]
+			if (frame_time > timer.timeout) then dt = frame_time
+			else dt = timer.timeout end
 		end
+
+		-- for the next timeout event
+		if (obj.override_dt) then last_frame_time = os.clock() end
 
 		--increment time
 		time = time + dt
@@ -181,7 +186,7 @@ local function timed(args)
 		obj.pos = obj.pos + dx * dt * coef
 
 		--sets up when to stop by time
-		--weirdness is to try to get closest to duration
+		--weirdness is to try to get as close to duration as possible
 		if obj.duration - time < dt / 2 then
 			obj.pos = obj._props.target --snaps to target in case of small error
 			time = obj.duration --snaps time to duration
@@ -192,7 +197,7 @@ local function timed(args)
 			--run subscribed in functions
 			obj:fire(obj.pos, time, dx)
 
-			-- awestore compatibility....
+			-- awestore compatibility...
 			if obj.awestore_compat then obj.ended:fire(obj.pos, time, dx) end
 
 		--otherwise it just fires normally
@@ -203,19 +208,18 @@ local function timed(args)
 	-- Set target and begin interpolation
 	local function set(target_new)
 
-		--disallow setting it twice (because it makes it go wonky)
+		--disallow setting it twice (because it makes it go wonky sometimes)
 		if not obj.rapid_set and obj._props.target == target_new then return end
 
 		--animation values
-		obj._props.target = target_new	--sets target
-		time = 0			--resets time
-		coef = 1			--resets coefficient
+		obj._props.target = target_new --sets target
+		time = 0 --resets time
+		coef = 1 --resets coefficient
 
 		--rate stuff
-		dt = 1 / obj.rate
-		raw_dt = dt
-		last_frame_time = os.clock()
-		timer.timeout = dt
+		--both of these values would ideally be timer.timeout so that's their default
+		dt, frame_time = timer.timeout, timer.timeout
+		last_frame_time = nil --is given a value after the first frame
 
 		-- does annoying awestore compatibility
 		if obj.awestore_compat then
@@ -223,6 +227,7 @@ local function timed(args)
 			obj.started:fire(obj.pos, time, dx)
 		end
 
+		-- if it's already started, reflect that in is_inter
 		is_inter = timer.started
 
 		--set initial position if interrupting another animation
@@ -238,7 +243,9 @@ local function timed(args)
 			b)
 
 		--if it will make a mistake (or override_simulate is true), fix it
-		if obj.override_simulate or b / math.abs(b) ~= m / math.abs(m) then
+		--it should only make a mistake when switching direction
+		--b ~= zero protection so that I won't get any NaNs (because NaN ~= NaN)
+		if obj.override_simulate or (b ~= 0 and b / math.abs(b) ~= m / math.abs(m)) then
 			ps_pos = simulate_easing(obj.pos, obj.duration,
 				(is_inter and obj.inter or obj.intro) * (obj.prop_intro and obj.duration or 1),
 				is_inter and obj.easing_inter.easing or obj.easing.easing,
@@ -248,7 +255,7 @@ local function timed(args)
 
 			--get coefficient by calculating ratio of theoretical range : experimental range
 			coef = (obj.pos - obj._props.target) / (obj.pos - ps_pos)
-			if coef ~= coef then coef = 1 end --check for div by 0 resulting in nan
+			if coef ~= coef then coef = 1 end --check for div by 0 resulting in NaN
 		end
 
 		if not timer.started then timer:start() end
@@ -268,8 +275,7 @@ local function timed(args)
 		b = nil
 		is_inter = false
 		coef = 1
-		dt = 1 / obj.rate
-		timer.timeout = dt
+		dt = timer.timeout
 	end
 
 	-- Effectively pauses the timer
@@ -281,7 +287,6 @@ local function timed(args)
 	--subscribe stuff initially and add callback
 	obj.subscribe_callback = function(func) func(obj.pos, time, dt) end
 	if args.subscribed ~= nil then obj:subscribe(args.subscribed) end
-
 
 	-- Metatable for cooler api
 	local mt = {}
@@ -301,6 +306,11 @@ local function timed(args)
 
 		-- Changing target should call set
 		elseif key == "target" then set(value) --set target
+
+		-- Changing rate should also update timeout
+		elseif key == "rate" then
+			self._props.rate = value
+			timer.timeout = 1 / value
 
 		-- If it's in _props set it there
 		elseif self._props[key] ~= nil then self._props[key] = value

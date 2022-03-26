@@ -1,12 +1,13 @@
+pcall(require, "luarocks.loader")
 --[[
  _____ __ _ __ _____ _____ _____ _______ _____
 |     |  | |  |  ___|  ___|     |       |  ___|
 |  -  |  | |  |  ___|___  |  |  |  | |  |  ___|
 |__|__|_______|_____|_____|_____|__|_|__|_____|
-
+               ~ AestheticArch ~
+                     rxyhn
 --]]
 
-pcall(require, "luarocks.loader")
 
 -- Standard awesome library
 local gfs = require("gears.filesystem")
@@ -14,17 +15,18 @@ local awful = require("awful")
 
 -- Theme handling library
 local beautiful = require("beautiful")
+theme_dir = gfs.get_configuration_dir() .. "theme/"
+dpi = beautiful.xresources.apply_dpi
 beautiful.init(gfs.get_configuration_dir() .. "theme/theme.lua")
 
 -- Default Applications
 terminal = "alacritty"
-browser = "firefox"
-filemanager = "nautilus"
+editor = terminal .. " -e " .. os.getenv("EDITOR")
 vscode = "code"
-editor = os.getenv("EDITOR") or "nvim"
-editor_cmd = terminal .. " -e " .. editor
-discord = "discord"
-launcher = "rofi -show drun"
+browser = "firefox"
+launcher = "rofi -show drun -theme " .. theme_dir .. "rofi.rasi"
+file_manager = "nautilus"
+music_client = terminal .. " --class music -e ncmpcpp"
 
 -- Weather API
 openweathermap_key = "" -- API Key
@@ -49,4 +51,3 @@ require("ui")
 collectgarbage("setpause", 110)
 collectgarbage("setstepmul", 1000)
 
--- EOF ------------------------------------------------------------------------

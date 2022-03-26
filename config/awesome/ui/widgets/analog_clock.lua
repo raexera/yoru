@@ -11,6 +11,7 @@ local cairo = require("lgi").cairo
 
 -- Analog clock
 ------------------
+-- Stolen from No37
 
 local function create_minute_pointer(minute)
         local img = cairo.ImageSurface(cairo.Format.ARGB32, 1000, 1000)

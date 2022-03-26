@@ -182,6 +182,7 @@ function module.create(args_or_name, editor, default_cmd)
     end
 
     local function get_instance_data(screen, tag)
+        if screen == nil then return end
         local workarea = screen.workarea
         local instance = get_instance_(tag)
         local cmd = instance.cmd or module.global_default_cmd

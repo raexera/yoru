@@ -25,18 +25,19 @@ local b_cs = {
 	c5 = 46 * math.pi / 6
 }
 
---the bouncy one as seen in the readme
+-- Okay look. It works. It's not terribly slow because computers can do math
+-- quick. The other one decidedly does not work (thanks sagemath, I trusted
+-- you...) so this will have to do. I may try to fix it up at some point, I may
+-- just leave it be and laugh to myself whenever I see this. As they say, if
+-- As they say, if you want something fixed that badly, make a pull request lol
 local bouncy = {
-	F = (20 * math.pi - (10 * math.log(2) - 2049) * math.sqrt(3)) /
-		(20 * math.pi - 20490 * math.sqrt(3) * math.log(2)),
-	easing = function(t)
-		--short circuit
-		if t == 0 then return 0 end
-		if t == 1 then return 1 end
-
-		local c1 = (20 * t * math.pi) / 3 - b_cs.c5
-		local c2 = math.pow(2, 10 * t + 1)
-		return (b_cs.c1 + b_cs.c2 * c2 * math.cos(c1) + b_cs.c3 * c2 * math.sin(c1)) / b_cs.c4
+	F = (20*math.sqrt(3)*math.pi-30*math.log(2)-6147) /
+		(10*(2*math.sqrt(3)*math.pi-6147*math.log(2))),
+	easing = function(t) return
+(4096*math.pi*math.pow(2, 10*t-10)*math.cos(20/3*math.pi*t-43/6*math.pi)
++6144*math.pow(2, 10*t-10)*math.log(2)*math.sin(20/3*math.pi*t-43/6*math.pi)
++2*math.sqrt(3)*math.pi-3*math.log(2)) /
+(2*math.pi*math.sqrt(3)-6147*math.log(2))
 	end
 }
 

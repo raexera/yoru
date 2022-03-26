@@ -7,3 +7,4 @@ The following developers have contributed major code to bling:
  * [HumblePresent](https://github.com/HumblePresent)
  * [Kasper24](https://github.com/Kasper24)
  * [undefinedDarkness](https://github.com/undefinedDarkness)
+ * [eylles](https://github.com/eylles)

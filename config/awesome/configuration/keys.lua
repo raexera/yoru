@@ -16,6 +16,7 @@ local naughty = require("naughty")
 
 -- Bling
 local bling = require("module.bling")
+local playerctl = bling.signal.playerctl.lib()
 
 -- Machi
 local machi = require("module.layout-machi")
@@ -25,7 +26,7 @@ local helpers = require("helpers")
 
 -- Default modkey.
 modkey = "Mod4"
-altkey = "Mod1"
+alt = "Mod1"
 ctrl = "Control"
 shift = "Shift"
 
@@ -40,31 +41,34 @@ awful.keyboard.append_global_keybindings({
         end,
         {description = "open applications menu", group = "launcher"}),
         awful.key({modkey, shift}, "d", function()
-            dash_toggle()
+            dashboard_toggle()
         end,
         {description = "toggle dashboard", group = "launcher"}),
         awful.key({modkey}, "f", function()
-            awful.spawn(filemanager)
+            awful.spawn(file_manager)
         end,
         {description = "open file manager", group = "launcher"}),
         awful.key({modkey}, "w", function()
             awful.spawn.with_shell(browser)
         end,
         {description = "open web browser", group = "launcher"}),
-    
+        awful.key({modkey}, "x", function()
+            awful.spawn.with_shell("xcolor-pick")
+        end,
+        {description = "open color-picker", group = "launcher"})
 })
 
 -- Client and Tabs Bindings
 awful.keyboard.append_global_keybindings({
-    awful.key({altkey}, "a", function()
+    awful.key({alt}, "a", function()
         bling.module.tabbed.pick_with_dmenu()
     end,
     {description = "pick client to add to tab group", group = "tabs"}),
-    awful.key({altkey}, "s", function()
+    awful.key({alt}, "s", function()
         bling.module.tabbed.iter()
     end,
     {description = "iterate through tabbing group", group = "tabs"}),
-    awful.key({altkey}, "d", function()
+    awful.key({alt}, "d", function()
         bling.module.tabbed.pop()
     end,
     {description = "remove focused client from tabbing group",group = "tabs"}),
@@ -107,73 +111,82 @@ awful.keyboard.append_global_keybindings({
     awful.key({modkey}, "u",
         awful.client.urgent.jumpto,
     {description = "jump to urgent client", group = "client"}),
-    awful.key({altkey}, "Tab", function()
+    awful.key({alt}, "Tab", function()
         awesome.emit_signal("bling::window_switcher::turn_on")
     end,
     {description = "window switcher", group = "client"})
 })
 
--- Awesomewm
+-- Hotkeys
 awful.keyboard.append_global_keybindings({
 
     -- Brightness Control
     awful.key({}, "XF86MonBrightnessUp", function() 
         awful.spawn("brightnessctl set 5%+ -q") 
     end,
-    {description = "increase brightness", group = "awesome"}),
+    {description = "increase brightness", group = "hotkeys"}),
     awful.key({}, "XF86MonBrightnessDown", function() 
         awful.spawn("brightnessctl set 5%- -q") 
     end,
-    {description = "decrease brightness", group = "awesome"}),
+    {description = "decrease brightness", group = "hotkeys"}),
 
     -- Volume control
     awful.key({}, "XF86AudioRaiseVolume", function()
-        awful.spawn("amixer -D pulse set Master 5%+")
+        helpers.volume_control(5)
     end,
-    {description = "increase volume", group = "awesome"}),
+    {description = "increase volume", group = "hotkeys"}),
     awful.key({}, "XF86AudioLowerVolume", function()
-        awful.spawn("amixer -D pulse set Master 5%-")
+        helpers.volume_control(-5)
     end,
-    {description = "decrease volume", group = "awesome"}),
+    {description = "decrease volume", group = "hotkeys"}),
     awful.key({}, "XF86AudioMute", function()
-        awful.spawn("amixer -D pulse set Master 1+ toggle")
+        helpers.volume_control(0)
     end,
-    {description = "mute volume", group = "awesome"}),
+    {description = "mute volume", group = "hotkeys"}),
 
-    -- Media Control
+    -- Music
     awful.key({}, "XF86AudioPlay", function()
-        awful.spawn("playerctl play-pause")
+        playerctl:play_pause()
     end,
-    {description = "toggle playerctl", group = "awesome"}),
+    {description = "toggle music", group = "hotkeys"}),
+
     awful.key({}, "XF86AudioPrev", function()
-        awful.spawn("playerctl previous")
+        playerctl:previous()
     end,
-    {description = "playerctl previous", group = "awesome"}),
+    {description = "previous music", group = "hotkeys"}),
+
     awful.key({}, "XF86AudioNext", function()
-        awful.spawn("playerctl next")
+        playerctl:next()
     end,
-    {description = "playerctl next", group = "awesome"}),
+    {description = "next music", group = "hotkeys"}),
 
     -- Screenshots
-    awful.key({}, "Print", function() 
-        awful.spawn.with_shell("screensht")
+    awful.key({}, "Print", function()
+        awful.spawn.with_shell("screensht full")
     end,
-    {description = "take a screenshot", group = "awesome"}),
+    {description = "take a full screenshot", group = "hotkeys"}),
+
+    awful.key({alt}, "Print", function()
+        awful.spawn.with_shell("screensht area")
+    end,
+    {description = "take a area screenshot", group = "hotkeys"}),
 
     -- Lockscreen
-    awful.key({modkey}, "x", function() 
-        lock_screen_show() 
+    awful.key({modkey, ctrl}, "l", function()
+        lock_screen_show()
     end,
-    {description = "lock screen", group = "awesome"}),
+    {description = "lock screen", group = "hotkeys"})
+})
 
-    -- Awesome stuff
-    awful.key({modkey}, "F1", 
+-- Awesome stuff
+awful.keyboard.append_global_keybindings({
+    awful.key({modkey}, "F1",
         hotkeys_popup.show_help,
     {description = "show help", group = "awesome"}),
-    awful.key({modkey, "Control"}, "r", 
+    awful.key({modkey, ctrl}, "r",
         awesome.restart,
     {description = "reload awesome", group = "awesome"}),
-    awful.key({modkey, "Shift"}, "q", 
+    awful.key({modkey, ctrl}, "q",
         awesome.quit,
     {description = "quit awesome", group = "awesome"})
 })
@@ -237,10 +250,10 @@ awful.keyboard.append_global_keybindings({
     {description = "select previous layout", group = "layout"}),
 
     -- Tag
-    awful.key({ modkey, altkey}, "Left",
+    awful.key({ modkey, alt}, "Left",
         awful.tag.viewprev,
     {description = "view previous", group = "tag"}),
-    awful.key({ modkey, altkey}, "Right",
+    awful.key({ modkey, alt}, "Right",
         awful.tag.viewnext,
     {description = "view next", group = "tag"}),
     awful.key({ modkey}, "Escape",
@@ -394,15 +407,6 @@ awful.keyboard.append_global_keybindings({
                 if tag then client.focus:toggle_tag(tag) end
             end
         end
-    }, awful.key {
-        modifiers = {modkey},
-        keygroup = "numpad",
-        description = "select layout directly",
-        group = "layout",
-        on_press = function(index)
-            local t = awful.screen.focused().selected_tag
-            if t then t.layout = t.layouts[index] or t.layout end
-        end
     }
 })
 
@@ -419,9 +423,9 @@ awful.mouse.append_global_mousebindings({
         end
     end),
 
-    -- Right click
+    -- Middle click
     awful.button({}, 2, function()
-        dash_toggle()
+        dashboard_toggle()
     end),
 
     -- Right click
@@ -451,4 +455,4 @@ client.connect_signal("request::default_mousebindings", function()
         end)
     })
 end)
--- EOF ------------------------------------------------------------------------
+

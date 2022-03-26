@@ -13,7 +13,8 @@ Basically like [awestore](https://github.com/K4rakara/awestore) but not really.
 
 Join the cool curve crew
 
-<img src="https://cdn.discordapp.com/attachments/702548961780826212/879022533314216007/download.jpeg" height=160>
+<!-- look colleges might see this and think its distasteful so I'm commenting it out for the moment
+<img src="https://cdn.discordapp.com/attachments/702548961780826212/879022533314216007/download.jpeg" height=160>-->
 
 <h1 id="background">Background and Explanation</h1>
 
@@ -210,82 +211,127 @@ In practice, creating your own easing would look like this:
 
 1. Go to [easings.net](https://easings.net)
 
-For the sake of this tutorial, we'll do an extremely complex easing, "ease in elastic"  
+For the sake of this tutorial, we'll do an extremely complex (hellish? easing, "ease in elastic"
+For the sake of this tutorial, we'll do both an easy easing and a complex one. The easy easing will
+be the beautifully simple and quite frankly obvious quadratic. The much worse easing will be "ease
+in elastic."
 
 2. Find the necessary information
 
-**Important:** You should really use sagemath or Wolfram Mathematica to get as exact of a derivative
-as you can. Wolfram Alpha doesn't cut it. I personally used sagemath because it's actually free,
-which is pretty cool. To take that one step further, I'd suggest using jupyter notebook in tandem
-with sagemath because if you run `%display latex` you get a super good looking output. If you can't
-use jupyter (or don't want to), `%display ascii_art` is a pretty cool alternative.
+For quadratic we already know the function: `y=x^2`. I don't even need to use latex it's that easy.
 
-The initial function, given by [easings.net](https://easings.net), is as follows:  
+For ease in elastic, we use the function given [here](https://easings.net/#easeInElastic): 
+
 <img src="https://render.githubusercontent.com/render/math?math=\color{blue}f(x)=-2^{10 \, x - 10}\times \sin\left(-\frac{43}{6} \, \pi %2B \frac{20}{3} \, \pi x\right))">
 
+3. Take the derivative 
+
+Quadratic: `y=2x`, easy as that.
+
+**Important:** Look. Computers aren't the greatest at indefinite mathematics. As such, it's
+possible that, like myself, you will have a hard time getting the correct derivative if it's as
+complicated as these here. Don't be discouraged, however! Sagemath (making sure not to factor
+anything) could correctly do out this math, even if I had a bit of a scare realizing that when I
+was factoring it I was just being saved by `override_simulate` being accidentally set to true.
+
+Anyways, use sagemath and jupyter notebook. I don't know if all sagemaths come with it
+preinstalled, but nix makes it so easy that all I have to do is `sage -n jupyter` and it'll open it
+right up. `%display latex` in jupiter makes it look pretty, whereas `%display ascii_art` will make
+it look *presentable* in tui sagemath.
+
 The derivative (via sagemath) is as follows:  
-<img src="https://render.githubusercontent.com/render/math?math=\color{blue}f^\prime (x)=-\frac{5}{3} \, {\left(2 \, \pi \cos\left(-\frac{43}{6} \, \pi %2B \frac{20}{3} \, \pi x\right) %2B 3 \, \log\left(2\right) \sin\left(-\frac{43}{6} \, \pi %2B \frac{20}{3} \, \pi x\right)\right)}\times 2^{10 \, x - 9}">
 
-First we double check that `f'(0)=0`, which in this case it is not.  
+<img src="https://render.githubusercontent.com/render/math?math=\color{blue}f^\prime (x)=-\frac{20}{3} \, \pi 2^{10 \, x - 10} \cos\left(-\frac{43}{6} \, \pi %2B \frac{20}{3} \, \pi x\right) - 10 \cdot 2^{10 \, x - 10} \log\left(2\right) \sin\left(-\frac{43}{6} \, \pi %2B \frac{20}{3} \, \pi x\right)">
+
+4. Double check that `f'(0)=0`
+
+Quadratic: `2*0 = 0` so we're good
+
+Ease in elastic not so much, however:
+
 <img src="https://render.githubusercontent.com/render/math?math=\color{blue}f^\prime (0)=\frac{5}{1536} \, \sqrt{3} \pi - \frac{5}{1024} \, \log\left(2\right)">
+We'll subtract this value from `f(x)` so that our new `f(x)`, let's say `f_2(x)` has a point at 
+(0, 0).
 
-so now we subtract `f'(0)` from `f'(x)` and get a pretty messy function, let's say `f_2(x)`.
-Regrettably, we're about to mess up that function a little more.  Next we check that `f_2(1)=1`. In
-this case, once again, it doesn't. We get  
-<img src="https://render.githubusercontent.com/render/math?math=\color{blue}f_2(1)=-\frac{5}{3072} \, \sqrt{3} {\left(2 \, \pi - 2049 \, \sqrt{3}\times \log\left(2\right)\right)}">
+5. Double check that `f_2(1)=1`
 
-So now we divide our `f(x)` by `f(1)`, to get our final function, `f_e(x)` (easing function) (I am
-so good at naming these kinds of things)  
-<img src="https://render.githubusercontent.com/render/math?math=\color{blue}f_e(x)=\frac{6 \, \pi %2B \sqrt{3} \pi \times 2^{10 \, x %2B 2}\times \cos\left(-\frac{43}{6} \, \pi %2B \frac{20}{3} \, \pi x\right) %2B 3 \, \sqrt{3}\times 2^{10 \, x %2B 1}\times \log\left(2\right) \sin\left(-\frac{43}{6} \, \pi %2B \frac{20}{3} \, \pi x\right) - 3 \, \sqrt{3}\times \log\left(2\right)}{3 \, {\left(2 \, \pi - 2049 \, \sqrt{3} \times\log\left(2\right)\right)}}">
+Quadratic: No, actually. This means we have to do a wee bit of work: `f(1)=2`, so to counteract this,
+we'll create a new (and final) function that we can call `f_e` (easing function) by dividing `f(x)`
+by `f(1)`. In practice this looks like this:
 
-Great... This is going to be a treat to write as lua... Anyways, our final step is to find the
-definite integral from 0 to 1 of our `f(x)`, which is this  
-<img src="https://render.githubusercontent.com/render/math?math=\color{blue}\int_0^1 f_e(x) \,dx=\frac{20 \, \pi - 10 \, \sqrt{3}\times \log\left(2\right) - 2049 \, \sqrt{3}}{10 \, {\left(2 \, \pi - 2049 \, \sqrt{3}\times \log\left(2\right)\right)}}">
+```
+f(1)=2, f(x)/f(1) = 2x / 2 = x, f_e(x)=x
+```
 
-Now I'm sure that looks pretty daunting. However, these functions are kinda stupidly easy to find
-with sagemath. You basically only have to run these commands:
+Easy as that!
+
+Or so you thought. Now let's check the same for ease in elastic:
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{blue}f_2(1)=-\frac{5}{1536} \, \sqrt{3} \pi %2B \frac{10245}{1024} \, \log\left(2\right)">
+
+Hence the need for sagemath. Once we divide the two we get our final easing function, this:
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{blue}f_e(x)=\frac{4096 \, \pi 2^{10 \, x - 10} \cos\left(-\frac{43}{6} \, \pi %2B \frac{20}{3} \, \pi x\right) %2B 6144 \cdot 2^{10 \, x - 10} \log\left(2\right) \sin\left(-\frac{43}{6} \, \pi %2B \frac{20}{3} \, \pi x\right) %2B 2 \, \sqrt{3} \pi - 3 \, \log\left(2\right)}{2 \, \sqrt{3} \pi - 6147 \, \log\left(2\right)}">
+
+What on god's green earth is that. Well whatever, at least it works (?).
+
+6. Finally, we get the definite integral from 0 to 1 of our `f(x)`
+
+For `f(x)=x` we can do that in our heads, it's just `1/2`.
+
+For ease in elastic not so much. You can do this with sagemath and eventually get this:
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{blue}\frac{20 \, \sqrt{3} \pi - 30 \, \log\left(2\right) - 6147}{10 \, {\left(2 \, \sqrt{3} \pi - 6147 \, \log\left(2\right)\right)}}">
+
+So this all looked pretty daunting probably, and to be honest it took me hours of either not using
+sage (I tried with wolfram alpha for a good hour) or using sage incorrectly (it took three months
+to realize that this entire section of the readme was wrong and that using `factor` made it
+incorrect), but now that I have this easy little code snippet you can use for sage it shouldn't be
+as much of a hastle for you.
 
 ```python
 from sage.symbolic.integration.integral import definite_integral
 function('f')
-f(x)=factor(derivative('''your function goes here''', x))
-f(x)=factor(f(x)-f(0))
-f(x)=factor(f(x)/f(1))
+f(x)='''your function goes here'''
+f(x)=derivative(f(x), x)
+f(x)=f(x)-f(0)
+f(x)=f(x)/f(1)
 print(f(x)) # easing
 print(definite_integral(f(x), x, 0, 1)) # F
 ```
 
-which will tell you all you need to know.
+So the thing with using `factor` is that, while on some weird other version of sage I was geting a
+bunch of 0.49999s which wouldn't round to .5, the result was straight up wrong. So I advise against
+it, and if you can't do the derivative then sucks to suck I guess (just lmk in an issue or
+something and I'll try my very best).
 
-It's important to use the `factor(...)` thing because otherwise you may end up with decimals, which
-really should be avoided if possible. When I didn't do factor, there were 0.499999s which makes it
-decently less accurate and substantially more complicated.
+4. Now we just have to translate this into an actual lua table. 
 
-4. Now we just have to translate this into an actual lua table. You might want to be careful about
-   not doing more operations than necessary but honestly it probably doesn't much matter.
+Quadratic, as usual, is easy.
+```lua
+local quadratic = {
+	F = 1/2 -- F = 1/2
+	easing = function(t) return t end -- f(x) = x
+}
+```
+
+Ease in elastic, as usual, is not. At one point I had the willpower to try and optimize operations,
+but I really don't want to simplify those equations and I can't trust `factor`, so for now it stays
+as is. If it irks you, make a pull request and save us both.
 
 ```lua
---all the constants are calculated only once
-local cs = {
-    c1 = 6 * math.pi - 3 * math.sqrt(3) * math.log(2),
-    c2 = math.sqrt(3) * math.pi,
-    c3 = 6 * math.sqrt(3) * math.log(2),
-    c4 = 6 * math.pi - 6147 * math.sqrt(3) * math.log(2),
-    c5 = 46 * math.pi / 6
+local bouncy = {
+	F = (20*math.sqrt(3)*math.pi-30*math.log(2)-6147) /
+		(10*(2*math.sqrt(3)*math.pi-6147*math.log(2))),
+	easing = function(t) return
+(4096*math.pi*math.pow(2, 10*t-10)*math.cos(20/3*math.pi*t-43/6*math.pi)
++6144*math.pow(2, 10*t-10)*math.log(2)*math.sin(20/3*math.pi*t-43/6*math.pi)
++2*math.sqrt(3)*math.pi-3*math.log(2)) /
+(2*math.pi*math.sqrt(3)-6147*math.log(2))
+	end
 }
 
-bouncy = {
-    F = (20 * math.pi - (10 * math.log(2) - 2049) * math.sqrt(3)) / 
-        (20 * math.pi - 20490 * math.sqrt(3) * math.log(2)),
-    easing = function(t)
-        --both of these values are reused
-        local c1 = (20 * t * math.pi) / 3 - cs.c5
-        local c2 = math.pow(2, 10 * t + 1) --in the 2^{10x+2} I factored out the 2 to calculate this once
-
-        return (cs.c1 + cs.c2 * c2 * math.cos(c1) + cs.c3 * c2 * math.sin(c1)) / cs.c4
-    end
-}
-
+-- how it would actually look in a timed object
 timed = rubato.timed {
     intro = 0, --we'll use this as an outro, since it's weird as an intro
     outro = 0.7,
@@ -350,3 +396,5 @@ about in the first place. Plus, it'll be the first of my projects without garbag
  - [ ] only apply corrective coefficient to plateau
  - [ ] Do `prop_intro` more intelligently so it doesn't have to do so many comparisons
  - [ ] Make things like `abort` more useful
+ - [ ] Merge that pr by @Kasper so instant works
+ - [ ] Add a manager (this proceeds the above todo thing)

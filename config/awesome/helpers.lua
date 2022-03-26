@@ -473,6 +473,12 @@ function helpers.float_and_resize(c, width, height)
     c:raise()
 end
 
+function helpers.centered_client_placement(c)
+    return gears.timer.delayed_call(function ()
+        awful.placement.centered(c, {honor_padding = true, honor_workarea=true})
+    end)
+end
+
 -- Useful for periodically checking the output of a command that
 -- requires internet access.
 -- Ensures that `command` will be run EXACTLY once during the desired
@@ -544,7 +550,12 @@ function helpers.music_control(state)
     awful.spawn.with_shell(cmd)
 end
 
+function helpers.send_key(c, key)
+    awful.spawn.with_shell("xdotool key --window "..tostring(c.window).." "..key)
+end
+
+function helpers.send_key_sequence(c, seq)
+    awful.spawn.with_shell("xdotool type --delay 5 --window "..tostring(c.window).." "..seq)
+end
 
 return helpers
-
--- EOF ------------------------------------------------------------------------

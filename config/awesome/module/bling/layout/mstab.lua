@@ -7,6 +7,7 @@ local mylayout = {}
 
 mylayout.name = "mstab"
 
+local tabbar_disable = beautiful.mstab_bar_disable or false
 local tabbar_ontop = beautiful.mstab_bar_ontop or false
 local tabbar_padding = beautiful.mstab_bar_padding or "default"
 local border_radius = beautiful.mstab_border_radius
@@ -193,16 +194,18 @@ function mylayout.arrange(p)
     local tabbar_width_change = 0
     local tabbar_y_change = 0
     local tabbar_x_change = 0
-    if tabbar_position == "top" then
-        tabbar_size_change = tabbar_size + tabbar_padding
-        tabbar_y_change = tabbar_size + tabbar_padding
-    elseif tabbar_position == "bottom" then
-        tabbar_size_change = tabbar_size + tabbar_padding
-    elseif tabbar_position == "left" then
-        tabbar_width_change = tabbar_size + tabbar_padding
-        tabbar_x_change = tabbar_size + tabbar_padding
-    elseif tabbar_position == "right" then
-        tabbar_width_change = tabbar_size + tabbar_padding
+    if not tabbar_disable then
+        if tabbar_position == "top" then
+            tabbar_size_change = tabbar_size + tabbar_padding
+            tabbar_y_change = tabbar_size + tabbar_padding
+        elseif tabbar_position == "bottom" then
+            tabbar_size_change = tabbar_size + tabbar_padding
+        elseif tabbar_position == "left" then
+            tabbar_width_change = tabbar_size + tabbar_padding
+            tabbar_x_change = tabbar_size + tabbar_padding
+        elseif tabbar_position == "right" then
+            tabbar_width_change = tabbar_size + tabbar_padding
+        end
     end
 
     -- Iterate through slaves
@@ -231,14 +234,16 @@ function mylayout.arrange(p)
         p.geometries[c] = g
     end
 
-    update_tabbar(
-        slave_clients,
-        t,
-        t.top_idx,
-        area,
-        master_area_width,
-        slave_area_width
-    )
+    if not tabbar_disable then
+        update_tabbar(
+            slave_clients,
+            t,
+            t.top_idx,
+            area,
+            master_area_width,
+            slave_area_width
+        )
+    end
 end
 
 return mylayout
