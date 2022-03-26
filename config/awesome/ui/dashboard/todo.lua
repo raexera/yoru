@@ -17,7 +17,7 @@ local helpers = require("helpers")
 
 local todo_text = wibox.widget{
     font = beautiful.font_name .. "medium 8",
-    markup = helpers.colorize_text("Todo", beautiful.dash_box_fg),
+    markup = helpers.colorize_text("Todo", beautiful.dashboard_box_fg),
     valign = "center",
     widget = wibox.widget.textbox
 }

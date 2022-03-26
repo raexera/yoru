@@ -18,7 +18,6 @@ local helpers = require("helpers")
 
 local music_text = wibox.widget{
     font = beautiful.font_name .. "medium 8",
-    markup = helpers.colorize_text("Music", beautiful.xforeground .. "b3"),
     valign = "center",
     widget = wibox.widget.textbox
 }
@@ -40,7 +39,7 @@ local filter_color = {
     type = 'linear',
     from = {0, 0},
     to = {0, 120},
-    stops = {{0, beautiful.dash_box_bg .. "cc"}, {1, beautiful.dash_box_bg}}
+    stops = {{0, beautiful.dashboard_box_bg .. "cc"}, {1, beautiful.dashboard_box_bg}}
 }
 
 local music_art_filter = wibox.widget {
@@ -54,50 +53,56 @@ local music_art_filter = wibox.widget {
     widget = wibox.container.rotate
 }
 
-local music_artist = wibox.widget{
-    font = beautiful.font_name .. "medium 12",
-    markup = helpers.colorize_text("Nothing Playing", beautiful.xforeground .. "e6"),
+local music_title = wibox.widget{
+    font = beautiful.font_name .. "medium 9",
     valign = "center",
     widget = wibox.widget.textbox
 }
 
-local music_title = wibox.widget{
-    font = beautiful.font_name .. "medium 9",
-    markup = helpers.colorize_text("Nothing Playing", beautiful.xforeground .. "b3"),
+local music_artist = wibox.widget{
+    font = beautiful.font_name .. "medium 12",
     valign = "center",
     widget = wibox.widget.textbox
 }
 
 local music_pos = wibox.widget{
     font = beautiful.font_name .. "medium 8",
-    markup = helpers.colorize_text("- / -", beautiful.xforeground .. "66"),
     valign = "center",
     widget = wibox.widget.textbox
 }
 
-awesome.connect_signal("bling::playerctl::status", function(playing)
+
+-- playerctl
+---------------
+
+local playerctl = require("module.bling").signal.playerctl.lib()
+
+playerctl:connect_signal("metadata", function(_, title, artist, album_path, __, ___, ____)
+    if title == "" then title = "Nothing Playing" end
+    if artist == "" then artist = "Nothing Playing" end
+    if album_path == "" then album_path = gears.filesystem.get_configuration_dir() .. "theme/assets/no_music.png" end
+
+    music_art:set_image(gears.surface.load_uncached(album_path))
+    music_title:set_markup_silently(helpers.colorize_text(title, beautiful.xforeground .. "b3"))
+    music_artist:set_markup_silently(helpers.colorize_text(artist, beautiful.xforeground .. "e6"))
+end)
+
+playerctl:connect_signal("playback_status", function(_, playing, __)
     if playing then
-        music_text.markup = helpers.colorize_text("Now Playing", beautiful.xforeground .. "cc")
+        music_text:set_markup_silently(helpers.colorize_text("Now Playing", beautiful.xforeground .. "cc"))
     else
-        music_text.markup = helpers.colorize_text("Music", beautiful.xforeground .. "cc")
+        music_text:set_markup_silently(helpers.colorize_text("Music", beautiful.xforeground .. "cc"))
     end
 end)
 
-awesome.connect_signal("bling::playerctl::title_artist_album", function(title_current, artist_current, art_path)
+playerctl:connect_signal("position", function(_, interval_sec, length_sec, player_name)
+    local pos_now = tostring(os.date("!%M:%S", math.floor(interval_sec)))
+    local pos_length = tostring(os.date("!%M:%S", math.floor(length_sec)))
+    local pos_markup = helpers.colorize_text(pos_now .. " / " .. pos_length, beautiful.xforeground .. "66")
 
-    music_art:set_image(gears.surface.load_uncached(art_path))
-
-    music_title:set_markup_silently('<span foreground="' .. beautiful.xforeground .. 'b3">' .. title_current .. '</span>')
-    music_artist:set_markup_silently('<span foreground="' .. beautiful.xforeground .. 'e6">' .. artist_current .. '</span>')
+    music_pos:set_markup_silently(pos_markup)
 end)
 
-awesome.connect_signal("bling::playerctl::position", function(pos, length)
-    local pos_now = tostring(os.date("!%M:%S", math.floor(pos)))
-    local pos_length = tostring(os.date("!%M:%S", math.floor(length)))
-    local pos_markup = pos_now .. " / " .. pos_length
-
-    music_pos.markup = helpers.colorize_text(pos_markup, beautiful.xforeground .. "66")
-end)
 
 local music = wibox.widget{
     {
@@ -151,7 +156,7 @@ local music = wibox.widget{
             },
             layout = wibox.layout.stack
         },
-        bg = beautiful.dash_box_bg,
+        bg = beautiful.dashboard_box_bg,
         shape = helpers.rrect(dpi(5)),
         forced_width = dpi(200),
         forced_height = dpi(120),

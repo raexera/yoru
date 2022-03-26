@@ -24,8 +24,8 @@ local helpers = require("helpers")
 
 -- Header
 local notif_header = wibox.widget {
-    markup = '<b>Notifications</b>',
-    font = beautiful.font_name .. "12",
+    markup = "Notifications Center",
+    font = beautiful.font_name .. "Bold 12",
     align = 'center',
     valign = 'center',
     widget = wibox.widget.textbox
@@ -34,7 +34,7 @@ local notif_header = wibox.widget {
 -- Clear button
 local clear = wibox.widget {
     markup = "",
-    font = beautiful.icon_font_name .. "14",
+    font = beautiful.icon_font_name .. "Round 16",
     align = "center",
     valign = "center",
     widget = wibox.widget.textbox
@@ -46,7 +46,7 @@ clear:buttons(gears.table.join(
     end)
 ))
 
-helpers.add_hover_cursor(clear, "hand1")
+helpers.add_hover_cursor(clear, "hand2")
 
 -- Empty notifs
 local empty = wibox.widget {
@@ -56,32 +56,33 @@ local empty = wibox.widget {
             layout = wibox.layout.align.horizontal,
             nil,
             {
-                markup = "",
-                font = beautiful.icon_font_name .. "28",
-                align = "center",
+                image = beautiful.notification_icon,
+                forced_width = dpi(60),
+                forced_height = dpi(60),
+                halign = "center",
                 valign = "center",
-                widget = wibox.widget.textbox
+                widget = wibox.widget.imagebox
             },
             nil
         },
         {
             markup = 'You have no notifs!',
-            font = beautiful.font_name .. '10',
+            font = beautiful.font_name .. 'medium 10',
             align = 'center',
             valign = 'center',
             widget = wibox.widget.textbox
         },
         layout = wibox.layout.fixed.vertical,
-        spacing = dpi(5)
+        spacing = dpi(10)
     },
-    top = dpi(75),
+    top = dpi(100),
     widget = wibox.container.margin
 }
 
 -- Mouse scroll
 local notif_container = wibox.layout.fixed.vertical()
 notif_container.spacing = dpi(15)
-notif_container.forced_width = beautiful.notifs_width or dpi(270)
+notif_container.forced_width = dpi(270)
 
 local remove_notif_empty = true
 
@@ -100,17 +101,91 @@ remove_notifbox = function(box)
     end
 end
 
-local create_notif = function(icon, n, width)
-    local time = os.date("%H:%M")
-    local box = {}
+local return_date_time = function(format)
+	return os.date(format)
+end
 
-    local dismiss = wibox.widget {
-        markup = helpers.colorize_text("", beautiful.xcolor1),
-        font = beautiful.icon_font_name .. "9",
+local parse_to_seconds = function(time)
+	local hourInSec = tonumber(string.sub(time, 1, 2)) * 3600
+	local minInSec = tonumber(string.sub(time, 4, 5)) * 60
+	local getSec = tonumber(string.sub(time, 7, 8))
+	return (hourInSec + minInSec + getSec)
+end
+
+local create_notif = function(icon, n, width)
+
+    --Time
+	local time_of_pop = return_date_time('%H:%M:%S')
+	local exact_time = return_date_time('%I:%M %p')
+	local exact_date_time = return_date_time('%b %d, %I:%M %p')
+
+	local timepop =  wibox.widget {
+		id = 'time_pop',
+		markup = nil,
+		font = beautiful.font_name .. "medium 8",
         align = "center",
         valign = "center",
-        widget = wibox.widget.textbox
+		visible = true,
+		widget = wibox.widget.textbox
+	}
+
+	local time_of_popup = gears.timer {
+		timeout   = 60,
+		call_now  = true,
+		autostart = true,
+		callback  = function()
+
+			local time_difference = nil
+
+			time_difference = parse_to_seconds(return_date_time('%H:%M:%S')) - parse_to_seconds(time_of_pop)
+			time_difference = tonumber(time_difference)
+
+			if time_difference < 60 then
+				timepop:set_markup('now')
+
+			elseif time_difference >= 60 and time_difference < 3600 then
+				local time_in_minutes = math.floor(time_difference / 60)
+				timepop:set_markup(time_in_minutes .. 'm ago')
+
+			elseif time_difference >= 3600 and time_difference < 86400 then
+				timepop:set_markup(exact_time)
+
+			elseif time_difference >= 86400 then
+				timepop:set_markup(exact_date_time)
+				return false
+
+			end
+
+			collectgarbage('collect')
+		end
+	}
+
+    local box = {}
+
+    -- Dismiss button
+    local dismiss= wibox.widget {
+        {
+            {
+                markup = helpers.colorize_text("", beautiful.xcolor1),
+                font = beautiful.icon_font_name .. "Round 10",
+                align = "center",
+                valign = "center",
+                widget = wibox.widget.textbox
+            },
+            margins = dpi(2),
+            widget = wibox.container.margin
+        },
+    shape = gears.shape.circle,
+    widget = wibox.container.background
     }
+
+    dismiss:connect_signal("mouse::enter", function()
+        dismiss.bg = beautiful.xcolor8
+    end)
+
+    dismiss:connect_signal("mouse::leave", function()
+        dismiss.bg = beautiful.xcolor0
+    end)
 
     dismiss:buttons(gears.table.join(
         awful.button({}, 1, function()
@@ -118,34 +193,26 @@ local create_notif = function(icon, n, width)
         end)
     ))
 
-    helpers.add_hover_cursor(dismiss, "hand1")
+    helpers.add_hover_cursor(dismiss, "hand2")
 
+
+    -- Create notifs
     box = wibox.widget {
         {
             {
                 {
                     {
-                        {
-                            {
-                                image = icon,
-                                resize = true,
-                                clip_shape = helpers.rrect(dpi(2)),
-                                halign = "center",
-                                valign = "center",
-                                widget = wibox.widget.imagebox
-                            },
-                            strategy = 'exact',
-                            height = 40,
-                            width = 40,
-                            widget = wibox.container.constraint
-                        },
-                        layout = wibox.layout.align.vertical
+                        image = icon,
+                        resize = true,
+                        clip_shape = helpers.rrect(dpi(6)),
+                        halign = "center",
+                        valign = "center",
+                        widget = wibox.widget.imagebox
                     },
-                    left = dpi(14),
-                    right = dpi(4),
-                    top = dpi(12),
-                    bottom = dpi(12),
-                    widget = wibox.container.margin
+                    strategy = 'exact',
+                    height = dpi(50),
+                    width = dpi(50),
+                    widget = wibox.container.constraint
                 },
                 {
                     {
@@ -154,75 +221,65 @@ local create_notif = function(icon, n, width)
                             {
                                 {
                                     step_function = wibox.container.scroll
-                                        .step_functions
-                                        .waiting_nonlinear_back_and_forth,
+                                    .step_functions
+                                    .waiting_nonlinear_back_and_forth,
                                     speed = 50,
                                     {
-                                        markup = "<b>" .. n.title .. "</b>",
-                                        font = beautiful.font_name .. "10",
+                                        markup = n.title,
+                                        font = beautiful.font_name .. "medium 10",
                                         align = "left",
-                                        -- visible = title_visible,
                                         widget = wibox.widget.textbox
                                     },
                                     forced_width = dpi(140),
                                     widget = wibox.container.scroll.horizontal
                                 },
+                                nil,
                                 {
-                                    {
-                                        dismiss,
-                                        halign = "right",
-                                        widget = wibox.container.place
-                                    },
-                                    left = dpi(10),
-                                    widget = wibox.container.margin
+                                    timepop,
+                                    layout = wibox.layout.fixed.horizontal
                                 },
-                                layout = wibox.layout.fixed.horizontal
+                                expand = "none",
+                                layout = wibox.layout.align.horizontal
                             },
                             {
                                 {
                                     step_function = wibox.container.scroll
-                                        .step_functions
-                                        .waiting_nonlinear_back_and_forth,
+                                    .step_functions
+                                    .waiting_nonlinear_back_and_forth,
                                     speed = 50,
                                     {
                                         markup = n.message,
+                                        font = beautiful.font_name .. "medium 8",
                                         align = "left",
-                                        font = beautiful.font_name .. "9",
                                         widget = wibox.widget.textbox
                                     },
-                                    forced_width = dpi(125),
+                                    forced_width = dpi(165),
                                     widget = wibox.container.scroll.horizontal
                                 },
+                                nil,
                                 {
-                                    {
-                                        markup = time,
-                                        align = "right",
-                                        valign = "bottom",
-                                        font = beautiful.font,
-                                        widget = wibox.widget.textbox
-                                    },
-                                    left = dpi(10),
-                                    widget = wibox.container.margin
+                                    dismiss,
+                                    layout = wibox.layout.fixed.horizontal
                                 },
-                                layout = wibox.layout.fixed.horizontal
+                                expand = "none",
+                                layout = wibox.layout.align.horizontal
                             },
+                            spacing = dpi(2),
                             layout = wibox.layout.fixed.vertical
                         },
-                        nil,
                         expand = "none",
                         layout = wibox.layout.align.vertical
                     },
-                    margins = dpi(8),
+                    left = dpi(12),
                     widget = wibox.container.margin
                 },
                 layout = wibox.layout.align.horizontal
             },
-            top = dpi(2),
-            bottom = dpi(2),
+            margins = dpi(8),
             widget = wibox.container.margin
         },
         bg = beautiful.xcolor0,
-        shape = helpers.rrect(dpi(2)),
+        shape = helpers.rrect(dpi(6)),
         widget = wibox.container.background
     }
 
@@ -262,6 +319,7 @@ naughty.connect_signal("request::display", function(n)
     notif_container:insert(1, create_notif(appicon, n, width))
 end)
 
+-- Init widgets
 local notif_center =  wibox.widget {
     {
         {
@@ -278,37 +336,30 @@ local notif_center =  wibox.widget {
     },
     notif_container,
 
-    spacing = dpi(10),
+    spacing = dpi(20),
     layout = wibox.layout.fixed.vertical
 }
 
 notifs = wibox({
     type = "dock",
     screen = screen.primary,
-    height = beautiful.notifs_height or dpi(310),
-    width = beautiful.notifs_width or dpi(270),
-    shape = helpers.rrect(dpi(8)),
+    height =  dpi(380),
+    width = dpi(300),
+    shape = helpers.rrect(beautiful.border_radius),
     ontop = true,
     visible = false
 })
+notifs.y = dpi(365)
 
-awful.placement.bottom_left(
-    notifs,
-    {
-        honor_workarea = true,
-        margins = {
-            left = beautiful.wibar_width + 11
-        }
-    })
-
+-- Rubato
 local slide = rubato.timed{
-    pos = dpi(896),
+    pos = dpi(-300),
     rate = 60,
-    intro = 0.025,
-    duration = 0.5,
+    intro = 0.3,
+    duration = 0.8,
     easing = rubato.quadratic,
     awestore_compat = true,
-    subscribed = function(pos) notifs.y = pos end
+    subscribed = function(pos) notifs.x = pos end
 }
 
 local notifs_status = false
@@ -319,14 +370,15 @@ slide.ended:subscribe(function()
     end
 end)
 
+-- Make toogle button
 notifs_show = function()
     notifs.visible = true
-    slide:set(dpi(448))
+    slide:set(dpi(100))
     notifs_status = false
 end
 
 notifs_hide = function()
-    slide:set(dpi(896))
+    slide:set(dpi(-375))
     notifs_status = true
 end
 
@@ -338,6 +390,7 @@ notifs_toggle = function()
     end
 end
 
+-- notifs setup
 notifs:setup {
     notif_center,
 	margins = dpi(15),

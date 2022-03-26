@@ -21,7 +21,7 @@ local helpers = require("helpers")
 
 local notifs_text = wibox.widget{
     font = beautiful.font_name .. "medium 8",
-    markup = helpers.colorize_text("Notifications", beautiful.dash_box_fg),
+    markup = helpers.colorize_text("Notifications", beautiful.dashboard_box_fg),
     valign = "center",
     widget = wibox.widget.textbox
 }
@@ -64,18 +64,6 @@ local notifs_empty = wibox.widget {
 
 local notifs_container = wibox.widget{
     spacing = dpi(6),
-    spacing_widget = {
-        {
-            bg = beautiful.xcolor0,
-            shape = gears.shape.rounded_rect,
-            widget = wibox.container.background,
-        },
-        top = dpi(2),
-        bottom = dpi(2),
-        left = dpi(53),
-        right = dpi(6),
-        widget = wibox.container.margin
-    },
     forced_width = beautiful.notifs_width or dpi(240),
     layout = wibox.layout.fixed.vertical
 }
@@ -149,7 +137,7 @@ local create_notif = function(icon, n, width)
                                 layout = wibox.layout.align.horizontal
                             },
                             {
-                                markup = helpers.colorize_text(n.message, beautiful.dash_box_fg),
+                                markup = helpers.colorize_text(n.message, beautiful.dashboard_box_fg),
                                 align = "left",
                                 font = beautiful.font_name .. "medium 8",
                                 forced_width = dpi(165),
@@ -166,12 +154,12 @@ local create_notif = function(icon, n, width)
                 },
                 layout = wibox.layout.align.horizontal
             },
-            margins = dpi(6),
+            margins = dpi(8),
             widget = wibox.container.margin
         },
         bg = beautiful.xcolor0,
         shape = helpers.rrect(dpi(4)),
-        forced_height = dpi(104),
+        forced_height = dpi(66),
         widget = wibox.container.background
     }
 

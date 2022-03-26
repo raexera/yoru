@@ -24,7 +24,7 @@ local helpers = require("helpers")
 
 local stats_text = wibox.widget{
     font = beautiful.font_name .. "medium 8",
-    markup = helpers.colorize_text("Stats", beautiful.dash_box_fg),
+    markup = helpers.colorize_text("Stats", beautiful.dashboard_box_fg),
     valign = "center",
     widget = wibox.widget.textbox
 }
@@ -134,15 +134,16 @@ awesome.connect_signal("signal::ram", function(used, total)
 end)
 
 vol:buttons(gears.table.join(
+    awful.button({}, 1, function() helpers.volume_control(0) end),
     -- Scrolling
-    awful.button({}, 4, function() helpers.volume_control(2) end),
-    awful.button({}, 5, function() helpers.volume_control(-2) end)
+    awful.button({}, 4, function() helpers.volume_control(5) end),
+    awful.button({}, 5, function() helpers.volume_control(-5) end)
 ))
 
 brightness:buttons(gears.table.join(
     -- Scrolling
-    awful.button({}, 4, function() awful.spawn.with_shell("brightnessctl set 2%+ -q") end),
-    awful.button({}, 5, function() awful.spawn.with_shell("brightnessctl set 2%- -q") end)
+    awful.button({}, 4, function() awful.spawn.with_shell("brightnessctl set 5%+ -q") end),
+    awful.button({}, 5, function() awful.spawn.with_shell("brightnessctl set 5%- -q") end)
 ))
 
 local stats = wibox.widget{

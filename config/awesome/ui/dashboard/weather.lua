@@ -18,7 +18,7 @@ local helpers = require("helpers")
 
 local weather_text = wibox.widget{
     font = beautiful.font_name .. "medium 8",
-    markup = helpers.colorize_text("Weather unavailable", beautiful.dash_box_fg),
+    markup = helpers.colorize_text("Weather unavailable", beautiful.dashboard_box_fg),
     valign = "center",
     widget = wibox.widget.textbox
 }
@@ -60,7 +60,7 @@ awesome.connect_signal("signal::weather", function(temperature, description, ico
     end
 
     weather_icon.markup = icon_widget
-    weather_text.markup = helpers.colorize_text(description, beautiful.dash_box_fg)
+    weather_text.markup = helpers.colorize_text(description, beautiful.dashboard_box_fg)
     weather_temp.markup = temperature .. weather_temp_symbol
 end)
 
