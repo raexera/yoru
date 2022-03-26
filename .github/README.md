@@ -28,7 +28,7 @@ Fyi, I use night colorscheme, and it's so beautiful.
 
 | Programs   | Using             |
 | ---------- | ----------------- |
-| WM         | awesome           |
+| WM         | awesome-git       |
 | OS         | arch linux        |
 | Terminal   | alacritty         |
 | Editor     | neovim / vscode   |
