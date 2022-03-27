@@ -12,15 +12,18 @@
 <br>
 <br>
 
-<!-- SETUP -->
 <a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="160" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
-<b> ~ AwesomeWM dotfiles ~ </b>
+<b>  AwesomeWM Dotfiles  </b>
 
-Welcome to my AwesomeWM Dotfiles! so yeah now i'm using awesomewm, looks like i'll be use this wm forever.
+Welcome to my AwesomeWM configuration files! 
 
-Still quite messy, because i'm still learning Lua. 
+so yeah now i'm using awesomewm, looks like i'll be use this wm forever.
+
+Because only this wm can satisfy me.
 
 Fyi, I use night colorscheme, and it's so beautiful.
+
+These dotfiles are made with love, for sure.
 
 <h2></h2><br>
 
@@ -28,19 +31,20 @@ Fyi, I use night colorscheme, and it's so beautiful.
 
 | Programs   | Using             |
 | ---------- | ----------------- |
-| WM         | awesome           |
+| WM         | awesome-git       |
 | OS         | arch linux        |
 | Terminal   | alacritty         |
+| Shell      | zsh               |
 | Editor     | neovim / vscode   |
 | Compositor | picom             |
 | Launcher   | rofi              |
 
-### Here are the instructions you should follow to replicate my AwesomeWM setup.
+<h2></h2><br>
 
 <details open>
 <summary><strong>S E T U P</strong></summary>
 
-1. Install dependencies
+1. Install dependencies and enable services
 
    + Dependencies
 
@@ -49,18 +53,29 @@ Fyi, I use night colorscheme, and it's so beautiful.
          *Assuming your AUR helper is* `yay`
 
          ```shell
-         yay -S awesome-git picom-jonaburg-fix alacritty rofi todo-bin \
-         acpi acpid acpi_call jq inotify-tools polkit-gnome xdotool xclip maim colord \
-         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa playerctl --needed 
+         yay -S awesome-git picom-ibhagwan-git alacritty rofi todo-bin acpi acpid \
+         wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
+         brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
+         mpd mpc mpdris2 ncmpcpp playerctl --needed 
          ```
 
+   + Services
+
+      ```shell
+      # For automatically launching mpd on login
+      systemctl --user enable mpd.service
+      systemctl --user start mpd.service
+      # For charger plug/unplug events (if you have a battery)
+      sudo systemctl enable acpid.service
+      sudo systemctl start acpid.service
+      ```
 
 2. Install needed fonts
 
    You will need to install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
 
    Necessary fonts:
-   + **Iosevka**  - [here](https://github.com/be5invis/Iosevka)
+   + **Iosevka**  - [here](https://github.com/ryanoasis/nerd-fonts/)
    + **Icomoon**  - [here](https://www.dropbox.com/s/hrkub2yo9iapljz/icomoon.zip?dl=0)
    + **Material** - [here](https://github.com/google/material-design-icons)
 
@@ -83,26 +98,102 @@ Fyi, I use night colorscheme, and it's so beautiful.
     cp -r ./misc/. ~/
    ```
 
-4. Lastly, log out from your current desktop session and log in into AwesomeWM.
+4. Configure stuff
+
+   The relevant files are inside your `~/.config/awesome` directory.
+
+   + User preferences and default applications
+
+      In `rc.lua` there is a *Default Applications* section where user preferences and default applications are defined.
+      You should change those to your liking.
+
+      Note: For the weather widgets to work, you will also need to create an account on [openweathermap](https://openweathermap.org), get your key, look for your city ID, and set `openweathermap_key` and `openweathermap_city_id` accordingly.
+
+5. Lastly, log out from your current desktop session and log in into AwesomeWM.
 
 </details>
+
 <br>
 
+<details open>
+<summary><strong>F E A T U R E S</strong></summary>
 
+<b>These are the features included in my AwesomeWM setups!</b>
 
-## Acknowledgements
+   + Aesthetic `Dashboard` ngl.
+   + Notification Center
+   + Control Panel
+   + ToDo Reminder
+   + Battery Indicator
+   + PopUp Notifications
+   + Applications Launcher
+   + Custom mouse-friendly `ncmpcpp` UI with album art ofc.
+   + Word Clock Lockscreen with PAM Integration
+   + Some Tooltip Widget
+   + Hardware Monitor
+   + Beautiful `colorscheme` ikr, named `night` and created by [ner0z](https://github.com/ner0z)
+
+</details>
+
+<br>
+
+<details open>
+<summary><strong>K E Y B I N D S</strong></summary>
+
+I use <kbd>super</kbd> AKA Windows key as my main modifier.
+also with <kbd>alt, shift, and ctrl</kbd>
+
+**Keyboard**
+
+| Keybind                                 | Action                                                    |
+|-----------------------------------------|-----------------------------------------------------------|
+| <kbd>super + enter</kbd>                | Spawn terminal                                            |
+| <kbd>super + w</kbd>                    | Spawn web browser                                         |
+| <kbd>super + x</kbd>                    | Spawn color picker                                        |
+| <kbd>super + f</kbd>                    | Spawn file manager                                        |
+| <kbd>super + d</kbd>                    | Launch applications launcher                              |
+| <kbd>super + shift + d</kbd>            | Toggle dashboard                                          |
+| <kbd>super + q</kbd>                    | Close client                                              |
+| <kbd>super + ctrl + l</kbd>             | Toggle lock screen                                        |
+| <kbd>super + [1-0]</kbd>                | View tag AKA change workspace (for you i3/bsp folks)      |
+| <kbd>super + shift + [1-0]</kbd>        | Move focused client to tag                                |
+| <kbd>super + space</kbd>                | Select next layout                                        |
+| <kbd>super + s</kbd>                    | Set tiling layout                                         |
+| <kbd>super + shift + s</kbd>            | Set floating layout                                       |
+| <kbd>super + c</kbd>                    | Center floating client                                    |
+| <kbd>super + [arrow keys]</kbd>         | Change focus by direction                                 |
+| <kbd>super + shift + f</kbd>            | Toggle fullscreen                                         |
+| <kbd>super + m</kbd>                    | Toggle maximize                                           |
+| <kbd>super + n</kbd>                    | Minimize                                                  |
+| <kbd>ctrl + shift + n</kbd>             | Restore minimized                                         |
+| <kbd>alt + tab</kbd>                    | Window switcher                                           |
+
+<br>
+
+**Mouse on the desktop**
+
+| Mousebind          | Action                                     |
+|--------------------|--------------------------------------------|
+| `left click`       | Dismiss all notifications                  |
+| `right click`      | App drawer                                 |
+| `middle click`     | Toggle Dashboard                           |
+| `scroll up/down`   | Cycle through tags                         |
+
+*... And many many more! for more information, you can check awesome/configuration/keys.lua*
+
+</details>
+
+<h2></h2><br>
+
+**Acknowledgements**
+
+   - **Credits**
+      + [ner0z](https://github.com/ner0z)
 
    - **Special thanks to**
-      + [ner0z](https://github.com/ner0z)
+      + [ChocolateBread799](https://github.com/ChocolateBread799)
       + [JavaCafe01](https://github.com/JavaCafe01)
 
-   - **Contributors**
-
-      <a href="https://github.com/rxyhn/AwesomeWM-Dotfiles/graphs/contributors">
-         <img src="assets/contributors.png">
-      </a>
-
-<br>
-<br>
+<h2></h2><br>
 
 <p align="center"><a href="https://github.com/rxyhn/AwesomeWM-Dotfiles/blob/main/.github/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=License&message=GPL-3.0&logoColor=eceff4&logo=github&colorA=061115&colorB=67AFC1"/></a></p>
