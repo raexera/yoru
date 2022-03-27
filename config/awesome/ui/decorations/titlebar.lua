@@ -98,8 +98,7 @@ client.connect_signal("request::titlebars", function(c)
 
     awful.titlebar(c, {
         position = "top",
-        size = beautiful.titlebar_size,
-        bg = "#00000000",
+        size = beautiful.titlebar_size
     }):setup{
             {   -- left
                 wrap_widget({
@@ -126,8 +125,7 @@ client.connect_signal("request::titlebars", function(c)
 
     awful.titlebar(c, {
         position = "bottom",
-        size = dpi(24),
-        bg = "#00000000"
+        size = dpi(24)
     }):setup{
         bg = beautiful.darker_bg,
         shape = helpers.prrect(beautiful.border_radius, false, false, true, true),

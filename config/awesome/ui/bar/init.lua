@@ -227,12 +227,13 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
     -- Create the wibar
     s.mywibar = awful.wibar({
+        type = "dock",
         position = "left",
         screen = s,
-        type = "dock",
-        width = dpi(50),
         height = awful.screen.focused().geometry.height - dpi(50),
-        bg = "#0000000",
+        width = dpi(50),
+        shape = helpers.rrect(beautiful.border_radius),
+        bg = beautiful.transparent,
         ontop = true,
         visible = true
     })
@@ -299,7 +300,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
             widget = wibox.container.margin
         },
         bg = beautiful.darker_bg,
-        shape = helpers.rrect(beautiful.bar_radius),
+        shape = helpers.rrect(beautiful.border_radius),
         widget = wibox.container.background
     }
 

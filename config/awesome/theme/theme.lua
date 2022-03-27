@@ -163,16 +163,16 @@ theme.playerctl_player  = {"spotify", "mpd", "%any"}
 theme.playerctl_update_on_activity = true
 theme.playerctl_position_update_interval = 1
 
--- Menu
-theme.menu_height = dpi(30)
-theme.menu_width = dpi(140)
-theme.menu_font = theme.font_name .. "medium 9"
-theme.menu_bg_focus = theme.lighter_bg
+-- Mainmenu
+theme.menu_font = theme.font_name .. "10"
+theme.menu_height = dpi(30) 
+theme.menu_width = dpi(150) 
 theme.menu_bg_normal = theme.xbackground
-theme.menu_fg_focus = theme.xforeground
-theme.menu_fg_normal = theme.xforeground
-theme.menu_border_color = theme.darker_bg
-theme.menu_border_width = theme.border_width / 2
+theme.menu_bg_focus = theme.lighter_bg
+theme.menu_fg_normal= theme.xforeground
+theme.menu_fg_focus= theme.xcolor4
+theme.menu_border_width = dpi(0)
+theme.menu_border_color = theme.xcolor0
 theme.menu_submenu = "»  "
 theme.menu_submenu_icon = nil
 

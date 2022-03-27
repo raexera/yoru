@@ -93,14 +93,14 @@ local notifs_boxed = create_boxed_widget(notifs, dpi(260), dpi(190), beautiful.d
 -- dashboard
 dashboard = wibox({
     type = "dock",
-    ontop = true,
     screen = screen.primary,
     height = screen_height - dpi(50),
     width = beautiful.dashboard_width or dpi(300),
+    shape = helpers.rrect(beautiful.border_radius),
+    ontop = true,
     visible = false
 })
 dashboard.y = dpi(25)
-dashboard.bg = "#00000000"
 
 local slide = rubato.timed{
     pos = dpi(-300),

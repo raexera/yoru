@@ -15,7 +15,7 @@ run_once("mpd")
 run_once("mpDris2")
 
 -- picom
-run_once("picom --experimental-backends --config " .. theme_dir .. "picom.conf")
+run_once("picom --config " .. theme_dir .. "picom.conf")
 
 -- auth
 run_once("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")

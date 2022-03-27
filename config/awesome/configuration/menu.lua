@@ -29,12 +29,12 @@ awful.screen.connect_for_each_screen(function(s)
     -- Mainmenu
     mymainmenu = awful.menu({
         items = {
-            {"Terminal", function() awful.spawn.with_shell(terminal) end, beautiful.awesome_logo},
+            {"Terminal", function() awful.spawn.with_shell(terminal) end},
             {"Code Editor", function() awful.spawn.with_shell(vscode) end},
             {"File Manager", function() awful.spawn.with_shell(file_manager) end},
             {"Web Browser", function() awful.spawn.with_shell(browser) end},
             {"Music", function() awful.spawn.with_shell(music_client) end},
-            {"AwesomeWM", awesomemenu},
+            {"AwesomeWM", awesomemenu,  beautiful.awesome_logo},
             {"Power Menu", powermenu}
         }
     })
