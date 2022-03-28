@@ -56,7 +56,7 @@ These dotfiles are made with love, for sure.
          yay -S awesome-git picom-ibhagwan-git alacritty rofi todo-bin acpi acpid \
          wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
          brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
-         mpd mpc mpdris2 ncmpcpp playerctl --needed 
+         mpd mpc mpdris2 ncmpcpp playerctl zsh-syntax-highlighting zsh-autosuggestions --needed 
          ```
 
    + Services
