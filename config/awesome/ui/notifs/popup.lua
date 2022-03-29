@@ -22,9 +22,8 @@ local pop_icon = wibox.widget{
 		resize = true,
 		widget = wibox.widget.imagebox
 	},
-	forced_height = dpi(150),
-	top = dpi(12),
-	bottom = dpi(12),
+	forced_height = dpi(100),
+	top = dpi(28),
 	widget = wibox.container.margin
 }
 
@@ -35,7 +34,6 @@ local pop_bar = wibox.widget {
     color = beautiful.bg_accent,
     shape = gears.shape.rounded_bar,
     bar_shape = gears.shape.rounded_bar,
-    forced_height = dpi(24),
     widget = wibox.widget.progressbar
 }
 
@@ -64,9 +62,7 @@ pop:setup {
         },
         {
             pop_bar,
-            left = dpi(24),
-            right = dpi(24),
-            bottom = dpi(24),
+            margins = dpi(28),
             widget = wibox.container.margin
         },
         layout = wibox.layout.align.vertical
@@ -101,19 +97,18 @@ awesome.connect_signal("signal::volume", function(value, muted)
     if vol_first_time then
         vol_first_time = false
     else
-        local vol_icon =  gears.color.recolor_image(icon, beautiful.xforeground)
-        icon = vol_icon
-        pop_bar.value = value
 
         if muted then
-            local muted_icon = gears.color.recolor_image(icon, beautiful.xcolor8)
+            local muted_icon = gears.color.recolor_image(beautiful.volume_muted_icon, beautiful.xcolor8)
             icon = muted_icon
             pop_bar.color = beautiful.xcolor8
         else
+            local vol_icon =  gears.color.recolor_image(icon, beautiful.pop_vol_color)
+            icon = vol_icon
             pop_bar.color = beautiful.pop_vol_color
         end
 
-
+        pop_bar.value = value
         pop_icon.icon.image = icon
         toggle_pop()
     end
@@ -123,6 +118,8 @@ awesome.connect_signal("signal::brightness", function(value)
     local icon = beautiful.brightness_icon
 
     if value ~= 0 then
+        local bri_icon = gears.color.recolor_image(icon, beautiful.pop_brightness_color)
+        icon = bri_icon
         pop_bar.color = beautiful.pop_brightness_color
     else
         local bri_icon = gears.color.recolor_image(icon, beautiful.xcolor8)

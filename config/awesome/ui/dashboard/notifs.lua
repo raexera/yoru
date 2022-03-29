@@ -200,7 +200,7 @@ naughty.connect_signal("request::display", function(n)
         notif_color = beautiful.xcolor1 .. '66'
     end
     local appicon = n.icon or n.app_icon
-    if not appicon then appicon = beautiful.notification_icon end
+    if not appicon then appicon = gears.color.recolor_image(beautiful.notification_icon, beautiful.xcolor4) end
 
     notifs_container:insert(1, create_notif(appicon, n, width))
 end)

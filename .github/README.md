@@ -13,7 +13,7 @@
 <br>
 
 <a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="160" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
-<b>  AwesomeWM Dotfiles  </b>
+<b>  Aesthetic AwesomeWM Dotfiles  </b>
 
 Welcome to my AwesomeWM configuration files! 
 
@@ -31,7 +31,7 @@ These dotfiles are made with love, for sure.
 
 | Programs   | Using             |
 | ---------- | ----------------- |
-| WM         | awesome-git       |
+| WM         | awesome           |
 | OS         | arch linux        |
 | Terminal   | alacritty         |
 | Shell      | zsh               |
@@ -41,7 +41,7 @@ These dotfiles are made with love, for sure.
 
 <h2></h2><br>
 
-<details open>
+<details>
 <summary><strong>S E T U P</strong></summary>
 
 1. Install dependencies and enable services
@@ -53,7 +53,7 @@ These dotfiles are made with love, for sure.
          *Assuming your AUR helper is* `yay`
 
          ```shell
-         yay -S awesome-git picom-ibhagwan-git alacritty rofi todo-bin acpi acpid \
+         yay -Sy awesome-git picom-jonaburg-fix alacritty rofi todo-bin acpi acpid \
          wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
          brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
          mpd mpc mpdris2 ncmpcpp playerctl --needed 
@@ -86,16 +86,22 @@ These dotfiles are made with love, for sure.
     > Clone this repository
 
    ```shell
-   git clone https://github.com/rxyhn/AwesomeWM-Dotfiles.git
-   cd AwesomeWM-Dotfiles
+    git clone https://github.com/rxyhn/dotfiles.git
+    cd dotfiles
    ```
 
     > Copy config and binaries files
 
    ```shell
-    cp -r ./config/* ~/.config/
-    cp -r ./bin/* ~/.local/bin/
-    cp -r ./misc/. ~/
+    cp -r config/* ~/.config/
+    cp -r bin/* ~/.local/bin/
+    cp -r misc/. ~/
+   ```
+
+    > You have to add `TODO_PATH` in your env variable
+
+   ```shell
+    export TODO_PATH="path/to/todo"
    ```
 
 4. Configure stuff
@@ -115,7 +121,7 @@ These dotfiles are made with love, for sure.
 
 <br>
 
-<details open>
+<details>
 <summary><strong>F E A T U R E S</strong></summary>
 
 <b>These are the features included in my AwesomeWM setups!</b>
@@ -128,7 +134,7 @@ These dotfiles are made with love, for sure.
    + PopUp Notifications
    + Applications Launcher
    + Custom mouse-friendly `ncmpcpp` UI with album art ofc.
-   + Word Clock Lockscreen with PAM Integration
+   + `Word Clock Lockscreen` with PAM Integration
    + Some Tooltip Widget
    + Hardware Monitor
    + Beautiful `colorscheme` ikr, named `night` and created by [ner0z](https://github.com/ner0z)
@@ -137,7 +143,7 @@ These dotfiles are made with love, for sure.
 
 <br>
 
-<details open>
+<details>
 <summary><strong>K E Y B I N D S</strong></summary>
 
 I use <kbd>super</kbd> AKA Windows key as my main modifier.
@@ -179,7 +185,7 @@ also with <kbd>alt, shift, and ctrl</kbd>
 | `middle click`     | Toggle Dashboard                           |
 | `scroll up/down`   | Cycle through tags                         |
 
-*... And many many more! for more information, you can check awesome/configuration/keys.lua*
+*... And many many more! for more information check `awesome/configuration/keys.lua`*
 
 </details>
 

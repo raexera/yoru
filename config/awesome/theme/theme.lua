@@ -50,10 +50,16 @@ theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "th
 -- Awesome Logo
 theme.awesome_logo = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/awesome.png")
 
+-- Notifications bell icon
+theme.notification_bell_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/notification-bell.png")
+
 -- Notifications icon
 theme.notification_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/notification.png")
-theme.volume_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/volume.svg")
-theme.brightness_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/brightness.svg")
+
+-- Popup notifications icon
+theme.volume_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/volume.png")
+theme.volume_muted_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/mute.png")
+theme.brightness_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/brightness.png")
 
 -- Fonts
 theme.font_name = "Iosevka "
@@ -127,7 +133,7 @@ theme.titlebar_size = dpi(45)
 theme.titlebar_unfocused = theme.xcolor0
 
 -- Pop up notifications
-theme.pop_size = dpi(200)
+theme.pop_size = dpi(180)
 theme.pop_bg = theme.xbackground
 theme.pop_bar_bg = theme.xcolor0
 theme.pop_vol_color = theme.xcolor4
@@ -164,7 +170,7 @@ theme.playerctl_update_on_activity = true
 theme.playerctl_position_update_interval = 1
 
 -- Mainmenu
-theme.menu_font = theme.font_name .. "10"
+theme.menu_font = theme.font_name .. "medium 10"
 theme.menu_height = dpi(30) 
 theme.menu_width = dpi(150) 
 theme.menu_bg_normal = theme.xbackground
@@ -218,9 +224,13 @@ theme.tabbar_size = 40
 theme.mstab_bar_ontop = true
 
 -- Notifications
-theme.notification_spacing = 19
+theme.notification_spacing = 24
 theme.notification_border_radius = dpi(6)
 theme.notification_border_width = dpi(0)
+
+-- Notif center
+theme.notif_center_radius = theme.border_radius
+theme.notif_center_box_radius = theme.notif_center_radius / 2
 
 -- Swallowing
 theme.dont_swallow_classname_list = {
