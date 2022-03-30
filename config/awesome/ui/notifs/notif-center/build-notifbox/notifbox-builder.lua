@@ -132,7 +132,7 @@ notifbox_box = function(notif, icon, title, message, app, bgcolor)
 	end
 
 	-- Delete notifbox on LMB
-	notifbox:buttons(
+	notifbox_dismiss:buttons(
 		awful.util.table.join(
 			awful.button(
 				{},

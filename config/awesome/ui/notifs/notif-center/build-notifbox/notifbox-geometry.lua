@@ -8,7 +8,7 @@ local find_widget_in_wibox = function(wb, widget)
 	  		return h
 		end
 		local result
-	
+
 		for _, ch in ipairs(h:get_children()) do
 			result = result or find_widget_in_hierarchy(ch, widget)
 		end
@@ -23,10 +23,7 @@ local focused = awful.screen.focused()
 local h = find_widget_in_wibox(focused.top_panel, focused.music)
 local x, y, width, height = h:get_matrix_to_device():transform_rectangle(0, 0, h:get_size())
 -- local geo = focused.mywibox:geometry()
-
-
 -- x, y = x + geo.x, y + geo.y
-
 -- print(string.format("The widget is inside of the rectangle (%d, %d, %d, %d) on the screen", x, y, width, height)
 
 

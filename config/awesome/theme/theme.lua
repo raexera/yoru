@@ -62,7 +62,7 @@ theme.volume_muted_icon = gears.surface.load_uncached(gfs.get_configuration_dir(
 theme.brightness_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/brightness.png")
 
 -- Fonts
-theme.font_name = "Iosevka "
+theme.font_name = "Iosevka Nerd Font Mono "
 theme.font = theme.font_name .. "8"
 theme.icon_font_name = "Material Icons "
 theme.icon_font = theme.icon_font_name .. "18"
@@ -186,10 +186,10 @@ theme.menu_submenu_icon = nil
 theme.hotkeys_bg = theme.xbackground
 theme.hotkeys_fg = theme.xforeground
 theme.hotkeys_modifiers_fg = theme.xforeground
-theme.hotkeys_font = theme.font_name .. "10"
+theme.hotkeys_font = theme.font_name .. "11"
 theme.hotkeys_description_font = theme.font_name .. "9"
 theme.hotkeys_shape = helpers.rrect(theme.border_radius)
-theme.hotkeys_group_margin = dpi(30)
+theme.hotkeys_group_margin = dpi(33)
 
 -- Layout List
 theme.layoutlist_border_color = theme.lighter_bg

@@ -9,7 +9,7 @@ local button_container = require('ui.widgets.button')
 local notifbox_core = require('ui.notifs.notif-center.build-notifbox')
 local reset_notifbox_layout = notifbox_core.reset_notifbox_layout
 
-local clear_all_imagebox = wibox.widget {
+local clear_all_icon = wibox.widget {
 	{
 		markup = "",
 		font = beautiful.icon_font_name .. "Round 16",
@@ -22,7 +22,7 @@ local clear_all_imagebox = wibox.widget {
 
 local clear_all_button = wibox.widget {
 	{
-		clear_all_imagebox,
+		clear_all_icon,
 		margins = dpi(7),
 		widget = wibox.container.margin
 	},

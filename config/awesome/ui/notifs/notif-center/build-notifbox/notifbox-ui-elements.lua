@@ -8,10 +8,10 @@ local helpers = require('helpers')
 
 local button_container = require('ui.widgets.button')
 
-local ui_noti_builder = {}
+local ui_notif_builder = {}
 
 -- Notification icon container
-ui_noti_builder.notifbox_icon = function(ico_image)
+ui_notif_builder.notifbox_icon = function(ico_image)
 	local noti_icon = wibox.widget {
 		{
 			id = 'icon',
@@ -27,7 +27,7 @@ ui_noti_builder.notifbox_icon = function(ico_image)
 end
 
 -- Notification title container
-ui_noti_builder.notifbox_title = function(title)
+ui_notif_builder.notifbox_title = function(title)
 	return wibox.widget {
 		markup = title,
 		font   = beautiful.font_name .. 'Bold 12',
@@ -38,7 +38,7 @@ ui_noti_builder.notifbox_title = function(title)
 end
 
 -- Notification message container
-ui_noti_builder.notifbox_message = function(msg)
+ui_notif_builder.notifbox_message = function(msg)
 	return wibox.widget {
 		markup = msg,
 		font   = beautiful.font_name .. 'medium 10',
@@ -49,7 +49,7 @@ ui_noti_builder.notifbox_message = function(msg)
 end
 
 -- Notification app name container
-ui_noti_builder.notifbox_appname = function(app)
+ui_notif_builder.notifbox_appname = function(app)
 	return wibox.widget {
 		markup  = app,
 		font   = beautiful.font_name .. 'Bold 12',
@@ -60,7 +60,7 @@ ui_noti_builder.notifbox_appname = function(app)
 end
 
 -- Notification actions container
-ui_noti_builder.notifbox_actions = function(n)
+ui_notif_builder.notifbox_actions = function(n)
 	actions_template = wibox.widget {
 		notification = n,
 		base_layout = wibox.widget {
@@ -85,7 +85,7 @@ ui_noti_builder.notifbox_actions = function(n)
 				forced_height      = dpi(30),
 				widget             = wibox.container.background
 			},
-			margins = 4,
+			margins = dpi(4),
 			widget  = wibox.container.margin
 		},
 		style = { underline_normal = false, underline_selected = true },
@@ -97,9 +97,9 @@ end
 
 
 -- Notification dismiss button
-ui_noti_builder.notifbox_dismiss = function()
+ui_notif_builder.notifbox_dismiss = function()
 
-    local dismiss_imagebox = wibox.widget {
+    local dismiss_icon = wibox.widget {
         {
             id = 'dismiss_icon',
 			markup = helpers.colorize_text("", beautiful.xcolor1),
@@ -113,7 +113,7 @@ ui_noti_builder.notifbox_dismiss = function()
 
     local dismiss_button = wibox.widget {
     	{
-    		dismiss_imagebox,
+    		dismiss_icon,
     		margins = dpi(5),
     		widget = wibox.container.margin
     	},
@@ -132,4 +132,4 @@ ui_noti_builder.notifbox_dismiss = function()
 end
 
 
-return ui_noti_builder
+return ui_notif_builder

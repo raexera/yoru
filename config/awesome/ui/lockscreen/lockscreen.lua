@@ -34,7 +34,7 @@ awful.screen.connect_for_each_screen(function(s)
     if s == screen.primary then
         s.mylockscreen = lock_screen_box
     else
-        s.mylockscreen = helpers.screen_mask(s, beautiful.lock_screen_bg or beautiful.exit_screen_bg or beautiful.xbackground)
+        s.mylockscreen = helpers.screen_mask(s, beautiful.xbackground)
     end
 end)
 
@@ -397,14 +397,6 @@ lock_screen_box:setup {
             helpers.vertical_pad(dpi(80)),
             time,
             {
-                nil,
-                {
-                    notifs,
-                    batt,
-                    date,
-                    spacing = dpi(30),
-                    layout = wibox.layout.fixed.horizontal
-                },
                 visible = false,
                 expand = "none",
                 layout = wibox.layout.align.horizontal

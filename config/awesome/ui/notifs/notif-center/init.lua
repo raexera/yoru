@@ -2,6 +2,11 @@ local wibox = require('wibox')
 local beautiful = require('beautiful')
 local dpi = require('beautiful').xresources.apply_dpi
 
+-- Notification Center
+-------------------------
+
+
+-- header
 local notif_header = wibox.widget {
 	text   = 'Notification Center',
 	font   = beautiful.font_name .. 'Bold 14',
@@ -10,6 +15,7 @@ local notif_header = wibox.widget {
 	widget = wibox.widget.textbox
 }
 
+-- build notif-center
 local notif_center = function(s)
 
 	s.dont_disturb = require('ui.notifs.notif-center.dont-disturb')
