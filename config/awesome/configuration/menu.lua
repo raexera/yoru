@@ -3,6 +3,9 @@ local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local beautiful = require("beautiful")
 
+-- Helpers
+local helpers = require("helpers")
+
 -- Create a launcher widget and a main menu
 awful.screen.connect_for_each_screen(function(s)
 
@@ -38,6 +41,8 @@ awful.screen.connect_for_each_screen(function(s)
             {"Power Menu", powermenu}
         }
     })
+
+    mymainmenu.wibox.shape = helpers.rrect(beautiful.border_radius)
 
 end)
 

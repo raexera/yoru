@@ -171,8 +171,8 @@ theme.playerctl_position_update_interval = 1
 
 -- Mainmenu
 theme.menu_font = theme.font_name .. "medium 10"
-theme.menu_height = dpi(30) 
-theme.menu_width = dpi(150) 
+theme.menu_height = dpi(30)
+theme.menu_width = dpi(150)
 theme.menu_bg_normal = theme.xbackground
 theme.menu_bg_focus = theme.lighter_bg
 theme.menu_fg_normal= theme.xforeground
@@ -189,7 +189,7 @@ theme.hotkeys_modifiers_fg = theme.xforeground
 theme.hotkeys_font = theme.font_name .. "11"
 theme.hotkeys_description_font = theme.font_name .. "9"
 theme.hotkeys_shape = helpers.rrect(theme.border_radius)
-theme.hotkeys_group_margin = dpi(33)
+theme.hotkeys_group_margin = dpi(40)
 
 -- Layout List
 theme.layoutlist_border_color = theme.lighter_bg

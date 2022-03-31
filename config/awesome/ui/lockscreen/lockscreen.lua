@@ -27,6 +27,7 @@ local lock_screen = require("ui.lockscreen")
 
 lock_screen_box = wibox({visible = false, ontop = true, type = "splash", screen = screen.primary})
 awful.placement.maximize(lock_screen_box)
+-- lock_screen_box.bg = beautiful.transparent
 lock_screen_box.bg = beautiful.xbackground .. "22"
 
 -- Add lockscreen to each screen
@@ -34,7 +35,7 @@ awful.screen.connect_for_each_screen(function(s)
     if s == screen.primary then
         s.mylockscreen = lock_screen_box
     else
-        s.mylockscreen = helpers.screen_mask(s, beautiful.xbackground)
+        s.mylockscreen = helpers.screen_mask(s, beautiful.lock_screen_bg or beautiful.exit_screen_bg or beautiful.xbackground)
     end
 end)
 
@@ -134,7 +135,7 @@ end
 local var_count = 0
 for i, m in pairs(time_char) do
     -- local text = helpers.colorize_text(m, "#162026")
-    local text = helpers.colorize_text(m, beautiful.xcolor8 .. "55")
+    local text = helpers.colorize_text(m, beautiful.lighter_bg .. "55")
 
     var_count = var_count + 1
     local create_dummy_text = true
@@ -172,7 +173,7 @@ local function deactivate_word(w)
     for i, m in pairs(char_map[w]) do
         local text = m.text
 
-        m.markup = helpers.colorize_text(text, beautiful.xcolor8 .. "55")
+        m.markup = helpers.colorize_text(text, beautiful.lighter_bg .. "55")
 
     end
 end
@@ -383,7 +384,7 @@ local function grab_password()
 end
 
 function lock_screen_show()
-    set_visibility(true) 
+    set_visibility(true)
     grab_password()
 end
 
@@ -394,16 +395,22 @@ lock_screen_box:setup {
         -- Vertical centering
         nil,
         {
-            helpers.vertical_pad(dpi(80)),
-            time,
             {
-                visible = false,
-                expand = "none",
-                layout = wibox.layout.align.horizontal
+                {
+                    helpers.vertical_pad(dpi(10)),
+                    time,
+                    lock_animation,
+                    spacing = dpi(50),
+                    layout = wibox.layout.fixed.vertical
+                },
+                bottom = dpi(60),
+                right = dpi(60),
+                left = dpi(60),
+                widget = wibox.container.margin
             },
-            lock_animation,
-            spacing = dpi(60),
-            layout = wibox.layout.fixed.vertical
+            shape = helpers.rrect(beautiful.border_radius),
+            bg = beautiful.xbackground,
+            widget = wibox.container.background
         },
         expand = "none",
         layout = wibox.layout.align.vertical

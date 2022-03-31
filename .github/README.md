@@ -6,7 +6,7 @@
 <br>
 
 <div align="center">
-    <img src="assets/awesome.png">
+    <img src="assets/awesome.png" alt="Rice Preview">
 </div>
 
 <br>
@@ -44,78 +44,81 @@ These dotfiles are made with love, for sure.
 <details>
 <summary><strong>S E T U P</strong></summary>
 
-1. Install dependencies and enable services
+   > This is step-by-step how to install these dotfiles. Just [R.T.F.M](https://en.wikipedia.org/wiki/RTFM).
 
-   + Dependencies
+   1. Install dependencies and enable services
 
-     - **Arch Linux** (and all Arch-based distributions)
+      + Dependencies
 
-         *Assuming your AUR helper is* `yay`
+      - **Arch Linux** (and all Arch-based distributions)
+
+            *Assuming your AUR helper is* `yay`
+
+            ```shell
+            yay -Sy awesome-git picom-git alacritty rofi todo-bin acpi acpid \
+            wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
+            brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
+            mpd mpc mpdris2 ncmpcpp playerctl --needed 
+            ```
+
+      + Services
 
          ```shell
-         yay -Sy awesome-git picom-jonaburg-fix alacritty rofi todo-bin acpi acpid \
-         wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
-         brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
-         mpd mpc mpdris2 ncmpcpp playerctl --needed 
+         # For automatically launching mpd on login
+         systemctl --user enable mpd.service
+         systemctl --user start mpd.service
+
+         # For charger plug/unplug events (if you have a battery)
+         sudo systemctl enable acpid.service
+         sudo systemctl start acpid.service
          ```
 
-   + Services
+   2. Install needed fonts
+
+      You will need to install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
+
+      Necessary fonts:
+      + **Iosevka**  - [here](https://github.com/ryanoasis/nerd-fonts/)
+      + **Icomoon**  - [here](https://www.dropbox.com/s/hrkub2yo9iapljz/icomoon.zip?dl=0)
+      + **Material** - [here](https://github.com/google/material-design-icons)
+
+      Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`.
+   
+   3. Install my AwesomeWM configuration files
+
+      > Clone this repository
 
       ```shell
-      # For automatically launching mpd on login
-      systemctl --user enable mpd.service
-      systemctl --user start mpd.service
-      # For charger plug/unplug events (if you have a battery)
-      sudo systemctl enable acpid.service
-      sudo systemctl start acpid.service
+      git clone https://github.com/rxyhn/dotfiles.git
+      cd dotfiles
       ```
 
-2. Install needed fonts
+      > Copy config and binaries files
 
-   You will need to install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
+      ```shell
+      cp -r config/* ~/.config/
+      cp -r bin/* ~/.local/bin/
+      cp -r misc/. ~/
+      ```
 
-   Necessary fonts:
-   + **Iosevka**  - [here](https://github.com/ryanoasis/nerd-fonts/)
-   + **Icomoon**  - [here](https://www.dropbox.com/s/hrkub2yo9iapljz/icomoon.zip?dl=0)
-   + **Material** - [here](https://github.com/google/material-design-icons)
+      > You have to add `TODO_PATH` in your env variable
 
-   Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`.
-  
-3. Install my AwesomeWM configuration files
+      ```shell
+      export TODO_PATH="path/to/todo"
+      ```
 
-    > Clone this repository
+   4. Configure stuff
 
-   ```shell
-    git clone https://github.com/rxyhn/dotfiles.git
-    cd dotfiles
-   ```
+      The relevant files are inside your `~/.config/awesome` directory.
 
-    > Copy config and binaries files
+      + User preferences and default applications
 
-   ```shell
-    cp -r config/* ~/.config/
-    cp -r bin/* ~/.local/bin/
-    cp -r misc/. ~/
-   ```
+         In `rc.lua` there is a *Default Applications* section where user preferences and default applications are defined.
+         You should change those to your liking.
 
-    > You have to add `TODO_PATH` in your env variable
+         Note: For the weather widgets to work, you will also need to create an account on [openweathermap](https://openweathermap.org), get your key, look for your city ID, and set `openweathermap_key` and `openweathermap_city_id` accordingly.
 
-   ```shell
-    export TODO_PATH="path/to/todo"
-   ```
-
-4. Configure stuff
-
-   The relevant files are inside your `~/.config/awesome` directory.
-
-   + User preferences and default applications
-
-      In `rc.lua` there is a *Default Applications* section where user preferences and default applications are defined.
-      You should change those to your liking.
-
-      Note: For the weather widgets to work, you will also need to create an account on [openweathermap](https://openweathermap.org), get your key, look for your city ID, and set `openweathermap_key` and `openweathermap_city_id` accordingly.
-
-5. Lastly, log out from your current desktop session and log in into AwesomeWM.
+   5. Lastly, log out from your current desktop session and log in into AwesomeWM.
 
 </details>
 
@@ -126,18 +129,37 @@ These dotfiles are made with love, for sure.
 
 <b>These are the features included in my AwesomeWM setups!</b>
 
+
+   + Beautiful `colorscheme` ikr, named `night` and created by [ner0z](https://github.com/ner0z)
    + Aesthetic `Dashboard` ngl.
+   + Custom mouse-friendly `ncmpcpp` UI with album art ofc.
+      - <details>
+         <summary>Preview</summary>
+
+         *this is so aesthetic isn't it?*
+
+         <div align="left">
+         <img src="assets/ncmpcpp.png" width="500px" alt="ncmpcpp preview">
+         </div>
+         </details>
+   + `Word Clock Lockscreen` with PAM Integration
+      - <details>
+
+         *A beautiful word clock is on the lockscreen!*
+
+         <summary>Preview</summary>
+         <div align="left">
+         <img src="assets/lockscreen.png" width="500px" alt="word clock lockscreen preview">
+         </div>
+         </details>
    + Notification Center
    + Control Panel
    + ToDo Reminder
    + Battery Indicator
    + PopUp Notifications
    + Applications Launcher
-   + Custom mouse-friendly `ncmpcpp` UI with album art ofc.
-   + `Word Clock Lockscreen` with PAM Integration
    + Some Tooltip Widget
    + Hardware Monitor
-   + Beautiful `colorscheme` ikr, named `night` and created by [ner0z](https://github.com/ner0z)
 
 </details>
 
