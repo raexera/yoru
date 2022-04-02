@@ -52,18 +52,17 @@ These dotfiles are made with love, for sure.
 
       - **Arch Linux** (and all Arch-based distributions)
 
-            *Assuming your AUR helper is* `yay`
-
-            ```shell
-            yay -Sy awesome-git picom-git alacritty rofi todo-bin acpi acpid \
-            wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
-            brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
-            mpd mpc mpdris2 ncmpcpp playerctl --needed 
-            ```
+       *Assuming your AUR helper is* ``yay``
+         ```sh
+         yay -Sy awesome-git picom-git alacritty rofi todo-bin acpi acpid \
+         wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
+         brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
+         mpd mpc mpdris2 ncmpcpp playerctl --needed 
+         ```
 
       + Services
 
-         ```shell
+         ```sh
          # For automatically launching mpd on login
          systemctl --user enable mpd.service
          systemctl --user start mpd.service
@@ -88,14 +87,14 @@ These dotfiles are made with love, for sure.
 
       > Clone this repository
 
-      ```shell
+      ```sh
       git clone https://github.com/rxyhn/dotfiles.git
       cd dotfiles
       ```
 
       > Copy config and binaries files
 
-      ```shell
+      ```sh
       cp -r config/* ~/.config/
       cp -r bin/* ~/.local/bin/
       cp -r misc/. ~/
@@ -103,7 +102,7 @@ These dotfiles are made with love, for sure.
 
       > You have to add `TODO_PATH` in your env variable
 
-      ```shell
+      ```sh
       export TODO_PATH="path/to/todo"
       ```
 
