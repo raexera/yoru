@@ -16,13 +16,9 @@
 <b>  Aesthetic AwesomeWM Dotfiles  </b>
 
 Welcome to my AwesomeWM configuration files! 
-
-so yeah now i'm using awesomewm, looks like i'll be use this wm forever.
-
+So yeah now I'm using awesomewm, Looks like I'll be use this wm forever.
 Because only this wm can satisfy me.
-
 Fyi, I use night colorscheme, and it's so beautiful.
-
 These dotfiles are made with love, for sure.
 
 <h2></h2><br>
@@ -57,7 +53,7 @@ These dotfiles are made with love, for sure.
          yay -Sy awesome-git picom-git alacritty rofi todo-bin acpi acpid \
          wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
          brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
-         mpd mpc mpdris2 ncmpcpp playerctl --needed 
+         mpd mpc mpdris2 ncmpcpp playerctl eww --needed 
          ```
 
       + Services
