@@ -1,6 +1,6 @@
 <!-- Screenshot -->
 <div align="center">
-    <img src="assets/awesome.png" alt="Rice Preview">
+    <img src="assets/home.png" alt="Home Preview">
 </div>
 
 <h2></h2><br>
@@ -19,9 +19,9 @@
 <br>
 <br>
 
+### Hi there! Thanks for dropping by! 🖤
 <a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="160" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
 
-### Hi there! Thanks for dropping by! 🖤
 <b>  Beautiful & Aesthetic AwesomeWM Dotfiles with Animation! ✨  </b>
 
 Welcome to my AwesomeWM configuration files! 
