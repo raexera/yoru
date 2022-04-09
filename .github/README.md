@@ -6,7 +6,7 @@
 <h2></h2><br>
 
 <p align="center">
-  <b>🌕 Rxyhn's beautiful & aesthetic configuration files 🌑</b>
+  <b>🌕 Rxyhn's Beautiful & Aesthetic Configuration Files 🌑</b>
 </p>
 
 
@@ -21,23 +21,23 @@
 
 <a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="160" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
 
-### Hi there! Thanks for dropping by!
-<b>  Beautiful & Aesthetic AwesomeWM Dotfiles  </b>
+### Hi there! Thanks for dropping by! 🖤
+<b>  Beautiful & Aesthetic AwesomeWM Dotfiles with Animation! ✨  </b>
 
 Welcome to my AwesomeWM configuration files! 
-
 You might be here for looking my AwesomeWM configuration files? or looking for **Linux Rice** reference?
+feel free to steal anything from here but don't forget to give me credits :)
 
 AwesomeWM is the most powerful window manager on Linux, 
 Although it takes time and effort to configure it, but I'm very satisfied with the result.
 You're right! only this wm can satisfy me.
 
-These dotfiles are made with love, for sure.
-
 Idk why i do this things, i love it but ahhh nvm, anyway I do this because it's my hobby.
 If you *like* or are *using* these dotfiles you should `stars` this repo rn!
 So i'll be more enthusiastic to make other interesting things, 
 Thank you! <3
+
+These dotfiles are made with love, for sure.
 
 <h2></h2><br>
 
@@ -157,7 +157,7 @@ Thank you! <3
       - <details>
          <summary>Aesthetic Night</summary>
 
-         *created by [ner0z](https://github.com/ner0z), extermly aesthetic dark colorscheme!*
+         *created by [ner0z](https://github.com/ner0z), extremely aesthetic dark colorscheme!*
 
          <div align="left">
          <img src="assets/night.png" width="500px" alt="night colorscheme preview">
@@ -176,7 +176,7 @@ Thank you! <3
    + Very useful `Control Center` ikr.
       - <details>
 
-         + *This control-center has many features!*
+         + *This control center has many features!*
             - Exit screen
             - Volume & brightness control
             - DnD, Blue light & Airplane mode
@@ -201,7 +201,7 @@ Thank you! <3
          <img src="assets/ncmpcpp.png" width="500px" alt="ncmpcpp preview">
          </div>
          </details>
-   + `Word Clock Lockscreen` with PAM Integration
+   + `Word Clock Lockscreen` with PAM Integration!
       - <details>
 
          *A beautiful word clock is on the lockscreen!*
