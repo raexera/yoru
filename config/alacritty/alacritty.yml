@@ -1,81 +1,72 @@
-## Import files (Colors,Etc)
+# rxyhn's aesthetic alacritty
+# configuration for alacritty, the GPU enhanced terminal emulator.
 import:
-  - ~/.config/alacritty/night/colors.yml
+  - .config/alacritty/themes/night.yml
 
-## Set environment variables
 env:
   TERM: xterm-256color
 
-## Terminal window settings
 window:
-  opacity: 1.0
+  dynamic_padding: true
+
   padding:
     x: 25
     y: 25
 
-## Font
 font:
   normal:
-    family: Iosevka Nerd Font Mono
+    family: Sarasa Mono K
     style: Regular
 
   bold:
-    family: Iosevka Nerd Font Mono
+    family: Sarasa Mono K
     style: Bold
 
   italic:
-    family: Iosevka Nerd Font Mono
+    family: Sarasa Mono K
     style: Italic
 
   bold_italic:
-    family: Iosevka Nerd Font Mono
+    family: Sarasa Mono K
     style: Bold Italic
 
-  size: 10
+  size: 11
 
   offset:
     x: 0
     y: 0
 
-  glyph_offset:
-    x: 0
-    y: 0
+# aesthetic night colors
+# colors:
+#   primary:
+#     background: '0x061115'
+#     foreground: '0xD9D7D6'
 
-# Class
-class:
-  instance: Alacritty
-  general: Alacritty
+#   cursor:
+#     text:   '0x061115'
+#     cursor: '0xD9D7D6'
 
-# Scrolling
-scrolling:
-  history: 10000
-  multiplier: 3
+#   normal:
+#     black:   '0x1C252C'
+#     red:     '0xDF5B61'
+#     green:   '0x78B892'
+#     yellow:  '0xDE8F78'
+#     blue:    '0x6791C9'
+#     magenta: '0xBC83E3'
+#     cyan:    '0x67AFC1'
+#     white:   '0xD9D7D6'
 
-# Visual
-visual_bell:
-  animation: EaseOutExpo
-  duration: 0.5
-  color: "#ffffff"
+#   bright:
+#     black:   '0x1C252C'
+#     red:     '0xDF5B61'
+#     green:   '0x78B892'
+#     yellow:  '0xDE8F78'
+#     blue:    '0x6791C9'
+#     magenta: '0xBC83E3'
+#     cyan:    '0x67AFC1'
+#     white:   '0xD9D7D6'
 
-# Selection
-selection:
-  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
-  save_to_clipboard: true
-
-# Cursor
 cursor:
-  style: 'Underline'
+  style: Underline
 
-# Shell
-shell:
-  program: /usr/bin/zsh
-
-# Mouse
-mouse:
-  double_click: { threshold: 300 }
-  triple_click: { threshold: 300 }
-  hide_when_typing: true
-
-# Global Configuration
 live_config_reload: true
-draw_bold_text_with_bright_colors: true

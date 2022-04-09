@@ -4,7 +4,6 @@ local awful = require("awful")
 
 -- Theme handling library
 local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
 
 -- Notification library
 local naughty = require("naughty")
@@ -14,6 +13,7 @@ local wibox = require("wibox")
 
 -- Helpers
 local helpers = require("helpers")
+local clickable_container = require('ui.widgets.clickable-container')
 
 
 -- Notification Center
@@ -26,6 +26,7 @@ local notifs_text = wibox.widget{
     widget = wibox.widget.textbox
 }
 
+-- Clear button
 local notifs_clear = wibox.widget {
     markup = "",
     font = beautiful.icon_font_name .. "13",
@@ -34,34 +35,43 @@ local notifs_clear = wibox.widget {
     widget = wibox.widget.textbox
 }
 
+helpers.add_hover_cursor(notifs_clear, "hand2")
+
 notifs_clear:buttons(gears.table.join(
     awful.button({}, 1, function()
         _G.reset_notifs_container()
     end)
 ))
 
-local notifs_empty = wibox.widget {
-    {
-        nil,
-        {
-            nil,
-            {
-                markup = helpers.colorize_text('You have no notifs!', beautiful.xforeground .. "e6"),
-                font = beautiful.font_name .. '8',
-                align = 'center',
-                valign = 'center',
-                widget = wibox.widget.textbox
-            },
-            expand = "none",
-            layout = wibox.layout.align.vertical
-        },
-        expand = "none",
-        layout = wibox.layout.align.horizontal
-    },
-    forced_height = dpi(110),
-    widget = wibox.container.background
+-- Empty notifs
+local empty_notifbox = wibox.widget {
+	{
+        markup = helpers.colorize_text('You have no notifs!', beautiful.xforeground .. "e6"),
+        font = beautiful.font_name .. '8',
+		align = 'center',
+		valign = 'center',
+		widget = wibox.widget.textbox
+	},
+	margins = dpi(20),
+	widget = wibox.container.margin
 }
 
+local separator_for_empty_msg =  wibox.widget
+{
+	orientation = 'vertical',
+	opacity = 0.0,
+	widget = wibox.widget.separator
+}
+
+local notifs_empty = wibox.widget {
+	layout = wibox.layout.align.vertical,
+	expand = 'none',
+	separator_for_empty_msg,
+	empty_notifbox,
+	separator_for_empty_msg
+}
+
+-- Notifbox container
 local notifs_container = wibox.widget{
     spacing = dpi(10),
     forced_width = dpi(240),
@@ -85,11 +95,52 @@ remove_notif = function(box)
     end
 end
 
+-- Create notifbox
 local create_notif = function(icon, n, width)
-    local time = os.date("%H:%M")
-    local box = {}
+    local notifbox = {}
 
-    box = wibox.widget {
+    -- Time
+    local time = os.date("%H:%M")
+    local notifbox_time = wibox.widget{
+        markup = helpers.colorize_text(time, beautiful.xforeground .. "b3"),
+        align = "right",
+        valign = "bottom",
+        font = beautiful.font,
+        widget = wibox.widget.textbox
+    }
+
+    -- Dismiss button
+    local dismiss_icon = wibox.widget {
+        {
+            id = 'dismiss_icon',
+            markup = helpers.colorize_text("", beautiful.xcolor1),
+            font = beautiful.icon_font_name .. "Round 8",
+            align = "center",
+            valign = "center",
+            widget = wibox.widget.textbox
+        },
+        layout = wibox.layout.fixed.horizontal
+    }
+
+    local dismiss_button = wibox.widget {
+        {
+            dismiss_icon,
+            margins = dpi(2),
+            widget = wibox.container.margin
+        },
+        widget = clickable_container
+    }
+
+    local notifbox_dismiss = wibox.widget {
+        dismiss_button,
+        visible = false,
+        bg = beautiful.lighter_bg,
+        shape = gears.shape.circle,
+        widget = wibox.container.background
+    }
+
+    -- Notifbox init
+    notifbox = wibox.widget {
         {
             {
                 {
@@ -127,11 +178,9 @@ local create_notif = function(icon, n, width)
                                 },
                                 nil,
                                 {
-                                    markup = helpers.colorize_text(time, beautiful.xforeground .. "b3"),
-                                    align = "right",
-                                    valign = "bottom",
-                                    font = beautiful.font,
-                                    widget = wibox.widget.textbox
+                                    notifbox_time,
+                                    notifbox_dismiss,
+                                    layout = wibox.layout.fixed.horizontal
                                 },
                                 expand = "none",
                                 layout = wibox.layout.align.horizontal
@@ -157,29 +206,32 @@ local create_notif = function(icon, n, width)
             margins = dpi(8),
             widget = wibox.container.margin
         },
-        bg = beautiful.xcolor0,
+        bg = beautiful.notif_center_notifs_bg,
         shape = helpers.rrect(dpi(4)),
         forced_height = dpi(64),
         widget = wibox.container.background
     }
 
-    box:buttons(gears.table.join(
+    notifbox_dismiss:buttons(gears.table.join(
         awful.button({}, 1, function()
-            _G.remove_notif(box)
+            _G.remove_notif(notifbox)
         end)
     ))
 
-    box:connect_signal("mouse::enter", function()
-        box.bg = beautiful.xcolor8
+    notifbox:connect_signal("mouse::enter", function()
+        notifbox_time.visible = false
+        notifbox_dismiss.visible = true
     end)
 
-    box:connect_signal("mouse::leave", function()
-        box.bg = beautiful.xcolor0
+    notifbox:connect_signal("mouse::leave", function()
+        notifbox_time.visible = true
+        notifbox_dismiss.visible = false
     end)
 
-    return box
+    return notifbox
 end
 
+-- Notifbox scroller
 notifs_container:buttons(gears.table.join(
     awful.button({}, 4, nil, function()
         if #notifs_container.children == 1 then return end
@@ -208,12 +260,13 @@ naughty.connect_signal("request::display", function(n)
         notif_color = beautiful.xcolor1 .. '66'
     end
     local appicon = n.icon or n.app_icon
-    if not appicon then appicon = gears.color.recolor_image(beautiful.notification_icon, beautiful.xcolor4) end
+    if not appicon then appicon = gears.color.recolor_image(beautiful.notification_icon, beautiful.accent) end
 
     notifs_container:insert(1, create_notif(appicon, n, width))
 end)
 
-local notifs =  wibox.widget {
+-- Merge everthing and return notification center
+local notif_center =  wibox.widget {
     {
         {
             notifs_text,
@@ -231,4 +284,4 @@ local notifs =  wibox.widget {
     layout = wibox.layout.fixed.vertical
 }
 
-return notifs
+return notif_center

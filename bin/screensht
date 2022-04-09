@@ -59,11 +59,6 @@ function shot() {
 	   	icon_only = false,
 	}
 
-	local open_folder = naughty.action {
-		name = 'Open Folder',
-	   	icon_only = false,
-	}
-
 	local delete_image = naughty.action {
 		name = 'Delete',
 	   	icon_only = false,
@@ -72,10 +67,6 @@ function shot() {
 	-- Execute the callback when 'Open' is pressed
 	open_image:connect_signal('invoked', function()
 		awful.spawn('xdg-open ' .. '${file_loc}', false)
-	end)
-
-	open_folder:connect_signal('invoked', function()
-		awful.spawn('xdg-open ' .. '${screenshot_dir}', false)
 	end)
 
 	-- Execute the callback when 'Delete' is pressed
@@ -90,7 +81,7 @@ function shot() {
 		timeout = 10,
 		title = '<b>Screensht!</b>',
 		message = '${notif_message}',
-		actions = { open_image, open_folder, delete_image }
+		actions = { open_image, delete_image }
 	})
 	"
 

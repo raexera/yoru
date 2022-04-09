@@ -3,7 +3,6 @@ local awful = require("awful")
 
 -- Theme handling library
 local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
 
 -- Widget library
 local wibox = require("wibox")
@@ -29,9 +28,10 @@ local todo_badge = wibox.widget{
     widget = wibox.widget.textbox
 }
 
+local todo_stat_color = beautiful.xcolor8
 local todo_stat = wibox.widget{
-    colors = {beautiful.xcolor8},
-    bg = "#1C252C",
+    colors = {todo_stat_color},
+    bg = todo_stat_color .. "44",
     value = 5,
     min_value = 0,
     max_value = 8,
@@ -98,7 +98,7 @@ awesome.connect_signal("signal::todo", function(total, done, undone)
     todo_badge.markup = helpers.colorize_text("-" .. undone, beautiful.xcolor1)
 
     todo_total.markup = helpers.colorize_text("/" .. total, beautiful.xcolor8)
-    
+
     if total == 0 then
         todo_badge.visible = false
         total = 1

@@ -4,7 +4,6 @@ local awful = require("awful")
 
 -- Theme handling library
 local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
 
 -- Widget library
 local wibox = require("wibox")
@@ -70,33 +69,13 @@ local function create_boxed_widget(widget_to_be_boxed, width, height, bg_color)
     return boxed_widget
 end
 
-
--- Widget
-local profile = require("ui.dashboard.profile")
-local music = require("ui.dashboard.music")
-local media = require("ui.dashboard.mediakeys")
-local time = require("ui.dashboard.time")
-local date = require("ui.dashboard.date")
-local todo = require("ui.dashboard.todo")
-local weather = require("ui.dashboard.weather")
-local stats = require("ui.dashboard.stats")
-local notifs = require("ui.dashboard.notifs")
-
-
-local time_boxed = create_boxed_widget(centered_widget(time), dpi(260), dpi(95), beautiful.transparent)
-local date_boxed = create_boxed_widget(date, dpi(120), dpi(50), beautiful.dashboard_box_bg)
-local todo_boxed = create_boxed_widget(todo, dpi(120), dpi(120), beautiful.dashboard_box_bg)
-local weather_boxed = create_boxed_widget(weather, dpi(120), dpi(120), beautiful.dashboard_box_bg)
-local stats_boxed = create_boxed_widget(stats, dpi(120), dpi(190), beautiful.dashboard_box_bg)
-local notifs_boxed = create_boxed_widget(notifs, dpi(260), dpi(190), beautiful.dashboard_box_bg)
-
--- dashboard
+-- Dashboard and animations init
 dashboard = wibox({
     type = "dock",
     screen = screen.primary,
+    bg = beautiful.transparent,
     height = screen_height - dpi(50),
     width = beautiful.dashboard_width or dpi(300),
-    shape = helpers.rrect(beautiful.border_radius),
     ontop = true,
     visible = false
 })
@@ -105,21 +84,25 @@ dashboard.y = dpi(25)
 local slide = rubato.timed{
     pos = dpi(-300),
     rate = 60,
-    intro = 0.3,
-    duration = 0.8,
+    intro = 0.2,
+    duration = 0.6,
     easing = rubato.quadratic,
     awestore_compat = true,
-    subscribed = function(pos) dashboard.x = pos end
+    subscribed = function(pos)
+        dashboard.x = pos
+    end
 }
 
 local slide_strut = rubato.timed{
     pos = dpi(0),
     rate = 60,
-    intro = 0.3,
-    duration = 0.8,
+    intro = 0.2,
+    duration = 0.6,
     easing = rubato.quadratic,
     awestore_compat = true,
-    subscribed = function(width) dashboard:struts{left = width, right = 0, top = 0, bottom = 0} end
+    subscribed = function(width)
+        dashboard:struts{left = width, right = 0, top = 0, bottom = 0} 
+    end
 }
 
 local dashboard_status = false
@@ -151,6 +134,25 @@ dashboard_toggle = function()
     end
 end
 
+-- Widget
+local profile = require("ui.dashboard.profile")
+local music = require("ui.dashboard.music")
+local media = require("ui.dashboard.mediakeys")
+local time = require("ui.dashboard.time")
+local date = require("ui.dashboard.date")
+local todo = require("ui.dashboard.todo")
+local weather = require("ui.dashboard.weather")
+local stats = require("ui.dashboard.stats")
+local notifs = require("ui.dashboard.notifs")
+
+local time_boxed = create_boxed_widget(centered_widget(time), dpi(260), dpi(95), beautiful.transparent)
+local date_boxed = create_boxed_widget(date, dpi(120), dpi(50), beautiful.dashboard_box_bg)
+local todo_boxed = create_boxed_widget(todo, dpi(120), dpi(120), beautiful.dashboard_box_bg)
+local weather_boxed = create_boxed_widget(weather, dpi(120), dpi(120), beautiful.dashboard_box_bg)
+local stats_boxed = create_boxed_widget(stats, dpi(120), dpi(190), beautiful.dashboard_box_bg)
+local notifs_boxed = create_boxed_widget(notifs, dpi(260), dashboard.height - dpi(470), beautiful.dashboard_box_bg)
+
+-- Dashboard setup
 dashboard:setup {
     {
         {
@@ -184,7 +186,7 @@ dashboard:setup {
             margins = dpi(10),
             widget = wibox.container.margin
         },
-        bg = beautiful.xbackground,
+        bg = beautiful.dashboard_bg,
         shape = helpers.rrect(beautiful.dashboard_radius),
         widget = wibox.container.background
     }

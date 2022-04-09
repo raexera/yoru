@@ -4,16 +4,9 @@ local awful = require("awful")
 
 -- Theme handling library
 local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
-
--- Notification library
-local naughty = require("naughty")
 
 -- Widget library
 local wibox = require("wibox")
-
--- rubato
-local rubato = require("module.rubato")
 
 -- Helpers
 local helpers = require("helpers")

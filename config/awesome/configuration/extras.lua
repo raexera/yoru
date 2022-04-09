@@ -42,13 +42,6 @@ client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
 
-client.connect_signal("focus",
-                      function(c) c.border_color = beautiful.border_focus end)
-
-client.connect_signal("unfocus",
-                      function(c) c.border_color = beautiful.border_normal end)
-
-
 -- Hide all windows when a splash is shown
 awesome.connect_signal("widgets::splash::visibility", function(vis)
     local t = screen.primary.selected_tag
@@ -73,12 +66,12 @@ bling.widget.tag_preview.enable {
     placement_fn = function(c)
         awful.placement.top_left(c, {
             margins = {
-                top = 99,
+                top = 79,
                 left = beautiful.wibar_width + 55
             }
         })
     end,
-    scale = 0.15,
+    scale = 0.20,
     honor_padding = true,
     honor_workarea = false,
     background_widget = wibox.widget {
@@ -86,11 +79,8 @@ bling.widget.tag_preview.enable {
         -- horizontal_fit_policy = "fit",
         -- vertical_fit_policy = "fit",
         -- widget = wibox.widget.imagebox
-        bg = beautiful.wibar_bg,
+        bg = beautiful.darker_bg,
         widget = wibox.container.bg
     }
 }
-
-require('ui.widgets.window_switcher').enable()
-
 

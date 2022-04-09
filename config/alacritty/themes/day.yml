@@ -1,0 +1,29 @@
+# Beautiful Day
+# Created by https://github.com/rxyhn
+
+colors:
+  primary:
+    background: '#e1dfde'
+    foreground: '#3e5262'
+  cursor:
+    text:   CellForeground
+    cursor: '#3e5262'
+  bright:
+    black:   '#3e5262'
+    red:     '#e57c81'
+    green:   '#93c6a8'
+    yellow:  '#e5a593'
+    blue:    '#85a7d4'
+    magenta: '#c99ce9'
+    cyan:    '#85bfcd'
+    white:   '#676f82'
+  normal:
+    black:   '#3e5262'
+    red:     '#e57c81'
+    green:   '#93c6a8'
+    yellow:  '#e5a593'
+    blue:    '#85a7d4'
+    magenta: '#c99ce9'
+    cyan:    '#85bfcd'
+    white:   '#676f82'
+

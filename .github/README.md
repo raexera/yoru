@@ -1,29 +1,43 @@
 <!-- Screenshot -->
 <div align="center">
-    <img src="https://awesomewm.org/images/awesome-logo.svg">
+    <img src="assets/awesome.png" alt="Rice Preview">
 </div>
 
-<br>
+<h2></h2><br>
+
+<p align="center">
+  <b>🌕 Rxyhn's beautiful & aesthetic configuration files 🌑</b>
+</p>
+
+
+<h2></h2><br>
 
 <div align="center">
-    <img src="assets/awesome.png" alt="Rice Preview">
+    <img src="assets/Day-Night.png" alt="Rice Preview">
 </div>
 
 <br>
 <br>
 
 <a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="160" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
-<b>  Aesthetic AwesomeWM Dotfiles  </b>
+
+### Hi there! Thanks for dropping by!
+<b>  Beautiful & Aesthetic AwesomeWM Dotfiles  </b>
 
 Welcome to my AwesomeWM configuration files! 
 
-so yeah now i'm using awesomewm, looks like i'll be use this wm forever.
+You might be here for looking my AwesomeWM configuration files? or looking for **Linux Rice** reference?
 
-Because only this wm can satisfy me.
-
-Fyi, I use night colorscheme, and it's so beautiful.
+AwesomeWM is the most powerful window manager on Linux, 
+Although it takes time and effort to configure it, but I'm very satisfied with the result.
+You're right! only this wm can satisfy me.
 
 These dotfiles are made with love, for sure.
+
+Idk why i do this things, i love it but ahhh nvm, anyway I do this because it's my hobby.
+If you *like* or are *using* these dotfiles you should `stars` this repo rn!
+So i'll be more enthusiastic to make other interesting things, 
+Thank you! <3
 
 <h2></h2><br>
 
@@ -58,7 +72,7 @@ These dotfiles are made with love, for sure.
             yay -Sy awesome-git picom-git alacritty rofi todo-bin acpi acpid \
             wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
             brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
-            mpd mpc mpdris2 ncmpcpp playerctl --needed 
+            mpd mpc mpdris2 ncmpcpp playerctl redshift ffmpeg bluez-utils --needed 
             ```
 
       + Services
@@ -130,13 +144,58 @@ These dotfiles are made with love, for sure.
 <b>These are the features included in my AwesomeWM setups!</b>
 
 
-   + Beautiful `colorscheme` ikr, named `night` and created by [ner0z](https://github.com/ner0z)
+   + Have two themes!
+      - <details>
+         <summary>Beautiful Day</summary>
+
+         *created by me, comfortable light colorscheme!*
+
+         <div align="left">
+         <img src="assets/day.png" width="500px" alt="day colorscheme preview">
+         </div>
+         </details>
+      - <details>
+         <summary>Aesthetic Night</summary>
+
+         *created by [ner0z](https://github.com/ner0z), extermly aesthetic dark colorscheme!*
+
+         <div align="left">
+         <img src="assets/night.png" width="500px" alt="night colorscheme preview">
+         </div>
+         </details>
    + Aesthetic `Dashboard` ngl.
+      - <details>
+         <summary>Preview</summary>
+
+         *Aesthetic dashboard with neat grid layout, it's so beautiful!*
+
+         <div align="left">
+         <img src="assets/dashboard.png" width="500px" alt="dashboard preview">
+         </div>
+         </details>
+   + Very useful `Control Center` ikr.
+      - <details>
+
+         + *This control-center has many features!*
+            - Exit screen
+            - Volume & brightness control
+            - DnD, Blue light & Airplane mode
+            - Floating layout mode
+            - `Theme switcher`
+            - wifi & bluetooth toggle
+            - built in `screenrec` and `screensht` widgets
+            - Hardware Monitor
+
+         <summary>Preview</summary>
+         <div align="left">
+         <img src="assets/control-center.png" width="500px" alt="control center preview">
+         </div>
+         </details>
    + Custom mouse-friendly `ncmpcpp` UI with album art ofc.
       - <details>
          <summary>Preview</summary>
 
-         *this is so aesthetic isn't it?*
+         *This is so aesthetic isn't it?*
 
          <div align="left">
          <img src="assets/ncmpcpp.png" width="500px" alt="ncmpcpp preview">
@@ -153,13 +212,20 @@ These dotfiles are made with love, for sure.
          </div>
          </details>
    + Notification Center
-   + Control Panel
    + ToDo Reminder
    + Battery Indicator
    + PopUp Notifications
-   + Applications Launcher
    + Some Tooltip Widget
-   + Hardware Monitor
+   + Applications Launcher
+      - <details>
+
+         *Minimalist app launcher!*
+
+         <summary>Preview</summary>
+         <div align="left">
+         <img src="assets/rofi.png" width="500px" alt="app launcher preview">
+         </div>
+         </details>
 
 </details>
 
@@ -181,6 +247,8 @@ also with <kbd>alt, shift, and ctrl</kbd>
 | <kbd>super + f</kbd>                    | Spawn file manager                                        |
 | <kbd>super + d</kbd>                    | Launch applications launcher                              |
 | <kbd>super + shift + d</kbd>            | Toggle dashboard                                          |
+| <kbd>super + shift + c</kbd>            | Toggle control center                                     |
+| <kbd>super + shift + n</kbd>            | Toggle notifications center                               |
 | <kbd>super + q</kbd>                    | Close client                                              |
 | <kbd>super + ctrl + l</kbd>             | Toggle lock screen                                        |
 | <kbd>super + [1-0]</kbd>                | View tag AKA change workspace (for you i3/bsp folks)      |
@@ -203,11 +271,11 @@ also with <kbd>alt, shift, and ctrl</kbd>
 | Mousebind          | Action                                     |
 |--------------------|--------------------------------------------|
 | `left click`       | Dismiss all notifications                  |
-| `right click`      | App drawer                                 |
+| `right click`      | Main menu                                  |
 | `middle click`     | Toggle Dashboard                           |
 | `scroll up/down`   | Cycle through tags                         |
 
-*... And many many more! for more information check `awesome/configuration/keys.lua`*
+*For more information check `awesome/configuration/keys.lua`*
 
 </details>
 
@@ -219,8 +287,9 @@ also with <kbd>alt, shift, and ctrl</kbd>
       + [ner0z](https://github.com/ner0z)
 
    - **Special thanks to**
-      + [ChocolateBread799](https://github.com/ChocolateBread799)
       + [JavaCafe01](https://github.com/JavaCafe01)
+      + [ChocolateBread799](https://github.com/ChocolateBread799)
+      + [Elena](https://github.com/elenapan)
 
 <h2></h2><br>
 

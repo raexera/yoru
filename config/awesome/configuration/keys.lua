@@ -3,14 +3,6 @@ local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
--- Theme handling library
-local beautiful = require("beautiful")
-
--- Theme library
-local beautiful = require("beautiful")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
-
 -- Notifications library
 local naughty = require("naughty")
 
@@ -44,6 +36,14 @@ awful.keyboard.append_global_keybindings({
             dashboard_toggle()
         end,
         {description = "toggle dashboard", group = "launcher"}),
+        awful.key({modkey, shift}, "c", function()
+            control_center_toggle()
+        end,
+        {description = "toggle control center", group = "launcher"}),
+        awful.key({modkey, shift}, "n", function()
+            notif_center_toggle()
+        end,
+        {description = "toggle notif center", group = "launcher"}),
         awful.key({modkey}, "f", function()
             awful.spawn(file_manager)
         end,

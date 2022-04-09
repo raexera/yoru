@@ -2,9 +2,6 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
-local bling = require("module.bling")
 local helpers = require("helpers")
 
 
@@ -98,7 +95,8 @@ client.connect_signal("request::titlebars", function(c)
 
     awful.titlebar(c, {
         position = "top",
-        size = beautiful.titlebar_size
+        size = beautiful.titlebar_size,
+        bg = beautiful.transparent,
     }):setup{
             {   -- left
                 wrap_widget({
@@ -125,7 +123,8 @@ client.connect_signal("request::titlebars", function(c)
 
     awful.titlebar(c, {
         position = "bottom",
-        size = dpi(24)
+        size = dpi(24),
+        bg = beautiful.transparent,
     }):setup{
         bg = beautiful.darker_bg,
         shape = helpers.prrect(beautiful.border_radius, false, false, true, true),

@@ -1,0 +1,158 @@
+#!/bin/sh
+# Simple theme-switcher script.
+# author https://github.com/rxyhn
+
+# var
+########
+awesome=$HOME/.config/awesome/rc.lua
+theme=$HOME/.config/awesome/theme
+term=$HOME/.config/alacritty/alacritty.yml
+xresource=$HOME/.Xresources
+
+# Beautiful day colorscheme
+##############################
+dayxresource () {
+cat << day
+! Xft
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+
+! special
+*.background:   #e1dfde
+*.foreground:   #3e5262
+*.cursorColor:  #3e5262
+
+! black
+*.color0:      #3e5262
+*.color8:      #676f82
+
+! red
+*.color1:      #e57c81
+*.color9:      #f48187
+
+! green
+*.color2:      #93c6a8
+*.color10:     #a3dfbb
+
+! yellow
+*.color3:      #e5a593
+*.color11:     #edab98
+
+! blue
+*.color4:      #85a7d4
+*.color12:     #94bbef
+
+! magenta
+*.color5:      #c99ce9
+*.color13:     #d0a0f0
+
+! cyan
+*.color6:      #85bfcd
+*.color14:     #95d9e9
+
+! white
+*.color7:      #dddbda
+*.color15:     #eaeaea
+day
+}
+
+# Aesthetic night colorscheme
+################################
+nightxresource () {
+cat << night
+! Xft
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+
+! special
+*.foreground:   #d9d7d6
+*.background:   #061115
+*.cursorColor:  #d9d7d6
+
+! black
+*.color0:       #1c252c
+*.color8:       #484e5b
+
+! red
+*.color1:       #df5b61
+*.color9:       #f16269
+
+! green
+*.color2:       #78b892
+*.color10:      #8cd7aa
+
+! yellow
+*.color3:       #de8f78
+*.color11:      #e9967e
+
+! blue
+*.color4:       #6791c9
+*.color12:      #79aaeb
+
+! magenta
+*.color5:       #bc83e3
+*.color13:      #c488ec
+
+! cyan
+*.color6:       #67afc1
+*.color14:      #7acfe4
+
+! white
+*.color7:       #d9d7d6
+*.color15:      #e5e5e5
+night
+}
+
+# Beautiful day themes
+#########################
+day () {
+  # colorscheme
+  sed -i "23s/.*/theme = themes[1]/g" $awesome
+  # picom
+  sed -i "14s/.*/shadow-opacity = 0.25;/g" $theme/picom.conf
+  # rofi
+  sed -i "11s/.*/@import \"day\/day.rasi\"/g" $theme/rofi.rasi
+  # alacritty
+  sed -i "4s/.*/  - .config\/alacritty\/themes\/day.yml/g" $term
+  # xresource
+  dayxresource > $xresource
+  xrdb -merge $xresource
+}
+
+# Aesthetic night themes
+###########################
+night () {
+  # colorscheme
+  sed -i "23s/.*/theme = themes[2]/g" $awesome
+  # picom
+  sed -i "14s/.*/shadow-opacity = 0.50;/g" $theme/picom.conf
+  # rofi
+  sed -i "11s/.*/@import \"night\/night.rasi\"/g" $theme/rofi.rasi
+  # alacritty
+  sed -i "4s/.*/  - .config\/alacritty\/themes\/night.yml/g" $term
+  # xresource
+  nightxresource > $xresource
+  xrdb -merge $xresource
+}
+
+case $1 in
+    day)
+    day
+    ;;
+
+    night)
+    night
+    ;;
+
+    *)
+esac

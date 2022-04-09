@@ -4,7 +4,6 @@ local awful = require("awful")
 
 -- Theme handling library
 local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
 
 -- Notification library
 local naughty = require("naughty")
@@ -42,7 +41,7 @@ local function create_slider_widget(slider_color)
             id = "slider",
             max_value = 100,
             value = 20,
-            background_color = "#1C252C",
+            background_color = slider_color .. "44",
             color = slider_color,
             shape = gears.shape.rounded_rect,
             bar_shape = gears.shape.rounded_rect,

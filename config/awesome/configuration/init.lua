@@ -58,13 +58,17 @@ screen.connect_signal("request::desktop_decoration", function(s)
 end)
 
 -- Wallpapers
--- set wallpapers
+-- set linear gradient wallpapers
 awful.screen.connect_for_each_screen(function(s)
-    -- gears.wallpaper.maximized(beautiful.wallpaper, s, false, nil)
-    gears.wallpaper.set(beautiful.xcolor8)
+    gears.wallpaper.set({
+        type = "linear",
+        from = { 0, 0, 0 },
+        to = { screen_height, screen_width, 1 },
+        stops = { { 0, beautiful.wallpaper }, { 1, beautiful.alt_wallpaper } }
+    }, s, true)
 end)
 
--- Set Tile Wallpaper
+-- Set tile wallpaper
 -- bling.module.tiled_wallpaper("", s, {
 --     fg = beautiful.lighter_bg,
 --     bg = beautiful.xbackground,

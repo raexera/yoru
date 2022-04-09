@@ -21,7 +21,7 @@ local helpers = require("helpers")
 local big_music_icon = wibox.widget{
     align = "center",
     font = beautiful.icon_font_name .. "Bold 16",
-    markup = helpers.colorize_text("", beautiful.xcolor4),
+    markup = helpers.colorize_text("", beautiful.accent),
     widget = wibox.widget.textbox()
 }
 
@@ -58,7 +58,7 @@ local music_icon = wibox.widget{
 -------------
 
 local control_button_bg = "#00000000"
-local control_button_bg_hover = beautiful.xcolor0
+local control_button_bg_hover = beautiful.hover_effect
 local control_button = function(c, symbol, color, font, size, on_click, on_right_click)
     local icon = wibox.widget{
         markup = helpers.colorize_text(symbol, color),
@@ -127,7 +127,7 @@ local function create_slider_widget(slider_color)
             shape         = gears.shape.rounded_bar,
             bar_shape     = gears.shape.rounded_bar,
             color = slider_color,
-            background_color = beautiful.xcolor0,
+            background_color = slider_color .. "44",
             widget = wibox.widget.progressbar
         },
         expand = "none",
@@ -201,8 +201,8 @@ local music_pos = wibox.widget{
 local music_bar = wibox.widget {
     max_value = 100,
     value = 0,
-    background_color = beautiful.xcolor0,
-    color = beautiful.xcolor4,
+    background_color = beautiful.accent .. "44",
+    color = beautiful.accent,
     forced_height = dpi(3),
     widget = wibox.widget.progressbar
 }
@@ -221,14 +221,14 @@ local shuffle_textbox = shuffle:get_all_children()[1]:get_all_children()[1]
 -- Volume
 --------
 
-local vol_color = beautiful.xcolor4
+local vol_color = beautiful.accent
 local vol_slider = create_slider_widget(vol_color)
 local vol_tooltip = create_tooltip(vol_slider)
 
 local vol_icon = wibox.widget{
     align = "center",
-    font = "icomoon 16",
-    markup = "",
+    font = beautiful.font_name .. "16",
+    markup = helpers.colorize_text("", beautiful.accent),
     widget = wibox.widget.textbox
 }
 
@@ -261,10 +261,10 @@ awesome.connect_signal("signal::volume", function(value, muted)
     local vol_value = value or 0
 
     if muted then
-        vol_icon.markup = helpers.colorize_text("", beautiful.xcolor8)
+        vol_icon.markup = helpers.colorize_text("", beautiful.xcolor8)
         fill_color = beautiful.xcolor8
     else
-        vol_icon.markup = helpers.colorize_text("", beautiful.xforeground)
+        vol_icon.markup = helpers.colorize_text("", beautiful.accent)
         fill_color = vol_color
     end
 
@@ -299,7 +299,7 @@ playerctl:connect_signal("position", function(_, interval_sec, length_sec, playe
     if player_name == "mpd" then
         local pos_now = tostring(os.date("!%M:%S", math.floor(interval_sec)))
         local pos_length = tostring(os.date("!%M:%S", math.floor(length_sec)))
-        local pos_markup = pos_now .. helpers.colorize_text(" / " .. pos_length, beautiful.xcolor8)
+        local pos_markup = pos_now .. helpers.colorize_text(" / " .. pos_length, beautiful.xforeground)
 
         music_art:set_image(gears.surface.load_uncached(album_path))
         music_pos:set_markup_silently(pos_markup)
@@ -311,9 +311,9 @@ end)
 playerctl:connect_signal("playback_status", function(_, playing, player_name)
     if player_name == "mpd" then
         if playing then
-            music_play_pause_textbox:set_markup_silently(helpers.colorize_text("", beautiful.xcolor4))
+            music_play_pause_textbox:set_markup_silently(helpers.colorize_text("", beautiful.accent))
         else
-            music_play_pause_textbox:set_markup_silently(helpers.colorize_text("", beautiful.xcolor4))
+            music_play_pause_textbox:set_markup_silently(helpers.colorize_text("", beautiful.accent))
         end
     end
 end)
@@ -323,7 +323,7 @@ playerctl:connect_signal("loop_status", function(_, loop_status, player_name)
         if loop_status == "none" then
             loop_textbox:set_markup_silently("")
         else
-            loop_textbox:set_markup_silently("")
+            loop_textbox:set_markup_silently(helpers.colorize_text("", beautiful.accent))
         end
     end
 end)
@@ -331,7 +331,7 @@ end)
 playerctl:connect_signal("shuffle", function(_, shuffle, player_name)
     if player_name == "mpd" then
         if shuffle then
-            shuffle_textbox:set_markup_silently("")
+            shuffle_textbox:set_markup_silently(helpers.colorize_text("", beautiful.accent))
         else
             shuffle_textbox:set_markup_silently("")
         end
@@ -344,37 +344,42 @@ local music_create_decoration = function (c)
     awful.titlebar.hide(c, beautiful.titlebar_pos)
 
     -- Titlebar
-    awful.titlebar(c, { position = "top", size = beautiful.titlebar_size, bg = beautiful.xbackground }):setup {
+    awful.titlebar(c, { position = "top", size = beautiful.titlebar_size, bg = beautiful.transparent }):setup {
         {
             {
                 {
                     {
-                        vol,
-                        nil,
-                        vol_slider,
-                        spacing = dpi(2),
-                        layout = wibox.layout.fixed.horizontal
+                        {
+                            vol,
+                            nil,
+                            vol_slider,
+                            spacing = dpi(2),
+                            layout = wibox.layout.fixed.horizontal
+                        },
+                        stats_tooltip,
+                        layout = wibox.layout.align.horizontal
                     },
-                    stats_tooltip,
-                    layout = wibox.layout.align.horizontal
+                    top = dpi(10),
+                    bottom = dpi(10),
+                    right = dpi(10),
+                    left = dpi(15),
+                    widget = wibox.container.margin
                 },
-                top = dpi(10),
-                bottom = dpi(10),
-                right = dpi(10),
-                left = dpi(15),
-                widget = wibox.container.margin
+                forced_width = dpi(200),
+                widget = wibox.container.background
             },
-            forced_width = dpi(200),
-            widget = wibox.container.background
+            {
+                widget = music_icon
+            },
+		    layout = wibox.layout.align.horizontal
         },
-        {
-            widget = music_icon
-        },
-		layout = wibox.layout.align.horizontal
+        bg = beautiful.music_bg,
+        shape = helpers.prrect(beautiful.border_radius, true, true, false, false),
+        widget = wibox.container.background
     }
 
     -- Sidebar
-    awful.titlebar(c, { position = "left", size = dpi(200), bg = beautiful.xbackground }):setup {
+    awful.titlebar(c, { position = "left", size = dpi(200) }):setup {
         {
             nil,
             {
@@ -388,69 +393,74 @@ local music_create_decoration = function (c)
             expand = "none",
             layout = wibox.layout.align.vertical
         },
-        bg = beautiful.bg_accent,
+        bg = beautiful.music_accent,
         shape = helpers.prrect(dpi(10), false, true, false, false),
         widget = wibox.container.background,
     }
 
     -- Toolbar
-    awful.titlebar(c, { position = "bottom", size = dpi(63), bg = beautiful.bg_secondary }):setup {
-        music_bar,
+    awful.titlebar(c, { position = "bottom", size = dpi(63), bg = beautiful.transparent }):setup {
         {
+            music_bar,
             {
                 {
-                    -- Go to playlist and focus currently playing song
-                    control_button(c, "", beautiful.xforeground, beautiful.icon_font_name .. "Round 14", dpi(30), function()
-                        awful.spawn.with_shell("mpc -q prev")
-                    end),
-                    -- Toggle play pause
-                    music_play_pause,
-                    -- Go to list of playlists
-                    control_button(c, "", beautiful.xforeground, beautiful.icon_font_name .. "Round 14", dpi(30), function()
-                        awful.spawn.with_shell("mpc -q next")
-                    end),
-                    layout = wibox.layout.flex.horizontal
-                },
-                {
                     {
-                        step_function = wibox.container.scroll
-                            .step_functions
-                            .waiting_nonlinear_back_and_forth,
-                        speed = 50,
-                        {
-                            widget = music_now,
-                        },
-                        -- forced_width = dpi(110),
-                        widget = wibox.container.scroll.horizontal
-                    },
-                    left = dpi(15),
-                    right = dpi(20),
-                    widget = wibox.container.margin
-                },
-                {
-                    music_pos,
-                    {
-                        loop,
-                        shuffle,
-                        -- Go to list of playlists
-                        control_button(c, "", beautiful.xforeground, beautiful.icon_font_name .. "Round 12", dpi(30), function()
-                            helpers.send_key(c, "1")
+                        -- Go to playlist and focus currently playing song
+                        control_button(c, "", beautiful.xforeground, beautiful.icon_font_name .. "Round 14", dpi(30), function()
+                            awful.spawn.with_shell("mpc -q prev")
                         end),
-                        -- Go to visualizer
-                        control_button(c, "", beautiful.xforeground, "icomoon 12", dpi(30), function()
-                            helpers.send_key(c, "8")
+                        -- Toggle play pause
+                        music_play_pause,
+                        -- Go to list of playlists
+                        control_button(c, "", beautiful.xforeground, beautiful.icon_font_name .. "Round 14", dpi(30), function()
+                            awful.spawn.with_shell("mpc -q next")
                         end),
                         layout = wibox.layout.flex.horizontal
                     },
-                    spacing = dpi(10),
-                    layout = wibox.layout.fixed.horizontal
+                    {
+                        {
+                            step_function = wibox.container.scroll
+                                .step_functions
+                                .waiting_nonlinear_back_and_forth,
+                            speed = 50,
+                            {
+                                widget = music_now,
+                            },
+                            -- forced_width = dpi(110),
+                            widget = wibox.container.scroll.horizontal
+                        },
+                        left = dpi(15),
+                        right = dpi(20),
+                        widget = wibox.container.margin
+                    },
+                    {
+                        music_pos,
+                        {
+                            loop,
+                            shuffle,
+                            -- Go to list of playlists
+                            control_button(c, "", beautiful.xforeground, beautiful.icon_font_name .. "Round 12", dpi(30), function()
+                                helpers.send_key(c, "1")
+                            end),
+                            -- Go to visualizer
+                            control_button(c, "", beautiful.xforeground, "icomoon 12", dpi(30), function()
+                                helpers.send_key(c, "8")
+                            end),
+                            layout = wibox.layout.flex.horizontal
+                        },
+                        spacing = dpi(10),
+                        layout = wibox.layout.fixed.horizontal
+                    },
+                    layout = wibox.layout.align.horizontal
                 },
-                layout = wibox.layout.align.horizontal
+                margins = dpi(15),
+                widget = wibox.container.margin
             },
-            margins = dpi(15),
-            widget = wibox.container.margin
+            layout = wibox.layout.align.vertical
         },
-        layout = wibox.layout.align.vertical
+        bg = beautiful.music_bg_accent,
+        shape = helpers.prrect(beautiful.border_radius, false, false, true, true),
+        widget = wibox.container.background
     }
 
     -- Set custom decoration flags

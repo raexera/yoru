@@ -49,7 +49,6 @@ ruled.client.connect_signal("request::rules", function()
             class = {
                 "discord",
                 "Spotify",
-                "firefox",
                 "Org.gnome.Nautilus"
             },
             type = {
@@ -121,8 +120,8 @@ ruled.client.connect_signal("request::rules", function()
         },
         properties = {
             floating = true,
-            width = screen_width * 0.25,
-            height = screen_height * 0.4,
+            width = screen_width * 0.26,
+            height = screen_height * 0.38,
             placement = helpers.centered_client_placement
         }
     }

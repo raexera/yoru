@@ -7,8 +7,6 @@ local wibox = require("wibox")
 
 -- Theme handling library
 local beautiful = require("beautiful")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
 
 -- Rubato
 local rubato = require("module.rubato")
@@ -65,37 +63,56 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
     local batt = wibox.widget{
         charge_icon,
-        color = {beautiful.xcolor2},
-        bg = beautiful.xcolor8 .. "88",
-        value = 50,
-        min_value = 0,
         max_value = 100,
+        value = 50,
         thickness = dpi(4),
         padding = dpi(2),
-        -- rounded_edge = true,
         start_angle = math.pi * 3 / 2,
+        color = {beautiful.xcolor2},
+        bg = beautiful.xcolor2 .. "55",
         widget = wibox.container.arcchart
     }
 
-    awesome.connect_signal("signal::battery", function(value) 
-        local fill_color = beautiful.xcolor2
+    local batt_last_value = 100
+    local batt_low_value = 40
+    local batt_critical_value = 20
+    awesome.connect_signal("signal::battery", function(value)
+        batt.value = value
+        batt_last_value = value
+        local color
 
-        if value >= 11 and value <= 30 then
-            fill_color = beautiful.xcolor3
-        elseif value <= 10 then
-            fill_color = beautiful.xcolor1
+        if charge_icon.visible then
+            color = beautiful.xcolor6
+        elseif value <= batt_critical_value then
+            color = beautiful.xcolor1
+        elseif value <= batt_low_value then
+            color = beautiful.xcolor3
+        else
+            color = beautiful.xcolor2
         end
 
-        batt.colors = {fill_color}
-        batt.value = value
+        batt.colors = {color}
+        batt.bg = color .. "44"
     end)
 
     awesome.connect_signal("signal::charger", function(state)
+        local color
         if state then
             charge_icon.visible = true
+            color = beautiful.xcolor6
+        elseif batt_last_value <= batt_critical_value then
+            charge_icon.visible = false
+            color = beautiful.xcolor1
+        elseif batt_last_value <=  batt_low_value then
+            charge_icon.visible = false
+            color = beautiful.xcolor3
         else
             charge_icon.visible = false
+            color = beautiful.xcolor2
         end
+
+        batt.colors = {color}
+        batt.bg = color .. "44"
     end)
 
 
@@ -130,8 +147,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
             bottom = dpi(5),
             widget = wibox.container.margin
         },
-        bg = beautiful.lighter_bg,
-        shape = helpers.rrect(beautiful.bar_radius),
+        bg = beautiful.wibar_widget_bg,
+        shape = helpers.rrect(beautiful.widget_radius),
         widget = wibox.container.background
     }
 
@@ -146,8 +163,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
             spacing = dpi(5),
             layout = wibox.layout.fixed.vertical
         },
-        bg = beautiful.xcolor0,
-        shape = helpers.rrect(beautiful.bar_radius),
+        bg = beautiful.wibar_widget_alt_bg,
+        shape = helpers.rrect(beautiful.widget_radius),
         widget = wibox.container.background
     }
 
@@ -157,7 +174,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     end)
 
     stats:connect_signal("mouse::leave", function()
-        stats.bg = beautiful.xcolor0
+        stats.bg = beautiful.wibar_widget_alt_bg
         stats_tooltip_hide()
     end)
 
@@ -170,7 +187,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         screen = screen.primary,
         height = screen_height - dpi(50),
         width = dpi(300),
-        shape = helpers.rrect(beautiful.notif_center_radius),
+        bg = beautiful.transparent,
         ontop = true,
         visible = false
     })
@@ -180,11 +197,13 @@ screen.connect_signal("request::desktop_decoration", function(s)
     local slide = rubato.timed{
         pos = dpi(-300),
         rate = 60,
-        intro = 0.3,
-        duration = 0.8,
+        intro = 0.2,
+        duration = 0.6,
         easing = rubato.quadratic,
         awestore_compat = true,
-        subscribed = function(pos) notif_center.x = pos end
+        subscribed = function(pos)
+            notif_center.x = pos
+        end
     }
 
     local notif_center_status = false
@@ -207,7 +226,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         notif_center_status = true
     end
 
-    local notif_center_toggle = function()
+    notif_center_toggle = function()
         if notif_center.visible then
             notif_center_hide()
         else
@@ -216,16 +235,21 @@ screen.connect_signal("request::desktop_decoration", function(s)
     end
 
     -- notif_center setup
-    s.notif_center = require('ui.notifs.notif-center')(s)
+    s.notif_center = require('ui.widgets.notif-center')(s)
 
     notif_center:setup {
-        s.notif_center,
-        margins = dpi(15),
-        widget = wibox.container.margin
+        {
+            s.notif_center,
+            margins = dpi(15),
+            widget = wibox.container.margin
+        },
+        bg = beautiful.xbackground,
+        shape = helpers.rrect(beautiful.notif_center_radius),
+        widget = wibox.container.background
     }
 
     local notif_center_button = wibox.widget{
-        markup = helpers.colorize_text("", beautiful.xcolor4),
+        markup = helpers.colorize_text("", beautiful.accent),
         font = beautiful.font_name .. "18",
         align = "center",
         valign = "center",
@@ -233,11 +257,11 @@ screen.connect_signal("request::desktop_decoration", function(s)
     }
 
     notif_center_button:connect_signal("mouse::enter", function()
-        notif_center_button.markup = helpers.colorize_text(notif_center_button.text, beautiful.xcolor4 .. 55)
+        notif_center_button.markup = helpers.colorize_text(notif_center_button.text, beautiful.accent .. 55)
     end)
 
     notif_center_button:connect_signal("mouse::leave", function()
-        notif_center_button.markup = helpers.colorize_text(notif_center_button.text, beautiful.xcolor4)
+        notif_center_button.markup = helpers.colorize_text(notif_center_button.text, beautiful.accent)
     end)
 
     notif_center_button:buttons(gears.table.join(
@@ -294,7 +318,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
         screen = s,
         height = awful.screen.focused().geometry.height - dpi(50),
         width = dpi(50),
-        shape = helpers.rrect(beautiful.border_radius),
         bg = beautiful.transparent,
         ontop = true,
         visible = true
@@ -327,12 +350,12 @@ screen.connect_signal("request::desktop_decoration", function(s)
     client.connect_signal("request::unmanage", add_wibar)
 
      -- Create the taglist widget
-    s.mytaglist = require("ui.widgets.pacman_taglist")(s)
+    s.mytaglist = require("ui.widgets.pacman-taglist")(s)
 
     local taglist = wibox.widget{
         s.mytaglist,
         shape = beautiful.taglist_shape_focus,
-        bg = beautiful.xcolor0,
+        bg = beautiful.wibar_widget_alt_bg,
         widget = wibox.container.background
     }
 
@@ -361,7 +384,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
             margins = dpi(8),
             widget = wibox.container.margin
         },
-        bg = beautiful.darker_bg,
+        bg = beautiful.wibar_bg,
         shape = helpers.rrect(beautiful.border_radius),
         widget = wibox.container.background
     }

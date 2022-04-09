@@ -41,8 +41,5 @@ awful.screen.connect_for_each_screen(function(s)
             {"Power Menu", powermenu}
         }
     })
-
-    mymainmenu.wibox.shape = helpers.rrect(beautiful.border_radius)
-
 end)
 

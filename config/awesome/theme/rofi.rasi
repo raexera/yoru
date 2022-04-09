@@ -8,15 +8,9 @@ configuration {
 }
 
 @theme "/dev/null"
+@import "night/night.rasi"
 
 * {
-	bg:				#061115;
-	fg:				#d9d7d6;
-	accent:			#1c252c;
-	darkerAccent:	#162026;
-    active:      	#484e5b;
-	rad:			12px;
-
 	background-color: @bg;
 	text-color:	@fg;
 }
@@ -36,7 +30,7 @@ inputbar {
 	expand: false;
 	margin: 20px 20px 0 20px;
 	border-radius: @rad;
-	background-color: @darkerAccent;
+	background-color: @altBg;
 }
 
 textbox {
@@ -47,7 +41,7 @@ textbox {
     vertical-align: 0.5;
     border-radius: @rad;
     background-color: @accent;
-    text-color: @bg;
+    text-color: @altBg;
     font: "Material Icons 17";
 }
 
@@ -56,7 +50,7 @@ entry{
 	padding: 2%;
     placeholder: "Search";
 	border-radius: @rad;
-    background-color: @darkerAccent;
+    background-color: @altBg;
 }
 
 listview {
@@ -81,7 +75,7 @@ element-icon { size: 48px; }
 listview, element, element selected, element-text, element-icon { cursor: pointer; }
 
 element selected {
-	background-color: @darkerAccent;
-	text-color: @fg;
+	background-color: @altBg;
+	text-color: @accent;
 	border-radius: @rad;
 }
