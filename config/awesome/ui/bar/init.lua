@@ -310,6 +310,30 @@ awful.screen.connect_for_each_screen(function(s)
 
     helpers.add_hover_cursor(layoutbox, "hand2")
 
+    -- Create a system tray widget
+    s.systray = wibox.widget.systray()
+    s.traybox = wibox({ screen = s, width = dpi(200), height = dpi(50), bg = "#00000000", visible = false, ontop = true})
+    s.traybox:setup {
+        {
+            {
+                nil,
+                s.systray,
+                expand = "none",
+                layout = wibox.layout.align.horizontal,
+            },
+            margins = dpi(15),
+            widget = wibox.container.margin
+        },
+        bg = beautiful.wibar_bg,
+        shape = helpers.rrect(beautiful.border_radius),
+        widget = wibox.container.background
+    }
+    awful.placement.bottom_right(s.traybox, { margins = { bottom = dpi(25), right = dpi(25)} })
+    s.traybox:buttons(gears.table.join(
+        awful.button({ }, 2, function ()
+            s.traybox.visible = false
+        end)
+    ))
 
     -- Create the wibar
     s.mywibar = awful.wibar({
@@ -392,3 +416,8 @@ awful.screen.connect_for_each_screen(function(s)
     -- wibar position
     s.mywibar.x = dpi(25)
 end)
+
+function tray_toggle()
+    local s = awful.screen.focused()
+    s.traybox.visible = not s.traybox.visible
+end

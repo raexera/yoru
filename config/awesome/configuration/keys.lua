@@ -32,6 +32,18 @@ awful.keyboard.append_global_keybindings({
             awful.spawn(launcher)
         end,
         {description = "open applications menu", group = "launcher"}),
+        awful.key({modkey}, "f", function()
+            awful.spawn(file_manager)
+        end,
+        {description = "open file manager", group = "launcher"}),
+        awful.key({modkey}, "w", function()
+            awful.spawn.with_shell(browser)
+        end,
+        {description = "open web browser", group = "launcher"}),
+        awful.key({modkey}, "x", function()
+            awful.spawn.with_shell("xcolor-pick")
+        end,
+        {description = "open color-picker", group = "launcher"}),
         awful.key({modkey, shift}, "d", function()
             dashboard_toggle()
         end,
@@ -44,18 +56,10 @@ awful.keyboard.append_global_keybindings({
             notif_center_toggle()
         end,
         {description = "toggle notif center", group = "launcher"}),
-        awful.key({modkey}, "f", function()
-            awful.spawn(file_manager)
+        awful.key({modkey, shift}, "t", function()
+            tray_toggle()
         end,
-        {description = "open file manager", group = "launcher"}),
-        awful.key({modkey}, "w", function()
-            awful.spawn.with_shell(browser)
-        end,
-        {description = "open web browser", group = "launcher"}),
-        awful.key({modkey}, "x", function()
-            awful.spawn.with_shell("xcolor-pick")
-        end,
-        {description = "open color-picker", group = "launcher"})
+        {description = "toggle system tray", group = "launcher"}),
 })
 
 -- Client and Tabs Bindings
