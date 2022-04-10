@@ -34,7 +34,7 @@ end
 -- Wibar
 -----------
 
-screen.connect_signal("request::desktop_decoration", function(s)
+awful.screen.connect_for_each_screen(function(s)
 
     -- Launcher
     -------------
@@ -184,7 +184,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
     notif_center = wibox({
         type = "dock",
-        screen = screen.primary,
+        screen = s,
         height = screen_height - dpi(50),
         width = dpi(300),
         bg = beautiful.transparent,
