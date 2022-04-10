@@ -8,12 +8,12 @@ local lock_screen = require("ui.lockscreen")
 lock_screen.init()
 
 -- Icons
-local icon_font = beautiful.icon_font_name .. 30
-local poweroff_text_icon = ""
-local reboot_text_icon = ""
-local suspend_text_icon = "鈴"
-local exit_text_icon = ""
-local lock_text_icon = ""
+local icon_font = "icomoon bold 45"
+local poweroff_text_icon = ""
+local reboot_text_icon = ""
+local suspend_text_icon = ""
+local exit_text_icon = ""
+local lock_text_icon = ""
 
 local button_bg = beautiful.xbackground
 local button_size = dpi(120)
@@ -55,18 +55,26 @@ local create_button = function(symbol, hover_color, text, command)
     }
 
     local button = wibox.widget {
-        {nil, icon, expand = "none", layout = wibox.layout.align.horizontal},
+        {
+            nil,
+            icon,
+            expand = "none",
+            layout = wibox.layout.align.horizontal
+        },
         forced_height = button_size,
         forced_width = button_size,
-        shape = helpers.rrect(beautiful.widget_border_radius),
+        border_width = dpi(8),
+        border_color = button_bg,
+        shape = helpers.rrect(dpi(20)),
         bg = button_bg,
-        border_width = beautiful.widget_border_width,
-        border_color = beautiful.widget_border_color,
         widget = wibox.container.background
     }
 
     button:buttons(gears.table.join(
-                       awful.button({}, 1, function() command() end)))
+        awful.button({ }, 1, function ()
+            command()
+        end)
+    ))
 
     button:connect_signal("mouse::enter", function()
         icon.markup = helpers.colorize_text(icon.text, hover_color)
