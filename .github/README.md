@@ -60,24 +60,32 @@ These dotfiles are made with love, for sure.
 
    > This is step-by-step how to install these dotfiles. Just [R.T.F.M](https://en.wikipedia.org/wiki/RTFM).
 
-   1. Install dependencies and enable services
+   1. Install the [git version of AwesomeWM](https://github.com/awesomeWM/awesome/).
+
+      *Assuming your AUR helper is* `yay`
+
+      ```sh
+      yay -S awesome-git
+      ```
+
+   2. Install dependencies and enable services
 
       + Dependencies
 
       - **Arch Linux** (and all Arch-based distributions)
 
-            *Assuming your AUR helper is* `yay`
+         *Assuming your AUR helper is* `yay`
 
-            ```shell
-            yay -Sy awesome-git picom-git alacritty rofi todo-bin acpi acpid \
-            wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
-            brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
-            mpd mpc mpdris2 ncmpcpp playerctl redshift ffmpeg bluez-utils --needed 
-            ```
+         ```sh
+         yay -Sy picom-git alacritty rofi todo-bin acpi acpid \
+         wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
+         brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
+         mpd mpc mpdris2 ncmpcpp playerctl redshift ffmpeg bluez-utils --needed 
+         ```
 
       + Services
 
-         ```shell
+         ```sh
          # For automatically launching mpd on login
          systemctl --user enable mpd.service
          systemctl --user start mpd.service
@@ -87,7 +95,7 @@ These dotfiles are made with love, for sure.
          sudo systemctl start acpid.service
          ```
 
-   2. Install needed fonts
+   3. Install needed fonts
 
       You will need to install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
 
@@ -98,7 +106,7 @@ These dotfiles are made with love, for sure.
 
       Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`.
    
-   3. Install my AwesomeWM configuration files
+   4. Install my AwesomeWM configuration files
 
       > Clone this repository
 
@@ -121,7 +129,7 @@ These dotfiles are made with love, for sure.
       export TODO_PATH="path/to/todo"
       ```
 
-   4. Configure stuff
+   5. Configure stuff
 
       The relevant files are inside your `~/.config/awesome` directory.
 
@@ -132,7 +140,7 @@ These dotfiles are made with love, for sure.
 
          Note: For the weather widgets to work, you will also need to create an account on [openweathermap](https://openweathermap.org), get your key, look for your city ID, and set `openweathermap_key` and `openweathermap_city_id` accordingly.
 
-   5. Lastly, log out from your current desktop session and log in into AwesomeWM.
+   6. Lastly, log out from your current desktop session and log in into AwesomeWM.
 
 </details>
 
@@ -170,7 +178,7 @@ These dotfiles are made with love, for sure.
          *Aesthetic dashboard with neat grid layout, it's so beautiful!*
 
          <div align="left">
-         <img src="assets/dashboard.png" width="500px" alt="dashboard preview">
+         <img src="assets/dashboard.gif" width="500px" alt="dashboard preview">
          </div>
          </details>
    + Very useful `Control Center` ikr.
@@ -188,7 +196,7 @@ These dotfiles are made with love, for sure.
 
          <summary>Preview</summary>
          <div align="left">
-         <img src="assets/control-center.png" width="500px" alt="control center preview">
+         <img src="assets/control-center.gif" width="500px" alt="control center preview">
          </div>
          </details>
    + Custom mouse-friendly `ncmpcpp` UI with album art ofc.
@@ -198,7 +206,7 @@ These dotfiles are made with love, for sure.
          *This is so aesthetic isn't it?*
 
          <div align="left">
-         <img src="assets/ncmpcpp.png" width="500px" alt="ncmpcpp preview">
+         <img src="assets/ncmpcpp.gif" width="500px" alt="ncmpcpp preview">
          </div>
          </details>
    + `Word Clock Lockscreen` with PAM Integration!
@@ -223,7 +231,7 @@ These dotfiles are made with love, for sure.
 
          <summary>Preview</summary>
          <div align="left">
-         <img src="assets/rofi.png" width="500px" alt="app launcher preview">
+         <img src="assets/app-launcher.gif" width="500px" alt="app launcher preview">
          </div>
          </details>
 

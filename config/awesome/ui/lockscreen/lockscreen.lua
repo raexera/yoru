@@ -20,8 +20,7 @@ local lock_screen = require("ui.lockscreen")
 
 lock_screen_box = wibox({visible = false, ontop = true, type = "splash", screen = screen.primary})
 awful.placement.maximize(lock_screen_box)
--- lock_screen_box.bg = beautiful.transparent
-lock_screen_box.bg = beautiful.xbackground .. "22"
+lock_screen_box.bg = beautiful.transparent
 
 -- Add lockscreen to each screen
 awful.screen.connect_for_each_screen(function(s)
@@ -127,8 +126,7 @@ end
 
 local var_count = 0
 for i, m in pairs(time_char) do
-    -- local text = helpers.colorize_text(m, "#162026")
-    local text = helpers.colorize_text(m, beautiful.lighter_bg .. "55")
+    local text = helpers.colorize_text(m, beautiful.accent .. "55")
 
     var_count = var_count + 1
     local create_dummy_text = true
@@ -157,7 +155,7 @@ local function activate_word(w)
     for i, m in pairs(char_map[w]) do
         local text = m.text
 
-        m.markup = helpers.colorize_text(text, beautiful.xforeground)
+        m.markup = helpers.colorize_text(text, beautiful.accent)
 
     end
 end
@@ -165,8 +163,7 @@ end
 local function deactivate_word(w)
     for i, m in pairs(char_map[w]) do
         local text = m.text
-
-        m.markup = helpers.colorize_text(text, beautiful.lighter_bg .. "55")
+        m.markup = helpers.colorize_text(text, beautiful.accent .. "55")
 
     end
 end
@@ -239,9 +236,9 @@ local lock_screen_symbol = ""
 local lock_screen_fail_symbol = ""
 local lock_animation_icon = wibox.widget {
     -- Set forced size to prevent flickering when the icon rotates
-    forced_height = dpi(80),
-    forced_width = dpi(80),
-    font = beautiful.icon_font_name .. "Outlined 24",
+    forced_height = dpi(60),
+    forced_width = dpi(60),
+    font = beautiful.icon_font_name .. "Outlined 30",
     align = "center",
     valign = "center",
     widget = wibox.widget.textbox(lock_screen_symbol)
@@ -258,8 +255,8 @@ end
 local lock_animation_arc = wibox.widget {
     shape = arc(),
     bg = "#00000000",
-    forced_width = dpi(50),
-    forced_height = dpi(50),
+    forced_width = dpi(90),
+    forced_height = dpi(90),
     widget = wibox.container.background
 }
 
@@ -402,7 +399,7 @@ lock_screen_box:setup {
                 widget = wibox.container.margin
             },
             shape = helpers.rrect(beautiful.border_radius),
-            bg = beautiful.xbackground,
+            bg = beautiful.darker_bg,
             widget = wibox.container.background
         },
         expand = "none",
