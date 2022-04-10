@@ -66,14 +66,14 @@ These dotfiles are made with love, for sure.
 
       - **Arch Linux** (and all Arch-based distributions)
 
-            *Assuming your AUR helper is* `yay`
+      - *Assuming your AUR helper is* `yay`
 
-            ```shell
-            yay -Sy awesome-git picom-git alacritty rofi todo-bin acpi acpid \
-            wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
-            brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
-            mpd mpc mpdris2 ncmpcpp playerctl redshift ffmpeg bluez-utils --needed 
-            ```
+        ```shell
+        yay -Sy awesome-git picom-git alacritty rofi todo-bin acpi acpid \
+        wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
+        brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
+        mpd mpc mpdris2 ncmpcpp playerctl redshift ffmpeg bluez-utils --needed 
+        ```
 
       + Services
 
