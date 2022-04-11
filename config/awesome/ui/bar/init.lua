@@ -341,7 +341,7 @@ awful.screen.connect_for_each_screen(function(s)
         position = "left",
         screen = s,
         height = awful.screen.focused().geometry.height - dpi(50),
-        width = dpi(50),
+        width = beautiful.wibar_width,
         bg = beautiful.transparent,
         ontop = true,
         visible = true
@@ -374,7 +374,7 @@ awful.screen.connect_for_each_screen(function(s)
     client.connect_signal("request::unmanage", add_wibar)
 
      -- Create the taglist widget
-    s.mytaglist = require("ui.widgets.pacman-taglist")(s)
+    s.mytaglist = require("ui.bar.pacman-taglist")(s)
 
     local taglist = wibox.widget{
         s.mytaglist,

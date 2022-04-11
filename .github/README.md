@@ -102,22 +102,28 @@ These dotfiles are made with love, for sure.
       Necessary fonts:
       + **Iosevka**  - [here](https://github.com/ryanoasis/nerd-fonts/)
       + **Icomoon**  - [here](https://www.dropbox.com/s/hrkub2yo9iapljz/icomoon.zip?dl=0)
-      + **Material** - [here](https://github.com/google/material-design-icons)
+      + **Material Icons** - [here](https://github.com/google/material-design-icons)
+      + **Material Design** - [here](https://github.com/Templarian/MaterialDesign-Font)
 
-      Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`.
+      Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`
+      and run this command for your system to detect the newly installed fonts.
+
+      ```sh
+      fc-cache -v
+      ```
    
    4. Install my AwesomeWM configuration files
 
       > Clone this repository
 
-      ```shell
+      ```sh
       git clone https://github.com/rxyhn/dotfiles.git
       cd dotfiles
       ```
 
       > Copy config and binaries files
 
-      ```shell
+      ```sh
       cp -r config/* ~/.config/
       cp -r bin/* ~/.local/bin/
       cp -r misc/. ~/
@@ -125,7 +131,7 @@ These dotfiles are made with love, for sure.
 
       > You have to add `TODO_PATH` in your env variable
 
-      ```shell
+      ```sh
       export TODO_PATH="path/to/todo"
       ```
 

@@ -66,8 +66,8 @@ bling.widget.tag_preview.enable {
     placement_fn = function(c)
         awful.placement.top_left(c, {
             margins = {
-                top = 79,
-                left = beautiful.wibar_width + 55
+                top = 92,
+                left = beautiful.wibar_width + 50
             }
         })
     end,

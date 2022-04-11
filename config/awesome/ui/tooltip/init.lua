@@ -208,8 +208,8 @@ stats_tooltip = wibox({
 
 awful.placement.bottom_left(stats_tooltip, {
     margins = {
-        left = beautiful.wibar_width + 55, 
-        bottom = dpi(33)
+        left = beautiful.wibar_width + 50,
+        bottom = dpi(30)
     }
 })
 

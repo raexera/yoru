@@ -16,14 +16,12 @@ local helpers = require("helpers")
 ------------
 
 local pop_icon = wibox.widget{
-	{
-        id = "icon",
-		resize = true,
-		widget = wibox.widget.imagebox
-	},
-	forced_height = dpi(100),
-	top = dpi(28),
-	widget = wibox.container.margin
+    forced_height = dpi(100),
+    forced_width = dpi(100),
+    font = beautiful.icon_font_name .. "80",
+    align = "center",
+    valign = "center",
+    widget = wibox.widget.textbox()
 }
 
 local pop_bar = wibox.widget {
@@ -33,6 +31,7 @@ local pop_bar = wibox.widget {
     color = beautiful.bg_accent,
     shape = gears.shape.rounded_bar,
     bar_shape = gears.shape.rounded_bar,
+    forced_height = dpi(25),
     widget = wibox.widget.progressbar
 }
 
@@ -41,7 +40,7 @@ local pop = wibox({
     screen = screen.focused,
     height = beautiful.pop_size,
     width = beautiful.pop_size,
-    shape = helpers.rrect(beautiful.pop_border_radius - 1),
+    shape = helpers.rrect(beautiful.pop_border_radius),
     bg = beautiful.transparent,
     ontop = true,
     visible = false
@@ -51,20 +50,18 @@ pop:setup {
     {
         {
             {
-                layout = wibox.layout.align.horizontal,
-                expand = 'none',
-                nil,
                 pop_icon,
-                nil
+                layout = wibox.layout.fixed.vertical
             },
-            layout = wibox.layout.fixed.vertical
-        },
-        {
+            nil,
             pop_bar,
-            margins = dpi(28),
-            widget = wibox.container.margin
+            layout = wibox.layout.align.vertical
         },
-        layout = wibox.layout.align.vertical
+        top = dpi(15),
+        bottom = dpi(30),
+        left = dpi(30),
+        right = dpi(30),
+        widget = wibox.container.margin
     },
     bg = beautiful.xbackground,
     shape = helpers.rrect(beautiful.pop_border_radius),
@@ -91,43 +88,28 @@ end
 
 local vol_first_time = true
 awesome.connect_signal("signal::volume", function(value, muted)
-    local icon = beautiful.volume_icon
-
     if vol_first_time then
         vol_first_time = false
     else
+        pop_icon.markup = helpers.colorize_text("", beautiful.accent)
+        pop_bar.value = value
 
         if muted then
-            local muted_icon = gears.color.recolor_image(beautiful.volume_muted_icon, beautiful.xcolor8)
-            icon = muted_icon
+            pop_icon.markup = helpers.colorize_text("", beautiful.xcolor8)
             pop_bar.color = beautiful.xcolor8
         else
-            local vol_icon =  gears.color.recolor_image(icon, beautiful.pop_vol_color)
-            icon = vol_icon
-            pop_bar.color = beautiful.pop_vol_color
+            pop_bar.color = beautiful.accent
         end
 
-        pop_bar.value = value
-        pop_icon.icon.image = icon
         toggle_pop()
     end
 end)
 
 awesome.connect_signal("signal::brightness", function(value)
-    local icon = beautiful.brightness_icon
-
-    if value ~= 0 then
-        local bri_icon = gears.color.recolor_image(icon, beautiful.pop_brightness_color)
-        icon = bri_icon
-        pop_bar.color = beautiful.pop_brightness_color
-    else
-        local bri_icon = gears.color.recolor_image(icon, beautiful.xcolor8)
-        icon = bri_icon
-    end
-
-
+    pop_icon.markup = helpers.colorize_text("", beautiful.accent)
     pop_bar.value = value
-    pop_icon.icon.image = icon
+    pop_bar.color = beautiful.accent
+
     toggle_pop()
 end)
 

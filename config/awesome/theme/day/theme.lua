@@ -74,7 +74,7 @@ theme.font_name = "Iosevka Nerd Font Mono "
 theme.font = theme.font_name .. "8"
 theme.icon_font_name = "Material Icons "
 theme.icon_font = theme.icon_font_name .. "18"
-theme.font_taglist = theme.icon_font_name .. "13"
+theme.font_taglist = "Material Design Icons Desktop 14"
 
 -- Background Colors
 theme.bg_dark = theme.darker_bg
@@ -139,10 +139,10 @@ theme.taglist_shape = helpers.rrect(theme.widget_radius)
 theme.taglist_shape_urgent = helpers.rrect(theme.widget_radius)
 theme.taglist_shape_volatile = helpers.rrect(theme.widget_radius)
 
--- Pacman taglist
-theme.pacman = theme.xcolor3
-theme.ghost = theme.accent
-theme.dots = theme.xcolor15
+-- Taglist Icons
+theme.taglist_icon_focused = theme.xcolor3
+theme.taglist_icon_occupied = theme.accent
+theme.taglist_icon_empty = theme.xcolor8
 
 -- Titlebars
 theme.titlebar_enabled = true
@@ -156,7 +156,7 @@ theme.music_bg_accent = theme.darker_bg
 theme.music_accent = theme.xcolor15
 
 -- Pop up notifications
-theme.pop_size = dpi(180)
+theme.pop_size = dpi(190)
 theme.pop_bg = theme.xbackground
 theme.pop_vol_color = theme.accent
 theme.pop_brightness_color = theme.accent
@@ -238,7 +238,7 @@ theme = theme_assets.recolor_layout(theme, theme.xforeground)
 theme.useless_gap = dpi(5)
 
 -- Wibar
-theme.wibar_width = dpi(45)
+theme.wibar_width = dpi(50)
 theme.wibar_bg = theme.darker_bg
 theme.wibar_widget_bg = theme.xbackground
 theme.wibar_widget_alt_bg = theme.lighter_bg
