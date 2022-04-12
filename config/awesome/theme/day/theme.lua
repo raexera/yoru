@@ -72,9 +72,9 @@ theme.brightness_icon = gears.surface.load_uncached(gfs.get_configuration_dir() 
 -- Fonts
 theme.font_name = "Iosevka Nerd Font Mono "
 theme.font = theme.font_name .. "8"
-theme.icon_font_name = "Material Icons "
+theme.icon_font_name = "Material Design Icons Desktop "
 theme.icon_font = theme.icon_font_name .. "18"
-theme.font_taglist = "Material Design Icons Desktop 14"
+theme.font_taglist =  theme.icon_font_name .. "14"
 
 -- Background Colors
 theme.bg_dark = theme.darker_bg

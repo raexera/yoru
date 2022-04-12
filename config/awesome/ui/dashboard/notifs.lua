@@ -28,7 +28,7 @@ local notifs_text = wibox.widget{
 
 -- Clear button
 local notifs_clear = wibox.widget {
-    markup = "",
+    markup = "󰎟",
     font = beautiful.icon_font_name .. "13",
     align = "center",
     valign = "center",
@@ -113,8 +113,8 @@ local create_notif = function(icon, n, width)
     local dismiss_icon = wibox.widget {
         {
             id = 'dismiss_icon',
-            markup = helpers.colorize_text("", beautiful.xcolor1),
-            font = beautiful.icon_font_name .. "Round 8",
+            markup = helpers.colorize_text("󰅖", beautiful.xcolor1),
+            font = beautiful.icon_font_name .. "6",
             align = "center",
             valign = "center",
             widget = wibox.widget.textbox

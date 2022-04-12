@@ -232,13 +232,13 @@ gears.timer {
 }
 
 -- Lock animation
-local lock_screen_symbol = ""
-local lock_screen_fail_symbol = ""
+local lock_screen_symbol = "󰍁"
+local lock_screen_fail_symbol = "󱙲"
 local lock_animation_icon = wibox.widget {
     -- Set forced size to prevent flickering when the icon rotates
     forced_height = dpi(60),
     forced_width = dpi(60),
-    font = beautiful.icon_font_name .. "Outlined 30",
+    font = beautiful.icon_font_name .. "30",
     align = "center",
     valign = "center",
     widget = wibox.widget.textbox(lock_screen_symbol)

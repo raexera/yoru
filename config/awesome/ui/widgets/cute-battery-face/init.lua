@@ -40,9 +40,9 @@ local battery_bar_container = wibox.widget {
 }
 
 local charging_icon = wibox.widget {
-    font = beautiful.icon_font_name .. "Round 14",
+    font = beautiful.icon_font_name .. "18",
     valign = "center",
-    markup = helpers.colorize_text("", stroke.."80"),
+    markup = helpers.colorize_text("󱐋", stroke.."80"),
     widget = wibox.widget.textbox()
 }
 

@@ -40,9 +40,9 @@ local get_taglist = function(s)
         if tag.selected then
             textbox.markup = helpers.colorize_text("󰮯", beautiful.taglist_icon_focused)
         elseif #tag:clients() == 0 then
-            textbox.markup = helpers.colorize_text("", beautiful.taglist_icon_empty)
+            textbox.markup = helpers.colorize_text("󰽢", beautiful.taglist_icon_empty)
         else
-            textbox.markup = helpers.colorize_text("", beautiful.taglist_icon_occupied)
+            textbox.markup = helpers.colorize_text("󰊠", beautiful.taglist_icon_occupied)
         end
     end
 

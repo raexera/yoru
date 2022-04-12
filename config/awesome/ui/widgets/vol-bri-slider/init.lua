@@ -37,7 +37,7 @@ local function create_icons(icon, color)
         wibox.widget {
         {
             markup = helpers.colorize_text(icon, color),
-            font = beautiful.icon_font_name .. "Round 14",
+            font = beautiful.icon_font_name .. "14",
             align = "left",
             valign = "center",
             widget = wibox.widget.textbox
@@ -56,14 +56,14 @@ local brightness = create_slider_widget(brightness_color)
 local vol_slider_container =
     wibox.widget {
     vol,
-    create_icons("", beautiful.xforeground),
+    create_icons("󰕾", beautiful.xforeground),
     layout = wibox.layout.stack
 }
 
 local brightness_slider_container =
     wibox.widget {
     brightness,
-    create_icons("", beautiful.xforeground),
+    create_icons("󰖨", beautiful.xforeground),
     layout = wibox.layout.stack
 }
 

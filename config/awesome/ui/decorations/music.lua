@@ -15,20 +15,23 @@ local wibox = require("wibox")
 local helpers = require("helpers")
 
 
+-- Aesthetic Music Player
+----------------------------
+
 -- Music icon
 ----------------
 
 local big_music_icon = wibox.widget{
     align = "center",
-    font = beautiful.icon_font_name .. "Bold 16",
-    markup = helpers.colorize_text("", beautiful.accent),
+    font = beautiful.icon_font_name .. "15",
+    markup = helpers.colorize_text("󰎇", beautiful.accent),
     widget = wibox.widget.textbox()
 }
 
 local small_music_icon = wibox.widget{
     align = "center",
-    font = beautiful.icon_font_name .. "Bold 12",
-    markup = helpers.colorize_text("", beautiful.xforeground),
+    font = beautiful.icon_font_name .. "11",
+    markup = helpers.colorize_text("󰎇", beautiful.xforeground),
     widget = wibox.widget.textbox()
 }
 
@@ -36,10 +39,10 @@ local container_music_icon = wibox.widget {
     big_music_icon,
     {
         small_music_icon,
-        top = dpi(12),
+        top = dpi(11),
         widget = wibox.container.margin
     },
-    spacing = dpi(-8),
+    spacing = dpi(-9),
     layout = wibox.layout.fixed.horizontal
 }
 
@@ -97,17 +100,18 @@ local control_button = function(c, symbol, color, font, size, on_click, on_right
     return container
 end
 
-local music_play_pause = control_button(c, "", beautiful.xforeground, beautiful.icon_font_name .. "Round 22", dpi(30), function()
+-- Play Pause button
+local music_play_pause = control_button(c, "󰐊", beautiful.xforeground, beautiful.icon_font_name .. "22", dpi(30), function()
     awful.spawn.with_shell("mpc -q toggle")
 end)
 
 -- Loop button
-local loop = control_button(c, "", beautiful.xforeground, beautiful.icon_font_name .. "Round 12", dpi(30), function()
+local loop = control_button(c, "󰑖", beautiful.xforeground, beautiful.icon_font_name .. "12", dpi(30), function()
     awful.spawn.with_shell("mpc repeat")
 end)
 
--- Shuffle playlist
-local shuffle = control_button(c, "", beautiful.xforeground, beautiful.icon_font_name .. "Round 12", dpi(30), function()
+-- Shuffle playlist button
+local shuffle = control_button(c, "󰒝", beautiful.xforeground, beautiful.icon_font_name .. "12", dpi(30), function()
     awful.spawn.with_shell("mpc random")
 end)
 
@@ -172,7 +176,7 @@ end
 
 
 -- Decorations
-----------------
+-----------------
 
 local music_art = wibox.widget {
     image = gears.filesystem.get_configuration_dir() .. "theme/assets/no_music.png",
@@ -227,8 +231,8 @@ local vol_tooltip = create_tooltip(vol_slider)
 
 local vol_icon = wibox.widget{
     align = "center",
-    font = beautiful.font_name .. "16",
-    markup = helpers.colorize_text("", beautiful.accent),
+    font = beautiful.icon_font_name .. "16",
+    markup = helpers.colorize_text("󰕾", beautiful.accent),
     widget = wibox.widget.textbox
 }
 
@@ -261,10 +265,10 @@ awesome.connect_signal("signal::volume", function(value, muted)
     local vol_value = value or 0
 
     if muted then
-        vol_icon.markup = helpers.colorize_text("", beautiful.xcolor8)
+        vol_icon.markup = helpers.colorize_text("󰖁", beautiful.xcolor8)
         fill_color = beautiful.xcolor8
     else
-        vol_icon.markup = helpers.colorize_text("", beautiful.accent)
+        vol_icon.markup = helpers.colorize_text("󰕾", beautiful.accent)
         fill_color = vol_color
     end
 
@@ -311,9 +315,9 @@ end)
 playerctl:connect_signal("playback_status", function(_, playing, player_name)
     if player_name == "mpd" then
         if playing then
-            music_play_pause_textbox:set_markup_silently(helpers.colorize_text("", beautiful.accent))
+            music_play_pause_textbox:set_markup_silently(helpers.colorize_text("󰏤", beautiful.accent))
         else
-            music_play_pause_textbox:set_markup_silently(helpers.colorize_text("", beautiful.accent))
+            music_play_pause_textbox:set_markup_silently(helpers.colorize_text("󰐊", beautiful.accent))
         end
     end
 end)
@@ -321,9 +325,9 @@ end)
 playerctl:connect_signal("loop_status", function(_, loop_status, player_name)
     if player_name == "mpd" then
         if loop_status == "none" then
-            loop_textbox:set_markup_silently("")
+            loop_textbox:set_markup_silently("󰑖")
         else
-            loop_textbox:set_markup_silently(helpers.colorize_text("", beautiful.accent))
+            loop_textbox:set_markup_silently(helpers.colorize_text("󰑖", beautiful.accent))
         end
     end
 end)
@@ -331,9 +335,9 @@ end)
 playerctl:connect_signal("shuffle", function(_, shuffle, player_name)
     if player_name == "mpd" then
         if shuffle then
-            shuffle_textbox:set_markup_silently(helpers.colorize_text("", beautiful.accent))
+            shuffle_textbox:set_markup_silently(helpers.colorize_text("󰒝", beautiful.accent))
         else
-            shuffle_textbox:set_markup_silently("")
+            shuffle_textbox:set_markup_silently("󰒝")
         end
     end
 end)
@@ -405,14 +409,12 @@ local music_create_decoration = function (c)
             {
                 {
                     {
-                        -- Go to playlist and focus currently playing song
-                        control_button(c, "", beautiful.xforeground, beautiful.icon_font_name .. "Round 14", dpi(30), function()
+                        control_button(c, "󰒮", beautiful.xforeground, beautiful.icon_font_name .. "14", dpi(30), function()
                             awful.spawn.with_shell("mpc -q prev")
                         end),
                         -- Toggle play pause
                         music_play_pause,
-                        -- Go to list of playlists
-                        control_button(c, "", beautiful.xforeground, beautiful.icon_font_name .. "Round 14", dpi(30), function()
+                        control_button(c, "󰒭", beautiful.xforeground, beautiful.icon_font_name .. "14", dpi(30), function()
                             awful.spawn.with_shell("mpc -q next")
                         end),
                         layout = wibox.layout.flex.horizontal
@@ -439,7 +441,7 @@ local music_create_decoration = function (c)
                             loop,
                             shuffle,
                             -- Go to list of playlists
-                            control_button(c, "", beautiful.xforeground, beautiful.icon_font_name .. "Round 12", dpi(30), function()
+                            control_button(c, "󰲸", beautiful.xforeground, beautiful.icon_font_name .. "12", dpi(30), function()
                                 helpers.send_key(c, "1")
                             end),
                             -- Go to visualizer

@@ -12,8 +12,8 @@ local return_button = function()
 		{
 			align = "center",
 			valign = "center",
-			font = beautiful.icon_font_name .. 18,
-			markup = helpers.colorize_text("", beautiful.xforeground),
+			font = beautiful.icon_font_name .. "18",
+			markup = helpers.colorize_text("󰤆", beautiful.xforeground),
 			widget = wibox.widget.textbox()
 		},
 		layout = wibox.layout.align.horizontal

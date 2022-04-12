@@ -111,8 +111,8 @@ local analog_clock = require("ui.widgets.analog-clock")
 ----------
 
 local wifi_status_icon = wibox.widget{
-    markup = "Offline",
-    font = beautiful.icon_font_name .. "Round 14",
+    markup = "󰤫",
+    font = beautiful.icon_font_name .. "14",
     valign = "center",
     align = "center",
     widget = wibox.widget.textbox
@@ -137,10 +137,10 @@ end)
 awesome.connect_signal("widget::network", function ()
     local w, fill_color
     if wifi_status == true then
-        w = ""
+        w = "󰤨"
         fill_color = beautiful.xcolor2
     else
-        w = ""
+        w = "󰤭"
         fill_color = beautiful.xcolor1
     end
 

@@ -121,7 +121,7 @@ ruled.client.connect_signal("request::rules", function()
         properties = {
             floating = true,
             width = screen_width * 0.26,
-            height = screen_height * 0.38,
+            height = screen_height * 0.40,
             placement = helpers.centered_client_placement
         }
     }

@@ -15,56 +15,26 @@ window:
 
 font:
   normal:
-    family: Sarasa Mono K
+    family: Iosevka Nerd Font Mono
     style: Regular
 
   bold:
-    family: Sarasa Mono K
+    family: Iosevka Nerd Font Mono
     style: Bold
 
   italic:
-    family: Sarasa Mono K
+    family: Iosevka Nerd Font Mono
     style: Italic
 
   bold_italic:
-    family: Sarasa Mono K
+    family: Iosevka Nerd Font Mono
     style: Bold Italic
 
-  size: 11
+  size: 10
 
   offset:
     x: 0
     y: 0
-
-# aesthetic night colors
-# colors:
-#   primary:
-#     background: '0x061115'
-#     foreground: '0xD9D7D6'
-
-#   cursor:
-#     text:   '0x061115'
-#     cursor: '0xD9D7D6'
-
-#   normal:
-#     black:   '0x1C252C'
-#     red:     '0xDF5B61'
-#     green:   '0x78B892'
-#     yellow:  '0xDE8F78'
-#     blue:    '0x6791C9'
-#     magenta: '0xBC83E3'
-#     cyan:    '0x67AFC1'
-#     white:   '0xD9D7D6'
-
-#   bright:
-#     black:   '0x1C252C'
-#     red:     '0xDF5B61'
-#     green:   '0x78B892'
-#     yellow:  '0xDE8F78'
-#     blue:    '0x6791C9'
-#     magenta: '0xBC83E3'
-#     cyan:    '0x67AFC1'
-#     white:   '0xD9D7D6'
 
 cursor:
   style: Underline

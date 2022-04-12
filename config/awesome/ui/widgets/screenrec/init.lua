@@ -169,8 +169,8 @@ end
 -- Buttons
 local screen_rec_toggle_imgbox = wibox.widget {
     id = "icon",
-    markup = helpers.colorize_text("", beautiful.xforeground),
-    font = beautiful.icon_font_name .. "Round 18",
+    markup = helpers.colorize_text("󰻃", beautiful.xforeground),
+    font = beautiful.icon_font_name .. "18",
     align = "center",
     valign = "center",
     widget = wibox.widget.textbox

@@ -91,11 +91,11 @@ awesome.connect_signal("signal::volume", function(value, muted)
     if vol_first_time then
         vol_first_time = false
     else
-        pop_icon.markup = helpers.colorize_text("", beautiful.accent)
+        pop_icon.markup = helpers.colorize_text("󰕾", beautiful.accent)
         pop_bar.value = value
 
         if muted then
-            pop_icon.markup = helpers.colorize_text("", beautiful.xcolor8)
+            pop_icon.markup = helpers.colorize_text("󰖁", beautiful.xcolor8)
             pop_bar.color = beautiful.xcolor8
         else
             pop_bar.color = beautiful.accent
@@ -106,7 +106,7 @@ awesome.connect_signal("signal::volume", function(value, muted)
 end)
 
 awesome.connect_signal("signal::brightness", function(value)
-    pop_icon.markup = helpers.colorize_text("", beautiful.accent)
+    pop_icon.markup = helpers.colorize_text("󰖨", beautiful.accent)
     pop_bar.value = value
     pop_bar.color = beautiful.accent
 

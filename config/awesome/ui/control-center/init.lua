@@ -145,7 +145,7 @@ local function create_buttons(icon, color)
   local button = wibox.widget {
     id = "icon",
     markup = helpers.colorize_text(icon, color),
-    font = beautiful.icon_font_name .. "Round 16",
+    font = beautiful.icon_font_name .. "16",
     align = "center",
     valign = "center",
     widget = wibox.widget.textbox
@@ -184,7 +184,7 @@ awful.screen.connect_for_each_screen(function(s)
   local on = beautiful.accent
 
   -- wifi button
-  local wifi = create_buttons("", beautiful.xforeground)
+  local wifi = create_buttons("󰤨", beautiful.xforeground)
   local wifi_status = false -- off
 
   awesome.connect_signal(
@@ -228,7 +228,7 @@ awful.screen.connect_for_each_screen(function(s)
   )
 
   -- bluetooth button
-  local bluetooth = create_buttons("", beautiful.xforeground)
+  local bluetooth = create_buttons("󰂯", beautiful.xforeground)
   local bluetooth_status = true
 
   bluetooth:buttons {
@@ -252,7 +252,7 @@ awful.screen.connect_for_each_screen(function(s)
   local screenrec = require("ui.widgets.screenrec")()
 
   -- screenshot button
-  local screenshot = create_buttons("", beautiful.xforeground)
+  local screenshot = create_buttons("󰆞", beautiful.xforeground)
   screenshot:buttons {
     awful.button(
       {},

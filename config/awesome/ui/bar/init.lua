@@ -249,8 +249,8 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     local notif_center_button = wibox.widget{
-        markup = helpers.colorize_text("", beautiful.accent),
-        font = beautiful.font_name .. "18",
+        markup = helpers.colorize_text("󰂚", beautiful.accent),
+        font = beautiful.icon_font_name .. "17",
         align = "center",
         valign = "center",
         widget = wibox.widget.textbox
@@ -401,7 +401,7 @@ awful.screen.connect_for_each_screen(function(s)
                     stats,
                     notif_center_button,
                     layoutbox,
-                    spacing = dpi(8),
+                    spacing = dpi(10),
                     layout = wibox.layout.fixed.vertical
                 }
             },

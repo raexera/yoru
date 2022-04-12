@@ -20,7 +20,7 @@
 <br>
 
 ### Hi there! Thanks for dropping by! 🖤
-<a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="160" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
+<a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="150" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
 
 <b>  Beautiful & Aesthetic AwesomeWM Dotfiles with Animation! ✨  </b>
 
@@ -30,12 +30,7 @@ feel free to steal anything from here but don't forget to give me credits :)
 
 AwesomeWM is the most powerful window manager on Linux, 
 Although it takes time and effort to configure it, but I'm very satisfied with the result.
-You're right! only this wm can satisfy me.
-
-Idk why i do this things, i love it but ahhh nvm, anyway I do this because it's my hobby.
-If you *like* or are *using* these dotfiles you should `stars` this repo rn!
-So i'll be more enthusiastic to make other interesting things, 
-Thank you! <3
+This is a beautiful user interface isn't it?
 
 These dotfiles are made with love, for sure.
 
@@ -55,31 +50,40 @@ These dotfiles are made with love, for sure.
 
 <h2></h2><br>
 
+<table align="right">
+  <tr>
+    <th align="center">
+      <sup><sub>⚠ WARNING ⚠</sub></sup>
+    </th>
+  </tr>
+  <tr>
+    <td align="center">
+      <sup><sub><samp>THIS DOTFILES ARE CONFIGURED AT 1366x768 WITH 96 DPI.</samp></sub></sup>
+    </td>
+  </tr>
+</table>
+
 <details>
 <summary><strong>S E T U P</strong></summary>
 
    > This is step-by-step how to install these dotfiles. Just [R.T.F.M](https://en.wikipedia.org/wiki/RTFM).
 
+   > This setup only provided for **Arch Linux** (and all Arch-based distributions)
+
    1. Install the [git version of AwesomeWM](https://github.com/awesomeWM/awesome/).
 
-      *Assuming your AUR helper is* `yay`
-
       ```sh
-      yay -S awesome-git
+      paru -S awesome-git
       ```
 
    2. Install dependencies and enable services
 
       + Dependencies
 
-      - **Arch Linux** (and all Arch-based distributions)
-
-         *Assuming your AUR helper is* `yay`
-
          ```sh
-         yay -Sy picom-git alacritty rofi todo-bin acpi acpid \
+         paru -Sy picom-git alacritty rofi todo-bin acpi acpid acpi_call \
          wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
-         brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors \
+         brightnessctl alsa-utils alsa-tools pulseaudio lm_sensors gpick \
          mpd mpc mpdris2 ncmpcpp playerctl redshift ffmpeg bluez-utils --needed 
          ```
 
@@ -102,7 +106,6 @@ These dotfiles are made with love, for sure.
       Necessary fonts:
       + **Iosevka**  - [here](https://github.com/ryanoasis/nerd-fonts/)
       + **Icomoon**  - [here](https://www.dropbox.com/s/hrkub2yo9iapljz/icomoon.zip?dl=0)
-      + **Material Icons** - [here](https://github.com/google/material-design-icons)
       + **Material Design** - [here](https://github.com/Templarian/MaterialDesign-Font)
 
       Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`
@@ -190,15 +193,16 @@ These dotfiles are made with love, for sure.
    + Very useful `Control Center` ikr.
       - <details>
 
-         + *This control center has many features!*
-            - Exit screen
-            - Volume & brightness control
-            - DnD, Blue light & Airplane mode
-            - Floating layout mode
-            - `Theme switcher`
-            - wifi & bluetooth toggle
-            - built in `screenrec` and `screensht` widgets
-            - Hardware Monitor
+          *This control center has many features!*
+
+         - Exit screen
+         - Volume & brightness control
+         - DnD, Blue light & Airplane mode
+         - Floating layout mode
+         - `Theme switcher`
+         - wifi & bluetooth toggle
+         - built in `screenrec` and `screensht` widgets
+         - Hardware Monitor
 
          <summary>Preview</summary>
          <div align="left">
@@ -295,7 +299,21 @@ also with <kbd>alt, shift, and ctrl</kbd>
 
 <h2></h2><br>
 
-**Acknowledgements**
+### History 🗾
+
+This started since when im feel bored, idk why i do this things, i love it but ahhh nvm, 
+but basically im doing this just for fun and also to satisfy myself ofc,
+and also look for a lot of [stargazers](https://github.com/rxyhn/dotfiles/stargazers) for sure.
+so if you `like` or are `using` these dotfiles you should give this **repo** a `star` right now!
+so i'll be more enthusiastic to make other beautiful and aesthetics things!
+
+Thank you! <3
+
+[![Stargazers over time](https://starchart.cc/rxyhn/dotfiles.svg)](https://starchart.cc/rxyhn/dotfiles)
+
+<h2></h2><br>
+
+### Acknowledgements 💡
 
    - **Credits**
       + [ner0z](https://github.com/ner0z)

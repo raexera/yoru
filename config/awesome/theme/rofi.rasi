@@ -2,7 +2,7 @@ configuration {
 	modi:					"drun";
 	display-drun: 			"Apps";
 	drun-display-format:    "{name}";
-	font:				    "Iosevka 8";
+	font:				    "Iosevka Nerd Font Mono 8";
 	show-icons:              true;
 	icon-theme: 			"Papirus";
 }
@@ -34,7 +34,7 @@ inputbar {
 }
 
 textbox {
-    str: "";
+    str: "";
     expand: false;
     padding: 0 1% 0;
     horizontal-align: 0.5;
@@ -42,7 +42,7 @@ textbox {
     border-radius: @rad;
     background-color: @accent;
     text-color: @altBg;
-    font: "Material Icons 17";
+    font: "Iosevka Nerd Font Mono 26";
 }
 
 entry{
