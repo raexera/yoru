@@ -56,10 +56,6 @@ awful.keyboard.append_global_keybindings({
             notif_center_toggle()
         end,
         {description = "toggle notif center", group = "launcher"}),
-        awful.key({modkey, shift}, "t", function()
-            tray_toggle()
-        end,
-        {description = "toggle system tray", group = "launcher"}),
 })
 
 -- Client and Tabs Bindings

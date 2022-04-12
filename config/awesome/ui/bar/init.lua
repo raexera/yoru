@@ -31,13 +31,13 @@ local wrap_widget = function(widget)
 end
 
 
--- Wibar
------------
+-- Aesthetic Wibar
+---------------------
 
 awful.screen.connect_for_each_screen(function(s)
 
-    -- Launcher
-    -------------
+-- Launcher
+-------------
 
     local awesome_icon = wibox.widget {
         {
@@ -52,8 +52,8 @@ awful.screen.connect_for_each_screen(function(s)
     helpers.add_hover_cursor(awesome_icon, "hand2")
 
 
-    -- Battery
-    -------------
+-- Battery
+-------------
 
     local charge_icon = wibox.widget{
         bg = beautiful.xcolor8,
@@ -116,8 +116,8 @@ awful.screen.connect_for_each_screen(function(s)
     end)
 
 
-    -- Time
-    ----------
+-- Time
+----------
 
     local hour = wibox.widget{
         font = beautiful.font_name .. "bold 14",
@@ -153,8 +153,8 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
 
-    -- Stats
-    -----------
+-- Stats
+-----------
 
     local stats = wibox.widget{
         {
@@ -179,8 +179,8 @@ awful.screen.connect_for_each_screen(function(s)
     end)
 
 
-    -- Notification center
-    -------------------------
+-- Notification center
+-------------------------
 
     notif_center = wibox({
         type = "dock",
@@ -310,9 +310,12 @@ awful.screen.connect_for_each_screen(function(s)
 
     helpers.add_hover_cursor(layoutbox, "hand2")
 
-    -- Create a system tray widget
+
+-- Systray
+-------------
+
     s.systray = wibox.widget.systray()
-    s.traybox = wibox({ screen = s, width = dpi(200), height = dpi(50), bg = "#00000000", visible = false, ontop = true})
+    s.traybox = wibox({ screen = 'primary', width = dpi(200), height = dpi(50), bg = "#00000000", visible = false, ontop = true})
     s.traybox:setup {
         {
             {
@@ -328,14 +331,54 @@ awful.screen.connect_for_each_screen(function(s)
         shape = helpers.rrect(beautiful.border_radius),
         widget = wibox.container.background
     }
-    awful.placement.bottom_right(s.traybox, { margins = { bottom = dpi(25), right = dpi(25)} })
-    s.traybox:buttons(gears.table.join(
-        awful.button({ }, 2, function ()
-            s.traybox.visible = false
-        end)
-    ))
+    awful.placement.bottom_left(s.traybox, { margins = { bottom = dpi(200), left = dpi(beautiful.wibar_width + 50)} })
 
-    -- Create the wibar
+    local tray_button = wibox.widget{
+        markup = helpers.colorize_text("󰅂", beautiful.accent),
+        font = beautiful.icon_font_name .. "17",
+        align = "center",
+        valign = "center",
+        widget = wibox.widget.textbox
+    }
+
+    tray_button:buttons(
+        gears.table.join(
+            awful.button(
+                {},
+                1,
+                nil,
+                function()
+                    awesome.emit_signal('widget::systray:toggle')
+                end
+            )
+        )
+    )
+
+    awesome.connect_signal('widget::systray:toggle',
+    function()
+    	if screen.primary.traybox then
+    		if not screen.primary.traybox.visible then
+                tray_button:set_markup_silently(helpers.colorize_text("󰅁", beautiful.accent))
+    		else
+                tray_button:set_markup_silently(helpers.colorize_text("󰅂", beautiful.accent))
+    		end
+    		screen.primary.traybox.visible = not screen.primary.traybox.visible
+    	end
+    end)
+
+    if screen.primary.traybox then
+	    if  screen.primary.traybox.visible then
+            tray_button:set_markup_silently(helpers.colorize_text("󰅂", beautiful.accent))
+        end
+    end
+
+    awful.widget.only_on_screen(tray_button, 'primary')
+    helpers.add_hover_cursor(tray_button, "hand2")
+
+
+-- Create the wibar
+----------------------
+
     s.mywibar = awful.wibar({
         type = "dock",
         position = "left",
@@ -383,7 +426,10 @@ awful.screen.connect_for_each_screen(function(s)
         widget = wibox.container.background
     }
 
-    -- Add widgets to wibar
+
+-- Add widgets to wibar
+--------------------------
+
     s.mywibar:setup {
         {
             {
@@ -398,6 +444,7 @@ awful.screen.connect_for_each_screen(function(s)
                 -- middle
                 nil,
                 { -- bottom
+                    tray_button,
                     stats,
                     notif_center_button,
                     layoutbox,
@@ -417,7 +464,3 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibar.x = dpi(25)
 end)
 
-function tray_toggle()
-    local s = awful.screen.focused()
-    s.traybox.visible = not s.traybox.visible
-end
