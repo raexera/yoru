@@ -315,23 +315,24 @@ awful.screen.connect_for_each_screen(function(s)
 -------------
 
     s.systray = wibox.widget.systray()
-    s.traybox = wibox({ screen = 'primary', width = dpi(200), height = dpi(50), bg = "#00000000", visible = false, ontop = true})
+    s.systray.base_size = beautiful.systray_icon_size
+    s.traybox = wibox({ screen = 'primary', width = dpi(50), height = dpi(200), bg = "#00000000", visible = false, ontop = true})
     s.traybox:setup {
         {
             {
                 nil,
                 s.systray,
-                expand = "none",
-                layout = wibox.layout.align.horizontal,
+                direction = "west",
+                widget = wibox.container.rotate,
             },
-            margins = dpi(15),
+            margins = dpi(12),
             widget = wibox.container.margin
         },
         bg = beautiful.wibar_bg,
         shape = helpers.rrect(beautiful.border_radius),
         widget = wibox.container.background
     }
-    awful.placement.bottom_left(s.traybox, { margins = { bottom = dpi(200), left = dpi(beautiful.wibar_width + 50)} })
+    awful.placement.bottom_left(s.traybox, { margins = { bottom = dpi(120), left = dpi(beautiful.wibar_width + 50)} })
 
     local tray_button = wibox.widget{
         markup = helpers.colorize_text("󰅂", beautiful.accent),

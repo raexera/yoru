@@ -244,6 +244,11 @@ theme.wibar_widget_bg = theme.xbackground
 theme.wibar_widget_alt_bg = theme.lighter_bg
 theme.wibar_position = "left"
 
+-- Systray
+theme.systray_icon_spacing = dpi(15)
+theme.bg_systray = theme.wibar_bg
+theme.systray_icon_size = dpi(15)
+
 -- Tabs
 theme.mstab_bar_height = dpi(60)
 theme.mstab_bar_padding = dpi(0)
