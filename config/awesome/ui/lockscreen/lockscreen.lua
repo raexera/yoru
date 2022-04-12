@@ -232,8 +232,8 @@ gears.timer {
 }
 
 -- Lock animation
-local lock_screen_symbol = "󰍁"
-local lock_screen_fail_symbol = "󱙲"
+local lock_screen_symbol = helpers.colorize_text("󰍁", beautiful.accent)
+local lock_screen_fail_symbol = helpers.colorize_text("󱙲", beautiful.accent)
 local lock_animation_icon = wibox.widget {
     -- Set forced size to prevent flickering when the icon rotates
     forced_height = dpi(60),
@@ -273,14 +273,14 @@ local lock_animation = {
 local characters_entered = 0
 local function reset()
     characters_entered = 0;
-    lock_animation_icon.markup = helpers.colorize_text(lock_screen_symbol, beautiful.xcolor7)
+    lock_animation_icon.markup = lock_screen_symbol
     lock_animation_widget_rotate.direction = "north"
     lock_animation_arc.bg = "#00000000"
 end
 
 local function fail()
     characters_entered = 0;
-    lock_animation_icon.text = lock_screen_fail_symbol
+    lock_animation_icon.markup = lock_screen_fail_symbol
     lock_animation_widget_rotate.direction = "north"
     lock_animation_arc.bg = "#00000000"
 end
@@ -303,12 +303,12 @@ local function key_animation(char_inserted)
     local direction = animation_directions[(characters_entered % 4) + 1]
     if char_inserted then
         color = animation_colors[(characters_entered % 6) + 1]
-        lock_animation_icon.text = lock_screen_symbol
+        lock_animation_icon.markup = lock_screen_symbol
     else
         if characters_entered == 0 then
             reset()
         else
-            color = beautiful.xcolor7 .. "55"
+            color = beautiful.accent .. "55"
         end
     end
 
