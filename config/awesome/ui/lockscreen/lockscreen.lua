@@ -14,26 +14,47 @@ local helpers = require("helpers")
 -- Lock
 local lock_screen = require("ui.lockscreen")
 
--- Lock Screen
+-- Word Clock Lock Screen
 ----------------
+
+local lock_screen_symbol = helpers.colorize_text("󰍁", beautiful.accent)
+local lock_screen_fail_symbol = helpers.colorize_text("󱙲", beautiful.accent)
+local lock_animation_icon = wibox.widget({
+	-- Set forced size to prevent flickering when the icon rotates
+	forced_height = dpi(80),
+	forced_width = dpi(80),
+	font = beautiful.icon_font_name .. "40",
+	align = "center",
+	valign = "center",
+	widget = wibox.widget.textbox(lock_screen_symbol),
+})
+
+local some_textbox = wibox.widget.textbox()
 
 lock_screen_box = wibox({ visible = false, ontop = true, type = "splash", screen = screen.primary })
 awful.placement.maximize(lock_screen_box)
+
 lock_screen_box.bg = beautiful.transparent
+lock_screen_box.fg = beautiful.xforeground
 
 -- Add lockscreen to each screen
 awful.screen.connect_for_each_screen(function(s)
 	if s == screen.primary then
 		s.mylockscreen = lock_screen_box
 	else
-		s.mylockscreen = helpers.screen_mask(
-			s,
-			beautiful.lock_screen_bg or beautiful.exit_screen_bg or beautiful.xbackground
-		)
+		s.mylockscreen = helpers.screen_mask(s, beautiful.darker_bg)
 	end
 end)
 
--- Vars
+local function set_visibility(v)
+	for s in screen do
+		s.mylockscreen.visible = v
+	end
+end
+
+-- Widgets
+-------------
+
 local char =
 	"I T L I S A S A M P M A C Q U A R T E R D C T W E N T Y F I V E X H A L F S T E N F T O P A S T E R U N I N E O N E S I X T H R E E F O U R F I V E T W O E I G H T E L E V E N S E V E N T W E L V E T E N S E O C L O C K"
 
@@ -101,8 +122,6 @@ function split_str(s, delimiter)
 end
 
 local time_char = split_str(char, " ")
-
--- Helpers
 
 local time = wibox.widget({
 	forced_num_cols = 11,
@@ -229,31 +248,19 @@ gears.timer({
 })
 
 -- Lock animation
-local lock_screen_symbol = helpers.colorize_text("󰍁", beautiful.accent)
-local lock_screen_fail_symbol = helpers.colorize_text("󱙲", beautiful.accent)
-local lock_animation_icon = wibox.widget({
-	-- Set forced size to prevent flickering when the icon rotates
-	forced_height = dpi(60),
-	forced_width = dpi(60),
-	font = beautiful.icon_font_name .. "30",
-	align = "center",
-	valign = "center",
-	widget = wibox.widget.textbox(lock_screen_symbol),
-})
-
 local lock_animation_widget_rotate = wibox.container.rotate()
 
 local arc = function()
 	return function(cr, width, height)
-		gears.shape.arc(cr, width, height, dpi(5), 0, math.pi / 3, true, true)
+		gears.shape.arc(cr, width, height, dpi(5), 0, math.pi / 2, true, true)
 	end
 end
 
 local lock_animation_arc = wibox.widget({
 	shape = arc(),
 	bg = "#00000000",
-	forced_width = dpi(90),
-	forced_height = dpi(90),
+	forced_width = dpi(100),
+	forced_height = dpi(100),
 	widget = wibox.container.background,
 })
 
@@ -313,14 +320,7 @@ local function key_animation(char_inserted)
 	lock_animation_widget_rotate.direction = direction
 end
 
-local function set_visibility(v)
-	for s in screen do
-		s.mylockscreen.visible = v
-	end
-end
-
 -- Get input from user
-local some_textbox = wibox.widget.textbox()
 local function grab_password()
 	awful.prompt.run({
 		hooks = {
@@ -356,9 +356,6 @@ local function grab_password()
 				end
 				key_animation(false)
 			end
-
-			-- Debug
-			-- naughty.notify { title = 'You pressed:', text = key }
 		end,
 		exe_callback = function(input)
 			-- Check input
