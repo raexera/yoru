@@ -236,6 +236,13 @@ client.connect_signal("request::default_keybindings", function()
 		awful.key({ modkey }, "q", function(c)
 			c:kill()
 		end, { description = "close", group = "client" }),
+		-- Kill all visible clients for the current tag
+		awful.key({ modkey, shift }, "q", function()
+			local clients = awful.screen.focused().clients
+			for _, c in pairs(clients) do
+				c:kill()
+			end
+		end, { description = "kill all visible clients for the current tag", group = "client" }),
 		awful.key(
 			{ modkey, "Control" },
 			"space",

@@ -324,7 +324,6 @@ awful.screen.connect_for_each_screen(function(s)
 				-- middle
 				nil,
 				{ -- bottom
-					tray_button,
 					stats,
 					notif_center_button,
 					layoutbox,
