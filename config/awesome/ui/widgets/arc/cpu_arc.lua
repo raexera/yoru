@@ -7,17 +7,17 @@ local dpi = xresources.apply_dpi
 
 local active_color = beautiful.accent
 
-local cpu_arc = wibox.widget {
-    max_value = 100,
-    value = 20,
-    thickness = dpi(8),
-    start_angle = 4.3,
-    rounded_edge = true,
-    bg = active_color .. "44",
-    paddings = dpi(10),
-    colors = {active_color},
-    widget = wibox.container.arcchart
-}
+local cpu_arc = wibox.widget({
+	max_value = 100,
+	value = 20,
+	thickness = dpi(8),
+	start_angle = 4.3,
+	rounded_edge = true,
+	bg = active_color .. "44",
+	paddings = dpi(10),
+	colors = { active_color },
+	widget = wibox.container.arcchart,
+})
 
 watch(
 	[[bash -c "
@@ -25,8 +25,9 @@ watch(
 	"]],
 	10,
 	function(_, stdout)
-		local user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice =
-			stdout:match('(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s')
+		local user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice = stdout:match(
+			"(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s"
+		)
 
 		local total = user + nice + system + idle + iowait + irq + softirq + steal
 
@@ -38,9 +39,8 @@ watch(
 
 		total_prev = total
 		idle_prev = idle
-		collectgarbage('collect')
+		collectgarbage("collect")
 	end
 )
-
 
 return cpu_arc

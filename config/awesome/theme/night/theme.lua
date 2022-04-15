@@ -54,27 +54,26 @@ theme.night = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/
 theme.awesome_logo = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/awesome.png")
 
 -- Notifications bell icon
-theme.notification_bell_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/notification-bell.png")
+theme.notification_bell_icon = gears.surface.load_uncached(
+	gfs.get_configuration_dir() .. "theme/assets/icons/notification-bell.png"
+)
 
 -- Notifications icon
-theme.notification_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/notification.png")
+theme.notification_icon = gears.surface.load_uncached(
+	gfs.get_configuration_dir() .. "theme/assets/icons/notification.png"
+)
 
 -- Arc widget icon
 theme.temp = gfs.get_configuration_dir() .. "theme/assets/icons/temp.png"
 theme.cpu = gfs.get_configuration_dir() .. "theme/assets/icons/cpu.png"
 theme.ram = gfs.get_configuration_dir() .. "theme/assets/icons/ram.png"
 
--- Popup notifications icon
-theme.volume_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/volume.png")
-theme.volume_muted_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/mute.png")
-theme.brightness_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/brightness.png")
-
 -- Fonts
 theme.font_name = "Iosevka Nerd Font Mono "
 theme.font = theme.font_name .. "8"
 theme.icon_font_name = "Material Design Icons Desktop "
 theme.icon_font = theme.icon_font_name .. "18"
-theme.font_taglist =  theme.icon_font_name .. "14"
+theme.font_taglist = theme.icon_font_name .. "14"
 
 -- Background Colors
 theme.bg_dark = theme.darker_bg
@@ -198,8 +197,8 @@ theme.control_center_widget_bg = theme.xbackground
 theme.control_center_button_bg = theme.lighter_bg
 
 -- Playerctl
-theme.playerctl_ignore = {"firefox", "qutebrowser", "chromium", "brave"}
-theme.playerctl_player = {"spotify", "mpd", "%any"}
+theme.playerctl_ignore = { "firefox", "qutebrowser", "chromium", "brave" }
+theme.playerctl_player = { "spotify", "mpd", "%any" }
 theme.playerctl_update_on_activity = true
 theme.playerctl_position_update_interval = 1
 
@@ -248,6 +247,7 @@ theme.wibar_position = "left"
 theme.systray_icon_spacing = dpi(15)
 theme.bg_systray = theme.wibar_bg
 theme.systray_icon_size = dpi(15)
+theme.systray_max_rows = 2
 
 -- Tabs
 theme.mstab_bar_height = dpi(60)
@@ -278,10 +278,10 @@ theme.notif_center_notifs_accent = theme.lighter_bg
 
 -- Swallowing
 theme.dont_swallow_classname_list = {
-    "firefox",
-    "gimp",
-    "Google-chrome",
-    "Thunar"
+	"firefox",
+	"gimp",
+	"Google-chrome",
+	"Thunar",
 }
 
 -- Layout Machi

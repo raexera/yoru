@@ -9,89 +9,84 @@ local widget_dir = config_dir .. "ui/widgets/airplane-mode/"
 local widget_icon_dir = widget_dir .. "icons/"
 local ap_state = false
 
-local action_name = wibox.widget {
-	text = 'Airplane Mode',
-	font = beautiful.font_name .. 'Bold 10',
-	align = 'left',
-	widget = wibox.widget.textbox
-}
+local action_name = wibox.widget({
+	text = "Airplane Mode",
+	font = beautiful.font_name .. "Bold 10",
+	align = "left",
+	widget = wibox.widget.textbox,
+})
 
-local action_status = wibox.widget {
-	text = 'Off',
-	font = beautiful.font_name .. '10',
-	align = 'left',
-	widget = wibox.widget.textbox
-}
+local action_status = wibox.widget({
+	text = "Off",
+	font = beautiful.font_name .. "10",
+	align = "left",
+	widget = wibox.widget.textbox,
+})
 
-local action_info = wibox.widget {
+local action_info = wibox.widget({
 	layout = wibox.layout.fixed.vertical,
 	action_name,
-	action_status
-}
+	action_status,
+})
 
-local button_widget = wibox.widget {
+local button_widget = wibox.widget({
 	{
-		id = 'icon',
-		image = gears.color.recolor_image(widget_icon_dir .. 'airplane-mode-off.svg', beautiful.xforeground),
+		id = "icon",
+		image = gears.color.recolor_image(widget_icon_dir .. "airplane-mode-off.svg", beautiful.xforeground),
 		widget = wibox.widget.imagebox,
-		resize = true
+		resize = true,
 	},
-	layout = wibox.layout.align.horizontal
-}
+	layout = wibox.layout.align.horizontal,
+})
 
-local widget_button = wibox.widget {
+local widget_button = wibox.widget({
 	{
 		{
 			button_widget,
 			margins = dpi(15),
 			forced_height = dpi(48),
 			forced_width = dpi(48),
-			widget = wibox.container.margin
+			widget = wibox.container.margin,
 		},
-		widget = clickable_container
+		widget = clickable_container,
 	},
 	bg = beautiful.control_center_button_bg,
 	shape = gears.shape.circle,
-	widget = wibox.container.background
-}
+	widget = wibox.container.background,
+})
 
 local update_widget = function()
 	if ap_state then
-		action_status:set_text('On')
+		action_status:set_text("On")
 		widget_button.bg = beautiful.accent
-		button_widget.icon:set_image(gears.color.recolor_image(widget_icon_dir .. 'airplane-mode.svg', beautiful.xforeground))
+		button_widget.icon:set_image(
+			gears.color.recolor_image(widget_icon_dir .. "airplane-mode.svg", beautiful.xforeground)
+		)
 	else
-		action_status:set_text('Off')
+		action_status:set_text("Off")
 		widget_button.bg = beautiful.control_center_button_bg
-		button_widget.icon:set_image(gears.color.recolor_image(widget_icon_dir .. 'airplane-mode-off.svg', beautiful.xforeground))
+		button_widget.icon:set_image(
+			gears.color.recolor_image(widget_icon_dir .. "airplane-mode-off.svg", beautiful.xforeground)
+		)
 	end
 end
 
 local check_airplane_mode_state = function()
+	local cmd = "cat " .. widget_dir .. "airplane_mode"
 
-	local cmd = 'cat ' .. widget_dir .. 'airplane_mode'
+	awful.spawn.easy_async_with_shell(cmd, function(stdout)
+		local status = stdout
 
-	awful.spawn.easy_async_with_shell(
-		cmd, 
-		function(stdout)
-			
-			local status = stdout
-			
-			if status:match('true') then
-				ap_state = true
-			elseif status:match('false') then
-				ap_state = false
-			else
-				ap_state = false
-				awful.spawn.easy_async_with_shell(
-					'echo "false" > ' .. widget_dir .. 'airplane_mode', 
-					function(stdout)
-					end
-				)
-			end
-			update_widget()
+		if status:match("true") then
+			ap_state = true
+		elseif status:match("false") then
+			ap_state = false
+		else
+			ap_state = false
+			awful.spawn.easy_async_with_shell('echo "false" > ' .. widget_dir .. "airplane_mode", function(stdout) end)
 		end
-	)
+		update_widget()
+	end)
 end
 
 check_airplane_mode_state()
@@ -107,7 +102,7 @@ local ap_off_cmd = [[
 		app_name = 'Network Manager',
 		title = '<b>Airplane mode disabled!</b>',
 		message = 'Initializing network devices',
-		icon = ']] .. widget_icon_dir .. 'airplane-mode-off' .. '.svg' .. [['
+		icon = ']] .. widget_icon_dir .. "airplane-mode-off" .. ".svg" .. [['
 	})
 	"
 	]] .. "echo false > " .. widget_dir .. "airplane_mode" .. [[
@@ -124,78 +119,53 @@ local ap_on_cmd = [[
 		app_name = 'Network Manager',
 		title = '<b>Airplane mode enabled!</b>',
 		message = 'Disabling radio devices',
-		icon = ']] .. widget_icon_dir .. 'airplane-mode' .. '.svg' .. [['
+		icon = ']] .. widget_icon_dir .. "airplane-mode" .. ".svg" .. [['
 	})
 	"
-	]] .. 'echo true > ' .. widget_dir .. 'airplane_mode' .. [[
+	]] .. "echo true > " .. widget_dir .. "airplane_mode" .. [[
 ]]
 
 local toggle_action = function()
 	if ap_state then
-		awful.spawn.easy_async_with_shell(
-			ap_off_cmd, 
-			function(stdout) 
-				ap_state = false
-				update_widget()
-			end
-		)
+		awful.spawn.easy_async_with_shell(ap_off_cmd, function(stdout)
+			ap_state = false
+			update_widget()
+		end)
 	else
-		awful.spawn.easy_async_with_shell(
-			ap_on_cmd,
-			function(stdout)
-				ap_state = true
-				update_widget()
-			end
-		)
+		awful.spawn.easy_async_with_shell(ap_on_cmd, function(stdout)
+			ap_state = true
+			update_widget()
+		end)
 	end
 end
 
-widget_button:buttons(
-	gears.table.join(
-		awful.button(
-			{},
-			1,
-			nil,
-			function()
-				toggle_action()
-			end
-		)
-	)
-)
+widget_button:buttons(gears.table.join(awful.button({}, 1, nil, function()
+	toggle_action()
+end)))
 
-action_info:buttons(
-	gears.table.join(
-		awful.button(
-			{},
-			1,
-			nil,
-			function()
-				toggle_action()
-			end
-		)
-	)
-)
+action_info:buttons(gears.table.join(awful.button({}, 1, nil, function()
+	toggle_action()
+end)))
 
-gears.timer {
+gears.timer({
 	timeout = 5,
 	autostart = true,
-	callback  = function()
+	callback = function()
 		check_airplane_mode_state()
-	end
-}
+	end,
+})
 
-local action_widget =  wibox.widget {
-	layout = wibox.layout.fixed.horizontal,	
+local action_widget = wibox.widget({
+	layout = wibox.layout.fixed.horizontal,
 	spacing = dpi(10),
 	widget_button,
 	{
 		layout = wibox.layout.align.vertical,
-		expand = 'none',
+		expand = "none",
 		nil,
 		action_info,
-		nil
-	}
-
-}
+		nil,
+	},
+})
 
 return action_widget

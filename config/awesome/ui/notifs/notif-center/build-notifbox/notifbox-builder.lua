@@ -1,10 +1,10 @@
-local wibox = require('wibox')
-local awful = require('awful')
-local gears = require('gears')
-local beautiful = require('beautiful')
+local wibox = require("wibox")
+local awful = require("awful")
+local gears = require("gears")
+local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-local builder = require('ui.widgets.notif-center.build-notifbox.notifbox-ui-elements')
-local notifbox_core = require('ui.widgets.notif-center.build-notifbox')
+local builder = require("ui.notifs.notif-center.build-notifbox.notifbox-ui-elements")
+local notifbox_core = require("ui.notifs.notif-center.build-notifbox")
 local notifbox_layout = notifbox_core.notifbox_layout
 local remove_notifbox_empty = notifbox_core.remove_notifbox_empty
 local reset_notifbox_layout = notifbox_core.reset_notifbox_layout
@@ -21,63 +21,57 @@ local parse_to_seconds = function(time)
 end
 
 notifbox_box = function(notif, icon, title, message, app, bgcolor)
+	local time_of_pop = return_date_time("%H:%M:%S")
+	local exact_time = return_date_time("%I:%M %p")
+	local exact_date_time = return_date_time("%b %d, %I:%M %p")
 
-	local time_of_pop = return_date_time('%H:%M:%S')
-	local exact_time = return_date_time('%I:%M %p')
-	local exact_date_time = return_date_time('%b %d, %I:%M %p')  
-
-	local notifbox_timepop =  wibox.widget {
-		id = 'time_pop',
+	local notifbox_timepop = wibox.widget({
+		id = "time_pop",
 		markup = nil,
-		font = beautiful.font_name .. '10',
-		align = 'left',
-		valign = 'center',
+		font = beautiful.font_name .. "10",
+		align = "left",
+		valign = "center",
 		visible = true,
-		widget = wibox.widget.textbox
-	}
+		widget = wibox.widget.textbox,
+	})
 
 	local notifbox_dismiss = builder.notifbox_dismiss()
 
-	local time_of_popup = gears.timer {
-		timeout   = 60,
-		call_now  = true,
+	local time_of_popup = gears.timer({
+		timeout = 60,
+		call_now = true,
 		autostart = true,
-		callback  = function()
-
+		callback = function()
 			local time_difference = nil
 
-			time_difference = parse_to_seconds(return_date_time('%H:%M:%S')) - parse_to_seconds(time_of_pop)
+			time_difference = parse_to_seconds(return_date_time("%H:%M:%S")) - parse_to_seconds(time_of_pop)
 			time_difference = tonumber(time_difference)
 
 			if time_difference < 60 then
-				notifbox_timepop:set_markup('now')
-
+				notifbox_timepop:set_markup("now")
 			elseif time_difference >= 60 and time_difference < 3600 then
 				local time_in_minutes = math.floor(time_difference / 60)
-				notifbox_timepop:set_markup(time_in_minutes .. 'm ago')
-
+				notifbox_timepop:set_markup(time_in_minutes .. "m ago")
 			elseif time_difference >= 3600 and time_difference < 86400 then
 				notifbox_timepop:set_markup(exact_time)
-
 			elseif time_difference >= 86400 then
 				notifbox_timepop:set_markup(exact_date_time)
 				return false
-
 			end
 
-			collectgarbage('collect')
-		end
-	}
+			collectgarbage("collect")
+		end,
+	})
 
-	local notifbox_template =  wibox.widget {
-		id = 'notifbox_template',
-		expand = 'none',
+	local notifbox_template = wibox.widget({
+		id = "notifbox_template",
+		expand = "none",
 		{
 			{
 				layout = wibox.layout.fixed.vertical,
 				spacing = dpi(5),
 				{
-					expand = 'none',
+					expand = "none",
 					layout = wibox.layout.align.horizontal,
 					{
 						layout = wibox.layout.fixed.horizontal,
@@ -89,8 +83,8 @@ notifbox_box = function(notif, icon, title, message, app, bgcolor)
 					{
 						notifbox_timepop,
 						notifbox_dismiss,
-						layout = wibox.layout.fixed.horizontal
-					}
+						layout = wibox.layout.fixed.horizontal,
+					},
 				},
 				{
 					layout = wibox.layout.fixed.vertical,
@@ -98,30 +92,47 @@ notifbox_box = function(notif, icon, title, message, app, bgcolor)
 					{
 						builder.notifbox_title(title),
 						builder.notifbox_message(message),
-						layout = wibox.layout.fixed.vertical
+						layout = wibox.layout.fixed.vertical,
 					},
 					builder.notifbox_actions(notif),
 				},
-
 			},
 			margins = dpi(10),
-			widget = wibox.container.margin
+			widget = wibox.container.margin,
 		},
 		bg = bgcolor,
 		shape = function(cr, width, height)
-			gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.notif_center_box_radius)
+			gears.shape.partially_rounded_rect(
+				cr,
+				width,
+				height,
+				true,
+				true,
+				true,
+				true,
+				beautiful.notif_center_box_radius
+			)
 		end,
 		widget = wibox.container.background,
-	}
+	})
 
 	-- Put the generated template to a container
-	local notifbox = wibox.widget {
+	local notifbox = wibox.widget({
 		notifbox_template,
 		shape = function(cr, width, height)
-			gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.notif_center_box_radius)
+			gears.shape.partially_rounded_rect(
+				cr,
+				width,
+				height,
+				true,
+				true,
+				true,
+				true,
+				beautiful.notif_center_box_radius
+			)
 		end,
-		widget = wibox.container.background
-	}
+		widget = wibox.container.background,
+	})
 
 	-- Delete notification box
 	local notifbox_delete = function()
@@ -129,44 +140,29 @@ notifbox_box = function(notif, icon, title, message, app, bgcolor)
 	end
 
 	-- Delete notifbox on LMB
-	notifbox_dismiss:buttons(
-		awful.util.table.join(
-			awful.button(
-				{},
-				1,
-				function()
-					if #notifbox_layout.children == 1 then
-						reset_notifbox_layout()
-					else
-						notifbox_delete()
-					end
-					collectgarbage('collect')
-				end
-			)
-		)
-	)
+	notifbox_dismiss:buttons(awful.util.table.join(awful.button({}, 1, function()
+		if #notifbox_layout.children == 1 then
+			reset_notifbox_layout()
+		else
+			notifbox_delete()
+		end
+		collectgarbage("collect")
+	end)))
 
 	-- Add hover, and mouse leave events
-	notifbox_template:connect_signal(
-		'mouse::enter',
-		function() 
-			notifbox_timepop.visible = false
-			notifbox_dismiss.visible = true
-		end
-	)
+	notifbox_template:connect_signal("mouse::enter", function()
+		notifbox_timepop.visible = false
+		notifbox_dismiss.visible = true
+	end)
 
-	notifbox_template:connect_signal(
-		'mouse::leave',
-		function() 
-			notifbox_timepop.visible = true
-			notifbox_dismiss.visible = false
-		end
-	)
+	notifbox_template:connect_signal("mouse::leave", function()
+		notifbox_timepop.visible = true
+		notifbox_dismiss.visible = false
+	end)
 
-	collectgarbage('collect')
+	collectgarbage("collect")
 
 	return notifbox
 end
-
 
 return notifbox_box

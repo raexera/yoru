@@ -16,8 +16,8 @@ local ram_script = [[
 
 -- Periodically get ram info
 awful.widget.watch(ram_script, update_interval, function(widget, stdout)
-    local available = stdout:match('(.*)@@')
-    local total = stdout:match('@@(.*)@')
-    local used = tonumber(total) - tonumber(available)
-    awesome.emit_signal("signal::ram", used, tonumber(total))
+	local available = stdout:match("(.*)@@")
+	local total = stdout:match("@@(.*)@")
+	local used = tonumber(total) - tonumber(available)
+	awesome.emit_signal("signal::ram", used, tonumber(total))
 end)

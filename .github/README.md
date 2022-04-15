@@ -22,7 +22,7 @@
 ### Hi there! Thanks for dropping by! 🖤
 <a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="150" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
 
-<b>  Beautiful & Aesthetic AwesomeWM Dotfiles with Animation! ✨  </b>
+<b>  Beautiful & Aesthetic AwesomeWM Dotfiles! ✨  </b>
 
 Welcome to my AwesomeWM configuration files! 
 You might be here for looking my AwesomeWM configuration files? or looking for **Linux Rice** reference?

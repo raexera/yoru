@@ -40,9 +40,8 @@ local update_interval = 60
 
 -- Periodically get uptime info
 awful.widget.watch(uptime_script, update_interval, function(_, stdout)
-    local uptime_value = stdout
+	local uptime_value = stdout
 
-    uptime_value = string.gsub(uptime_value, '^%s*(.-)%s*$', '%1')
-    awesome.emit_signal("signal::uptime", uptime_value)
+	uptime_value = string.gsub(uptime_value, "^%s*(.-)%s*$", "%1")
+	awesome.emit_signal("signal::uptime", uptime_value)
 end)
-

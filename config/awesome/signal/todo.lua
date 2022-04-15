@@ -23,26 +23,28 @@ local todo_script = [[
 "]]
 
 local emit_todo_info = function()
-    awful.spawn.with_line_callback(todo_script, {
-        stdout = function(line)
-            local done = tonumber(line:match('(.*)@@'))
-            local undone = tonumber(line:match('@@(.*)'))
-            local total = undone + done
-            awesome.emit_signal("signal::todo", total, done, undone)
-        end
-    })
+	awful.spawn.with_line_callback(todo_script, {
+		stdout = function(line)
+			local done = tonumber(line:match("(.*)@@"))
+			local undone = tonumber(line:match("@@(.*)"))
+			local total = undone + done
+			awesome.emit_signal("signal::todo", total, done, undone)
+		end,
+	})
 end
 
 -- Run once to initialize widgets
 emit_todo_info()
 
 -- Kill old inotifywait process
-awful.spawn.easy_async_with_shell("ps x | grep \"inotifywait -e modify " .. todo_file_path .. "\" | grep -v grep | awk '{print $1}' | xargs kill", function ()
-    -- Update todo status with each line printed
-    awful.spawn.with_line_callback(todo_subscribe_script, {
-        stdout = function(_)
-            emit_todo_info()
-        end
-    })
-end)
-
+awful.spawn.easy_async_with_shell(
+	'ps x | grep "inotifywait -e modify ' .. todo_file_path .. "\" | grep -v grep | awk '{print $1}' | xargs kill",
+	function()
+		-- Update todo status with each line printed
+		awful.spawn.with_line_callback(todo_subscribe_script, {
+			stdout = function(_)
+				emit_todo_info()
+			end,
+		})
+	end
+)
