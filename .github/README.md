@@ -26,9 +26,9 @@
 
 Welcome to my AwesomeWM configuration files! 
 You might be here for looking my AwesomeWM configuration files? or looking for **Linux Rice** reference?
-feel free to steal anything from here but don't forget to give me credits :)
+feel free to steal anything from here but don't forget to give me **credits** :)
 
-AwesomeWM is the most powerful window manager on Linux, 
+AwesomeWM is the most powerful and highly configurable, next generation framework window manager for X, 
 Although it takes time and effort to configure it, but I'm very satisfied with the result.
 This is a beautiful user interface isn't it?
 
@@ -58,7 +58,17 @@ These dotfiles are made with love, for sure.
   </tr>
   <tr>
     <td align="center">
-      <sup><sub><samp>THIS DOTFILES ARE CONFIGURED AT 1366x768 WITH 96 DPI.</samp></sub></sup>
+      <sup>
+         <sub>
+            <samp>
+                  THIS DOTFILES ARE CONFIGURED AT 1366x768 WITH 96 DPI
+               <p align="center">
+                  BUT IT WILL STILL WORK PERFECTLY IN HIGH RESOLUTION
+               </p>
+                  DONT WORRY JUST INSTALL THESE DOTFILES AND GIVE THIS REPO A STARS
+            </samp>
+         </sub>
+      </sup>
     </td>
   </tr>
 </table>

@@ -198,7 +198,7 @@ awful.screen.connect_for_each_screen(function(s)
 
 	awful.placement.bottom_left(s.stats_tooltip, {
 		margins = {
-			left = beautiful.wibar_width + 50,
+			left = beautiful.wibar_width + dpi(50),
 			bottom = dpi(30),
 		},
 	})
