@@ -36,7 +36,7 @@ local pop_bar = wibox.widget({
 
 local pop = wibox({
 	type = "dock",
-	screen = screen.focused,
+	screen = screen.primary,
 	height = beautiful.pop_size,
 	width = beautiful.pop_size,
 	shape = helpers.rrect(beautiful.pop_border_radius),
