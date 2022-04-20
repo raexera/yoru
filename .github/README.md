@@ -93,8 +93,8 @@ These dotfiles are made with love, for sure.
          ```sh
          paru -Sy picom-git alacritty rofi todo-bin acpi acpid acpi_call \
          wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
-         brightnessctl alsa-utils alsa-tools pulseaudio gpick redshift \
-         mpd mpc mpdris2 ncmpcpp playerctl ffmpeg bluez-utils --needed 
+         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa gpick \
+         redshift mpd mpc mpdris2 ncmpcpp playerctl ffmpeg bluez-utils --needed 
          ```
 
       + Services
@@ -327,8 +327,9 @@ Thank you! <3
 
    - **Special thanks to**
       + [`ner0z`](https://github.com/ner0z)
-      + [`JavaCafe01`](https://github.com/JavaCafe01)
       + [`elenapan`](https://github.com/elenapan)
+      + [`manilarome`](https://github.com/manilarome)
+      + [`JavaCafe01`](https://github.com/JavaCafe01)
       + [`ChocolateBread799`](https://github.com/ChocolateBread799)
 
 <h2></h2><br>
