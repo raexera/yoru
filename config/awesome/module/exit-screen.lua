@@ -4,7 +4,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local helpers = require("helpers")
-local lock_screen = require("ui.lockscreen")
+local lock_screen = require("module.lockscreen")
 lock_screen.init()
 
 -- Icons

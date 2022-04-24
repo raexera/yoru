@@ -1,22 +1,12 @@
--- Standard awesome library
 local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
-
--- Theme handling library
 local beautiful = require("beautiful")
-
--- Notification handling library
 local naughty = require("naughty")
-
--- Helpers
 local helpers = require("helpers")
-
--- Ruled
 local ruled = require("ruled")
-
--- Menubar
 local menubar = require("menubar")
+local icons = require("theme.assets.icons")
 
 -- Notifications
 ------------------
@@ -33,20 +23,16 @@ naughty.connect_signal("request::icon", function(n, context, hints)
 	end
 end)
 
--- Import some stuff
-
+-- Import stuff
 -- Popup notifications
 require("ui.notifs.popup")
--- Notif center
-require("ui.notifs.notif-center")
 
 naughty.config.defaults.ontop = true
 naughty.config.defaults.screen = awful.screen.focused()
 naughty.config.defaults.timeout = 3
 naughty.config.defaults.title = "Notification"
-naughty.config.defaults.position = "top_right"
+naughty.config.defaults.position = "bottom_right"
 
--- Timeouts
 naughty.config.presets.low.timeout = 3
 naughty.config.presets.critical.timeout = 0
 
@@ -84,7 +70,7 @@ end)
 naughty.connect_signal("request::display", function(n)
 	local appicon = n.app_icon
 	if not appicon then
-		appicon = gears.color.recolor_image(beautiful.notification_icon, beautiful.accent)
+		appicon = gears.color.recolor_image(icons.notification, beautiful.accent)
 	end
 	local time = os.date("%H:%M")
 
@@ -248,9 +234,12 @@ naughty.connect_signal("request::display", function(n)
 		},
 	})
 
-	-- Destroy popups if dont_disturb mode is on
+	-- Destroy popups notifs if dont_disturb mode is on
 	-- Or if the notif_center is visible
-	if _G.dont_disturb_state or (notif_center and notif_center.visible) then
+	if
+		_G.dont_disturb_state
+		or (central_panel and central_panel.visible and central_panel:get_children_by_id("dashboard_id")[1].visible)
+	then
 		naughty.destroy_all_notifications(nil, 1)
 	end
 end)

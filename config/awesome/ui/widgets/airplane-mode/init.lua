@@ -11,14 +11,14 @@ local ap_state = false
 
 local action_name = wibox.widget({
 	text = "Airplane Mode",
-	font = beautiful.font_name .. "Bold 10",
+	font = beautiful.font_name .. "Bold 12",
 	align = "left",
 	widget = wibox.widget.textbox,
 })
 
 local action_status = wibox.widget({
 	text = "Off",
-	font = beautiful.font_name .. "10",
+	font = beautiful.font_name .. "11",
 	align = "left",
 	widget = wibox.widget.textbox,
 })

@@ -28,13 +28,13 @@ local return_button = function()
 			widget = clickable_container,
 		},
 		bg = beautiful.transparent,
-		shape = gears.shape.circle,
+		shape = helpers.rrect(beautiful.control_center_widget_radius),
 		widget = wibox.container.background,
 	})
 
 	widget_button:buttons(gears.table.join(awful.button({}, 1, nil, function()
 		awesome.emit_signal("module::exit_screen:show")
-		control_center_toggle()
+		central_panel:toggle()
 	end)))
 
 	return widget_button

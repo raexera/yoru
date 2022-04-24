@@ -13,7 +13,7 @@
 <h2></h2><br>
 
 <div align="center">
-    <img src="assets/Day-Night.png" alt="Rice Preview">
+    <img src="assets/rice.png" alt="Rice Preview">
 </div>
 
 <br>
@@ -46,7 +46,6 @@ These dotfiles are made with love, for sure.
 | Shell      | zsh               |
 | Editor     | neovim / vscode   |
 | Compositor | picom             |
-| Launcher   | rofi              |
 
 <h2></h2><br>
 
@@ -91,10 +90,10 @@ These dotfiles are made with love, for sure.
       + Dependencies
 
          ```sh
-         paru -Sy picom-git alacritty rofi todo-bin acpi acpid acpi_call \
+         paru -Sy picom-git alacritty todo-bin acpi acpid acpi_call \
          wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
-         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa gpick \
-         redshift mpd mpc mpdris2 ncmpcpp playerctl ffmpeg bluez-utils --needed 
+         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa \
+         redshift mpd mpc mpdris2 ncmpcpp playerctl ffmpeg bluez-utils gpick --needed 
          ```
 
       + Services
@@ -159,7 +158,7 @@ These dotfiles are made with love, for sure.
 
          Note: For the weather widgets to work, you will also need to create an account on [openweathermap](https://openweathermap.org), get your key, look for your city ID, and set `openweathermap_key` and `openweathermap_city_id` accordingly.
 
-   6. Lastly, log out from your current desktop session and log in into AwesomeWM.
+   6. Lastly, log out from your current desktop session and log in into `AwesomeWM.`
 
 </details>
 
@@ -170,31 +169,19 @@ These dotfiles are made with love, for sure.
 
 <b>These are the features included in my AwesomeWM setups!</b>
 
-
-   + Have two themes!
-      - <details>
-         <summary>Beautiful Day</summary>
-
-         *created by me, comfortable light colorscheme!*
-
-         <div align="left">
-         <img src="assets/day.png" width="500px" alt="day colorscheme preview">
-         </div>
-         </details>
-      - <details>
-         <summary>Aesthetic Night</summary>
-
-         *created by [ner0z](https://github.com/ner0z), extremely aesthetic dark colorscheme!*
-
-         <div align="left">
-         <img src="assets/night.png" width="500px" alt="night colorscheme preview">
-         </div>
-         </details>
    + Aesthetic `Dashboard` ngl.
       - <details>
          <summary>Preview</summary>
 
          *Aesthetic dashboard with neat grid layout, it's so beautiful!*
+
+         - Time & date
+         - Pfp display
+         - ToDo reminder
+         - Hardware stats
+         - Weather widget
+         - Music player
+         - Notifs center
 
          <div align="left">
          <img src="assets/dashboard.gif" width="500px" alt="dashboard preview">
@@ -209,9 +196,9 @@ These dotfiles are made with love, for sure.
          - Volume & brightness control
          - DnD, Blue light & Airplane mode
          - Floating layout mode
-         - `Theme switcher`
-         - wifi & bluetooth toggle
-         - built in `screenrec` and `screensht` widgets
+         - Theme switcher
+         - Wifi, Bluetooth and Microphone toggle
+         - built in screenrec and screensht widgets
          - Hardware Monitor
 
          <summary>Preview</summary>
@@ -239,21 +226,9 @@ These dotfiles are made with love, for sure.
          <img src="assets/lockscreen.png" width="500px" alt="word clock lockscreen preview">
          </div>
          </details>
-   + Notification Center
-   + ToDo Reminder
-   + Battery Indicator
    + PopUp Notifications
-   + Some Tooltip Widget
-   + Applications Launcher
-      - <details>
-
-         *Minimalist app launcher!*
-
-         <summary>Preview</summary>
-         <div align="left">
-         <img src="assets/app-launcher.gif" width="500px" alt="app launcher preview">
-         </div>
-         </details>
+   + Tooltip Widget
+   + System Tray Widget
 
 </details>
 
@@ -269,14 +244,11 @@ also with <kbd>alt, shift, and ctrl</kbd>
 
 | Keybind                                 | Action                                                    |
 |-----------------------------------------|-----------------------------------------------------------|
-| <kbd>super + enter</kbd>                | Spawn terminal                                            |
-| <kbd>super + w</kbd>                    | Spawn web browser                                         |
-| <kbd>super + x</kbd>                    | Spawn color picker                                        |
-| <kbd>super + f</kbd>                    | Spawn file manager                                        |
-| <kbd>super + d</kbd>                    | Launch applications launcher                              |
-| <kbd>super + shift + d</kbd>            | Toggle dashboard                                          |
-| <kbd>super + shift + c</kbd>            | Toggle control center                                     |
-| <kbd>super + shift + n</kbd>            | Toggle notifications center                               |
+| <kbd>super + shift + enter</kbd>        | Spawn terminal                                            |
+| <kbd>super + shift + w</kbd>            | Spawn web browser                                         |
+| <kbd>super + shift + x</kbd>            | Spawn color picker                                        |
+| <kbd>super + shift + f</kbd>            | Spawn file manager                                        |
+| <kbd>super + shift + d</kbd>            | Toggle central panel                                      |
 | <kbd>super + q</kbd>                    | Close client                                              |
 | <kbd>super + ctrl + l</kbd>             | Toggle lock screen                                        |
 | <kbd>super + [1-0]</kbd>                | View tag AKA change workspace (for you i3/bsp folks)      |
@@ -286,10 +258,10 @@ also with <kbd>alt, shift, and ctrl</kbd>
 | <kbd>super + shift + s</kbd>            | Set floating layout                                       |
 | <kbd>super + c</kbd>                    | Center floating client                                    |
 | <kbd>super + [arrow keys]</kbd>         | Change focus by direction                                 |
-| <kbd>super + shift + f</kbd>            | Toggle fullscreen                                         |
+| <kbd>super + f</kbd>                    | Toggle fullscreen                                         |
 | <kbd>super + m</kbd>                    | Toggle maximize                                           |
 | <kbd>super + n</kbd>                    | Minimize                                                  |
-| <kbd>ctrl + shift + n</kbd>             | Restore minimized                                         |
+| <kbd>ctrl + super + n</kbd>             | Restore minimized                                         |
 | <kbd>alt + tab</kbd>                    | Window switcher                                           |
 
 <br>
@@ -326,12 +298,18 @@ Thank you! <3
 ### Acknowledgements 💡
 
    - **Special thanks to**
-      + [`ner0z`](https://github.com/ner0z)
-      + [`elenapan`](https://github.com/elenapan)
-      + [`manilarome`](https://github.com/manilarome)
-      + [`JavaCafe01`](https://github.com/JavaCafe01)
-      + [`ChocolateBread799`](https://github.com/ChocolateBread799)
+
+      + *Contributors*
+         - [`ner0z`](https://github.com/ner0z)
+         - [`paulhersch`](https://github.com/paulhersch)
+         - [`ChocolateBread799`](https://github.com/ChocolateBread799)
+
+      + *And for them, ofc.*
+         - [`elenapan`](https://github.com/elenapan)
+         - [`manilarome`](https://github.com/manilarome)
+         - [`JavaCafe01`](https://github.com/JavaCafe01)
 
 <h2></h2><br>
 
+<p align="center"><img src="https://raw.githubusercontent.com/catppuccin/catppuccin/dev/assets/footers/gray0_ctp_on_line.svg?sanitize=true" /></p>
 <p align="center"><a href="https://github.com/rxyhn/AwesomeWM-Dotfiles/blob/main/.github/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=License&message=GPL-3.0&logoColor=eceff4&logo=github&colorA=061115&colorB=67AFC1"/></a></p>

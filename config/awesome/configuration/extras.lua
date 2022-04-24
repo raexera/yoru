@@ -64,10 +64,9 @@ bling.module.flash_focus.enable()
 bling.widget.tag_preview.enable({
 	show_client_content = false,
 	placement_fn = function(c)
-		awful.placement.top_left(c, {
+		awful.placement.top(c, {
 			margins = {
-				top = dpi(83),
-				left = beautiful.wibar_width + dpi(50),
+				top = dpi(80),
 			},
 		})
 	end,

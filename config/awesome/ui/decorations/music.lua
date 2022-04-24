@@ -354,7 +354,7 @@ local music_create_decoration = function(c)
 	awful.titlebar.hide(c, beautiful.titlebar_pos)
 
 	-- Titlebar
-	awful.titlebar(c, { position = "top", size = beautiful.titlebar_size, bg = beautiful.transparent }):setup({
+	awful.titlebar(c, { position = "top", size = dpi(45), bg = beautiful.transparent }):setup({
 		{
 			{
 				{

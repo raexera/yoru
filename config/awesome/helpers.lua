@@ -4,8 +4,11 @@
 local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 local wibox = require("wibox")
 local naughty = require("naughty")
+
 local helpers = {}
 
 function helpers.contains(_table, _c)
@@ -86,6 +89,17 @@ end
 helpers.rrect = function(radius)
 	return function(cr, width, height)
 		gears.shape.rounded_rect(cr, width, height, radius)
+	end
+end
+
+helpers.squircle = function(rate, delta)
+	return function(cr, width, height)
+		gears.shape.squircle(cr, width, height, rate, delta)
+	end
+end
+helpers.psquircle = function(rate, delta, tl, tr, br, bl)
+	return function(cr, width, height)
+		gears.shape.partial_squircle(cr, width, height, tl, tr, br, bl, rate, delta)
 	end
 end
 
@@ -442,32 +456,6 @@ function helpers.fake_escape()
 	root.fake_input("key_release", "Escape")
 end
 
-function helpers.run_or_raise(match, move, spawn_cmd, spawn_args)
-	local matcher = function(c)
-		return awful.rules.match(c, match)
-	end
-
-	-- Find and raise
-	local found = false
-	for c in awful.client.iterate(matcher) do
-		found = true
-		c.minimized = false
-		if move then
-			c:move_to_tag(mouse.screen.selected_tag)
-			client.focus = c
-			c:raise()
-		else
-			c:jump_to()
-		end
-		break
-	end
-
-	-- Spawn if not found
-	if not found then
-		awful.spawn(spawn_cmd, spawn_args)
-	end
-end
-
 function helpers.pad(size)
 	local str = ""
 	for i = 1, size do
@@ -579,6 +567,112 @@ end
 
 function helpers.send_key_sequence(c, seq)
 	awful.spawn.with_shell("xdotool type --delay 5 --window " .. tostring(c.window) .. " " .. seq)
+end
+
+local prompt_font = beautiful.prompt_font
+function helpers.prompt(action, textbox, prompt, callback)
+	if action == "run" then
+		awful.prompt.run({
+			prompt = prompt,
+			textbox = textbox,
+			font = prompt_font,
+			done_callback = callback,
+			exe_callback = awful.spawn,
+			completion_callback = awful.completion.shell,
+			history_path = awful.util.get_cache_dir() .. "/history",
+		})
+	elseif action == "web_search" then
+		awful.prompt.run({
+			prompt = prompt,
+			textbox = textbox,
+			font = prompt_font,
+			history_path = awful.util.get_cache_dir() .. "/history_web",
+			done_callback = callback,
+			exe_callback = function(input)
+				if not input or #input == 0 then
+					return
+				end
+				awful.spawn.with_shell("noglob " .. web_search_cmd .. "'" .. input .. "'")
+				naughty.notify({
+					title = "Searching the web for",
+					text = input,
+					urgency = "low",
+				})
+			end,
+		})
+	end
+end
+
+-- Given a `match` condition, returns an array with clients that match it, or
+-- just the first found client if `first_only` is true
+function helpers.find_clients(match, first_only)
+	local matcher = function(c)
+		return awful.rules.match(c, match)
+	end
+
+	if first_only then
+		for c in awful.client.iterate(matcher) do
+			return c
+		end
+	else
+		local clients = {}
+		for c in awful.client.iterate(matcher) do
+			table.insert(clients, c)
+		end
+		return clients
+	end
+	return nil
+end
+
+-- Given a `match` condition, calls the specified function `f_do` on all the
+-- clients that match it
+function helpers.find_clients_and_do(match, f_do)
+	local matcher = function(c)
+		return awful.rules.match(c, match)
+	end
+
+	for c in awful.client.iterate(matcher) do
+		f_do(c)
+	end
+end
+
+function helpers.run_or_raise(match, move, spawn_cmd, spawn_args)
+	local matcher = function(c)
+		return awful.rules.match(c, match)
+	end
+
+	-- Find and raise
+	local found = false
+	for c in awful.client.iterate(matcher) do
+		found = true
+		c.minimized = false
+		if move then
+			c:move_to_tag(mouse.screen.selected_tag)
+			client.focus = c
+		else
+			c:jump_to()
+		end
+		break
+	end
+
+	-- Spawn if not found
+	if not found then
+		awful.spawn(spawn_cmd, spawn_args)
+	end
+end
+
+-- Run raise or minimize a client (scratchpad style)
+-- Depends on helpers.run_or_raise
+-- If it not running, spawn it
+-- If it is running, focus it
+-- If it is focused, minimize it
+function helpers.scratchpad(match, spawn_cmd, spawn_args)
+	local cf = client.focus
+	if cf and awful.rules.match(cf, match) then
+		cf.minimized = true
+	else
+		helpers.run_or_raise(match, true, spawn_cmd, spawn_args)
+	end
 end
 
 return helpers

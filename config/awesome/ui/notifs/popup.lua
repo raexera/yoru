@@ -1,14 +1,7 @@
--- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-
--- Theme handling library
 local beautiful = require("beautiful")
-
--- Widget library
 local wibox = require("wibox")
-
--- Helpers
 local helpers = require("helpers")
 
 -- Pop Up Notification

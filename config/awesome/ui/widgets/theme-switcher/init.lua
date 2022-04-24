@@ -8,14 +8,27 @@ local clickable_container = require("ui.widgets.clickable-container")
 local helpers = require("helpers")
 local day_night = {}
 
-local function theme_container(widget)
+local function theme_container(widget, name)
 	local container = wibox.widget({
 		{
 			{
-				widget,
-				margins = dpi(15),
-				forced_height = dpi(30),
-				forced_width = dpi(30),
+				{
+					layout = wibox.layout.fixed.horizontal,
+					spacing = dpi(5),
+					{
+						widget,
+						forced_height = dpi(70),
+						forced_width = dpi(70),
+						widget = wibox.container.margin,
+					},
+					{
+						text = name,
+						font = beautiful.font_name .. "Bold 10",
+						align = "center",
+						widget = wibox.widget.textbox,
+					},
+				},
+				margins = dpi(5),
 				widget = wibox.container.margin,
 			},
 			widget = clickable_container,
@@ -29,13 +42,11 @@ local function theme_container(widget)
 end
 
 local night = wibox.widget({
-	{
-		id = "icon",
-		image = gears.color.recolor_image(beautiful.night, beautiful.xforeground),
-		widget = wibox.widget.imagebox,
-		resize = true,
-	},
-	layout = wibox.layout.align.horizontal,
+	align = "center",
+	valign = "center",
+	font = "icomoon 50",
+	markup = helpers.colorize_text("", beautiful.xforeground),
+	widget = wibox.widget.textbox(),
 })
 
 night:connect_signal("button::press", function()
@@ -44,13 +55,11 @@ night:connect_signal("button::press", function()
 end)
 
 local day = wibox.widget({
-	{
-		id = "icon",
-		image = gears.color.recolor_image(beautiful.day, beautiful.xforeground),
-		widget = wibox.widget.imagebox,
-		resize = true,
-	},
-	layout = wibox.layout.align.horizontal,
+	align = "center",
+	valign = "center",
+	font = "icomoon 50",
+	markup = helpers.colorize_text("", beautiful.xforeground),
+	widget = wibox.widget.textbox(),
 })
 
 day:connect_signal("button::press", function()
@@ -58,8 +67,8 @@ day:connect_signal("button::press", function()
 	awesome.restart()
 end)
 
-day_night.night = theme_container(night)
-day_night.day = theme_container(day)
+day_night.night = theme_container(night, "Night Themes")
+day_night.day = theme_container(day, "Day Themes")
 
 local update_themes = function()
 	if theme == themes[2] then

@@ -5,8 +5,6 @@ local dpi = beautiful.xresources.apply_dpi
 local wibox = require("wibox")
 local helpers = require("helpers")
 
--- Stats
-----------
 local bg_color = beautiful.accent
 local vol_color = bg_color
 local brightness_color = bg_color
@@ -20,11 +18,10 @@ local function create_slider_widget(slider_color)
 			value = 40,
 			background_color = bg_color .. "55",
 			color = slider_color,
-			shape = helpers.rrect(dpi(20)),
-			bar_shape = helpers.rrect(dpi(20)),
+			shape = gears.shape.rounded_bar,
+			bar_shape = gears.shape.rounded_bar,
 			widget = wibox.widget.progressbar,
 		},
-		forced_width = dpi(178),
 		forced_height = dpi(50),
 		widget = wibox.container.background,
 	})
@@ -40,7 +37,7 @@ local function create_icons(icon, color)
 			valign = "center",
 			widget = wibox.widget.textbox,
 		},
-		left = dpi(10),
+		left = dpi(15),
 		widget = wibox.container.margin,
 	})
 
@@ -52,15 +49,37 @@ local vol = create_slider_widget(vol_color)
 local brightness = create_slider_widget(brightness_color)
 
 local vol_slider_container = wibox.widget({
-	vol,
-	create_icons("󰕾", beautiful.xforeground),
-	layout = wibox.layout.stack,
+	{
+		{
+			vol,
+			create_icons("󰕾", beautiful.xforeground),
+			layout = wibox.layout.stack,
+		},
+		margins = dpi(10),
+		widget = wibox.container.margin,
+	},
+	shape = function(cr, width, height)
+		gears.shape.rounded_rect(cr, width, height, dpi(5))
+	end,
+	bg = beautiful.control_center_widget_bg,
+	widget = wibox.container.background,
 })
 
 local brightness_slider_container = wibox.widget({
-	brightness,
-	create_icons("󰖨", beautiful.xforeground),
-	layout = wibox.layout.stack,
+	{
+		{
+			brightness,
+			create_icons("󰖨", beautiful.xforeground),
+			layout = wibox.layout.stack,
+		},
+		margins = dpi(10),
+		widget = wibox.container.margin,
+	},
+	shape = function(cr, width, height)
+		gears.shape.rounded_rect(cr, width, height, dpi(5))
+	end,
+	bg = beautiful.control_center_widget_bg,
+	widget = wibox.container.background,
 })
 
 awesome.connect_signal("signal::volume", function(value, muted)
@@ -112,8 +131,8 @@ local stats = wibox.widget({
 		{
 			brightness_slider_container,
 			vol_slider_container,
-			spacing = dpi(15),
-			layout = wibox.layout.fixed.horizontal,
+			spacing = dpi(20),
+			layout = wibox.layout.flex.horizontal,
 		},
 		expand = "none",
 		layout = wibox.layout.fixed.vertical,

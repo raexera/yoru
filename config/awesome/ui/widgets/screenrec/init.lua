@@ -9,7 +9,7 @@ local helpers = require("helpers")
 
 -- Screenrec
 ---------------
--- Stolen from Manilarome
+-- Stolen from manilarome
 
 -- Status variables
 local status_recording = false
@@ -179,7 +179,7 @@ local sr_recording_start = function()
 	screen_rec_toggle_button.bg = beautiful.accent
 
 	start_recording(status_audio)
-	control_center_toggle()
+	central_panel:toggle()
 end
 
 -- Stop Recording

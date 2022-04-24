@@ -8,10 +8,11 @@ local dpi = xresources.apply_dpi
 local active_color = beautiful.accent
 
 local ram_arc = wibox.widget({
+	start_angle = 3 * math.pi / 2,
+	min_value = 0,
 	max_value = 100,
-	value = 20,
+	value = 50,
 	thickness = dpi(8),
-	start_angle = 4.3,
 	rounded_edge = true,
 	bg = active_color .. "44",
 	paddings = dpi(10),

@@ -14,11 +14,11 @@ local create_profile = function()
 			forced_height = dpi(50),
 			clip_shape = gears.shape.circle,
 		},
-		layout = wibox.layout.align.horizontal,
+		layout = wibox.layout.fixed.horizontal,
 	})
 
 	local profile_name = wibox.widget({
-		font = beautiful.font_name .. "Bold 12",
+		font = beautiful.font_name .. "Bold 14",
 		markup = "User",
 		align = "left",
 		valign = "center",
@@ -45,14 +45,8 @@ local create_profile = function()
 
 	local user_profile = wibox.widget({
 		layout = wibox.layout.fixed.horizontal,
-		spacing = dpi(10),
-		{
-			layout = wibox.layout.align.vertical,
-			expand = "none",
-			nil,
-			profile_imagebox,
-			nil,
-		},
+		spacing = dpi(15),
+		profile_imagebox,
 		profile_name,
 	})
 

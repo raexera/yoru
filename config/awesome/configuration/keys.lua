@@ -2,6 +2,7 @@
 local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local gfs = require("gears.filesystem")
 
 -- Notifications library
 local naughty = require("naughty")
@@ -27,27 +28,18 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey }, "Return", function()
 		awful.spawn(terminal)
 	end, { description = "open terminal", group = "launcher" }),
-	awful.key({ modkey }, "d", function()
-		awful.spawn(launcher)
-	end, { description = "open applications menu", group = "launcher" }),
-	awful.key({ modkey }, "f", function()
+	awful.key({ modkey, shift }, "f", function()
 		awful.spawn(file_manager)
 	end, { description = "open file manager", group = "launcher" }),
-	awful.key({ modkey }, "w", function()
+	awful.key({ modkey, shift }, "w", function()
 		awful.spawn.with_shell(browser)
 	end, { description = "open web browser", group = "launcher" }),
-	awful.key({ modkey }, "x", function()
+	awful.key({ modkey, shift }, "x", function()
 		awful.spawn.with_shell("xcolor-pick")
-	end, { description = "open color-picker", group = "launcher" }),
+	end, { description = "open color picker", group = "launcher" }),
 	awful.key({ modkey, shift }, "d", function()
-		dashboard_toggle()
+		central_panel:toggle()
 	end, { description = "toggle dashboard", group = "launcher" }),
-	awful.key({ modkey, shift }, "c", function()
-		control_center_toggle()
-	end, { description = "toggle control center", group = "launcher" }),
-	awful.key({ modkey, shift }, "n", function()
-		notif_center_toggle()
-	end, { description = "toggle notif center", group = "launcher" }),
 	awful.key({ modkey, shift }, "t", function()
 		systray_toggle()
 	end, { description = "toggle systray", group = "launcher" }),
@@ -86,10 +78,10 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey }, "k", function()
 		awful.client.focus.byidx(-1)
 	end, { description = "focus previous by index", group = "client" }),
-	awful.key({ modkey, "Shift" }, "j", function()
+	awful.key({ modkey, shift }, "j", function()
 		awful.client.swap.byidx(1)
 	end, { description = "swap with next client by index", group = "client" }),
-	awful.key({ modkey, "Shift" }, "k", function()
+	awful.key({ modkey, shift }, "k", function()
 		awful.client.swap.byidx(-1)
 	end, { description = "swap with previous client by index", group = "client" }),
 	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
@@ -181,10 +173,10 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey }, "h", function()
 		awful.tag.incmwfact(-0.05)
 	end, { description = "decrease master width factor", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "h", function()
+	awful.key({ modkey, shift }, "h", function()
 		awful.tag.incnmaster(1, nil, true)
 	end, { description = "increase the number of master clients", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "l", function()
+	awful.key({ modkey, shift }, "l", function()
 		awful.tag.incnmaster(-1, nil, true)
 	end, { description = "decrease the number of master clients", group = "layout" }),
 	awful.key({ modkey, "Control" }, "h", function()
@@ -196,7 +188,7 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey }, "space", function()
 		awful.layout.inc(1)
 	end, { description = "select next layout", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "space", function()
+	awful.key({ modkey, shift }, "space", function()
 		awful.layout.inc(-1)
 	end, { description = "select previous layout", group = "layout" }),
 
@@ -229,7 +221,7 @@ awful.keyboard.append_global_keybindings({
 -- Client management keybinds
 client.connect_signal("request::default_keybindings", function()
 	awful.keyboard.append_client_keybindings({
-		awful.key({ modkey, "Shift" }, "f", function(c)
+		awful.key({ modkey }, "f", function(c)
 			c.fullscreen = not c.fullscreen
 			c:raise()
 		end, { description = "toggle fullscreen", group = "client" }),
@@ -276,7 +268,7 @@ client.connect_signal("request::default_keybindings", function()
 			c.maximized_vertical = not c.maximized_vertical
 			c:raise()
 		end, { description = "(un)maximize vertically", group = "client" }),
-		awful.key({ modkey, "Shift" }, "m", function(c)
+		awful.key({ modkey, shift }, "m", function(c)
 			c.maximized_horizontal = not c.maximized_horizontal
 			c:raise()
 		end, { description = "(un)maximize horizontally", group = "client" }),
@@ -340,7 +332,7 @@ awful.keyboard.append_global_keybindings({
 		end,
 	}),
 	awful.key({
-		modifiers = { modkey, "Shift" },
+		modifiers = { modkey, shift },
 		keygroup = "numrow",
 		description = "move focused client to tag",
 		group = "tag",
@@ -354,7 +346,7 @@ awful.keyboard.append_global_keybindings({
 		end,
 	}),
 	awful.key({
-		modifiers = { modkey, "Control", "Shift" },
+		modifiers = { modkey, "Control", shift },
 		keygroup = "numrow",
 		description = "toggle focused client on tag",
 		group = "tag",
@@ -384,7 +376,7 @@ awful.mouse.append_global_mousebindings({
 
 	-- Middle click
 	awful.button({}, 2, function()
-		dashboard_toggle()
+		central_panel:toggle()
 	end),
 
 	-- Right click

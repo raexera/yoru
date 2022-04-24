@@ -10,7 +10,7 @@ local update_interval = 180 -- every 3 minutes
 -- Use /dev/sdxY according to your setup
 local disk_script = [[
     bash -c "
-    df -kH -B 1MB /dev/sda7 | tail -1 | awk '{printf \"%d@%d\", $4, $3}'
+    df -kH -B 1MB /dev/sda3 | tail -1 | awk '{printf \"%d@%d\", $4, $3}'
     "
 ]]
 

@@ -15,65 +15,70 @@ local helpers = require("helpers")
 -- Beautiful Day Theme
 --------------------------
 
--- Load ~/.Xresources colors
-theme.xbackground = xrdb.background
-theme.xforeground = xrdb.foreground
-theme.xcolor0 = xrdb.color0
-theme.xcolor1 = xrdb.color1
-theme.xcolor2 = xrdb.color2
-theme.xcolor3 = xrdb.color3
-theme.xcolor4 = xrdb.color4
-theme.xcolor5 = xrdb.color5
-theme.xcolor6 = xrdb.color6
-theme.xcolor7 = xrdb.color7
-theme.xcolor8 = xrdb.color8
-theme.xcolor9 = xrdb.color9
-theme.xcolor10 = xrdb.color10
-theme.xcolor11 = xrdb.color11
-theme.xcolor12 = xrdb.color12
-theme.xcolor13 = xrdb.color13
-theme.xcolor14 = xrdb.color14
-theme.xcolor15 = xrdb.color15
-theme.darker_bg = "#d9d7d6"
-theme.lighter_bg = "#e4e3e2"
-theme.dashboard_fg = "#737a89"
-theme.transparent = "#00000000"
+-- colorscheme
+local color_palette = {
+	rosewater = "#DC907F",
+	flamingo = "#DD7878",
+	pink = "#EC83D0",
+	mauve = "#822FEE",
+	red = "#BB0D33",
+	maroon = "#E63B4A",
+	peach = "#FE640B",
+	yellow = "#E49320",
+	green = "#40A02B",
+	teal = "#179299",
+	sky = "#04A5E5",
+	blue = "#1D65F5",
+	sapphire = "#209FB5",
+	lavender = "#7287FD",
+	white = "#575279",
+	gray2 = "#6C6789",
+	gray1 = "#817C98",
+	gray0 = "#9691A8",
+	black0 = "#D0CDD4",
+	black1 = "#ECEBEB",
+	black2 = "#FBF8F4",
+	black3 = "#E1DCE0",
+	black4 = "#BEBAC6",
+	black5 = "#AAA6B7",
+}
 
--- Wallpaper
-theme.wallpaper = theme.darker_bg
-theme.alt_wallpaper = theme.xcolor13
+theme.xbackground = color_palette.black2
+theme.xforeground = color_palette.white
+theme.xcolor0 = color_palette.gray0
+theme.xcolor1 = color_palette.red
+theme.xcolor2 = color_palette.green
+theme.xcolor3 = color_palette.yellow
+theme.xcolor4 = color_palette.blue
+theme.xcolor5 = color_palette.mauve
+theme.xcolor6 = color_palette.pink
+theme.xcolor7 = color_palette.white
+theme.xcolor8 = color_palette.gray1
+theme.xcolor9 = color_palette.maroon
+theme.xcolor10 = color_palette.teal
+theme.xcolor11 = color_palette.peach
+theme.xcolor12 = color_palette.sky
+theme.xcolor13 = color_palette.lavender
+theme.xcolor14 = color_palette.flamingo
+theme.xcolor15 = color_palette.white
+theme.darker_bg = color_palette.black1
+theme.lighter_bg = color_palette.black3
+theme.dashboard_fg = color_palette.gray2
+theme.transparent = "#00000000"
 
 -- PFP
 theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/pfp.png")
 
--- Themes icon
-theme.day = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/day.png")
-theme.night = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/night.png")
-
 -- Awesome Logo
-theme.awesome_logo = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/awesome.png")
-
--- Notifications bell icon
-theme.notification_bell_icon = gears.surface.load_uncached(
-	gfs.get_configuration_dir() .. "theme/assets/icons/notification-bell.png"
-)
-
--- Notifications icon
-theme.notification_icon = gears.surface.load_uncached(
-	gfs.get_configuration_dir() .. "theme/assets/icons/notification.png"
-)
-
--- Arc widget icon
-theme.temp = gfs.get_configuration_dir() .. "theme/assets/icons/temp.png"
-theme.cpu = gfs.get_configuration_dir() .. "theme/assets/icons/cpu.png"
-theme.ram = gfs.get_configuration_dir() .. "theme/assets/icons/ram.png"
+theme.awesome_logo = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/awesome_logo.svg")
 
 -- Fonts
 theme.font_name = "Iosevka Nerd Font Mono "
 theme.font = theme.font_name .. "8"
 theme.icon_font_name = "Material Design Icons Desktop "
 theme.icon_font = theme.icon_font_name .. "18"
-theme.font_taglist = theme.icon_font_name .. "14"
+theme.font_taglist = theme.icon_font_name .. "16"
+theme.prompt_font = theme.font_name .. "Bold 10"
 
 -- Background Colors
 theme.bg_dark = theme.darker_bg
@@ -85,7 +90,7 @@ theme.bg_secondary = theme.darker_bg
 theme.bg_accent = theme.lighter_bg
 
 -- Accent colors
-theme.accent = theme.xcolor5
+theme.accent = theme.xcolor6
 theme.hover_effect = theme.accent .. "44"
 
 -- Foreground Colors
@@ -103,56 +108,20 @@ theme.widget_border_width = dpi(2)
 theme.widget_border_color = theme.darker_bg
 
 -- Radius
-theme.border_radius = dpi(12)
-theme.client_radius = dpi(10)
-theme.dashboard_radius = dpi(10)
-theme.widget_radius = dpi(10)
-
--- Taglist
-local taglist_square_size = dpi(0)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
-theme.taglist_font = theme.font_taglist
-theme.taglist_bg = theme.lighter_bg
-
-theme.taglist_bg_focus = theme.lighter_bg
-theme.taglist_fg_focus = theme.xcolor3
-
-theme.taglist_bg_urgent = theme.lighter_bg
-theme.taglist_fg_urgent = theme.xcolor6
-
-theme.taglist_bg_occupied = theme.lighter_bg
-theme.taglist_fg_occupied = theme.xcolor6
-
-theme.taglist_bg_empty = theme.lighter_bg
-theme.taglist_fg_empty = theme.xcolor8
-
-theme.taglist_bg_volatile = transparent
-theme.taglist_fg_volatile = theme.xcolor11
-
-theme.taglist_disable_icon = true
-
-theme.taglist_shape_focus = helpers.rrect(theme.widget_radius)
-theme.taglist_shape_empty = helpers.rrect(theme.widget_radius)
-theme.taglist_shape = helpers.rrect(theme.widget_radius)
-theme.taglist_shape_urgent = helpers.rrect(theme.widget_radius)
-theme.taglist_shape_volatile = helpers.rrect(theme.widget_radius)
-
--- Taglist Icons
-theme.taglist_icon_focused = theme.xcolor3
-theme.taglist_icon_occupied = theme.accent
-theme.taglist_icon_empty = theme.xcolor8
+theme.border_radius = dpi(10)
+theme.client_radius = theme.border_radius
+theme.dashboard_radius = theme.border_radius
+theme.widget_radius = theme.border_radius
 
 -- Titlebars
 theme.titlebar_enabled = true
-theme.titlebar_size = dpi(45)
-theme.titlebar_color = theme.darker_bg
-theme.titlebar_unfocused = theme.xcolor0
+theme.titlebar_bg = theme.xbackground
+theme.titlebar_fg = theme.xforeground
 
 -- Music
 theme.music_bg = theme.xbackground
 theme.music_bg_accent = theme.darker_bg
-theme.music_accent = theme.xcolor15
+theme.music_accent = theme.lighter_bg
 
 -- Pop up notifications
 theme.pop_size = dpi(190)
@@ -178,20 +147,17 @@ theme.snap_bg = theme.xcolor8
 theme.snap_shape = helpers.rrect(0)
 
 -- Prompts
-theme.prompt_bg = transparent
+theme.prompt_bg = theme.transparent
 theme.prompt_fg = theme.xforeground
 
 -- Dashboard
-theme.dashboard_width = dpi(300)
 theme.dashboard_bg = theme.darker_bg
 theme.dashboard_box_bg = theme.xbackground
 theme.dashboard_box_fg = theme.dashboard_fg
 
 -- Control center
-theme.control_center_width = dpi(410)
-theme.control_center_height = dpi(595)
 theme.control_center_radius = dpi(20)
-theme.control_center_widget_radius = dpi(20)
+theme.control_center_widget_radius = theme.border_radius
 theme.control_center_bg = theme.darker_bg
 theme.control_center_widget_bg = theme.xbackground
 theme.control_center_button_bg = theme.lighter_bg
@@ -237,11 +203,8 @@ theme = theme_assets.recolor_layout(theme, theme.xforeground)
 theme.useless_gap = dpi(5)
 
 -- Wibar
-theme.wibar_width = dpi(50)
 theme.wibar_bg = theme.darker_bg
 theme.wibar_widget_bg = theme.xbackground
-theme.wibar_widget_alt_bg = theme.lighter_bg
-theme.wibar_position = "left"
 
 -- Systray
 theme.systray_icon_spacing = dpi(15)
@@ -265,15 +228,15 @@ theme.tabbar_size = 40
 theme.mstab_bar_ontop = true
 
 -- Notifications
-theme.notification_spacing = 24
-theme.notification_border_radius = dpi(6)
+theme.notification_spacing = dpi(20)
+theme.notification_border_radius = theme.border_radius
 theme.notification_border_width = dpi(0)
 
 -- Notif center
 theme.notif_center_radius = theme.border_radius
 theme.notif_center_box_radius = theme.notif_center_radius / 2
-theme.notif_center_notifs_bg = theme.darker_bg
-theme.notif_center_notifs_bg_accent = theme.xbackground
+theme.notif_center_notifs_bg = theme.xbackground
+theme.notif_center_notifs_bg_accent = theme.darker_bg
 theme.notif_center_notifs_accent = theme.lighter_bg
 
 -- Swallowing

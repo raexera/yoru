@@ -1,29 +1,38 @@
-# Beautiful Day
-# Created by https://github.com/rxyhn
-
+# Catppuccin!
 colors:
+  # Default colors
   primary:
-    background: '#e1dfde'
-    foreground: '#3e5262'
+    background: '0xFBF8F4'
+    foreground: '0x575279'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text:   CellForeground
-    cursor: '#3e5262'
-  bright:
-    black:   '#3e5262'
-    red:     '#e57c81'
-    green:   '#93c6a8'
-    yellow:  '#e5a593'
-    blue:    '#85a7d4'
-    magenta: '#c99ce9'
-    cyan:    '#85bfcd'
-    white:   '#676f82'
+    text: '0xFBF8F4'
+    cursor: '0x575279'
+
+  # Normal colors
   normal:
-    black:   '#3e5262'
-    red:     '#e57c81'
-    green:   '#93c6a8'
-    yellow:  '#e5a593'
-    blue:    '#85a7d4'
-    magenta: '#c99ce9'
-    cyan:    '#85bfcd'
-    white:   '#676f82'
+    black:   '0xAAA6B7'
+    red:     '0xBB0D33'
+    green:   '0x40A02B'
+    yellow:  '0xE49320'
+    blue:    '0x1D65F5'
+    magenta: '0xEC83D0'
+    cyan:    '0x04A5E5'
+    white:   '0x575279'
+
+  # Bright colors
+  bright:
+    black:   '0xBEBAC6'
+    red:     '0xBB0D33'
+    green:   '0x40A02B'
+    yellow:  '0xE49320'
+    blue:    '0x1D65F5'
+    magenta: '0xEC83D0'
+    cyan:    '0x04A5E5'
+    white:   '0x575279'
+
+  indexed_colors:
+    - { index: 16, color: '0xDC907F' }
+    - { index: 17, color: '0xDD7878' }
 
