@@ -309,6 +309,7 @@ Thank you! <3
          - [`ner0z`](https://github.com/ner0z)
          - [`paulhersch`](https://github.com/paulhersch)
          - [`ChocolateBread799`](https://github.com/ChocolateBread799)
+         - [`janleigh`](https://github.com/janleigh)
 
       + *And for them, ofc.*
          - [`elenapan`](https://github.com/elenapan)
