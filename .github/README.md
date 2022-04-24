@@ -90,8 +90,8 @@ These dotfiles are made with love, for sure.
       + Dependencies
 
          ```sh
-         paru -Sy picom-git alacritty todo-bin acpi acpid acpi_call \
-         wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
+         paru -Sy picom-git alacritty todo-bin papirus-icon-theme acpi acpid \
+         acpi_call wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
          brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa \
          redshift mpd mpc mpdris2 ncmpcpp playerctl ffmpeg bluez-utils gpick --needed 
          ```
