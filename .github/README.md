@@ -169,6 +169,23 @@ These dotfiles are made with love, for sure.
 
 <b>These are the features included in my AwesomeWM setups!</b>
 
+   + Minimalist `wibar` design
+      - <details>
+         <summary>Preview</summary>
+
+         *Simple, Minimalist and Modern Bar Design!*
+
+         - App launcher
+         - Web search
+         - Taglist
+         - Battery indicator
+         - Clock
+         - Layoutbox
+
+         <div align="left">
+         <img src="assets/wibar.gif" width="500px" alt="dashboard preview">
+         </div>
+         </details>
    + Aesthetic `Dashboard` ngl.
       - <details>
          <summary>Preview</summary>
@@ -244,7 +261,7 @@ also with <kbd>alt, shift, and ctrl</kbd>
 
 | Keybind                                 | Action                                                    |
 |-----------------------------------------|-----------------------------------------------------------|
-| <kbd>super + shift + enter</kbd>        | Spawn terminal                                            |
+| <kbd>super + enter</kbd>                | Spawn terminal                                            |
 | <kbd>super + shift + w</kbd>            | Spawn web browser                                         |
 | <kbd>super + shift + x</kbd>            | Spawn color picker                                        |
 | <kbd>super + shift + f</kbd>            | Spawn file manager                                        |
@@ -272,7 +289,7 @@ also with <kbd>alt, shift, and ctrl</kbd>
 |--------------------|--------------------------------------------|
 | `left click`       | Dismiss all notifications                  |
 | `right click`      | Main menu                                  |
-| `middle click`     | Toggle Dashboard                           |
+| `middle click`     | Toggle central panel                       |
 | `scroll up/down`   | Cycle through tags                         |
 
 *For more information check `awesome/configuration/keys.lua`*

@@ -206,6 +206,11 @@ theme.useless_gap = dpi(5)
 theme.wibar_bg = theme.darker_bg
 theme.wibar_widget_bg = theme.xbackground
 
+-- Dock
+theme.dock_bg = theme.wibar_bg
+theme.dock_focused_bg = theme.lighter_bg
+theme.dock_accent = theme.accent
+
 -- Systray
 theme.systray_icon_spacing = dpi(15)
 theme.bg_systray = theme.wibar_bg
