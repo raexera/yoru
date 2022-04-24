@@ -281,6 +281,12 @@ also with <kbd>alt, shift, and ctrl</kbd>
 
 <h2></h2><br>
 
+### Wiki 📖
+
+This repo has a wiki! You can check it by clicking ~~[here](https://www.youtube.com/watch?v=UIp6_0kct_U)~~ [here](https://github.com/rxyhn/dotfiles/wiki).
+
+<h2></h2><br>
+
 ### History 🗾
 
 This started since when im feel bored, idk why i do this things, i love it but ahhh nvm, 
