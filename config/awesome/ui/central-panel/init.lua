@@ -32,47 +32,42 @@ awful.screen.connect_for_each_screen(function(s)
 		screen = s,
 		height = dpi(670),
 		width = dpi(620),
+		x = s.geometry.x + s.geometry.width/2 - dpi(310), --half of the width
 		bg = beautiful.transparent,
 		ontop = true,
 		visible = false,
 	})
-
-	awful.placement.centered(central_panel, { honor_workarea = true, margins = beautiful.useless_gap * 5 })
-
+	local anim_length = 0.7
+	-- Gears Timer so awestore_compat can go
+	local slide_end = gears.timer {
+		single_shot = true,
+		timeout = anim_length+0.1, --so the panel doesnt disappear in the last bit
+		callback = function()
+			central_panel.visible = not central_panel.opened
+		end
+	}
 	-- Rubato
 	local slide = rubato.timed({
-		pos = dpi(-s.geometry.height),
+		pos = -central_panel.height,
 		rate = 60,
-		duration = 0.25,
-		intro = 0.125,
-		easing = rubato.quadratic,
-		awestore_compat = true,
+		duration = anim_length,
+		intro = anim_length/2,
+		easing = rubato.linear,
 		subscribed = function(pos)
 			central_panel.y = pos
 		end,
 	})
 
-	local central_panel_status = false
-
-	slide.ended:subscribe(function()
-		if central_panel_status then
-			central_panel.visible = false
-		end
-	end)
-
 	-- Make toogle button
 	local central_panel_show = function()
 		central_panel.visible = true
-		slide:set(dpi(80))
-		central_panel_status = false
-
+		slide.target = dpi(80)
 		central_panel:emit_signal("opened")
 	end
 
 	local central_panel_hide = function()
-		slide:set(-s.geometry.height)
-		central_panel_status = true
-
+		slide_end:again()
+		slide.target = -central_panel.height
 		central_panel:emit_signal("closed")
 	end
 
@@ -103,11 +98,10 @@ awful.screen.connect_for_each_screen(function(s)
 				expand = "none",
 				layout = wibox.layout.fixed.vertical,
 				{
-					layout = wibox.layout.align.horizontal,
-					expand = "none",
-					nil,
+					widget	= wibox.container.place,
+					halign = 'center',
+					valign = 'center',
 					require("ui.widgets.central-panel-switch"),
-					nil,
 				},
 				separator,
 				{
@@ -118,7 +112,7 @@ awful.screen.connect_for_each_screen(function(s)
 						layout = wibox.layout.fixed.vertical,
 						{
 							layout = wibox.layout.flex.horizontal,
-							spacing = 10,
+							spacing = dpi(10),
 							spacing_widget = wibox.widget.separator({
 								span_ratio = 0.80,
 								color = beautiful.lighter_bg,
