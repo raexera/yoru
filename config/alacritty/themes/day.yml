@@ -1,35 +1,35 @@
-# Catppuccin!
+# Catppuccin Dawn!
 colors:
   # Default colors
   primary:
-    background: '0xFBF8F4'
+    background: '0xFBF7F1'
     foreground: '0x575279'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0xFBF8F4'
+    text: '0xFBF7F1'
     cursor: '0x575279'
 
   # Normal colors
   normal:
-    black:   '0xAAA6B7'
+    black:   '0xA09BAE'
     red:     '0xBB0D33'
-    green:   '0x40A02B'
+    green:   '0x53A947'
     yellow:  '0xE49320'
-    blue:    '0x1D65F5'
+    blue:    '0x3474EE'
     magenta: '0xEC83D0'
-    cyan:    '0x04A5E5'
+    cyan:    '0x209FB5'
     white:   '0x575279'
 
   # Bright colors
   bright:
-    black:   '0xBEBAC6'
+    black:   '0xB2AEBC'
     red:     '0xBB0D33'
-    green:   '0x40A02B'
+    green:   '0x53A947'
     yellow:  '0xE49320'
-    blue:    '0x1D65F5'
+    blue:    '0x3474EE'
     magenta: '0xEC83D0'
-    cyan:    '0x04A5E5'
+    cyan:    '0x209FB5'
     white:   '0x575279'
 
   indexed_colors:

@@ -15,7 +15,7 @@ local helpers = require("helpers")
 -- Beautiful Day Theme
 --------------------------
 
--- Colorscheme
+-- Catppuccin Dawn Colorscheme
 local color_palette = {
 	rosewater = "#DC907F",
 	flamingo = "#DD7878",

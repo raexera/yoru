@@ -15,7 +15,7 @@ local helpers = require("helpers")
 -- Aesthetic Night Theme
 ---------------------------
 
--- Colorscheme
+-- Rxyhn's Catppuccin Colorscheme
 local color_palette = {
 	rosewater = "#F5E0DC", -- Rosewater
 	flamingo = "#F2CDCD", -- Flamingo
