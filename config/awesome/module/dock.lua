@@ -8,14 +8,14 @@ local rubato = require("module.rubato")
 
 local dpi = beautiful.xresources.apply_dpi
 
-local function init(s, h, o, shape, pinneds)
-	--local function init(args)
-	--[[	if args.screen == nil then return end
---	local s		= args.screen
---	local h		= args.height or dpi(50)
---	local o		= args.offset or 0
---	local shape	= args.shape or gears.shape.rectangle
---	local pinneds	= args.pinneds or nil]]
+--local function init(s, h, o, shape, pinneds)
+local function init(args)
+	local s			= args.screen
+	local h			= args.height or dpi(50)
+	local o			= args.offset or 5
+	local inner_shape	= args.inner_shape or gears.shape.rectangle
+	local outer_shape	= args.outer_shape or gears.shape.rectangle
+	local pinneds		= args.pinneds
 
 	-- tasklist creation {{{
 	local tasklist = awful.widget.tasklist({
@@ -29,9 +29,6 @@ local function init(s, h, o, shape, pinneds)
 		end, --sorts clients in order of their tags
 		filter = awful.widget.tasklist.filter.alltags,
 		forced_height = h,
-		style = {
-			shape = shape,
-		},
 		layout = {
 			layout = wibox.layout.fixed.horizontal,
 		},
@@ -56,7 +53,7 @@ local function init(s, h, o, shape, pinneds)
 							forced_width = h / 10,
 							id = "status",
 							bg = beautiful.dock_focused_bg,
-							shape = shape,
+							shape = inner_shape,
 							widget = wibox.container.background,
 						},
 						widget = wibox.container.place, --so the bg widget doesnt get stretched
@@ -66,7 +63,7 @@ local function init(s, h, o, shape, pinneds)
 				id = "bg",
 				widget = wibox.container.background,
 				bg = beautiful.dock_bg,
-				shape = shape,
+				shape = inner_shape,
 			},
 			widget = wibox.container.margin,
 			margins = h / 10,
@@ -182,7 +179,7 @@ local function init(s, h, o, shape, pinneds)
 								forced_height = h / 10,
 								forced_width = h / 10,
 								id = "status",
-								shape = shape,
+								shape = inner_shape,
 								widget = wibox.container.background,
 							},
 							widget = wibox.container.place, --so the bg widget doesnt get stretched
@@ -191,7 +188,7 @@ local function init(s, h, o, shape, pinneds)
 						layout = wibox.layout.align.vertical,
 					},
 					widget = wibox.container.background,
-					shape = shape,
+					shape = inner_shape,
 					id = "bg",
 					buttons = awful.button({}, 1, function()
 						awful.spawn.easy_async(p.start_cmd)
@@ -237,9 +234,8 @@ local function init(s, h, o, shape, pinneds)
 		screen = s,
 		x = s.geometry.x + s.geometry.width / 2,
 		y = s.geometry.y + s.geometry.height - (h + o),
-		shape = shape,
+		shape = outer_shape,
 		widget = {
-			{
 				{
 					{
 						pinned_apps,
@@ -251,10 +247,7 @@ local function init(s, h, o, shape, pinneds)
 				},
 				widget = wibox.container.background,
 				bg = beautiful.dock_bg,
-				shape = shape,
-			},
-			widget = wibox.container.place,
-			halign = "center",
+				shape = inner_shape,
 		},
 	})
 
