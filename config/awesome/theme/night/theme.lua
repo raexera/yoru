@@ -15,7 +15,7 @@ local helpers = require("helpers")
 -- Aesthetic Night Theme
 ---------------------------
 
--- colorscheme
+-- Colorscheme
 local color_palette = {
 	rosewater = "#F5E0DC", -- Rosewater
 	flamingo = "#F2CDCD", -- Flamingo
@@ -30,9 +30,7 @@ local color_palette = {
 	sky = "#89DCEB", -- Sky
 	teal = "#B5E8E0", -- Teal
 	lavender = "#C9CBFF", -- Lavender
-	white0 = "#c5c8c9",
-	white1 = "#C3BAC6",
-	white2 = "#D9E0EE",
+	white = "#c5c8c9",
 	black0 = "#0d1416",
 	black1 = "#111719",
 	black2 = "#131a1c",
@@ -44,7 +42,7 @@ local color_palette = {
 }
 
 theme.xbackground = color_palette.black2
-theme.xforeground = color_palette.white2
+theme.xforeground = color_palette.white
 theme.xcolor0 = color_palette.gray0
 theme.xcolor1 = color_palette.red
 theme.xcolor2 = color_palette.green
@@ -52,7 +50,7 @@ theme.xcolor3 = color_palette.yellow
 theme.xcolor4 = color_palette.blue
 theme.xcolor5 = color_palette.mauve
 theme.xcolor6 = color_palette.pink
-theme.xcolor7 = color_palette.white0
+theme.xcolor7 = color_palette.white
 theme.xcolor8 = color_palette.gray1
 theme.xcolor9 = color_palette.maroon
 theme.xcolor10 = color_palette.teal
@@ -60,8 +58,8 @@ theme.xcolor11 = color_palette.peach
 theme.xcolor12 = color_palette.sky
 theme.xcolor13 = color_palette.lavender
 theme.xcolor14 = color_palette.flamingo
-theme.xcolor15 = color_palette.white1
-theme.darker_bg = color_palette.black1
+theme.xcolor15 = color_palette.white
+theme.darker_bg = color_palette.black0
 theme.lighter_bg = color_palette.black3
 theme.dashboard_fg = color_palette.gray2
 theme.transparent = "#00000000"
@@ -95,7 +93,7 @@ theme.hover_effect = theme.accent .. "44"
 
 -- Foreground Colors
 theme.fg_normal = theme.xforeground
-theme.fg_focus = theme.xforeground
+theme.fg_focus = theme.accent
 theme.fg_urgent = theme.xcolor1
 theme.fg_minimize = theme.xcolor0
 

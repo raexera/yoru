@@ -266,6 +266,7 @@ also with <kbd>alt, shift, and ctrl</kbd>
 | <kbd>super + shift + x</kbd>            | Spawn color picker                                        |
 | <kbd>super + shift + f</kbd>            | Spawn file manager                                        |
 | <kbd>super + shift + d</kbd>            | Toggle central panel                                      |
+| <kbd>super + shift + t</kbd>            | Toggle system tray                                        |
 | <kbd>super + q</kbd>                    | Close client                                              |
 | <kbd>super + ctrl + l</kbd>             | Toggle lock screen                                        |
 | <kbd>super + [1-0]</kbd>                | View tag AKA change workspace (for you i3/bsp folks)      |
