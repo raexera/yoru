@@ -15,14 +15,14 @@ local helpers = require("helpers")
 ------------
 
 local weather_text = wibox.widget({
-	font = beautiful.font_name .. "medium 8",
+	font = beautiful.font_name .. "Medium 8",
 	markup = helpers.colorize_text("Weather unavailable", beautiful.dashboard_box_fg),
 	valign = "center",
 	widget = wibox.widget.textbox,
 })
 
 local weather_temp = wibox.widget({
-	font = beautiful.font_name .. "medium 11",
+	font = beautiful.font_name .. "Medium 11",
 	markup = "999°C",
 	valign = "center",
 	widget = wibox.widget.textbox,

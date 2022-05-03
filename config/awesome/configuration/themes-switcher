@@ -1,0 +1,43 @@
+#!/bin/sh
+# Simple theme-switcher script.
+# author https://github.com/rxyhn
+
+# var
+########
+awesome=$HOME/.config/awesome/rc.lua
+picom=$HOME/.config/awesome/configuration
+term=$HOME/.config/alacritty/alacritty.yml
+
+# Beautiful day themes
+#########################
+day () {
+  # colorscheme
+  sed -i "17s/.*/theme = themes[1]/g" $awesome
+  # picom
+  sed -i "12s/.*/shadow-opacity = 0.55;/g" $picom/picom.conf
+  # alacritty
+  sed -i "4s/.*/  - .config\/alacritty\/themes\/day.yml/g" $term
+}
+
+# Aesthetic night themes
+###########################
+night () {
+  # colorscheme
+  sed -i "17s/.*/theme = themes[2]/g" $awesome
+  # picom
+  sed -i "12s/.*/shadow-opacity = 0.75;/g" $picom/picom.conf
+  # alacritty
+  sed -i "4s/.*/  - .config\/alacritty\/themes\/night.yml/g" $term
+}
+
+case $1 in
+    day)
+    day
+    ;;
+
+    night)
+    night
+    ;;
+
+    *)
+esac

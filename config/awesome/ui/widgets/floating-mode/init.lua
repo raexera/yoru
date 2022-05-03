@@ -19,7 +19,7 @@ local action_name = wibox.widget({
 
 local action_status = wibox.widget({
 	text = "Off",
-	font = beautiful.font_name .. "11",
+	font = beautiful.font_name .. "Regular 11",
 	align = "left",
 	widget = wibox.widget.textbox,
 })

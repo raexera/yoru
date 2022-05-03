@@ -27,7 +27,7 @@ end
 
 local time = {
 	{
-		font = beautiful.font_name .. "bold 44",
+		font = beautiful.font_name .. "Bold 44",
 		align = "right",
 		valign = "top",
 		widget = hours,
@@ -45,7 +45,7 @@ local time = {
 		widget = wibox.layout.align.vertical,
 	},
 	{
-		font = beautiful.font_name .. "bold 44",
+		font = beautiful.font_name .. "Bold 44",
 		align = "left",
 		valign = "top",
 		widget = minutes,

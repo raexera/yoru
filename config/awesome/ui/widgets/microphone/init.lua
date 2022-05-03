@@ -10,8 +10,8 @@ local mic_state = false
 
 local button_widget = wibox.widget({
 	id = "icon",
-	markup = helpers.colorize_text("󰍬", beautiful.xforeground),
-	font = beautiful.icon_font_name .. "18",
+	markup = helpers.colorize_text("", beautiful.xforeground),
+	font = beautiful.icon_font_name .. "Round 18",
 	align = "center",
 	valign = "center",
 	widget = wibox.widget.textbox,

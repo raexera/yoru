@@ -59,7 +59,7 @@ end)
 -- Wallpapers
 awful.screen.connect_for_each_screen(function(s)
 	gears.wallpaper.maximized(
-		gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/wallpaper.jpg"),
+		gears.surface.load_uncached(beautiful.wallpaper),
 		s,
 		false,
 		nil

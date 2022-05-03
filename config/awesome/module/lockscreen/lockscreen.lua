@@ -17,13 +17,13 @@ local lock_screen = require("module.lockscreen")
 -- Word Clock Lock Screen
 ----------------
 
-local lock_screen_symbol = helpers.colorize_text("󰍁", beautiful.accent)
-local lock_screen_fail_symbol = helpers.colorize_text("󱙲", beautiful.accent)
+local lock_screen_symbol = helpers.colorize_text("", beautiful.accent)
+local lock_screen_fail_symbol = helpers.colorize_text("", beautiful.accent)
 local lock_animation_icon = wibox.widget({
 	-- Set forced size to prevent flickering when the icon rotates
 	forced_height = dpi(80),
 	forced_width = dpi(80),
-	font = beautiful.icon_font_name .. "40",
+	font = beautiful.icon_font_name .. "Outlined 40",
 	align = "center",
 	valign = "center",
 	widget = wibox.widget.textbox(lock_screen_symbol),
@@ -133,7 +133,7 @@ local function create_text_widget(index, w)
 	local text_widget = wibox.widget({
 		id = "t" .. index,
 		markup = w,
-		font = beautiful.font_name .. "bold 18",
+		font = beautiful.font_name .. "Bold 18",
 		align = "center",
 		valign = "center",
 		forced_width = dpi(25),

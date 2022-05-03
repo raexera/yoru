@@ -98,8 +98,8 @@ ui_notifbox_builder.notifbox_dismiss = function()
 	local dismiss_imagebox = wibox.widget({
 		align = "center",
 		valign = "center",
-		font = beautiful.icon_font_name .. "10",
-		markup = helpers.colorize_text("󰅖", beautiful.xcolor1),
+		font = beautiful.icon_font_name .. "Round 10",
+		markup = helpers.colorize_text("", beautiful.xcolor1),
 		widget = wibox.widget.textbox(),
 	})
 

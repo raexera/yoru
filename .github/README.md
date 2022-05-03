@@ -91,9 +91,9 @@ These dotfiles are made with love, for sure.
 
          ```sh
          paru -Sy picom-git alacritty todo-bin papirus-icon-theme acpi acpid \
-         acpi_call wireless_tools jq inotify-tools polkit-gnome xdotool xclip maim \
-         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa \
-         redshift mpd mpc mpdris2 ncmpcpp playerctl ffmpeg bluez-utils gpick --needed 
+         acpi_call wireless_tools jq inotify-tools polkit-gnome xdotool xclip \
+         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa scrot \
+         redshift mpd mpc mpdris2 ncmpcpp playerctl rofi ffmpeg bluez-utils gpick --needed 
          ```
 
       + Services
@@ -113,9 +113,10 @@ These dotfiles are made with love, for sure.
       You will need to install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
 
       Necessary fonts:
-      + **Iosevka**  - [here](https://github.com/ryanoasis/nerd-fonts/)
-      + **Icomoon**  - [here](https://www.dropbox.com/s/hrkub2yo9iapljz/icomoon.zip?dl=0)
-      + **Material Design** - [here](https://github.com/Templarian/MaterialDesign-Font)
+      + **Iosevka**              - [here](https://github.com/be5invis/Iosevka)
+      + **Icomoon**              - [here](https://www.dropbox.com/s/hrkub2yo9iapljz/icomoon.zip?dl=0)
+      + **Material Icons**       - [here](https://github.com/google/material-design-icons)
+      + **FiraCode Nerd Font**   - [here](https://github.com/ryanoasis/nerd-fonts)
 
       Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`
       and run this command for your system to detect the newly installed fonts.
@@ -262,13 +263,15 @@ also with <kbd>alt, shift, and ctrl</kbd>
 | Keybind                                 | Action                                                    |
 |-----------------------------------------|-----------------------------------------------------------|
 | <kbd>super + enter</kbd>                | Spawn terminal                                            |
+| <kbd>super + grave</kbd>                | Spawn music client                                        |
 | <kbd>super + shift + w</kbd>            | Spawn web browser                                         |
 | <kbd>super + shift + x</kbd>            | Spawn color picker                                        |
 | <kbd>super + shift + f</kbd>            | Spawn file manager                                        |
 | <kbd>super + shift + d</kbd>            | Toggle central panel                                      |
 | <kbd>super + shift + t</kbd>            | Toggle system tray                                        |
 | <kbd>super + q</kbd>                    | Close client                                              |
-| <kbd>super + ctrl + l</kbd>             | Toggle lock screen                                        |
+| <kbd>super + x</kbd>                    | Exit screen                                               |
+| <kbd>super + ctrl + l</kbd>             | Lock screen                                               |
 | <kbd>super + [1-0]</kbd>                | View tag AKA change workspace (for you i3/bsp folks)      |
 | <kbd>super + shift + [1-0]</kbd>        | Move focused client to tag                                |
 | <kbd>super + space</kbd>                | Select next layout                                        |
@@ -324,6 +327,7 @@ Thank you! <3
    - **Special thanks to**
 
       + *Contributors*
+         - [`rxyhn`](https://github.com/rxyhn) *there's nothing wrong with thanking yourself right?*
          - [`ner0z`](https://github.com/ner0z)
          - [`paulhersch`](https://github.com/paulhersch)
          - [`ChocolateBread799`](https://github.com/ChocolateBread799)

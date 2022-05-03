@@ -32,26 +32,26 @@ awful.screen.connect_for_each_screen(function(s)
 		screen = s,
 		height = dpi(670),
 		width = dpi(620),
-		x = s.geometry.x + s.geometry.width/2 - dpi(310), --half of the width
+		x = s.geometry.x + s.geometry.width / 2 - dpi(310), --half of the width
 		bg = beautiful.transparent,
 		ontop = true,
 		visible = false,
 	})
 	local anim_length = 0.7
 	-- Gears Timer so awestore_compat can go
-	local slide_end = gears.timer {
+	local slide_end = gears.timer({
 		single_shot = true,
-		timeout = anim_length+0.1, --so the panel doesnt disappear in the last bit
+		timeout = anim_length + 0.1, --so the panel doesnt disappear in the last bit
 		callback = function()
 			central_panel.visible = not central_panel.opened
-		end
-	}
+		end,
+	})
 	-- Rubato
 	local slide = rubato.timed({
 		pos = -central_panel.height,
 		rate = 60,
 		duration = anim_length,
-		intro = anim_length/2,
+		intro = anim_length / 2,
 		easing = rubato.linear,
 		subscribed = function(pos)
 			central_panel.y = pos
@@ -98,10 +98,11 @@ awful.screen.connect_for_each_screen(function(s)
 				expand = "none",
 				layout = wibox.layout.fixed.vertical,
 				{
-					widget	= wibox.container.place,
-					halign = 'center',
-					valign = 'center',
+					layout = wibox.layout.align.horizontal,
+					expand = "none",
+					nil,
 					require("ui.widgets.central-panel-switch"),
+					nil,
 				},
 				separator,
 				{

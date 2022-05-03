@@ -1,7 +1,7 @@
 # rxyhn's aesthetic alacritty
 # configuration for alacritty, the GPU enhanced terminal emulator.
 import:
-  - .config/alacritty/themes/night.yml
+  - .config/alacritty/themes/day.yml
 
 env:
   TERM: xterm-256color
@@ -15,19 +15,19 @@ window:
 
 font:
   normal:
-    family: Iosevka Nerd Font Mono
+    family: FiraCode Nerd Font
     style: Regular
 
   bold:
-    family: Iosevka Nerd Font Mono
+    family: FiraCode Nerd Font
     style: Bold
 
   italic:
-    family: Iosevka Nerd Font Mono
+    family: FiraCode Nerd Font
     style: Italic
 
   bold_italic:
-    family: Iosevka Nerd Font Mono
+    family: FiraCode Nerd Font
     style: Bold Italic
 
   size: 10

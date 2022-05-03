@@ -14,14 +14,14 @@ local helpers = require("helpers")
 ---------
 
 local todo_text = wibox.widget({
-	font = beautiful.font_name .. "medium 8",
+	font = beautiful.font_name .. "Medium 8",
 	markup = helpers.colorize_text("Todo", beautiful.dashboard_box_fg),
 	valign = "center",
 	widget = wibox.widget.textbox,
 })
 
 local todo_badge = wibox.widget({
-	font = beautiful.font_name .. "medium 8",
+	font = beautiful.font_name .. "Medium 8",
 	markup = helpers.colorize_text("0", beautiful.xcolor1),
 	valign = "center",
 	widget = wibox.widget.textbox,
@@ -41,14 +41,14 @@ local todo_stat = wibox.widget({
 })
 
 local todo_done = wibox.widget({
-	font = beautiful.font_name .. "bold 14",
+	font = beautiful.font_name .. "Bold 14",
 	markup = "0",
 	valign = "bottom",
 	widget = wibox.widget.textbox,
 })
 
 local todo_total = wibox.widget({
-	font = beautiful.font_name .. "bold 8",
+	font = beautiful.font_name .. "Bold 8",
 	markup = helpers.colorize_text("/0", beautiful.xcolor8),
 	valign = "bottom",
 	widget = wibox.widget.textbox,

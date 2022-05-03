@@ -4,7 +4,7 @@ local gears = require("gears")
 local naughty = require("naughty")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-local icons = require("theme.assets.icons")
+local icons = require("icons")
 local empty_notifbox = require("ui.central-panel.notif-center.build-notifbox.empty-notifbox")
 local notifbox_scroller = require("ui.central-panel.notif-center.build-notifbox.notifbox-scroller")
 

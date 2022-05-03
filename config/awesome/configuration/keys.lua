@@ -37,12 +37,6 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey, shift }, "x", function()
 		awful.spawn.with_shell("xcolor-pick")
 	end, { description = "open color picker", group = "launcher" }),
-	awful.key({ modkey, shift }, "d", function()
-		central_panel:toggle()
-	end, { description = "toggle dashboard", group = "launcher" }),
-	awful.key({ modkey, shift }, "t", function()
-		systray_toggle()
-	end, { description = "toggle systray", group = "launcher" }),
 })
 
 -- Client and Tabs Bindings
@@ -138,6 +132,11 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey, ctrl }, "l", function()
 		lock_screen_show()
 	end, { description = "lock screen", group = "hotkeys" }),
+
+	-- Exit screen
+	awful.key({ modkey }, "x", function()
+		awesome.emit_signal("module::exit_screen:show")
+	end, { description = "exit screen", group = "hotkeys" }),
 })
 
 -- Awesome stuff
@@ -145,6 +144,15 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey }, "F1", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 	awful.key({ modkey, ctrl }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, ctrl }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
+	awful.key({ modkey, shift }, "d", function()
+		central_panel:toggle()
+	end, { description = "toggle dashboard", group = "awesome" }),
+	awful.key({ modkey, shift }, "t", function()
+		systray_toggle()
+	end, { description = "toggle systray", group = "awesome" }),
+	awful.key({ modkey }, "grave", function()
+		awful.spawn.with_shell(music_client)
+	end, { description = "open music client", group = "awesome" }),
 })
 
 -- Layout Machi

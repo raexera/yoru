@@ -10,10 +10,10 @@ local helpers = require("helpers")
 -- Stolen from Elena
 
 local stroke = beautiful.xbackground
-local happy_color = beautiful.xcolor2
-local sad_color = beautiful.xcolor1
-local ok_color = beautiful.xcolor3
-local charging_color = beautiful.xcolor6
+local happy_color = beautiful.battery_happy_color
+local sad_color = beautiful.battery_sad_color
+local ok_color = beautiful.battery_ok_color
+local charging_color = beautiful.battery_charging_color
 
 -- Not great not terrible
 local ok_threshold = 40
@@ -39,9 +39,9 @@ local battery_bar_container = wibox.widget({
 })
 
 local charging_icon = wibox.widget({
-	font = beautiful.icon_font_name .. "18",
+	font = beautiful.icon_font_name .. "Round 18",
 	valign = "center",
-	markup = helpers.colorize_text("󱐋", stroke .. "80"),
+	markup = helpers.colorize_text("", stroke .. "80"),
 	widget = wibox.widget.textbox(),
 })
 
@@ -118,9 +118,7 @@ local face = wibox.widget({
 local cute_battery_face = wibox.widget({
 	{
 		battery_bar_container,
-		shape = helpers.rrect(beautiful.widget_radius),
-		border_color = stroke,
-		border_width = dpi(4),
+		shape = helpers.rrect(dpi(5)),
 		widget = wibox.container.background,
 	},
 	{

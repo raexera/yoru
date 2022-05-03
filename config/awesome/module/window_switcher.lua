@@ -85,7 +85,7 @@ local function draw_widget(
 		filter = awful.widget.tasklist.filter.currenttags,
 		buttons = mouse_keys,
 		style = {
-			font = beautiful.font_name .. "medium 9",
+			font = beautiful.font_name .. "Medium 9",
 			fg_normal = beautiful.xforeground,
 			fg_focus = beautiful.accent,
 		},
@@ -195,7 +195,7 @@ local enable = function(opts)
 	local name_margins = beautiful.window_switcher_name_margins or dpi(10)
 	local name_valign = beautiful.window_switcher_name_valign or "center"
 	local name_forced_width = beautiful.window_switcher_name_forced_width or dpi(type == "thumbnail" and 200 or 550)
-	local name_font = beautiful.window_switcher_name_font or beautiful.font_name .. "medium 10"
+	local name_font = beautiful.window_switcher_name_font or beautiful.font_name .. "Medium 10"
 	local name_normal_color = beautiful.window_switcher_name_normal_color or beautiful.xforeground
 	local name_focus_color = beautiful.window_switcher_name_focus_color or beautiful.accent
 	local icon_valign = beautiful.window_switcher_icon_valign or "center"

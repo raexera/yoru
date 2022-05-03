@@ -161,10 +161,10 @@ local list_update = function(widget, buttons, label, data, objects)
 			tag_widget:set_bg(beautiful.xcolor1)
 			tag_widget:set_fg(beautiful.xforeground)
 		elseif object == awful.screen.focused().selected_tag then
-			tag_widget:set_bg(beautiful.lighter_bg)
+			tag_widget:set_bg(beautiful.wibar_widget_bg)
 			tag_widget:set_fg(beautiful.xforeground)
 		else
-			tag_widget:set_bg(beautiful.lighter_bg .. 55)
+			tag_widget:set_bg(beautiful.wibar_widget_bg .. 55)
 		end
 
 		-- Set the icon for each client

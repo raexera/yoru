@@ -7,7 +7,7 @@
 	   |   __|     | __  |   __|   __|   | |   __|  |  |_   _|
 	   |__   |   --|    -|   __|   __| | | |__   |     | | |
 	   |_____|_____|__|__|_____|_____|_|___|_____|__|__| |_|
-	~ Script to take screenshots using maim and AwesomeWM API ~
+	~ Script to take screenshots using scrot and AwesomeWM API ~
 
 screensht
 
@@ -30,11 +30,11 @@ function shot() {
 
 	file_loc="${screenshot_dir}screensht_$(date +%y-%m-%d_%H:%M:%S).png"
 	
-	maim_command="$1"
+	scrot_command="$1"
 	notif_message="$2"
 
-	# Execute maim command
-	${maim_command} "${file_loc}"
+	# Execute scrot command
+	${scrot_command} "${file_loc}"
 
 	# Exit if the user cancels the screenshot
 	# So it means there's no new screenshot image file
@@ -102,10 +102,10 @@ then
 elif [ "$1" = 'full' ];
 then
 	msg="Full screenshot saved and copied to clipboard!"
-	shot 'maim -u -m 5' "${msg}"
+	shot 'scrot -q100' "${msg}"
 elif [ "$1" = 'area' ];
 then
 	msg='Area screenshot saved and copied to clipboard!'
-	shot 'maim -u -b 2 -m 5 -s' "${msg}"
+	shot 'scrot -q100 -s -f -b' "${msg}"
 fi
 

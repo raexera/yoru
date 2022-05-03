@@ -15,13 +15,13 @@ local helpers = require("helpers")
 ----------
 
 local music_text = wibox.widget({
-	font = beautiful.font_name .. "medium 8",
+	font = beautiful.font_name .. "Medium 8",
 	valign = "center",
 	widget = wibox.widget.textbox,
 })
 
 local music_art = wibox.widget({
-	image = gears.filesystem.get_configuration_dir() .. "theme/assets/no_music.png",
+	image = gears.filesystem.get_configuration_dir() .. "themes/assets/no_music.png",
 	resize = true,
 	widget = wibox.widget.imagebox,
 })
@@ -52,19 +52,19 @@ local music_art_filter = wibox.widget({
 })
 
 local music_title = wibox.widget({
-	font = beautiful.font_name .. "medium 9",
+	font = beautiful.font_name .. "Medium 9",
 	valign = "center",
 	widget = wibox.widget.textbox,
 })
 
 local music_artist = wibox.widget({
-	font = beautiful.font_name .. "medium 12",
+	font = beautiful.font_name .. "Medium 12",
 	valign = "center",
 	widget = wibox.widget.textbox,
 })
 
 local music_pos = wibox.widget({
-	font = beautiful.font_name .. "medium 8",
+	font = beautiful.font_name .. "Medium 8",
 	valign = "center",
 	widget = wibox.widget.textbox,
 })
@@ -82,7 +82,7 @@ playerctl:connect_signal("metadata", function(_, title, artist, album_path, __, 
 		artist = "Nothing Playing"
 	end
 	if album_path == "" then
-		album_path = gears.filesystem.get_configuration_dir() .. "theme/assets/no_music.png"
+		album_path = gears.filesystem.get_configuration_dir() .. "themes/assets/no_music.png"
 	end
 
 	music_art:set_image(gears.surface.load_uncached(album_path))

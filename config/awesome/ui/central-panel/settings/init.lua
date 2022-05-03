@@ -3,7 +3,7 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
 local helpers = require("helpers")
-local icons = require("theme.assets.icons")
+local icons = require("icons")
 
 local format_item = function(widget)
 	return wibox.widget({
@@ -136,7 +136,7 @@ local function create_buttons(icon, color)
 	local button = wibox.widget({
 		id = "icon",
 		markup = helpers.colorize_text(icon, color),
-		font = beautiful.icon_font_name .. "16",
+		font = beautiful.icon_font_name .. "Round 16",
 		align = "center",
 		valign = "center",
 		widget = wibox.widget.textbox,
@@ -169,7 +169,7 @@ local off = beautiful.control_center_button_bg
 local on = beautiful.accent
 
 -- wifi button
-local wifi = create_buttons("󰤨", beautiful.xforeground)
+local wifi = create_buttons("", beautiful.xforeground)
 local wifi_status = false
 
 awesome.connect_signal("signal::network", function(status, ssid)
@@ -198,7 +198,7 @@ awesome.connect_signal("widget::network", function()
 end)
 
 -- bluetooth button
-local bluetooth = create_buttons("󰂯", beautiful.xforeground)
+local bluetooth = create_buttons("", beautiful.xforeground)
 local bluetooth_status = true
 
 bluetooth:buttons({
@@ -221,7 +221,7 @@ local mic = require("ui.widgets.microphone")
 local screenrec = require("ui.widgets.screenrec")()
 
 -- screenshot button
-local screenshot = create_buttons("󰆞", beautiful.xforeground)
+local screenshot = create_buttons("", beautiful.xforeground)
 screenshot:buttons({
 	awful.button({}, 1, function()
 		central_panel:toggle()

@@ -8,7 +8,7 @@ local clickable_container = require("ui.widgets.clickable-container")
 -- Variable used for switching panel modes
 local central_panel_mode = "dashboard_mode"
 
-local active_button = beautiful.lighter_bg
+local active_button = beautiful.control_center_widget_bg
 local inactive_button = beautiful.transparent
 
 local settings_text = wibox.widget({
@@ -26,7 +26,7 @@ local wrap_settings = wibox.widget({
 	forced_width = dpi(93),
 	bg = inactive_button,
 	border_width = dpi(1),
-	border_color = beautiful.lighter_bg,
+	border_color = beautiful.control_center_widget_bg,
 	shape = function(cr, width, height)
 		gears.shape.partially_rounded_rect(cr, width, height, false, true, true, false, dpi(6))
 	end,
@@ -48,7 +48,7 @@ local wrap_dashboard = wibox.widget({
 	forced_width = dpi(93),
 	bg = active_button,
 	border_width = dpi(1),
-	border_color = beautiful.lighter_bg,
+	border_color = beautiful.control_center_widget_bg,
 	shape = function(cr, width, height)
 		gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, dpi(6))
 	end,
