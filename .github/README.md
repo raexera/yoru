@@ -1,16 +1,14 @@
-<!-- Screenshot -->
 <div align="center">
     <img src="assets/home.png" alt="Home Preview">
 </div>
 
-<h2></h2>
+<br>
 
 <p align="center">
   <b>🌕 Rxyhn's Beautiful & Aesthetic Dotfiles 🌑</b>
 </p>
 
-
-<h2></h2>
+<br>
 
 <div align="center">
     <img src="assets/day.png" alt="Rice Preview">
@@ -22,7 +20,7 @@
 ## Hi there! Thanks for dropping by! 🖤
 <a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="150" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
 
-<b>  Beautiful & Aesthetic AwesomeWM Configuration Files! ✨  </b>
+<b>  Beautiful & Aesthetic AwesomeWM Configuration Files!  </b>
 
 Welcome to my AwesomeWM configuration files!
 
@@ -39,7 +37,7 @@ This is a beautiful user interface isn't it?
 
 These dotfiles are made with love, for sure.
 
-## :octocat: <samp>INFORMATION</samp> <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=for-the-badge&color=6791C9&logoColor=white&labelColor=0A1419"/>
+## :octocat: ‎ <samp>INFORMATION</samp> <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=for-the-badge&color=6791C9&logoColor=white&labelColor=0A1419"/>
 
 <img alt="Rice Preview" align="right" width="400px" src="assets/night.png"/>
 
@@ -67,7 +65,7 @@ AwesomeWM Modules:
 
 > This repo has a wiki! You can check it by clicking ~~[here](https://www.youtube.com/watch?v=UIp6_0kct_U)~~ [here](https://github.com/rxyhn/dotfiles/wiki).
 
-<h2></h2>
+## :ear_of_rice: ‎ <samp>Setup, Features, Keybinds</samp>
 
 <table align="right">
   <tr>
@@ -321,9 +319,7 @@ also with <kbd>alt, shift, and ctrl</kbd>
 
 </details>
 
-<h2></h2>
-
-## History 🗾
+## :japan: ‎ <samp>History</samp>
 
 This started since when im feel bored, idk why i do this things, i love it but ahhh nvm, 
 but basically im doing this just for fun and also to satisfy myself ofc,
@@ -335,9 +331,17 @@ Thank you! <3
 
 [![Stargazers over time](https://starchart.cc/rxyhn/dotfiles.svg)](https://starchart.cc/rxyhn/dotfiles)
 
-<h2></h2>
+## :money_with_wings: ‎ <samp>TIP JAR</samp>
 
-## Acknowledgements 💡
+If you enjoyed it and would like to show your appreciation, you may want to tip me here.
+
+It is never required but always appreciated.
+
+Thanks from the bottom of my heart! ‎ :heartpulse:
+
+[![](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/rxyhn)
+
+## :bulb: ‎ <samp>Acknowledgements</samp>
 
    - **Special thanks to**
 
