@@ -15,59 +15,32 @@ local helpers = require("helpers")
 -- Beautiful Day Theme
 --------------------------
 
--- Catppuccin Dawn Colorscheme
-local color_palette = {
-	rosewater = "#DC907F",
-	flamingo = "#DD7878",
-	pink = "#EC83D0",
-	mauve = "#9247ED",
-	red = "#BB0D33",
-	maroon = "#E63B4A",
-	peach = "#FE640B",
-	yellow = "#E49320",
-	green = "#53A947",
-	teal = "#23979F",
-	sky = "#04A5E5",
-	blue = "#3474EE",
-	sapphire = "#209FB5",
-	lavender = "#7287FD",
-	white = "#575279",
-	gray2 = "#696486",
-	gray1 = "#7B7794",
-	gray0 = "#8E89A1",
-	black5 = "#A09BAE",
-	black4 = "#B2AEBC",
-	black0 = "#C4C0C9",
-	black3 = "#D7D2D6",
-	black1 = "#E9E5E4",
-	black2 = "#FBF7F1",
-}
-
-theme.xbackground = color_palette.black2
-theme.xforeground = color_palette.white
-theme.xcolor0 = color_palette.gray0
-theme.xcolor1 = color_palette.red
-theme.xcolor2 = color_palette.green
-theme.xcolor3 = color_palette.yellow
-theme.xcolor4 = color_palette.blue
-theme.xcolor5 = color_palette.mauve
-theme.xcolor6 = color_palette.pink
-theme.xcolor7 = color_palette.white
-theme.xcolor8 = color_palette.gray1
-theme.xcolor9 = color_palette.maroon
-theme.xcolor10 = color_palette.teal
-theme.xcolor11 = color_palette.peach
-theme.xcolor12 = color_palette.sky
-theme.xcolor13 = color_palette.lavender
-theme.xcolor14 = color_palette.flamingo
-theme.xcolor15 = color_palette.white
-theme.darker_bg = color_palette.black1
-theme.lighter_bg = color_palette.black3
-theme.dashboard_fg = color_palette.gray2
+-- Day Colorscheme
+theme.xbackground = "#cfcdcc"
+theme.xforeground = "#0d161d"
+theme.xcolor0 = "#1f282e"
+theme.xcolor1 = "#c13d43"
+theme.xcolor2 = "#5a9a74"
+theme.xcolor3 = "#c0715a"
+theme.xcolor4 = "#4973ab"
+theme.xcolor5 = "#9e65c5"
+theme.xcolor6 = "#4991a3"
+theme.xcolor7 = "#bbb9b8"
+theme.xcolor8 = "#393f4c"
+theme.xcolor9 = "#d3444b"
+theme.xcolor10 = "#6eb98c"
+theme.xcolor11 = "#cb7860"
+theme.xcolor12 = "#5b8ccd"
+theme.xcolor13 = "#a66ace"
+theme.xcolor14 = "#5cb1c6"
+theme.xcolor15 = "#c7c7c7"
+theme.darker_bg = "#c5c3c2"
+theme.lighter_bg = "#D9D7D6"
+theme.dashboard_fg = "#5c626f"
 theme.transparent = "#00000000"
 
 -- Wallpaper
-theme.wallpaper = gfs.get_configuration_dir() .. "themes/assets/day.jpg"
+theme.wallpaper = gfs.get_configuration_dir() .. "themes/assets/day.png"
 
 -- PFP
 theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "themes/assets/pfp.png")
@@ -93,12 +66,12 @@ theme.bg_secondary = theme.darker_bg
 theme.bg_accent = theme.lighter_bg
 
 -- Accent colors
-theme.accent = theme.xcolor6
+theme.accent = theme.xcolor4
 theme.hover_effect = theme.accent .. "44"
 
 -- Foreground Colors
 theme.fg_normal = theme.xforeground
-theme.fg_focus = theme.xforeground
+theme.fg_focus = theme.accent
 theme.fg_urgent = theme.xcolor1
 theme.fg_minimize = theme.xcolor0
 
@@ -126,7 +99,7 @@ theme.music_bg = theme.xbackground
 theme.music_bg_accent = theme.darker_bg
 theme.music_accent = theme.lighter_bg
 
--- Pop up notifications
+-- Pop up
 theme.pop_size = dpi(190)
 theme.pop_bg = theme.xbackground
 theme.pop_vol_color = theme.accent
@@ -137,7 +110,7 @@ theme.pop_border_radius = theme.border_radius
 
 -- Tooltip
 theme.tooltip_bg = theme.darker_bg
-theme.tooltip_widget_bg = theme.xbackground
+theme.tooltip_widget_bg = theme.lighter_bg
 theme.tooltip_height = dpi(270)
 theme.tooltip_width = dpi(230)
 theme.tooltip_border_radius = theme.border_radius
@@ -157,17 +130,18 @@ theme.snap_shape = helpers.rrect(0)
 theme.prompt_bg = theme.transparent
 theme.prompt_fg = theme.xforeground
 
+-- Central Panel
+theme.central_panel_bg = theme.darker_bg
+theme.central_panel_radius = theme.border_radius
+
 -- Dashboard
-theme.dashboard_bg = theme.darker_bg
-theme.dashboard_box_bg = theme.xbackground
+theme.dashboard_box_bg = theme.lighter_bg
 theme.dashboard_box_fg = theme.dashboard_fg
 
 -- Control center
-theme.control_center_radius = dpi(20)
 theme.control_center_widget_radius = theme.border_radius
-theme.control_center_bg = theme.darker_bg
-theme.control_center_widget_bg = theme.xbackground
-theme.control_center_button_bg = theme.lighter_bg
+theme.control_center_widget_bg = theme.lighter_bg
+theme.control_center_button_bg = theme.xbackground
 
 -- Playerctl
 theme.playerctl_ignore = { "firefox", "qutebrowser", "chromium", "brave" }
@@ -211,7 +185,7 @@ theme.useless_gap = dpi(5)
 
 -- Wibar
 theme.wibar_bg = theme.darker_bg
-theme.wibar_widget_bg = theme.xbackground
+theme.wibar_widget_bg = theme.lighter_bg
 
 -- Dock
 theme.dock_bg = theme.wibar_bg
@@ -247,9 +221,8 @@ theme.notification_border_width = dpi(0)
 -- Notif center
 theme.notif_center_radius = theme.border_radius
 theme.notif_center_box_radius = theme.notif_center_radius / 2
-theme.notif_center_notifs_bg = theme.xbackground
-theme.notif_center_notifs_bg_accent = theme.darker_bg
-theme.notif_center_notifs_accent = theme.lighter_bg
+theme.notif_center_notifs_bg = theme.lighter_bg
+theme.notif_center_notifs_accent = theme.xcolor0
 
 -- Swallowing
 theme.dont_swallow_classname_list = {

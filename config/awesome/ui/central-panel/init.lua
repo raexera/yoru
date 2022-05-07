@@ -136,8 +136,8 @@ awful.screen.connect_for_each_screen(function(s)
 			margins = dpi(10),
 			widget = wibox.container.margin,
 		},
-		bg = beautiful.dashboard_bg,
-		shape = helpers.rrect(beautiful.notif_center_radius),
+		bg = beautiful.central_panel_bg,
+		shape = helpers.rrect(beautiful.central_panel_radius),
 		widget = wibox.container.background,
 	})
 end)

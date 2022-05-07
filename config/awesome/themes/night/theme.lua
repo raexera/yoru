@@ -15,57 +15,32 @@ local helpers = require("helpers")
 -- Aesthetic Night Theme
 ---------------------------
 
--- Rxyhn's Catppuccin Colorscheme
-local color_palette = {
-	rosewater = "#F5E0DC", -- Rosewater
-	flamingo = "#F2CDCD", -- Flamingo
-	mauve = "#DDB6F2", -- Mauve
-	pink = "#F5C2E7", -- Pink
-	red = "#F28FAD", -- Red
-	maroon = "#E8A2AF", -- Maroon
-	peach = "#F8BD96", -- Peach
-	yellow = "#FAE3B0", -- Yellow
-	green = "#ABE9B3", -- Green
-	blue = "#96CDFB", -- Blue
-	sky = "#89DCEB", -- Sky
-	teal = "#B5E8E0", -- Teal
-	lavender = "#C9CBFF", -- Lavender
-	white = "#c5c8c9",
-	black0 = "#0d1416",
-	black1 = "#111719",
-	black2 = "#131a1c",
-	black3 = "#192022",
-	black4 = "#202729",
-	gray0 = "#363D3E",
-	gray1 = "#4A5051",
-	gray2 = "#5C6262",
-}
-
-theme.xbackground = color_palette.black2
-theme.xforeground = color_palette.white
-theme.xcolor0 = color_palette.gray0
-theme.xcolor1 = color_palette.red
-theme.xcolor2 = color_palette.green
-theme.xcolor3 = color_palette.yellow
-theme.xcolor4 = color_palette.blue
-theme.xcolor5 = color_palette.mauve
-theme.xcolor6 = color_palette.pink
-theme.xcolor7 = color_palette.white
-theme.xcolor8 = color_palette.gray1
-theme.xcolor9 = color_palette.maroon
-theme.xcolor10 = color_palette.teal
-theme.xcolor11 = color_palette.peach
-theme.xcolor12 = color_palette.sky
-theme.xcolor13 = color_palette.lavender
-theme.xcolor14 = color_palette.flamingo
-theme.xcolor15 = color_palette.white
-theme.darker_bg = color_palette.black1
-theme.lighter_bg = color_palette.black3
-theme.dashboard_fg = color_palette.gray2
+-- Night Colorscheme
+theme.xbackground = "#061115"
+theme.xforeground = "#D9D7D6"
+theme.xcolor0 = "#1C252C"
+theme.xcolor1 = "#DF5B61"
+theme.xcolor2 = "#78B892"
+theme.xcolor3 = "#DE8F78"
+theme.xcolor4 = "#6791C9"
+theme.xcolor5 = "#BC83E3"
+theme.xcolor6 = "#67AFC1"
+theme.xcolor7 = "#D9D7D6"
+theme.xcolor8 = "#484E5B"
+theme.xcolor9 = "#F16269"
+theme.xcolor10 = "#8CD7AA"
+theme.xcolor11 = "#E9967E"
+theme.xcolor12 = "#79AAEB"
+theme.xcolor13 = "#C488EC"
+theme.xcolor14 = "#7ACFE4"
+theme.xcolor15 = "#E5E5E5"
+theme.darker_bg = "#0A1419"
+theme.lighter_bg = "#162026"
+theme.dashboard_fg = "#666C79"
 theme.transparent = "#00000000"
 
 -- Wallpaper
-theme.wallpaper = gfs.get_configuration_dir() .. "themes/assets/night.jpg"
+theme.wallpaper = gfs.get_configuration_dir() .. "themes/assets/night.png"
 
 -- PFP
 theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "themes/assets/pfp.png")
@@ -155,15 +130,16 @@ theme.snap_shape = helpers.rrect(0)
 theme.prompt_bg = theme.transparent
 theme.prompt_fg = theme.xforeground
 
+-- Central Panel
+theme.central_panel_bg = theme.darker_bg
+theme.central_panel_radius = theme.border_radius
+
 -- Dashboard
-theme.dashboard_bg = theme.darker_bg
 theme.dashboard_box_bg = theme.lighter_bg
 theme.dashboard_box_fg = theme.dashboard_fg
 
 -- Control center
-theme.control_center_radius = dpi(20)
 theme.control_center_widget_radius = theme.border_radius
-theme.control_center_bg = theme.darker_bg
 theme.control_center_widget_bg = theme.lighter_bg
 theme.control_center_button_bg = theme.xbackground
 

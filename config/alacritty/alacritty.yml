@@ -1,7 +1,69 @@
 # rxyhn's aesthetic alacritty
 # configuration for alacritty, the GPU enhanced terminal emulator.
-import:
-  - .config/alacritty/themes/day.yml
+
+schemes:
+  # rxyhn's aesthetic night colorscheme
+  rxyhn_dark: &dark
+    primary:
+      background: '#061115'
+      foreground: '#D9D7D6'
+
+    cursor:
+      text:   CellForeground
+      cursor: '#D9D7D6'
+
+    normal:
+      black:   '#1C252C'
+      red:     '#DF5B61'
+      green:   '#78B892'
+      yellow:  '#DE8F78'
+      blue:    '#6791C9'
+      magenta: '#BC83E3'
+      cyan:    '#67AFC1'
+      white:   '#D9D7D6'
+
+    bright:
+      black:   '#484E5B'
+      red:     '#F16269'
+      green:   '#8CD7AA'
+      yellow:  '#E9967E'
+      blue:    '#79AAEB'
+      magenta: '#C488EC'
+      cyan:    '#7ACFE4'
+      white:   '#E5E5E5'
+  
+  # rxyhn's beautiful day colorscheme
+  rxyhn_light: &light
+    primary:
+      background: '#CFCDCC'
+      foreground: '#0D161D'
+
+    cursor:
+      text:   CellForeground
+      cursor: '#0D161D'
+
+    normal:
+      black:   '#1F282E'
+      red:     '#C13D43'
+      green:   '#5A9A74'
+      yellow:  '#C0715A'
+      blue:    '#4973AB'
+      magenta: '#9E65C5'
+      cyan:    '#4991A3'
+      white:   '#BBB9B8'
+
+    bright:
+      black:   '#393F4C'
+      red:     '#D3444B'
+      green:   '#6EB98C'
+      yellow:  '#CB7860'
+      blue:    '#5B8CCD'
+      magenta: '#A66ACE'
+      cyan:    '#5CB1C6'
+      white:   '#C7C7C7'
+
+colors:
+  *light
 
 env:
   TERM: xterm-256color

@@ -3,51 +3,71 @@
     <img src="assets/home.png" alt="Home Preview">
 </div>
 
-<h2></h2><br>
+<h2></h2>
 
 <p align="center">
-  <b>🌕 Rxyhn's Beautiful & Aesthetic Configuration Files 🌑</b>
+  <b>🌕 Rxyhn's Beautiful & Aesthetic Dotfiles 🌑</b>
 </p>
 
 
-<h2></h2><br>
+<h2></h2>
 
 <div align="center">
-    <img src="assets/rice.png" alt="Rice Preview">
+    <img src="assets/day.png" alt="Rice Preview">
 </div>
 
 <br>
 <br>
 
-### Hi there! Thanks for dropping by! 🖤
+## Hi there! Thanks for dropping by! 🖤
 <a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="150" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
 
-<b>  Beautiful & Aesthetic AwesomeWM Dotfiles! ✨  </b>
+<b>  Beautiful & Aesthetic AwesomeWM Configuration Files! ✨  </b>
 
-Welcome to my AwesomeWM configuration files! 
+Welcome to my AwesomeWM configuration files!
+
+This is my personal collection of configuration files.
+
 You might be here for looking my AwesomeWM configuration files? or looking for **Linux Rice** reference?
+
 feel free to steal anything from here but don't forget to give me **credits** :)
 
 AwesomeWM is the most powerful and highly configurable, next generation framework window manager for X, 
 Although it takes time and effort to configure it, but I'm very satisfied with the result.
+
 This is a beautiful user interface isn't it?
 
 These dotfiles are made with love, for sure.
 
-<h2></h2><br>
+## :octocat: <samp>INFORMATION</samp> <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=for-the-badge&color=6791C9&logoColor=white&labelColor=0A1419"/>
 
-**Here are some details about my setup:**
+<img alt="Rice Preview" align="right" width="400px" src="assets/night.png"/>
 
-| Programs   | Using             |
-| ---------- | ----------------- |
-| WM         | awesome           |
-| OS         | arch linux        |
-| Terminal   | alacritty         |
-| Shell      | zsh               |
-| Editor     | neovim / vscode   |
-| Compositor | picom             |
+Here are some details about my setup:
 
-<h2></h2><br>
+- **OS:** [Arch Linux](https://archlinux.org)
+- **WM:** [awesome](https://github.com/awesomeWM/awesome)
+- **Terminal:** [alacritty](https://github.com/alacritty/alacritty)
+- **Shell:** [zsh](https://www.zsh.org/)
+- **Editor:** [neovim](https://github.com/neovim/neovim) / [vscode](https://github.com/microsoft/vscode)
+- **Compositor:** [picom](https://github.com/yshui/picom)
+- **Application Launcher:** [rofi](https://github.com/davatorium/rofi)
+- **Music Player** [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp)
+
+AwesomeWM Modules:
+
+- **[bling](https://github.com/blingcorp/bling)**
+   + Adds new layouts, modules, and widgets that try to primarily focus on window management
+- **[rubato](https://github.com/andOrlando/rubato)**
+   + Creates smooth animations with a slope curve for awesomeWM (Awestore, but not really)
+- **[layout-machi](https://github.com/xinhaoyuan/layout-machi)**
+   + Manual layout for Awesome with an interactive editor
+
+<br>
+
+> This repo has a wiki! You can check it by clicking ~~[here](https://www.youtube.com/watch?v=UIp6_0kct_U)~~ [here](https://github.com/rxyhn/dotfiles/wiki).
+
+<h2></h2>
 
 <table align="right">
   <tr>
@@ -241,7 +261,7 @@ These dotfiles are made with love, for sure.
 
          <summary>Preview</summary>
          <div align="left">
-         <img src="assets/lockscreen.png" width="500px" alt="word clock lockscreen preview">
+         <img src="assets/lockscreen.gif" width="500px" alt="word clock lockscreen preview">
          </div>
          </details>
    + PopUp Notifications
@@ -264,6 +284,7 @@ also with <kbd>alt, shift, and ctrl</kbd>
 |-----------------------------------------|-----------------------------------------------------------|
 | <kbd>super + enter</kbd>                | Spawn terminal                                            |
 | <kbd>super + grave</kbd>                | Spawn music client                                        |
+| <kbd>super + d</kbd>                    | Spawn application launcher                                |
 | <kbd>super + shift + w</kbd>            | Spawn web browser                                         |
 | <kbd>super + shift + x</kbd>            | Spawn color picker                                        |
 | <kbd>super + shift + f</kbd>            | Spawn file manager                                        |
@@ -300,15 +321,9 @@ also with <kbd>alt, shift, and ctrl</kbd>
 
 </details>
 
-<h2></h2><br>
+<h2></h2>
 
-### Wiki 📖
-
-This repo has a wiki! You can check it by clicking ~~[here](https://www.youtube.com/watch?v=UIp6_0kct_U)~~ [here](https://github.com/rxyhn/dotfiles/wiki).
-
-<h2></h2><br>
-
-### History 🗾
+## History 🗾
 
 This started since when im feel bored, idk why i do this things, i love it but ahhh nvm, 
 but basically im doing this just for fun and also to satisfy myself ofc,
@@ -320,9 +335,9 @@ Thank you! <3
 
 [![Stargazers over time](https://starchart.cc/rxyhn/dotfiles.svg)](https://starchart.cc/rxyhn/dotfiles)
 
-<h2></h2><br>
+<h2></h2>
 
-### Acknowledgements 💡
+## Acknowledgements 💡
 
    - **Special thanks to**
 
@@ -332,6 +347,7 @@ Thank you! <3
          - [`paulhersch`](https://github.com/paulhersch)
          - [`ChocolateBread799`](https://github.com/ChocolateBread799)
          - [`janleigh`](https://github.com/janleigh)
+         - [`rototrash`](https://github.com/rototrash)
 
       + *And for them, ofc.*
          - [`elenapan`](https://github.com/elenapan)

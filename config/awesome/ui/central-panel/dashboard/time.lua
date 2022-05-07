@@ -3,6 +3,7 @@ local awful = require("awful")
 
 -- Theme handling library
 local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 
 -- Widget library
 local wibox = require("wibox")
@@ -12,46 +13,28 @@ local helpers = require("helpers")
 
 -- Time
 ---------
-local hours = wibox.widget.textclock("%H")
-local minutes = wibox.widget.textclock("%M")
 
-local make_little_dot = function(color)
-	return wibox.widget({
-		bg = color,
-		forced_width = dpi(10),
-		forced_height = dpi(10),
-		shape = helpers.rrect(dpi(2)),
-		widget = wibox.container.background,
-	})
-end
+local time_hour = wibox.widget({
+	font = beautiful.font_name .. "bold 48",
+	format = "%H",
+	align = "center",
+	valign = "center",
+	widget = wibox.widget.textclock,
+})
 
-local time = {
-	{
-		font = beautiful.font_name .. "Bold 44",
-		align = "right",
-		valign = "top",
-		widget = hours,
-	},
-	{
-		nil,
-		{
-			make_little_dot(beautiful.xcolor1),
-			make_little_dot(beautiful.xcolor4),
-			make_little_dot(beautiful.xcolor5),
-			spacing = dpi(10),
-			widget = wibox.layout.fixed.vertical,
-		},
-		expand = "none",
-		widget = wibox.layout.align.vertical,
-	},
-	{
-		font = beautiful.font_name .. "Bold 44",
-		align = "left",
-		valign = "top",
-		widget = minutes,
-	},
-	spacing = dpi(20),
-	layout = wibox.layout.fixed.horizontal,
-}
+local time_min = wibox.widget({
+	font = beautiful.font_name .. "bold 48",
+	format = "%M",
+	align = "center",
+	valign = "center",
+	widget = wibox.widget.textclock,
+})
+
+local time = wibox.widget({
+	time_hour,
+	time_min,
+	spacing = dpi(25),
+	widget = wibox.layout.fixed.horizontal,
+})
 
 return time

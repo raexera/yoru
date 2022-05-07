@@ -34,6 +34,9 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey, shift }, "w", function()
 		awful.spawn.with_shell(browser)
 	end, { description = "open web browser", group = "launcher" }),
+	awful.key({ modkey }, "d", function()
+		awful.spawn.with_shell("rofi -no-lazy-grab -show drun -modi drun -theme " .. gfs.get_configuration_dir() .. "configuration/rofi.rasi")
+	end, { description = "open app launcher", group = "launcher" }),
 	awful.key({ modkey, shift }, "x", function()
 		awful.spawn.with_shell("xcolor-pick")
 	end, { description = "open color picker", group = "launcher" }),

@@ -5,7 +5,7 @@
 # var
 ########
 awesome=$HOME/.config/awesome/rc.lua
-picom=$HOME/.config/awesome/configuration
+configuration=$HOME/.config/awesome/configuration
 term=$HOME/.config/alacritty/alacritty.yml
 
 # Beautiful day themes
@@ -14,9 +14,11 @@ day () {
   # colorscheme
   sed -i "17s/.*/theme = themes[1]/g" $awesome
   # picom
-  sed -i "12s/.*/shadow-opacity = 0.55;/g" $picom/picom.conf
+  sed -i "12s/.*/shadow-opacity = 0.55;/g" $configuration/picom.conf
   # alacritty
-  sed -i "4s/.*/  - .config\/alacritty\/themes\/day.yml/g" $term
+  sed -i "66s/.*/  *light/g" $term
+  # rofi
+  sed -i "12s/.*/@import \"..\/themes\/day\/day.rasi\"/g" $configuration/rofi.rasi
 }
 
 # Aesthetic night themes
@@ -25,9 +27,11 @@ night () {
   # colorscheme
   sed -i "17s/.*/theme = themes[2]/g" $awesome
   # picom
-  sed -i "12s/.*/shadow-opacity = 0.75;/g" $picom/picom.conf
+  sed -i "12s/.*/shadow-opacity = 0.75;/g" $configuration/picom.conf
   # alacritty
-  sed -i "4s/.*/  - .config\/alacritty\/themes\/night.yml/g" $term
+  sed -i "66s/.*/  *dark/g" $term
+  # rofi
+  sed -i "12s/.*/@import \"..\/themes\/night\/night.rasi\"/g" $configuration/rofi.rasi
 }
 
 case $1 in

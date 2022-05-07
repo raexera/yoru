@@ -1,0 +1,112 @@
+configuration {
+	font:							"Iosevka Bold 9";
+    show-icons:                     true;
+	icon-theme: 					"Papirus-Dark";
+    display-drun: 					"";
+    drun-display-format:            "{name}";
+    disable-history:                false;
+	sidebar-mode: 					false;
+}
+
+@theme "/dev/null"
+@import "../themes/day/day.rasi"
+
+window {
+    transparency:                   "real";
+    background-color:               @background;
+    text-color:                     @foreground;
+	border:							0px;
+	border-color:					@border;
+    border-radius:                  0px;
+	width:							40%;
+    location:                       center;
+    x-offset:                       0;
+    y-offset:                       0;
+}
+
+prompt {
+    enabled: 						true;
+	padding: 						0 1% -0.8% 0;
+	background-color: 				inherit;
+	text-color: 					@foreground;
+	font:							"Material Icons 20";
+}
+
+entry {
+    background-color:               inherit;
+    text-color:                     @foreground;
+    placeholder-color:              @foreground;
+    expand:                         true;
+    horizontal-align:               0;
+    placeholder:                    "Search";
+    padding:                        0.5% 0 0 0;
+    blink:                          true;
+    font:                           "Iosevka Bold 12";
+}
+
+inputbar {
+	children: 						[ prompt, entry ];
+    background-color:               @background-bar;
+    text-color:                     @foreground;
+    expand:                         false;
+	border:							0% 0% 0% 0%;
+    border-radius:                  10px;
+	border-color:					@accent;
+    margin:                         0% 0% 0% 0%;
+    padding:                        1.5%;
+}
+
+listview {
+    background-color:               @background-alt;
+    columns:                        5;
+    lines:                          5;
+    spacing:                        0%;
+    cycle:                          false;
+    dynamic:                        true;
+    layout:                         vertical;
+}
+
+mainbox {
+    background-color:               @background-alt;
+	border:							0% 0% 0% 0%;
+    border-radius:                  0% 0% 0% 0%;
+	border-color:					@accent;
+    children:                       [ inputbar, listview ];
+    spacing:                       	2%;
+    padding:                        2% 1% 2% 1%;
+}
+
+element {
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+    orientation:                    vertical;
+    border-radius:                  0%;
+    padding:                        2% 0% 2% 0%;
+}
+
+element-icon {
+    background-color: 				inherit;
+    text-color:       				inherit;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    size:                           48px;
+    border:                         0px;
+}
+
+element-text {
+    background-color: 				inherit;
+    text-color:       				inherit;
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         0.5% 0.5% -0.5% 0.5%;
+}
+
+element selected {
+    background-color:               @background-bar;
+    text-color:                     @foreground;
+	border:							0% 0% 0% 0%;
+    border-radius:                  10px;
+    border-color:                  	@accent;
+}
+
