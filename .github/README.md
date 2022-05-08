@@ -15,7 +15,6 @@
 </div>
 
 <br>
-<br>
 
 ## Hi there! Thanks for dropping by! 🖤
 <a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="150" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
@@ -37,7 +36,7 @@ This is a beautiful user interface isn't it?
 
 These dotfiles are made with love, for sure.
 
-## :octocat: ‎ <samp>INFORMATION</samp> <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=for-the-badge&color=6791C9&logoColor=white&labelColor=0A1419"/>
+## :snowflake: ‎ <samp>INFORMATION</samp> <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=for-the-badge&color=6791C9&logoColor=white&labelColor=0A1419"/>
 
 <img alt="Rice Preview" align="right" width="400px" src="assets/night.png"/>
 
@@ -343,22 +342,22 @@ Thanks from the bottom of my heart! ‎ :heartpulse:
 
 ## :bulb: ‎ <samp>Acknowledgements</samp>
 
-   - **Special thanks to**
+- **Special thanks to**
 
-      + *Contributors*
-         - [`rxyhn`](https://github.com/rxyhn) *there's nothing wrong with thanking yourself right?*
-         - [`ner0z`](https://github.com/ner0z)
-         - [`paulhersch`](https://github.com/paulhersch)
-         - [`ChocolateBread799`](https://github.com/ChocolateBread799)
-         - [`janleigh`](https://github.com/janleigh)
-         - [`rototrash`](https://github.com/rototrash)
+   + *Contributors*
+      - [`rxyhn`](https://github.com/rxyhn) *there's nothing wrong with thanking yourself right?*
+      - [`ner0z`](https://github.com/ner0z)
+      - [`paulhersch`](https://github.com/paulhersch)
+      - [`ChocolateBread799`](https://github.com/ChocolateBread799)
+      - [`janleigh`](https://github.com/janleigh)
+      - [`rototrash`](https://github.com/rototrash)
 
-      + *And for them, ofc.*
-         - [`elenapan`](https://github.com/elenapan)
-         - [`manilarome`](https://github.com/manilarome)
-         - [`JavaCafe01`](https://github.com/JavaCafe01)
+   + *And for them, ofc.*
+      - [`elenapan`](https://github.com/elenapan)
+      - [`manilarome`](https://github.com/manilarome)
+      - [`JavaCafe01`](https://github.com/JavaCafe01)
 
-<h2></h2><br>
+<br>
 
 <p align="center"><img src="https://raw.githubusercontent.com/catppuccin/catppuccin/dev/assets/footers/gray0_ctp_on_line.svg?sanitize=true" /></p>
 <p align="center"><a href="https://github.com/rxyhn/AwesomeWM-Dotfiles/blob/main/.github/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=License&message=GPL-3.0&logoColor=eceff4&logo=github&colorA=061115&colorB=67AFC1"/></a></p>
