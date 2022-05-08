@@ -1,3 +1,4 @@
+<!-- DOTFILES BANNER -->
 <div align="center">
     <img src="assets/home.png" alt="Home Preview">
 </div>
@@ -10,6 +11,7 @@
 
 <br>
 
+<!-- RICE PREVIEW -->
 <div align="center">
     <img src="assets/day.png" alt="Rice Preview">
 </div>
@@ -36,7 +38,8 @@ This is a beautiful user interface isn't it?
 
 These dotfiles are made with love, for sure.
 
-## :snowflake: ‎ <samp>INFORMATION</samp> <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=for-the-badge&color=6791C9&logoColor=white&labelColor=0A1419"/>
+<!-- INFORMATION -->
+## :snowflake: ‎ <samp>Information</samp> <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=for-the-badge&color=6791C9&logoColor=white&labelColor=0A1419"/>
 
 <img alt="Rice Preview" align="right" width="400px" src="assets/night.png"/>
 
@@ -64,7 +67,8 @@ AwesomeWM Modules:
 
 > This repo has a wiki! You can check it by clicking ~~[here](https://www.youtube.com/watch?v=UIp6_0kct_U)~~ [here](https://github.com/rxyhn/dotfiles/wiki).
 
-## :ear_of_rice: ‎ <samp>Setup, Features, Keybinds</samp>
+<!-- SETUP -->
+## :wrench: ‎ <samp>Setup</samp>
 
 <table align="right">
   <tr>
@@ -89,106 +93,91 @@ AwesomeWM Modules:
   </tr>
 </table>
 
+>This is step-by-step how to install these dotfiles. Just [R.T.F.M](https://en.wikipedia.org/wiki/RTFM).
+
+### :computer: ‎ <samp>Install Dependencies<samp>
+
+> First of all you should install the [git version of AwesomeWM](https://github.com/awesomeWM/awesome/).
+
+**Arch users** can use the [awesome-git AUR package](https://aur.archlinux.org/packages/awesome-git/).
+   ```sh
+   paru -S awesome-git
+   ```
+
+**For other distros**, build instructions are [here](https://github.com/awesomeWM/awesome/#building-and-installation).
+
+> Install necessary dependencies
+
 <details>
-<summary><strong>S E T U P</strong></summary>
+<summary><strong>Arch Linux (and other Arch-based distributions)</strong></summary>
 
-   > This is step-by-step how to install these dotfiles. Just [R.T.F.M](https://en.wikipedia.org/wiki/RTFM).
+   > Assuming your **AUR Helper** is [paru](https://github.com/Morganamilo/paru).
 
-   > This setup only provided for **Arch Linux** (and all Arch-based distributions)
-
-   1. Install the [git version of AwesomeWM](https://github.com/awesomeWM/awesome/).
-
-      ```sh
-      paru -S awesome-git
-      ```
-
-   2. Install dependencies and enable services
-
-      + Dependencies
-
-         ```sh
-         paru -Sy picom-git alacritty todo-bin papirus-icon-theme acpi acpid \
-         acpi_call wireless_tools jq inotify-tools polkit-gnome xdotool xclip \
-         brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa scrot \
-         redshift mpd mpc mpdris2 ncmpcpp playerctl rofi ffmpeg bluez-utils gpick --needed 
-         ```
-
-      + Services
-
-         ```sh
-         # For automatically launching mpd on login
-         systemctl --user enable mpd.service
-         systemctl --user start mpd.service
-
-         # For charger plug/unplug events (if you have a battery)
-         sudo systemctl enable acpid.service
-         sudo systemctl start acpid.service
-         ```
-
-   3. Install needed fonts
-
-      You will need to install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
-
-      Necessary fonts:
-      + **Iosevka**              - [here](https://github.com/be5invis/Iosevka)
-      + **Icomoon**              - [here](https://www.dropbox.com/s/hrkub2yo9iapljz/icomoon.zip?dl=0)
-      + **Material Icons**       - [here](https://github.com/google/material-design-icons)
-      + **FiraCode Nerd Font**   - [here](https://github.com/ryanoasis/nerd-fonts)
-
-      Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`
-      and run this command for your system to detect the newly installed fonts.
-
-      ```sh
-      fc-cache -v
-      ```
-   
-   4. Install my AwesomeWM configuration files
-
-      > Clone this repository
-
-      ```sh
-      git clone https://github.com/rxyhn/dotfiles.git
-      cd dotfiles
-      ```
-
-      > Copy config and binaries files
-
-      ```sh
-      cp -r config/* ~/.config/
-      cp -r bin/* ~/.local/bin/
-      cp -r misc/. ~/
-      ```
-
-      > You have to add `TODO_PATH` in your env variable
-
-      ```sh
-      export TODO_PATH="path/to/todo"
-      ```
-
-   5. Configure stuff
-
-      The relevant files are inside your `~/.config/awesome` directory.
-
-      + User preferences and default applications
-
-         In `rc.lua` there is a *Default Applications* section where user preferences and default applications are defined.
-         You should change those to your liking.
-
-         Note: For the weather widgets to work, you will also need to create an account on [openweathermap](https://openweathermap.org), get your key, look for your city ID, and set `openweathermap_key` and `openweathermap_city_id` accordingly.
-
-   6. Lastly, log out from your current desktop session and log in into `AwesomeWM.`
-
+   ```sh
+   paru -Sy picom-git alacritty todo-bin papirus-icon-theme acpi acpid \
+   acpi_call wireless_tools jq inotify-tools polkit-gnome xdotool xclip \
+   brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa scrot \
+   redshift mpd mpc mpdris2 ncmpcpp playerctl rofi ffmpeg bluez-utils gpick --needed 
+   ```
+         
 </details>
 
-<br>
+<!-- <details>
+<summary><strong>Debian (and other debian-based distributions)</strong></summary>
 
-<details>
-<summary><strong>F E A T U R E S</strong></summary>
+   ```sh
+   W I P
+   ```
+         
+</details> -->
+
+### :bookmark_tabs: ‎ <samp>Install Needed Fonts<samp>
+
+> You will need to install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
+
+Necessary fonts:
+   + **Iosevka**              - [here](https://github.com/be5invis/Iosevka)
+   + **Icomoon**              - [here](https://www.dropbox.com/s/hrkub2yo9iapljz/icomoon.zip?dl=0)
+   + **Material Icons**       - [here](https://github.com/google/material-design-icons)
+   + **FiraCode Nerd Font**   - [here](https://github.com/ryanoasis/nerd-fonts)
+
+Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`
+and run this command for your system to detect the newly installed fonts.
+
+   ```sh
+   fc-cache -v
+   ```
+
+### :art: ‎ <samp>Install my AwesomeWM configuration files<samp>
+
+> Clone this repository
+
+   ```sh
+   git clone https://github.com/rxyhn/dotfiles.git
+   cd dotfiles
+   ```
+
+> Copy config and binaries files
+
+   ```sh
+   cp -r config/* ~/.config/
+   cp -r bin/* ~/.local/bin/
+   cp -r misc/. ~/
+   ```
+
+> You have to add `TODO_PATH` in your env variable
+
+   ```sh
+   export TODO_PATH="path/to/todo"
+   ```
+
+<!-- GALLERY -->
+## :ocean: ‎ <samp>Gallery</samp>
 
 <b>These are the features included in my AwesomeWM setups!</b>
 
    + Minimalist `wibar` design
-      - <details>
+      - <details open>
          <summary>Preview</summary>
 
          *Simple, Minimalist and Modern Bar Design!*
@@ -205,7 +194,7 @@ AwesomeWM Modules:
          </div>
          </details>
    + Aesthetic `Dashboard` ngl.
-      - <details>
+      - <details open>
          <summary>Preview</summary>
 
          *Aesthetic dashboard with neat grid layout, it's so beautiful!*
@@ -223,7 +212,7 @@ AwesomeWM Modules:
          </div>
          </details>
    + Very useful `Control Center` ikr.
-      - <details>
+      - <details open>
 
           *This control center has many features!*
 
@@ -242,7 +231,7 @@ AwesomeWM Modules:
          </div>
          </details>
    + Custom mouse-friendly `ncmpcpp` UI with album art ofc.
-      - <details>
+      - <details open>
          <summary>Preview</summary>
 
          *This is so aesthetic isn't it?*
@@ -252,7 +241,7 @@ AwesomeWM Modules:
          </div>
          </details>
    + `Word Clock Lockscreen` with PAM Integration!
-      - <details>
+      - <details open>
 
          *A beautiful word clock is on the lockscreen!*
 
@@ -261,16 +250,26 @@ AwesomeWM Modules:
          <img src="assets/lockscreen.gif" width="500px" alt="word clock lockscreen preview">
          </div>
          </details>
-   + PopUp Notifications
-   + Tooltip Widget
-   + System Tray Widget
+
+<!-- MISCELLANEOUS -->
+## :four_leaf_clover: ‎ <samp>Miscellaneous</samp>
+
+<details>
+<summary><strong>Configure stuff</strong></summary>
+
+> The relevant files are inside your `~/.config/awesome` directory.
+
++ User preferences and default applications
+
+   In `rc.lua` there is a *Default Applications* section where user preferences and default applications are defined.
+   You should change those to your liking.
+
+Note: For the weather widgets to work, you will also need to create an account on [openweathermap](https://openweathermap.org), get your key, look for your city ID, and set `openweathermap_key` and `openweathermap_city_id` accordingly.
 
 </details>
 
-<br>
-
 <details>
-<summary><strong>K E Y B I N D S</strong></summary>
+<summary><strong>Keybinds</strong></summary>
 
 I use <kbd>super</kbd> AKA Windows key as my main modifier.
 also with <kbd>alt, shift, and ctrl</kbd>
@@ -318,6 +317,7 @@ also with <kbd>alt, shift, and ctrl</kbd>
 
 </details>
 
+<!-- HISTORY -->
 ## :japan: ‎ <samp>History</samp>
 
 This started since when im feel bored, idk why i do this things, i love it but ahhh nvm, 
@@ -330,6 +330,7 @@ Thank you! <3
 
 [![Stargazers over time](https://starchart.cc/rxyhn/dotfiles.svg)](https://starchart.cc/rxyhn/dotfiles)
 
+<!-- TIP JAR -->
 ## :money_with_wings: ‎ <samp>TIP JAR</samp>
 
 If you enjoyed it and would like to show your appreciation, you may want to tip me here.
@@ -340,6 +341,7 @@ Thanks from the bottom of my heart! ‎ :heartpulse:
 
 [![](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/rxyhn)
 
+<!-- ACKNOWLEDGEMENTS -->
 ## :bulb: ‎ <samp>Acknowledgements</samp>
 
 - **Special thanks to**
