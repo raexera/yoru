@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="590"
+   height="280"
+   viewBox="0 0 156.10417 74.083338"
+   version="1.1"
+   id="svg18202"
+   sodipodi:docname="Setup.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview18204"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="true"
+     inkscape:document-units="mm"
+     showgrid="false"
+     width="512.11816px"
+     units="px"
+     borderlayer="false"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:bbox-nodes="false"
+     inkscape:bbox-paths="false"
+     inkscape:snap-page="false"
+     inkscape:snap-global="true"
+     inkscape:snap-to-guides="false"
+     inkscape:snap-grids="true"
+     inkscape:snap-text-baseline="false"
+     inkscape:snap-center="false"
+     inkscape:object-nodes="false"
+     inkscape:snap-nodes="false"
+     inkscape:snap-object-midpoints="true"
+     inkscape:zoom="0.9390863"
+     inkscape:cx="488.77297"
+     inkscape:cy="170.37838"
+     inkscape:window-width="1880"
+     inkscape:window-height="992"
+     inkscape:window-x="20"
+     inkscape:window-y="68"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     scale-x="1"
+     showguides="true"
+     inkscape:snap-bbox-edge-midpoints="true" />
+  <defs
+     id="defs18199">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect48504"
+       is_visible="true"
+       lpeversion="1"
+       satellites_param="F,0,0,1,0,5.2916667,0,1 @ F,0,0,1,0,5.2916667,0,1 @ F,0,0,1,0,5.2916667,0,1 @ F,0,0,1,0,5.2916667,0,1"
+       unit="px"
+       method="auto"
+       mode="F"
+       radius="20"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter52605"
+       x="-0.070849794"
+       y="-0.18059965"
+       width="1.15646"
+       height="1.3988242">
+      <feFlood
+         flood-opacity="0.6"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood52595" />
+      <feComposite
+         in="SourceGraphic"
+         in2="flood"
+         operator="in"
+         result="composite1"
+         id="feComposite52597" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="4"
+         result="blur"
+         id="feGaussianBlur52599" />
+      <feOffset
+         dx="2"
+         dy="2"
+         result="offset"
+         id="feOffset52601" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite52603" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#061115;fill-opacity:1;stroke-width:0.269412;filter:url(#filter52605)"
+       id="rect18582"
+       width="135.49792"
+       height="53.15625"
+       x="9.5999994"
+       y="9.5999994"
+       sodipodi:type="rect"
+       inkscape:path-effect="#path-effect48504"
+       d="M 14.891666,9.5999994 H 139.80626 a 5.2916667,5.2916667 45 0 1 5.29166,5.2916666 v 42.572917 a 5.2916667,5.2916667 135 0 1 -5.29166,5.291666 l -124.914594,0 A 5.2916667,5.2916667 45 0 1 9.5999994,57.464583 V 14.891666 A 5.2916667,5.2916667 135 0 1 14.891666,9.5999994 Z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.6333px;line-height:1.25;font-family:Iosevka;-inkscape-font-specification:Iosevka;text-align:center;text-anchor:middle;fill:#6791c9;fill-opacity:1;stroke-width:0.264583"
+       x="78.30452"
+       y="45.149483"
+       id="text23673"><tspan
+         sodipodi:role="line"
+         id="tspan23671"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.6333px;font-family:Iosevka;-inkscape-font-specification:Iosevka;fill:#6791c9;fill-opacity:1;stroke-width:0.264583"
+         x="78.30452"
+         y="45.149483">Setup</tspan></text>
+  </g>
+</svg>
