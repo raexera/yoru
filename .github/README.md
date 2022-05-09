@@ -3,10 +3,15 @@
     <img src="assets/home.png" alt="Home Preview">
 </div>
 
-<br>
+<p align="center">
+  <b>🌕 Beautiful & Aesthetic Dotfiles 🌑</b>
+</p>
 
 <p align="center">
-  <b>🌕 Rxyhn's Beautiful & Aesthetic Dotfiles 🌑</b>
+<a href="#wrench--setup"><img width="150px" style="padding: 0 10px;" src="assets/button-setup.svg"></a>
+<a href="https://github.com/rxyhn/dotfiles/wiki"><img width="150px" style="padding: 0 10px;" src="assets/button-wiki.svg"></a>
+<a href="#ocean--gallery"><img width="150px" style="padding: 0 10px;" src="assets/button-gallery.svg"></a>
+<a href="#money_with_wings--tip-jar"><img width="150px" style="padding: 0 10px;" src="assets/button-tipjar.svg"></a>
 </p>
 
 <br>
@@ -108,10 +113,9 @@ AwesomeWM Modules:
 
 > Install necessary dependencies
 
-<details>
-<summary><strong>Arch Linux (and other Arch-based distributions)</strong></summary>
+**Arch Linux (and other Arch-based distributions)**
 
-   > Assuming your **AUR Helper** is [paru](https://github.com/Morganamilo/paru).
+   Assuming your **AUR Helper** is [paru](https://github.com/Morganamilo/paru).
 
    ```sh
    paru -Sy picom-git alacritty todo-bin papirus-icon-theme acpi acpid \
@@ -119,17 +123,6 @@ AwesomeWM Modules:
    brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa scrot \
    redshift mpd mpc mpdris2 ncmpcpp playerctl rofi ffmpeg bluez-utils gpick --needed 
    ```
-         
-</details>
-
-<!-- <details>
-<summary><strong>Debian (and other debian-based distributions)</strong></summary>
-
-   ```sh
-   W I P
-   ```
-         
-</details> -->
 
 ### :bookmark_tabs: ‎ <samp>Install Needed Fonts<samp>
 
@@ -170,6 +163,12 @@ and run this command for your system to detect the newly installed fonts.
    ```sh
    export TODO_PATH="path/to/todo"
    ```
+
+> Finally, now you can login with AwesomeWM
+
+   Congratulations, at this point you have installed this dotfiles!
+
+   Log out from your current desktop session and log in into AwesomeWM
 
 <!-- GALLERY -->
 ## :ocean: ‎ <samp>Gallery</samp>
