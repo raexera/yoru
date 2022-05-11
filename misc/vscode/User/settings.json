@@ -1,0 +1,63 @@
+{
+    "window.restoreWindows": "all",
+    "files.hotExit": "onExit",
+    "workbench.startupEditor": "none",
+    "extensions.ignoreRecommendations": true,
+    "files.associations": {
+        "*.pl": "prolog"
+    },
+    "editor.suggestSelection": "first",
+    "editor.fontSize": 13,
+    "editor.fontFamily": "FiraCode Nerd Font, monospace",
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "workbench.productIconTheme": "icons-carbon",
+    "workbench.colorCustomizations": {
+      "list.activeSelectionBackground": "#0D181C",
+      "list.hoverBackground": "#0D181C",
+      "editorWidget.background": "#0D181C",
+      "panel.background": "#0D181C",
+      "titleBar.activeBackground": "#0D181C",
+      "breadcrumbPicker.background": "#0D181C",
+      "settings.dropdownBackground": "#0D181C",
+      "settings.numberInputBackground": "#0D181C",
+      "settings.textInputBackground": "#0D181C",
+      "settings.checkboxBackground": "#0D181C",
+      "editor.background": "#061115",
+      "tab.activeBackground": "#000A0E",
+      "tab.inactiveBackground": "#061115",
+      "sideBar.background": "#000A0E",
+      "sideBarSectionHeader.background": "#000A0E",
+      "activityBar.background": "#000A0E",
+      "statusBar.background": "#000A0E",
+      "scrollbarSlider.activeBackground": "#000A0E",
+      "tab.activeBorder": "#06111500",
+      "editorGroupHeader.tabsBackground": "#061115",
+      "statusBar.noFolderBackground": "#061115",
+      "tab.border": "#061115",
+      "editorHoverWidget.background": "#061115",
+      "menu.background": "#061115",
+      "debugToolBar.background": "#061115",
+      "editorBracketMatch.background": "#061115",
+      "quickInput.background": "#061115",
+      "editorOverviewRuler.border": "#061115",
+      "notifications.background": "#061115",
+      "breadcrumb.background": "#061115"
+    },
+    "workbench.list.smoothScrolling": true,
+    "editor.smoothScrolling": true,
+    "customizeUI.activityBar": "bottom",
+    "customizeUI.titleBar": "inline",
+    "customizeUI.font.regular": "FiraCode Nerd Font",
+    "customizeUI.fontSizeMap": {
+        "13px": "12px",
+        "monospace": "12px"
+    },
+    "customizeUI.stylesheet": {
+      ".tabs-container ": "padding-top:7px; padding-left:2px; padding-bottom:5px",
+      ".tabs-container > .tab": "border-radius: 7px 7px 7px 7px; height: 20px; margin-left: 5px; padding-right:4px",
+      ".monaco-editor .suggest-widget": "border-radius: 10px 10px 10px 10px; overflow:hidden;"
+    },
+    "window.titleBarStyle": "native",
+    "editor.minimap.enabled": false,
+    "window.menuBarVisibility": "toggle"
+  }

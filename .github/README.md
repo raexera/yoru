@@ -134,8 +134,11 @@ Necessary fonts:
    + **Material Icons**       - [here](https://github.com/google/material-design-icons)
    + **FiraCode Nerd Font**   - [here](https://github.com/ryanoasis/nerd-fonts)
 
+Also you can find the required icon fonts inside the `misc/fonts` folder of this repository.
+
 Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`
-and run this command for your system to detect the newly installed fonts.
+
+And run this command for your system to detect the newly installed fonts.
 
    ```sh
    fc-cache -v
@@ -155,7 +158,6 @@ and run this command for your system to detect the newly installed fonts.
    ```sh
    cp -r config/* ~/.config/
    cp -r bin/* ~/.local/bin/
-   cp -r misc/. ~/
    ```
 
 > You have to add `TODO_PATH` in your env variable
@@ -166,7 +168,7 @@ and run this command for your system to detect the newly installed fonts.
 
 > Finally, now you can login with AwesomeWM
 
-   Congratulations, at this point you have installed this dotfiles!
+   Congratulations, at this point you have installed this aesthetic dotfiles! :tada:
 
    Log out from your current desktop session and log in into AwesomeWM
 
@@ -313,6 +315,30 @@ also with <kbd>alt, shift, and ctrl</kbd>
 | `scroll up/down`   | Cycle through tags                         |
 
 *For more information check `awesome/configuration/keys.lua`*
+
+</details>
+
+<details>
+<summary><strong>VSCode</strong></summary>
+
+<div align="left">
+    <img src="https://user-images.githubusercontent.com/93292023/167767089-87dafa0c-159a-4d1b-bfc2-12ef5de12b7c.png" alt="Preview" width="500px">
+</div>
+
+### :milky_way: ‎ <samp>Aesthetic VSCode</samp>
+
+Setup:
+
+1. Install required extension
+    - [Customize UI](https://marketplace.visualstudio.com/items?itemName=iocave.customize-ui)
+    - [Carbon Product Icons](https://marketplace.visualstudio.com/items?itemName=antfu.icons-carbon)
+
+    note: You can use any themes, but some of the colors will be overwritten by mine
+2. copy config file
+    ```sh
+    cp misc/vscode/User/settings.json ~/.config/Code/User
+
+    ```
 
 </details>
 
