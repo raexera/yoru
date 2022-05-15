@@ -101,7 +101,7 @@ AwesomeWM Modules:
 >This is step-by-step how to install these dotfiles. Just [R.T.F.M](https://en.wikipedia.org/wiki/RTFM).
 
 <details>
-<summary><b>Install Required Dependencies</b></summary>
+<summary><b>1. Install Required Dependencies</b></summary>
 
 > First of all you should install the [git version of AwesomeWM](https://github.com/awesomeWM/awesome/).
 
@@ -128,7 +128,7 @@ AwesomeWM Modules:
 </details>
 
 <details>
-<summary><b>Install Needed Fonts</b></summary>
+<summary><b>2. Install Needed Fonts</b></summary>
 
 > You will need to install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
 
@@ -151,20 +151,19 @@ And run this command for your system to detect the newly installed fonts.
 </details>
 
 <details>
-<summary><b>Install my AwesomeWM configuration files</b></summary>
+<summary><b>3. Install My AwesomeWM Dotfiles</b></summary>
 
 > Clone this repository
 
    ```sh
-   git clone https://github.com/rxyhn/dotfiles.git
-   cd dotfiles
+   git clone --recurse-submodules https://github.com/rxyhn/dotfiles.git
+   cd dotfiles && git submodule update --remote --merge
    ```
 
-> Copy config and binaries files
+> Copy config files
 
    ```sh
    cp -r config/* ~/.config/
-   cp -r bin/* ~/.local/bin/
    ```
 
 > Finally, now you can login with AwesomeWM
@@ -178,82 +177,25 @@ And run this command for your system to detect the newly installed fonts.
 <!-- GALLERY -->
 ## :ocean: ‎ <samp>Gallery</samp>
 
-<b>These are the features included in my AwesomeWM setups!</b>
+| <b>Simple, Minimalist and Modern Bar</b> |
+| --- |
+| <img src="assets/wibar.gif" width="500px" alt="dashboard preview"> |
 
-   + Minimalist `wibar` design
-      - <details>
-         <summary>Preview</summary>
+| <b>Aesthetic Dashboard with neat grid layout and Notification Center</b> |
+| --- |
+| <img src="assets/dashboard.gif" width="500px" alt="dashboard preview"> |
 
-         *Simple, Minimalist and Modern Bar Design!*
+| <b>Control Center with many functions</b> |
+| --- |
+| <img src="assets/control-center.gif" width="500px" alt="control center preview"> |
 
-         - App launcher
-         - Web search
-         - Taglist
-         - Battery indicator
-         - Clock
-         - Layoutbox
+| <b>Custom mouse-friendly ncmpcpp UI</b> |
+| --- |
+| <img src="assets/ncmpcpp.gif" width="500px" alt="ncmpcpp preview"> |
 
-         <div align="left">
-         <img src="assets/wibar.gif" width="500px" alt="dashboard preview">
-         </div>
-         </details>
-   + Aesthetic `Dashboard` ngl.
-      - <details>
-         <summary>Preview</summary>
-
-         *Aesthetic dashboard with neat grid layout, it's so beautiful!*
-
-         - Time & date
-         - Pfp display
-         - ToDo reminder
-         - Hardware stats
-         - Weather widget
-         - Music player
-         - Notifs center
-
-         <div align="left">
-         <img src="assets/dashboard.gif" width="500px" alt="dashboard preview">
-         </div>
-         </details>
-   + Very useful `Control Center` ikr.
-      - <details>
-
-          *This control center has many features!*
-
-         - Exit screen
-         - Volume & brightness control
-         - DnD, Blue light & Airplane mode
-         - Floating layout mode
-         - Theme switcher
-         - Wifi, Bluetooth and Microphone toggle
-         - built in screenrec and screensht widgets
-         - Hardware Monitor
-
-         <summary>Preview</summary>
-         <div align="left">
-         <img src="assets/control-center.gif" width="500px" alt="control center preview">
-         </div>
-         </details>
-   + Custom mouse-friendly `ncmpcpp` UI with album art ofc.
-      - <details>
-         <summary>Preview</summary>
-
-         *This is so aesthetic isn't it?*
-
-         <div align="left">
-         <img src="assets/ncmpcpp.gif" width="500px" alt="ncmpcpp preview">
-         </div>
-         </details>
-   + `Word Clock Lockscreen` with PAM Integration!
-      - <details>
-
-         *A beautiful word clock is on the lockscreen!*
-
-         <summary>Preview</summary>
-         <div align="left">
-         <img src="assets/lockscreen.gif" width="500px" alt="word clock lockscreen preview">
-         </div>
-         </details>
+| <b>Lockscreen with [PAM Integration](https://github.com/RMTT/lua-pam)</b> |
+| --- |
+|<img src="assets/lockscreen.gif" width="500px" alt="word clock lockscreen preview"> |
 
 <!-- MISCELLANEOUS -->
 ## :four_leaf_clover: ‎ <samp>Miscellaneous</samp>
@@ -324,11 +266,9 @@ also with <kbd>alt, shift, and ctrl</kbd>
 <details>
 <summary><b>VSCode</b></summary>
 
-<div align="left">
-    <img src="https://user-images.githubusercontent.com/93292023/167767089-87dafa0c-159a-4d1b-bfc2-12ef5de12b7c.png" alt="Preview" width="500px">
-</div>
+<img src="https://user-images.githubusercontent.com/93292023/167767089-87dafa0c-159a-4d1b-bfc2-12ef5de12b7c.png" alt="Preview" width="500px">
 
-### :milky_way: ‎ <samp>Aesthetic VSCode</samp>
+:milky_way: ‎ <samp>Aesthetic VSCode</samp>
 
 Setup:
 
