@@ -100,7 +100,8 @@ AwesomeWM Modules:
 
 >This is step-by-step how to install these dotfiles. Just [R.T.F.M](https://en.wikipedia.org/wiki/RTFM).
 
-### :computer: ‎ <samp>Install Dependencies<samp>
+<details>
+<summary><b>Install Required Dependencies</b></summary>
 
 > First of all you should install the [git version of AwesomeWM](https://github.com/awesomeWM/awesome/).
 
@@ -118,13 +119,16 @@ AwesomeWM Modules:
    Assuming your **AUR Helper** is [paru](https://github.com/Morganamilo/paru).
 
    ```sh
-   paru -Sy picom-git alacritty todo-bin papirus-icon-theme acpi acpid \
-   acpi_call wireless_tools jq inotify-tools polkit-gnome xdotool xclip \
-   brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa scrot \
-   redshift mpd mpc mpdris2 ncmpcpp playerctl rofi ffmpeg bluez-utils gpick --needed 
+   paru -Sy picom-git alacritty rofi todo-bin papirus-icon-theme acpi acpid acpi_call \
+   upower iw iproute2 wireless_tools jq inotify-tools polkit-gnome xdotool xclip \
+   brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa scrot redshift \
+   feh mpv mpd mpc mpdris2 ncmpcpp playerctl ffmpeg bluez-utils gpick --needed 
    ```
 
-### :bookmark_tabs: ‎ <samp>Install Needed Fonts<samp>
+</details>
+
+<details>
+<summary><b>Install Needed Fonts</b></summary>
 
 > You will need to install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
 
@@ -144,7 +148,10 @@ And run this command for your system to detect the newly installed fonts.
    fc-cache -v
    ```
 
-### :art: ‎ <samp>Install my AwesomeWM configuration files<samp>
+</details>
+
+<details>
+<summary><b>Install my AwesomeWM configuration files</b></summary>
 
 > Clone this repository
 
@@ -160,17 +167,13 @@ And run this command for your system to detect the newly installed fonts.
    cp -r bin/* ~/.local/bin/
    ```
 
-> You have to add `TODO_PATH` in your env variable
-
-   ```sh
-   export TODO_PATH="path/to/todo"
-   ```
-
 > Finally, now you can login with AwesomeWM
 
    Congratulations, at this point you have installed this aesthetic dotfiles! :tada:
 
    Log out from your current desktop session and log in into AwesomeWM
+
+</details>
 
 <!-- GALLERY -->
 ## :ocean: ‎ <samp>Gallery</samp>
@@ -178,7 +181,7 @@ And run this command for your system to detect the newly installed fonts.
 <b>These are the features included in my AwesomeWM setups!</b>
 
    + Minimalist `wibar` design
-      - <details open>
+      - <details>
          <summary>Preview</summary>
 
          *Simple, Minimalist and Modern Bar Design!*
@@ -195,7 +198,7 @@ And run this command for your system to detect the newly installed fonts.
          </div>
          </details>
    + Aesthetic `Dashboard` ngl.
-      - <details open>
+      - <details>
          <summary>Preview</summary>
 
          *Aesthetic dashboard with neat grid layout, it's so beautiful!*
@@ -213,7 +216,7 @@ And run this command for your system to detect the newly installed fonts.
          </div>
          </details>
    + Very useful `Control Center` ikr.
-      - <details open>
+      - <details>
 
           *This control center has many features!*
 
@@ -232,7 +235,7 @@ And run this command for your system to detect the newly installed fonts.
          </div>
          </details>
    + Custom mouse-friendly `ncmpcpp` UI with album art ofc.
-      - <details open>
+      - <details>
          <summary>Preview</summary>
 
          *This is so aesthetic isn't it?*
@@ -242,7 +245,7 @@ And run this command for your system to detect the newly installed fonts.
          </div>
          </details>
    + `Word Clock Lockscreen` with PAM Integration!
-      - <details open>
+      - <details>
 
          *A beautiful word clock is on the lockscreen!*
 
@@ -256,7 +259,7 @@ And run this command for your system to detect the newly installed fonts.
 ## :four_leaf_clover: ‎ <samp>Miscellaneous</samp>
 
 <details>
-<summary><strong>Configure stuff</strong></summary>
+<summary><b>Configure stuff</b></summary>
 
 > The relevant files are inside your `~/.config/awesome` directory.
 
@@ -270,7 +273,7 @@ Note: For the weather widgets to work, you will also need to create an account o
 </details>
 
 <details>
-<summary><strong>Keybinds</strong></summary>
+<summary><b>Keybinds</b></summary>
 
 I use <kbd>super</kbd> AKA Windows key as my main modifier.
 also with <kbd>alt, shift, and ctrl</kbd>
@@ -319,7 +322,7 @@ also with <kbd>alt, shift, and ctrl</kbd>
 </details>
 
 <details>
-<summary><strong>VSCode</strong></summary>
+<summary><b>VSCode</b></summary>
 
 <div align="left">
     <img src="https://user-images.githubusercontent.com/93292023/167767089-87dafa0c-159a-4d1b-bfc2-12ef5de12b7c.png" alt="Preview" width="500px">

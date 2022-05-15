@@ -1,5 +1,11 @@
-#! /bin/zsh
-SHELL=$(which zsh || echo '/bin/zsh')
+# path
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+#env
+export VISUAL=nvim;
+export EDITOR=nvim;
+export SUDO_PROMPT="passwd: "
 
 setopt autocd              # change directory just by typing its name
 setopt interactivecomments # allow comments in interactive mode

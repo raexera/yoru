@@ -18,7 +18,7 @@ theme = themes[1]
 -- ============================================
 -- 🌊 Default Applications
 terminal = "alacritty"
-editor = terminal .. " -e " .. os.getenv("EDITOR")
+editor = terminal .. " -e " .. "nvim"
 vscode = "code"
 browser = "firefox"
 web_search_cmd = "xdg-open https://duckduckgo.com/?q="

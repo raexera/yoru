@@ -3,9 +3,9 @@ local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local gfs = require("gears.filesystem")
-
--- Notifications library
 local naughty = require("naughty")
+local helpers = require("helpers")
+local apps = require("configuration.apps")
 
 -- Bling
 local bling = require("module.bling")
@@ -13,9 +13,6 @@ local playerctl = bling.signal.playerctl.lib()
 
 -- Machi
 local machi = require("module.layout-machi")
-
--- Helpers
-local helpers = require("helpers")
 
 -- Default modkey.
 modkey = "Mod4"
@@ -35,10 +32,14 @@ awful.keyboard.append_global_keybindings({
 		awful.spawn.with_shell(browser)
 	end, { description = "open web browser", group = "launcher" }),
 	awful.key({ modkey }, "d", function()
-		awful.spawn.with_shell("rofi -no-lazy-grab -show drun -modi drun -theme " .. gfs.get_configuration_dir() .. "configuration/rofi.rasi")
+		awful.spawn.with_shell(
+			"rofi -no-lazy-grab -show drun -modi drun -theme "
+				.. gfs.get_configuration_dir()
+				.. "configuration/rofi.rasi"
+		)
 	end, { description = "open app launcher", group = "launcher" }),
 	awful.key({ modkey, shift }, "x", function()
-		awful.spawn.with_shell("xcolor-pick")
+		awful.spawn.easy_async_with_shell(apps.utils.color_picker, function() end)
 	end, { description = "open color picker", group = "launcher" }),
 })
 
@@ -124,11 +125,11 @@ awful.keyboard.append_global_keybindings({
 
 	-- Screenshots
 	awful.key({}, "Print", function()
-		awful.spawn.with_shell("screensht full")
+		awful.spawn.easy_async_with_shell(apps.utils.full_screenshot, function() end)
 	end, { description = "take a full screenshot", group = "hotkeys" }),
 
 	awful.key({ alt }, "Print", function()
-		awful.spawn.with_shell("screensht area")
+		awful.spawn.easy_async_with_shell(apps.utils.area_screenshot, function() end)
 	end, { description = "take a area screenshot", group = "hotkeys" }),
 
 	-- Lockscreen

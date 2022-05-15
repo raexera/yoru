@@ -4,6 +4,7 @@ local beautiful = require("beautiful")
 local wibox = require("wibox")
 local helpers = require("helpers")
 local icons = require("icons")
+local apps = require("configuration.apps")
 
 local format_item = function(widget)
 	return wibox.widget({
@@ -222,12 +223,17 @@ local screenrec = require("ui.widgets.screenrec")()
 
 -- screenshot button
 local screenshot = create_buttons("", beautiful.xforeground)
-screenshot:buttons({
-	awful.button({}, 1, function()
-		central_panel:toggle()
-		awful.spawn.with_shell("screensht area")
-	end),
-})
+screenshot:buttons(gears.table.join(awful.button({}, 1, nil, function()
+	central_panel:toggle()
+	gears.timer({
+		timeout = 1,
+		autostart = true,
+		single_shot = true,
+		callback = function()
+			awful.spawn.easy_async_with_shell(apps.utils.full_screenshot, function() end)
+		end,
+	})
+end)))
 
 -- cpu arc
 local cpu_bar = require("ui.widgets.arc.cpu_arc")
