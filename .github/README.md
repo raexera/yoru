@@ -1,32 +1,31 @@
+<!-- inspired by owl4ce's readme -->
+
+
 <!-- DOTFILES BANNER -->
 <div align="center">
-    <img src="assets/home.png" alt="Home Preview">
+    <img src="assets/rxhyn-dotfile-header.png" alt="Home Preview">
 </div>
 
 <p align="center">
-  <b>🌕 Beautiful & Aesthetic Dotfiles 🌑</b>
-</p>
-
-<p align="center">
-<a href="#wrench--setup"><img width="150px" style="padding: 0 10px;" src="assets/button-setup.svg"></a>
-<a href="https://github.com/rxyhn/dotfiles/wiki"><img width="150px" style="padding: 0 10px;" src="assets/button-wiki.svg"></a>
-<a href="#ocean--gallery"><img width="150px" style="padding: 0 10px;" src="assets/button-gallery.svg"></a>
-<a href="#money_with_wings--tip-jar"><img width="150px" style="padding: 0 10px;" src="assets/button-tipjar.svg"></a>
+<a href="#wrench--setup"><img width="150px" style="padding: 0 10px;" src="assets/button-setup.png"></a>
+<a href="https://github.com/rxyhn/dotfiles/wiki"><img width="150px" style="padding: 0 10px;" src="assets/button-wiki.png"></a>
+<a href="#ocean--gallery"><img width="150px" style="padding: 0 10px;" src="assets/button-gallery.png"></a>
+<a href="#money_with_wings--tip-jar"><img width="150px" style="padding: 0 10px;" src="assets/button-tipjar.png"></a>
 </p>
 
 <br>
 
 <!-- RICE PREVIEW -->
 <div align="center">
-    <img src="assets/day.png" alt="Rice Preview">
+    <img src="assets/aesthetic.png" alt="Rice Preview">
 </div>
 
 <br>
 
-## Hi there! Thanks for dropping by! 🖤
+## Hi there! Thanks for dropping by! :blue_heart:
 <a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="150" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
 
-<b>  Beautiful & Aesthetic AwesomeWM Configuration Files!  </b>
+<b>  Rxyhn's Aesthetic AwesomeWM Configuration Files!  </b>
 
 Welcome to my AwesomeWM configuration files!
 
@@ -44,9 +43,7 @@ This is a beautiful user interface isn't it?
 These dotfiles are made with love, for sure.
 
 <!-- INFORMATION -->
-## :snowflake: ‎ <samp>Information</samp> <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=for-the-badge&color=6791C9&logoColor=white&labelColor=0A1419"/>
-
-<img alt="Rice Preview" align="right" width="400px" src="assets/night.png"/>
+## :snowflake: ‎ <samp>Information</samp> <img align="right" src="https://img.shields.io/github/stars/rxyhn/dotfiles?color=BC83E3&labelColor=0A1419&style=for-the-badge"/> <img align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=for-the-badge&color=6791C9&logoColor=white&labelColor=0A1419"/>
 
 Here are some details about my setup:
 
@@ -64,9 +61,29 @@ AwesomeWM Modules:
 - **[bling](https://github.com/blingcorp/bling)**
    + Adds new layouts, modules, and widgets that try to primarily focus on window management
 - **[rubato](https://github.com/andOrlando/rubato)**
-   + Creates smooth animations with a slope curve for awesomeWM (Awestore, but not really)
+   + Creates smooth animations with a slope curve for awesomeWM
 - **[layout-machi](https://github.com/xinhaoyuan/layout-machi)**
    + Manual layout for Awesome with an interactive editor
+- **[color](https://github.com/andOrlando/color)**
+   + Clean and efficient api for color conversion in lua 
+- **[UPower Battery Widget](https://github.com/Aire-One/awesome-battery_widget)**
+   + A UPowerGlib based battery widget for the Awesome WM
+
+Main Features: 
+
+- **Dashboard**
+- **Full Animated Dock**
+- **Info Center**
+- **Control Center**
+- **Notification Center**
+- **Word Clock Lockscreen**
+- **Exit Screen**
+- **Music Player**
+- **App Launcher**
+- **Github Activity Previews**
+- **Brightness / Volume OSD**
+- **Battery Indicator**
+- **Wifi Indicator**
 
 <br>
 
@@ -75,30 +92,9 @@ AwesomeWM Modules:
 <!-- SETUP -->
 ## :wrench: ‎ <samp>Setup</samp>
 
-<table align="right">
-  <tr>
-    <th align="center">
-      <sup><sub>⚠ WARNING ⚠</sub></sup>
-    </th>
-  </tr>
-  <tr>
-    <td align="center">
-      <sup>
-         <sub>
-            <samp>
-                  THIS DOTFILES ARE CONFIGURED AT 1366x768 WITH 96 DPI
-               <p align="center">
-                  BUT IT WILL STILL WORK PERFECTLY IN HIGH RESOLUTION
-               </p>
-                  DONT WORRY JUST INSTALL THESE DOTFILES AND GIVE THIS REPO A STARS
-            </samp>
-         </sub>
-      </sup>
-    </td>
-  </tr>
-</table>
-
 >This is step-by-step how to install these dotfiles. Just [R.T.F.M](https://en.wikipedia.org/wiki/RTFM).
+
+:warning: **This setup instructions only provided for Arch Linux (and other Arch-based distributions)** :warning:
 
 <details>
 <summary><b>1. Install Required Dependencies</b></summary>
@@ -110,37 +106,39 @@ AwesomeWM Modules:
    paru -S awesome-git
    ```
 
-**For other distros**, build instructions are [here](https://github.com/awesomeWM/awesome/#building-and-installation).
-
 > Install necessary dependencies
 
-**Arch Linux (and other Arch-based distributions)**
-
-   Assuming your **AUR Helper** is [paru](https://github.com/Morganamilo/paru).
+Assuming your **AUR Helper** is [paru](https://github.com/Morganamilo/paru).
 
    ```sh
-   paru -Sy picom-git alacritty rofi todo-bin papirus-icon-theme acpi acpid acpi_call \
-   upower iw iproute2 wireless_tools jq inotify-tools polkit-gnome xdotool xclip \
-   brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa scrot redshift \
-   feh mpv mpd mpc mpdris2 ncmpcpp playerctl ffmpeg bluez-utils gpick --needed 
+   paru -Sy picom-git alacritty rofi todo-bin acpi acpid acpi_call upower \
+   jq inotify-tools polkit-gnome xdotool xclip gpick ffmpeg blueman \
+   pipewire pipewire-alsa pipewire-pulse brightnessctl scrot redshift \
+   feh mpv mpd mpc mpdris2 ncmpcpp playerctl --needed 
    ```
 
 </details>
 
 <details>
-<summary><b>2. Install Needed Fonts</b></summary>
+<summary><b>2. Enable Services</b></summary>
+
+   ```sh
+   systemctl --user enable mpd.service
+   systemctl --user start mpd.service
+   ```
+
+</details>
+
+<details>
+<summary><b>3. Install Needed Fonts</b></summary>
 
 > You will need to install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
 
-Necessary fonts:
-   + **Iosevka**              - [here](https://github.com/be5invis/Iosevka)
-   + **Icomoon**              - [here](https://www.dropbox.com/s/hrkub2yo9iapljz/icomoon.zip?dl=0)
-   + **Material Icons**       - [here](https://github.com/google/material-design-icons)
-   + **FiraCode Nerd Font**   - [here](https://github.com/ryanoasis/nerd-fonts)
-
-Also you can find the required icon fonts inside the `misc/fonts` folder of this repository.
-
-Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`
+   ```sh
+   cp -r misc/fonts/* ~/.fonts/
+   # or to ~/.local/share/fonts
+   cp -r misc/fonts/* ~/.local/share/fonts/
+   ```
 
 And run this command for your system to detect the newly installed fonts.
 
@@ -151,7 +149,7 @@ And run this command for your system to detect the newly installed fonts.
 </details>
 
 <details>
-<summary><b>3. Install My AwesomeWM Dotfiles</b></summary>
+<summary><b>4. Install My AwesomeWM Dotfiles</b></summary>
 
 > Clone this repository
 
@@ -179,23 +177,27 @@ And run this command for your system to detect the newly installed fonts.
 
 | <b>Simple, Minimalist and Modern Bar</b> |
 | --- |
-| <img src="assets/wibar.gif" width="500px" alt="dashboard preview"> |
+| <img src="assets/wibar.png" width="500px" alt="dashboard preview"> |
 
 | <b>Aesthetic Dashboard with neat grid layout and Notification Center</b> |
 | --- |
-| <img src="assets/dashboard.gif" width="500px" alt="dashboard preview"> |
+| <img src="assets/dashboard.png" width="500px" alt="dashboard preview"> |
 
-| <b>Control Center with many functions</b> |
+| <b>Complete information, Info Center</b>
 | --- |
-| <img src="assets/control-center.gif" width="500px" alt="control center preview"> |
+| <img src="assets/info-center.png" width="500px" alt="dashboard preview"> |
+
+| <b>MacOS like control center</b> |
+| --- |
+| <img src="assets/control-center.png" width="500px" alt="control center preview"> |
 
 | <b>Custom mouse-friendly ncmpcpp UI</b> |
 | --- |
-| <img src="assets/ncmpcpp.gif" width="500px" alt="ncmpcpp preview"> |
+| <img src="assets/ncmpcpp.png" width="500px" alt="ncmpcpp preview"> |
 
 | <b>Lockscreen with [PAM Integration](https://github.com/RMTT/lua-pam)</b> |
 | --- |
-|<img src="assets/lockscreen.gif" width="500px" alt="word clock lockscreen preview"> |
+|<img src="assets/lockscreen.png" width="500px" alt="word clock lockscreen preview"> |
 
 <!-- MISCELLANEOUS -->
 ## :four_leaf_clover: ‎ <samp>Miscellaneous</samp>
@@ -207,10 +209,12 @@ And run this command for your system to detect the newly installed fonts.
 
 + User preferences and default applications
 
-   In `rc.lua` there is a *Default Applications* section where user preferences and default applications are defined.
+   In `configuration/apps.lua` there is a *Default Applications* section where user preferences and default applications are defined.
    You should change those to your liking.
 
-Note: For the weather widgets to work, you will also need to create an account on [openweathermap](https://openweathermap.org), get your key, look for your city ID, and set `openweathermap_key` and `openweathermap_city_id` accordingly.
+   In `configuration/config.lua` there is a *Important Variable* which is used for weather widgets and github activity widgets.
+
+Note: For the weather widgets to work, you will also need to create an account on [openweathermap](https://openweathermap.org), get your key, look for your city ID and the coordinates, and set the key, city ID, and coordinates accordingly.
 
 </details>
 
@@ -266,7 +270,7 @@ also with <kbd>alt, shift, and ctrl</kbd>
 <details>
 <summary><b>VSCode</b></summary>
 
-<img src="https://user-images.githubusercontent.com/93292023/167767089-87dafa0c-159a-4d1b-bfc2-12ef5de12b7c.png" alt="Preview" width="500px">
+<img src="https://user-images.githubusercontent.com/93292023/170319552-a42b920d-9f59-44d9-a9ad-b3aeed55bf6a.png" alt="VSCode Preview" width="500px">
 
 :milky_way: ‎ <samp>Aesthetic VSCode</samp>
 
@@ -288,15 +292,13 @@ Setup:
 <!-- HISTORY -->
 ## :japan: ‎ <samp>History</samp>
 
-This started since when im feel bored, idk why i do this things, i love it but ahhh nvm, 
-but basically im doing this just for fun and also to satisfy myself ofc,
-and also look for a lot of [stargazers](https://github.com/rxyhn/dotfiles/stargazers) for sure.
-so if you `like` or are `using` these dotfiles you should give this **repo** a `star` right now!
-so i'll be more enthusiastic to make other beautiful and aesthetics things!
+Ngl this is started when im feel bored lol and decided to start using Linux, more precisely in January 2022. Fyi im a **new Linux user,** it was in the [Linuxer Desktop Art](https://facebook.com/groups/linuxart) i saw a linux setup that caught my eye, then I'm interested in trying something similar, So yeaaaaaah this is my current setup, my purpose of doing this is to hone my skills to make an attractive UI also as a hobby. I wanna say thank you to those of you who like and love my setup <3 
 
-Thank you! <3
-
-[![Stargazers over time](https://starchart.cc/rxyhn/dotfiles.svg)](https://starchart.cc/rxyhn/dotfiles)
+<pre align="center">
+<a href="#japan--history">
+<img alt="" align="center" width="96%" src="https://api.star-history.com/svg?repos=rxyhn/dotfiles&type=Date"/>
+</a>
+</pre>
 
 <!-- TIP JAR -->
 ## :money_with_wings: ‎ <samp>TIP JAR</samp>
@@ -326,8 +328,8 @@ Thanks from the bottom of my heart! ‎ :heartpulse:
       - [`elenapan`](https://github.com/elenapan)
       - [`manilarome`](https://github.com/manilarome)
       - [`JavaCafe01`](https://github.com/JavaCafe01)
+      - [`andOrlando`](https://github.com/andOrlando)
 
 <br>
 
-<p align="center"><img src="https://raw.githubusercontent.com/catppuccin/catppuccin/dev/assets/footers/gray0_ctp_on_line.svg?sanitize=true" /></p>
-<p align="center"><a href="https://github.com/rxyhn/AwesomeWM-Dotfiles/blob/main/.github/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=License&message=GPL-3.0&logoColor=eceff4&logo=github&colorA=061115&colorB=67AFC1"/></a></p>
+<p align="center"><a href="https://github.com/rxyhn/AwesomeWM-Dotfiles/blob/main/.github/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=License&message=GPL-3.0&logoColor=eceff4&logo=github&colorA=0A1419&colorB=78B892"/></a></p>

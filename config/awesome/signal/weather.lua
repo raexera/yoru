@@ -6,11 +6,13 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local helpers = require("helpers")
+local config = require("configuration.config")
 
 -- Configuration
-local key = openweathermap_key
-local city_id = openweathermap_city_id
-local units = weather_units
+local key = config.widget.weather.key
+local city_id = config.widget.weather.city_id
+local units = "metric"
+
 -- Don't update too often, because your requests might get blocked for 24 hours
 local update_interval = 1200
 local temp_file = "/tmp/awesomewm-signal-weather-" .. city_id .. "-" .. units

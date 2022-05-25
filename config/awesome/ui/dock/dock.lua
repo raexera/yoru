@@ -344,7 +344,7 @@ local function init(args)
 		end,
 	})
 	local autohidetimer = gears.timer({
-		timeout = 1,
+		timeout = 2,
 		single_shot = true,
 		callback = function()
 			autohideanim.target = 0

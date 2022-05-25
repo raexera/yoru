@@ -1,29 +1,22 @@
--- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-
--- Theme handling library
 local beautiful = require("beautiful")
-
--- Widget library
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 local wibox = require("wibox")
-
--- Helpers
 local helpers = require("helpers")
-
--- Lock
 local lock_screen = require("module.lockscreen")
 
 -- Word Clock Lock Screen
 ----------------
 
-local lock_screen_symbol = helpers.colorize_text("", beautiful.accent)
-local lock_screen_fail_symbol = helpers.colorize_text("", beautiful.accent)
+local lock_screen_symbol = ""
+local lock_screen_fail_symbol = ""
 local lock_animation_icon = wibox.widget({
 	-- Set forced size to prevent flickering when the icon rotates
 	forced_height = dpi(80),
 	forced_width = dpi(80),
-	font = beautiful.icon_font_name .. "Outlined 40",
+	font = beautiful.icon_font .. "Outlined 40",
 	align = "center",
 	valign = "center",
 	widget = wibox.widget.textbox(lock_screen_symbol),
@@ -42,7 +35,10 @@ awful.screen.connect_for_each_screen(function(s)
 	if s == screen.primary then
 		s.mylockscreen = lock_screen_box
 	else
-		s.mylockscreen = helpers.screen_mask(s, beautiful.darker_bg)
+		s.mylockscreen = helpers.screen_mask(
+			s,
+			beautiful.lock_screen_bg or beautiful.exit_screen_bg or beautiful.xbackground
+		)
 	end
 end)
 
@@ -52,8 +48,8 @@ local function set_visibility(v)
 	end
 end
 
--- Widgets
--------------
+-- Word Clock
+----------------
 
 local char =
 	"I T L I S A S A M P M A C Q U A R T E R D C T W E N T Y F I V E X H A L F S T E N F T O P A S T E R U N I N E O N E S I X T H R E E F O U R F I V E T W O E I G H T E L E V E N S E V E N T W E L V E T E N S E O C L O C K"
@@ -125,7 +121,7 @@ local time_char = split_str(char, " ")
 
 local time = wibox.widget({
 	forced_num_cols = 11,
-	spacing = beautiful.useless_gap,
+	spacing = dpi(6),
 	layout = wibox.layout.grid,
 })
 
@@ -133,11 +129,11 @@ local function create_text_widget(index, w)
 	local text_widget = wibox.widget({
 		id = "t" .. index,
 		markup = w,
-		font = beautiful.font_name .. "Bold 18",
+		font = beautiful.font_name .. "Bold 24",
 		align = "center",
 		valign = "center",
-		forced_width = dpi(25),
-		forced_height = dpi(30),
+		forced_width = dpi(36),
+		forced_height = dpi(36),
 		widget = wibox.widget.textbox,
 	})
 
@@ -148,7 +144,7 @@ end
 
 local var_count = 0
 for i, m in pairs(time_char) do
-	local text = helpers.colorize_text(m, beautiful.accent .. "55")
+	local text = helpers.colorize_text(m, "#ffffff" .. "10")
 
 	var_count = var_count + 1
 	local create_dummy_text = true
@@ -174,15 +170,14 @@ end
 local function activate_word(w)
 	for i, m in pairs(char_map[w]) do
 		local text = m.text
-
-		m.markup = helpers.colorize_text(text, beautiful.accent)
+		m.markup = helpers.colorize_text(text, beautiful.xforeground)
 	end
 end
 
 local function deactivate_word(w)
 	for i, m in pairs(char_map[w]) do
 		local text = m.text
-		m.markup = helpers.colorize_text(text, beautiful.accent .. "55")
+		m.markup = helpers.colorize_text(text, "#ffffff" .. "10")
 	end
 end
 
@@ -312,7 +307,7 @@ local function key_animation(char_inserted)
 		if characters_entered == 0 then
 			reset()
 		else
-			color = beautiful.accent .. "55"
+			color = beautiful.xcolor7 .. "55"
 		end
 	end
 
@@ -385,22 +380,11 @@ lock_screen_box:setup({
 		-- Vertical centering
 		nil,
 		{
-			{
-				{
-					helpers.vertical_pad(dpi(10)),
-					time,
-					lock_animation,
-					spacing = dpi(50),
-					layout = wibox.layout.fixed.vertical,
-				},
-				bottom = dpi(60),
-				right = dpi(60),
-				left = dpi(60),
-				widget = wibox.container.margin,
-			},
-			shape = helpers.rrect(beautiful.border_radius),
-			bg = beautiful.darker_bg,
-			widget = wibox.container.background,
+			helpers.vertical_pad(dpi(20)),
+			time,
+			lock_animation,
+			spacing = dpi(60),
+			layout = wibox.layout.fixed.vertical,
 		},
 		expand = "none",
 		layout = wibox.layout.align.vertical,

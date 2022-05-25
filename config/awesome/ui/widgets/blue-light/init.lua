@@ -7,19 +7,18 @@ local clickable_container = require("ui.widgets.clickable-container")
 local config_dir = gears.filesystem.get_configuration_dir()
 local widget_dir = config_dir .. "ui/widgets/blue-light/"
 local widget_icon_dir = widget_dir .. "icons/"
-
-local blue_light_state = false
+local device_state = false
 
 local action_name = wibox.widget({
 	text = "Blue Light",
-	font = beautiful.font_name .. "Bold 12",
+	font = beautiful.font_name .. "Bold 10",
 	align = "left",
 	widget = wibox.widget.textbox,
 })
 
 local action_status = wibox.widget({
 	text = "Off",
-	font = beautiful.font_name .. "Regular 11",
+	font = beautiful.font_name .. "Regular 10",
 	align = "left",
 	widget = wibox.widget.textbox,
 })
@@ -33,7 +32,7 @@ local action_info = wibox.widget({
 local button_widget = wibox.widget({
 	{
 		id = "icon",
-		image = gears.color.recolor_image(widget_icon_dir .. "blue-light-off.svg", beautiful.xforeground),
+		image = widget_icon_dir .. "blue-light-off.svg",
 		widget = wibox.widget.imagebox,
 		resize = true,
 	},
@@ -60,15 +59,11 @@ local update_widget = function()
 	if blue_light_state then
 		action_status:set_text("On")
 		widget_button.bg = beautiful.accent
-		button_widget.icon:set_image(
-			gears.color.recolor_image(widget_icon_dir .. "blue-light.svg", beautiful.xforeground)
-		)
+		button_widget.icon:set_image(widget_icon_dir .. "blue-light.svg")
 	else
 		action_status:set_text("Off")
 		widget_button.bg = beautiful.control_center_button_bg
-		button_widget.icon:set_image(
-			gears.color.recolor_image(widget_icon_dir .. "blue-light-off.svg", beautiful.xforeground)
-		)
+		button_widget.icon:set_image(widget_icon_dir .. "blue-light-off.svg")
 	end
 end
 
@@ -133,5 +128,9 @@ local action_widget = wibox.widget({
 		nil,
 	},
 })
+
+awesome.connect_signal("widget::blue_light:toggle", function()
+	toggle_action()
+end)
 
 return action_widget

@@ -1,6 +1,8 @@
 local gears = require("gears")
 local awful = require("awful")
 local beautiful = require("beautiful")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 local ruled = require("ruled")
 local wibox = require("wibox")
 local helpers = require("helpers")
@@ -11,14 +13,14 @@ local helpers = require("helpers")
 -- Music icon
 local big_music_icon = wibox.widget({
 	align = "center",
-	font = beautiful.icon_font_name .. "Bold 15",
+	font = beautiful.icon_font .. "Bold 15",
 	markup = helpers.colorize_text("", beautiful.accent),
 	widget = wibox.widget.textbox(),
 })
 
 local small_music_icon = wibox.widget({
 	align = "center",
-	font = beautiful.icon_font_name .. "Bold 11",
+	font = beautiful.icon_font .. "Bold 11",
 	markup = helpers.colorize_text("", beautiful.xforeground),
 	widget = wibox.widget.textbox(),
 })
@@ -150,7 +152,7 @@ local vol_tooltip = create_tooltip(vol_slider)
 local vol_icon = wibox.widget({
 	align = "center",
 	valign = "center",
-	font = beautiful.icon_font_name .. "Round 16",
+	font = beautiful.icon_font .. "Round 16",
 	markup = helpers.colorize_text("", beautiful.accent),
 	widget = wibox.widget.textbox,
 })
@@ -176,14 +178,14 @@ vol:connect_signal("mouse::leave", function()
 	vol_button.bg = control_button_bg
 end)
 vol:buttons(gears.table.join(awful.button({}, 1, function()
-	helpers.volume_control(0)
+	awful.spawn("pamixer -t")
 end)))
 
 awesome.connect_signal("signal::volume", function(value, muted)
 	local fill_color
 	local vol_value = value or 0
 
-	if muted then
+	if muted == 1 or vol == 0 then
 		vol_icon.markup = helpers.colorize_text("", beautiful.xcolor8)
 		fill_color = beautiful.xcolor8
 	else
@@ -197,15 +199,12 @@ awesome.connect_signal("signal::volume", function(value, muted)
 end)
 
 vol_slider:buttons(gears.table.join(
-	awful.button({}, 1, function()
-		helpers.volume_control(0)
-	end),
 	-- Scrolling
 	awful.button({}, 4, function()
-		helpers.volume_control(5)
+		awful.spawn("pamixer -i 5")
 	end),
 	awful.button({}, 5, function()
-		helpers.volume_control(-5)
+		awful.spawn("pamixer -d 5")
 	end)
 ))
 
@@ -224,21 +223,21 @@ local music_art_container = wibox.widget({
 
 -- Music title
 local title_now = wibox.widget({
-	font = beautiful.font_name .. "bold 10",
+	font = beautiful.font_name .. "Bold 10",
 	valign = "center",
 	widget = wibox.widget.textbox,
 })
 
 -- Music artist
 local artist_now = wibox.widget({
-	font = beautiful.font_name .. "bold 10",
+	font = beautiful.font_name .. "Regular 10",
 	valign = "center",
 	widget = wibox.widget.textbox,
 })
 
 -- Music position
 local music_pos = wibox.widget({
-	font = beautiful.font_name .. "bold 10",
+	font = beautiful.font_name .. "Regular 10",
 	valign = "center",
 	widget = wibox.widget.textbox,
 })
@@ -262,7 +261,7 @@ end)
 -- Play pause button
 local music_play_pause = control_button(
 	c,
-	beautiful.icon_font_name .. "Round 26",
+	beautiful.icon_font .. "Round 26",
 	"",
 	beautiful.xforeground,
 	dpi(30),
@@ -274,7 +273,7 @@ local music_play_pause = control_button(
 -- Previous button
 local music_previous = control_button(
 	c,
-	beautiful.icon_font_name .. "Round 16",
+	beautiful.icon_font .. "Round 16",
 	"",
 	beautiful.xforeground,
 	dpi(30),
@@ -286,7 +285,7 @@ local music_previous = control_button(
 -- Next button
 local music_next = control_button(
 	c,
-	beautiful.icon_font_name .. "Round 16",
+	beautiful.icon_font .. "Round 16",
 	"",
 	beautiful.xforeground,
 	dpi(30),
@@ -296,21 +295,14 @@ local music_next = control_button(
 )
 
 -- Loop button
-local loop = control_button(c, beautiful.icon_font_name .. "Round 12", "", beautiful.xforeground, dpi(30), function()
+local loop = control_button(c, beautiful.icon_font .. "Round 12", "", beautiful.xforeground, dpi(30), function()
 	awful.spawn.with_shell("mpc repeat")
 end)
 
 -- Shuffle playlist button
-local shuffle = control_button(
-	c,
-	beautiful.icon_font_name .. "Round 12",
-	"",
-	beautiful.xforeground,
-	dpi(30),
-	function()
-		awful.spawn.with_shell("mpc random")
-	end
-)
+local shuffle = control_button(c, beautiful.icon_font .. "Round 12", "", beautiful.xforeground, dpi(30), function()
+	awful.spawn.with_shell("mpc random")
+end)
 
 local music_play_pause_textbox = music_play_pause:get_all_children()[1]:get_all_children()[1]
 local loop_textbox = loop:get_all_children()[1]:get_all_children()[1]
@@ -329,7 +321,7 @@ playerctl:connect_signal("metadata", function(_, title, artist, album_path, albu
 			artist = "Nothing Playing"
 		end
 		if album_path == "" then
-			album_path = gears.filesystem.get_configuration_dir() .. "themes/assets/no_music.png"
+			album_path = gears.filesystem.get_configuration_dir() .. "theme/assets/no_music.png"
 		end
 
 		music_art:set_image(gears.surface.load_uncached(album_path))
@@ -344,7 +336,6 @@ playerctl:connect_signal("position", function(_, interval_sec, length_sec, playe
 		local pos_length = tostring(os.date("!%M:%S", math.floor(length_sec)))
 		local pos_markup = pos_now .. helpers.colorize_text(" / " .. pos_length, beautiful.xcolor8)
 
-		music_art:set_image(gears.surface.load_uncached(album_path))
 		music_pos:set_markup_silently(pos_markup)
 		music_bar.value = (interval_sec / length_sec) * 100
 		music_length = length_sec
@@ -436,7 +427,7 @@ local music_create_decoration = function(c)
 			layout = wibox.layout.align.horizontal,
 		},
 		bg = beautiful.music_bg,
-		shape = helpers.prrect(beautiful.border_radius, true, true, false, false),
+		shape = helpers.prrect(beautiful.corner_radius, true, true, false, false),
 		widget = wibox.container.background,
 	})
 
@@ -474,19 +465,22 @@ local music_create_decoration = function(c)
 						{
 							{
 								step_function = wibox.container.scroll.step_functions.waiting_nonlinear_back_and_forth,
-								speed = 50,
+								fps = 60,
+								speed = 75,
 								title_now,
 								forced_width = dpi(150),
 								widget = wibox.container.scroll.horizontal,
 							},
 							{
 								step_function = wibox.container.scroll.step_functions.waiting_nonlinear_back_and_forth,
-								speed = 50,
+								fps = 60,
+								speed = 75,
 								artist_now,
 								forced_width = dpi(150),
 								widget = wibox.container.scroll.horizontal,
 							},
-							layout = wibox.layout.fixed.vertical,
+							spacing = dpi(2),
+							layout = wibox.layout.flex.vertical,
 						},
 						spacing = dpi(10),
 						layout = wibox.layout.fixed.horizontal,
@@ -506,7 +500,7 @@ local music_create_decoration = function(c)
 						-- Playlist button
 						control_button(
 							c,
-							beautiful.icon_font_name .. "Round 14",
+							beautiful.icon_font .. "Round 14",
 							"",
 							beautiful.xforeground,
 							dpi(30),
@@ -530,7 +524,7 @@ local music_create_decoration = function(c)
 			},
 		},
 		bg = beautiful.music_bg_accent,
-		shape = helpers.prrect(beautiful.border_radius, false, false, true, true),
+		shape = helpers.prrect(beautiful.corner_radius, false, false, true, true),
 		widget = wibox.container.background,
 	})
 

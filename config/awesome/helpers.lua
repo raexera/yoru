@@ -569,40 +569,6 @@ function helpers.send_key_sequence(c, seq)
 	awful.spawn.with_shell("xdotool type --delay 5 --window " .. tostring(c.window) .. " " .. seq)
 end
 
-local prompt_font = beautiful.prompt_font
-function helpers.prompt(action, textbox, prompt, callback)
-	if action == "run" then
-		awful.prompt.run({
-			prompt = prompt,
-			textbox = textbox,
-			font = prompt_font,
-			done_callback = callback,
-			exe_callback = awful.spawn,
-			completion_callback = awful.completion.shell,
-			history_path = awful.util.get_cache_dir() .. "/history",
-		})
-	elseif action == "web_search" then
-		awful.prompt.run({
-			prompt = prompt,
-			textbox = textbox,
-			font = prompt_font,
-			history_path = awful.util.get_cache_dir() .. "/history_web",
-			done_callback = callback,
-			exe_callback = function(input)
-				if not input or #input == 0 then
-					return
-				end
-				awful.spawn.with_shell("noglob " .. web_search_cmd .. "'" .. input .. "'")
-				naughty.notify({
-					title = "Searching the web for",
-					text = input,
-					urgency = "low",
-				})
-			end,
-		})
-	end
-end
-
 -- Given a `match` condition, returns an array with clients that match it, or
 -- just the first found client if `first_only` is true
 function helpers.find_clients(match, first_only)

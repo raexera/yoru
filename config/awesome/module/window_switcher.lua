@@ -3,6 +3,8 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 local helpers = require("helpers")
 
 local window_switcher_first_client -- The client that was focused when the window_switcher was activated
@@ -96,8 +98,8 @@ local function draw_widget(
 		},
 		widget_template = {
 			widget = wibox.container.background,
-			bg = beautiful.lighter_bg,
-			shape = helpers.rrect(beautiful.border_radius),
+			bg = beautiful.widget_bg,
+			shape = helpers.rrect(beautiful.corner_radius),
 			id = "bg_role",
 			forced_width = dpi(450),
 			create_callback = function(self, c, _, __)

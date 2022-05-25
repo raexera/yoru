@@ -4,22 +4,20 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local clickable_container = require("ui.widgets.clickable-container")
-local config_dir = gears.filesystem.get_configuration_dir()
-local widget_dir = config_dir .. "ui/widgets/floating-mode/"
-local widget_icon_dir = widget_dir .. "icons/"
+local icons = require("icons")
 
-local floating_state = false
+local global_floating_enabled = false
 
 local action_name = wibox.widget({
 	text = "Floating Mode",
-	font = beautiful.font_name .. "Bold 12",
+	font = beautiful.font_name .. "Bold 10",
 	align = "left",
 	widget = wibox.widget.textbox,
 })
 
 local action_status = wibox.widget({
 	text = "Off",
-	font = beautiful.font_name .. "Regular 11",
+	font = beautiful.font_name .. "Regular 10",
 	align = "left",
 	widget = wibox.widget.textbox,
 })
@@ -33,7 +31,7 @@ local action_info = wibox.widget({
 local button_widget = wibox.widget({
 	{
 		id = "icon",
-		image = gears.color.recolor_image(widget_icon_dir .. "floating.svg", beautiful.xforeground),
+		image = icons.floating,
 		widget = wibox.widget.imagebox,
 		resize = true,
 	},
@@ -57,89 +55,29 @@ local widget_button = wibox.widget({
 })
 
 local update_widget = function()
-	if floating_state then
+	if global_floating_enabled then
 		action_status:set_text("On")
 		widget_button.bg = beautiful.accent
-		button_widget.icon:set_image(
-			gears.color.recolor_image(widget_icon_dir .. "floating.svg", beautiful.xforeground)
-		)
 	else
 		action_status:set_text("Off")
 		widget_button.bg = beautiful.control_center_button_bg
-		button_widget.icon:set_image(
-			gears.color.recolor_image(widget_icon_dir .. "floating.svg", beautiful.xforeground)
-		)
 	end
 end
 
-local check_floating_mode_state = function()
-	local cmd = "cat " .. widget_dir .. "floating_mode"
-
-	awful.spawn.easy_async_with_shell(cmd, function(stdout)
-		local status = stdout
-
-		if status:match("true") then
-			floating_state = true
-		elseif status:match("false") then
-			floating_state = false
-		else
-			floating_state = false
-			awful.spawn.easy_async_with_shell('echo "false" > ' .. widget_dir .. "floating_mode", function(stdout) end)
-		end
-		update_widget()
-	end)
-end
-
-check_floating_mode_state()
-
-local ap_off_cmd = [[
-	
-	# Create an AwesomeWM Notification
-	awesome-client "
-	naughty = require('naughty')
-	naughty.notification({
-		app_name = 'Layout Manager',
-		title = '<b>Floating mode disabled!</b>',
-		message = 'Set global layout to tile',
-		icon = ']] .. widget_icon_dir .. "tile" .. ".svg" .. [['
-	})
-	"
-	]] .. "echo false > " .. widget_dir .. "floating_mode" .. [[
-]]
-
-local ap_on_cmd = [[
-
-	# Create an AwesomeWM Notification
-	awesome-client "
-	naughty = require('naughty')
-	naughty.notification({
-		app_name = 'Layout Manager',
-		title = '<b>Floating mode enabled!</b>',
-		message = 'Set global layout to floating',
-		icon = ']] .. widget_icon_dir .. "floating" .. ".svg" .. [['
-	})
-	"
-	]] .. "echo true > " .. widget_dir .. "floating_mode" .. [[
-]]
-
 local toggle_global_floating = function()
 	local tags = awful.screen.focused().tags
-	if not floating_state then
+	if not global_floating_enabled then
 		for _, tag in ipairs(tags) do
 			awful.layout.set(awful.layout.suit.floating, tag)
 		end
-		awful.spawn.easy_async_with_shell(ap_on_cmd, function(stdout)
-			floating_state = true
-			update_widget()
-		end)
+		global_floating_enabled = true
+		update_widget()
 	else
 		for _, tag in ipairs(tags) do
 			awful.layout.set(awful.layout.suit.tile, tag)
 		end
-		awful.spawn.easy_async_with_shell(ap_off_cmd, function(stdout)
-			floating_state = false
-			update_widget()
-		end)
+		global_floating_enabled = false
+		update_widget()
 	end
 end
 
@@ -150,14 +88,6 @@ end)))
 action_info:buttons(gears.table.join(awful.button({}, 1, nil, function()
 	toggle_global_floating()
 end)))
-
-gears.timer({
-	timeout = 5,
-	autostart = true,
-	callback = function()
-		check_floating_mode_state()
-	end,
-})
 
 local action_widget = wibox.widget({
 	layout = wibox.layout.fixed.horizontal,

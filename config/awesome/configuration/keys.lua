@@ -1,18 +1,17 @@
--- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local gfs = require("gears.filesystem")
 local naughty = require("naughty")
 local helpers = require("helpers")
-local apps = require("configuration.apps")
-
--- Bling
 local bling = require("module.bling")
 local playerctl = bling.signal.playerctl.lib()
-
--- Machi
 local machi = require("module.layout-machi")
+local apps = require("configuration.apps")
+
+-- Get screen geometry
+local screen_width = awful.screen.focused().geometry.width
+local screen_height = awful.screen.focused().geometry.height
 
 -- Default modkey.
 modkey = "Mod4"
@@ -23,24 +22,20 @@ shift = "Shift"
 -- Launcher
 awful.keyboard.append_global_keybindings({
 	awful.key({ modkey }, "Return", function()
-		awful.spawn(terminal)
+		awful.spawn(apps.default.terminal)
 	end, { description = "open terminal", group = "launcher" }),
+	awful.key({ modkey, shift }, "e", function()
+		awful.spawn(apps.default.code_editor)
+	end, { description = "open code editor", group = "launcher" }),
 	awful.key({ modkey, shift }, "f", function()
-		awful.spawn(file_manager)
+		awful.spawn(apps.default.file_manager)
 	end, { description = "open file manager", group = "launcher" }),
 	awful.key({ modkey, shift }, "w", function()
-		awful.spawn.with_shell(browser)
+		awful.spawn(apps.default.web_browser)
 	end, { description = "open web browser", group = "launcher" }),
 	awful.key({ modkey }, "d", function()
-		awful.spawn.with_shell(
-			"rofi -no-lazy-grab -show drun -modi drun -theme "
-				.. gfs.get_configuration_dir()
-				.. "configuration/rofi.rasi"
-		)
+		awful.spawn.with_shell(apps.default.app_launcher)
 	end, { description = "open app launcher", group = "launcher" }),
-	awful.key({ modkey, shift }, "x", function()
-		awful.spawn.easy_async_with_shell(apps.utils.color_picker, function() end)
-	end, { description = "open color picker", group = "launcher" }),
 })
 
 -- Client and Tabs Bindings
@@ -101,13 +96,13 @@ awful.keyboard.append_global_keybindings({
 
 	-- Volume control
 	awful.key({}, "XF86AudioRaiseVolume", function()
-		helpers.volume_control(5)
+		awful.spawn("pamixer -i 5")
 	end, { description = "increase volume", group = "hotkeys" }),
 	awful.key({}, "XF86AudioLowerVolume", function()
-		helpers.volume_control(-5)
+		awful.spawn("pamixer -d 5")
 	end, { description = "decrease volume", group = "hotkeys" }),
 	awful.key({}, "XF86AudioMute", function()
-		helpers.volume_control(0)
+		awful.spawn("pamixer -t")
 	end, { description = "mute volume", group = "hotkeys" }),
 
 	-- Music
@@ -122,6 +117,11 @@ awful.keyboard.append_global_keybindings({
 	awful.key({}, "XF86AudioNext", function()
 		playerctl:next()
 	end, { description = "next music", group = "hotkeys" }),
+
+	-- Color picker
+	awful.key({ modkey, shift }, "x", function()
+		awful.spawn.easy_async_with_shell(apps.utils.color_picker, function() end)
+	end, { description = "open color picker", group = "hotkeys" }),
 
 	-- Screenshots
 	awful.key({}, "Print", function()
@@ -149,13 +149,13 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey, ctrl }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, ctrl }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 	awful.key({ modkey, shift }, "d", function()
-		central_panel:toggle()
+		dashboard:toggle()
 	end, { description = "toggle dashboard", group = "awesome" }),
 	awful.key({ modkey, shift }, "t", function()
 		systray_toggle()
 	end, { description = "toggle systray", group = "awesome" }),
 	awful.key({ modkey }, "grave", function()
-		awful.spawn.with_shell(music_client)
+		awful.spawn.with_shell(apps.default.music_player)
 	end, { description = "open music client", group = "awesome" }),
 })
 
@@ -388,7 +388,7 @@ awful.mouse.append_global_mousebindings({
 
 	-- Middle click
 	awful.button({}, 2, function()
-		central_panel:toggle()
+		dashboard:toggle()
 	end),
 
 	-- Right click

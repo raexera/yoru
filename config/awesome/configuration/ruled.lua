@@ -1,17 +1,7 @@
--- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-
--- Theme handling library
 local beautiful = require("beautiful")
-
--- Notification handling library
-local naughty = require("naughty")
-
--- Ruled
 local ruled = require("ruled")
-
--- Helpers
 local helpers = require("helpers")
 
 -- Get screen geometry
@@ -24,10 +14,13 @@ ruled.client.connect_signal("request::rules", function()
 		id = "global",
 		rule = {},
 		properties = {
-			focus = awful.client.focus.filter,
 			raise = true,
 			size_hints_honor = false,
-			screen = awful.screen.preferred,
+			honor_workarea = true,
+			honor_padding = true,
+			-- screen = awful.screen.preferred,
+			screen = awful.screen.focused,
+			focus = awful.client.focus.filter,
 			titlebars_enabled = beautiful.titlebar_enabled,
 			placement = awful.placement.no_overlap + awful.placement.no_offscreen,
 		},
@@ -46,16 +39,8 @@ ruled.client.connect_signal("request::rules", function()
 		id = "titlebars",
 		rule_any = {
 			class = {
-				"discord",
-				"Code",
 				"Spotify",
 				"Org.gnome.Nautilus",
-			},
-			type = {
-				"splash",
-			},
-			name = {
-				"^discord.com is sharing your screen.$", -- Discord (running in browser) screen sharing popup
 			},
 		},
 		properties = {
@@ -121,7 +106,7 @@ ruled.client.connect_signal("request::rules", function()
 		properties = {
 			floating = true,
 			width = screen_width * 0.34,
-			height = screen_height * 0.40,
+			height = screen_height * 0.32,
 			placement = helpers.centered_client_placement,
 		},
 	})

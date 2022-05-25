@@ -11,14 +11,14 @@ local ap_state = false
 
 local action_name = wibox.widget({
 	text = "Airplane Mode",
-	font = beautiful.font_name .. "Bold 12",
+	font = beautiful.font_name .. "Bold 10",
 	align = "left",
 	widget = wibox.widget.textbox,
 })
 
 local action_status = wibox.widget({
 	text = "Off",
-	font = beautiful.font_name .. "Regular 11",
+	font = beautiful.font_name .. "Regular 10",
 	align = "left",
 	widget = wibox.widget.textbox,
 })
@@ -32,7 +32,7 @@ local action_info = wibox.widget({
 local button_widget = wibox.widget({
 	{
 		id = "icon",
-		image = gears.color.recolor_image(widget_icon_dir .. "airplane-mode-off.svg", beautiful.xforeground),
+		image = widget_icon_dir .. "airplane-mode-off.svg",
 		widget = wibox.widget.imagebox,
 		resize = true,
 	},
@@ -59,15 +59,11 @@ local update_widget = function()
 	if ap_state then
 		action_status:set_text("On")
 		widget_button.bg = beautiful.accent
-		button_widget.icon:set_image(
-			gears.color.recolor_image(widget_icon_dir .. "airplane-mode.svg", beautiful.xforeground)
-		)
+		button_widget.icon:set_image(widget_icon_dir .. "airplane-mode.svg")
 	else
 		action_status:set_text("Off")
 		widget_button.bg = beautiful.control_center_button_bg
-		button_widget.icon:set_image(
-			gears.color.recolor_image(widget_icon_dir .. "airplane-mode-off.svg", beautiful.xforeground)
-		)
+		button_widget.icon:set_image(widget_icon_dir .. "airplane-mode-off.svg")
 	end
 end
 

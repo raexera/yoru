@@ -7,19 +7,28 @@ local awful = require("awful")
 -- Requires inotify-tools
 local brightness_subscribe_script = [[
    bash -c "
-   while (inotifywait -e modify /sys/class/backlight/?*/brightness -qq) do echo; done
+   while (inotifywait -e modify /sys/class/backlight/?**/brightness -qq) do echo; done
 "]]
 
 local brightness_script = [[
    sh -c "
-   brightnessctl i | grep -oP '\(\K[^%\)]+'
+   brightnessctl g
+"]]
+
+local brightness_max = [[
+   sh -c "
+   brightnessctl m 
 "]]
 
 local emit_brightness_info = function()
 	awful.spawn.with_line_callback(brightness_script, {
-		stdout = function(line)
-			percentage = math.floor(tonumber(line))
-			awesome.emit_signal("signal::brightness", percentage)
+		stdout = function(value)
+			awful.spawn.with_line_callback(brightness_max, {
+				stdout = function(max)
+					percentage = tonumber(value) / tonumber(max) * 100
+					awesome.emit_signal("signal::brightness", math.floor(percentage + 0.5))
+				end,
+			})
 		end,
 	})
 end

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="240"
+   height="240"
+   viewBox="0 0 240 240"
+   id="svg4"
+   sodipodi:docname="memory.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1321"
+     inkscape:window-height="740"
+     id="namedview6"
+     showgrid="false"
+     inkscape:pagecheckerboard="true"
+     inkscape:zoom="0.98333333"
+     inkscape:cx="-202.89153"
+     inkscape:cy="120"
+     inkscape:window-x="45"
+     inkscape:window-y="28"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg4" />
+  <path
+     d="M 175.55556,175.55556 H 64.444444 V 64.44444 H 175.55556 M 220,108.88889 V 86.66667 H 197.77778 V 64.44444 c 0,-12.33333 -10,-22.22222 -22.22222,-22.22222 H 153.33333 V 20 H 131.11111 V 42.22222 H 108.88889 V 20 H 86.666667 V 42.22222 H 64.444444 c -12.333333,0 -22.222222,9.88889 -22.222222,22.22222 V 86.66667 H 20 v 22.22222 h 22.222222 v 22.22222 H 20 v 22.22222 h 22.222222 v 22.22223 a 22.222222,22.222222 0 0 0 22.222222,22.22222 H 86.666667 V 220 h 22.222223 v -22.22222 h 22.22222 V 220 h 22.22222 v -22.22222 h 22.22223 a 22.222222,22.222222 0 0 0 22.22222,-22.22222 V 153.33333 H 220 v -22.22222 h -22.22222 v -22.22222 m -66.66667,22.22222 h -22.22222 v -22.22222 h 22.22222 M 153.33333,86.66667 H 86.666667 v 66.66666 h 66.666663 z"
+     id="path2"
+     inkscape:connector-curvature="0"
+     style="fill:#ffffff;stroke-width:11.11111164" />
+</svg>
