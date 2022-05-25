@@ -90,7 +90,7 @@ local ram_tooltip = create_tooltip(ram)
 
 awesome.connect_signal("signal::volume", function(value, muted)
 	local fill_color
-	local vol_value = value or 0
+	local vol_value = tonumber(value) or 0
 
 	if muted == 1 or vol == 0 then
 		fill_color = beautiful.xcolor8
