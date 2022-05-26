@@ -8,7 +8,7 @@ return {
 			-- Coordinates
 			coordinates = {
 				"", -- lat
-				"", -- lng
+				"", -- lon
 			},
 		},
 

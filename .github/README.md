@@ -128,7 +128,7 @@ Assuming your *AUR Helper* is [paru](https://github.com/Morganamilo/paru).
    ```sh
    paru -Sy picom-git alacritty rofi todo-bin acpi acpid acpi_call upower \
    jq inotify-tools polkit-gnome xdotool xclip gpick ffmpeg blueman \
-   pipewire pipewire-alsa pipewire-pulse brightnessctl scrot redshift \
+   pipewire pipewire-alsa pipewire-pulse pamixer brightnessctl scrot redshift \
    feh mpv mpd mpc mpdris2 ncmpcpp playerctl --needed 
    ```
 
@@ -293,6 +293,24 @@ Setup:
     cp misc/vscode/User/settings.json ~/.config/Code/User
 
     ```
+
+</details>
+
+<details>
+<summary><b>Touchpad tap-to-click & natural (reverse) scrolling (<a href="https://wiki.archlinux.org/title/Libinput#Tapping_button_re-mapping">libinput</a>)</b></summary>
+
+`/etc/X11/xorg.conf.d/30-touchpad.conf`
+
+```cfg
+Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+    MatchIsTouchpad "on"
+    Option "Tapping" "on"
+    Option "TappingButtonMap" "lmr"
+    Option "NaturalScrolling" "true"
+EndSection
+```
 
 </details>
 
