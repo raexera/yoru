@@ -3,7 +3,9 @@
 
 <!-- DOTFILES BANNER -->
 <div align="center">
-    <img src="assets/rxhyn-dotfile-header.png" alt="Home Preview">
+   <a href="#--------">
+      <img src="assets/rxhyn-dotfile-header.png" alt="Home Preview">
+   </a>
 </div>
 
 <p align="center">
@@ -17,8 +19,22 @@
 
 <!-- RICE PREVIEW -->
 <div align="center">
-    <img src="assets/aesthetic.png" alt="Rice Preview">
+   <a href="#--------">
+      <img src="assets/aesthetic.png" alt="Rice Preview">
+   </a>
 </div>
+
+<br>
+
+<!-- BADGES -->
+<h1>
+  <a href="#--------">
+    <img alt="" align="left" src="https://img.shields.io/github/stars/rxyhn/dotfiles?color=162026&labelColor=162026&style=for-the-badge"/>
+  </a>
+  <a href="#--------">
+    <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=for-the-badge&color=162026&logoColor=white&labelColor=162026"/>
+  </a>
+</h1>
 
 <br>
 
@@ -43,7 +59,7 @@ This is a beautiful user interface isn't it?
 These dotfiles are made with love, for sure.
 
 <!-- INFORMATION -->
-## :snowflake: ‎ <samp>Information</samp> <img align="right" src="https://img.shields.io/github/stars/rxyhn/dotfiles?color=BC83E3&labelColor=0A1419&style=for-the-badge"/> <img align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=for-the-badge&color=6791C9&logoColor=white&labelColor=0A1419"/>
+## :snowflake: ‎ <samp>Information</samp> 
 
 Here are some details about my setup:
 
@@ -94,21 +110,20 @@ Main Features:
 
 >This is step-by-step how to install these dotfiles. Just [R.T.F.M](https://en.wikipedia.org/wiki/RTFM).
 
-:warning: **This setup instructions only provided for Arch Linux (and other Arch-based distributions)** :warning:
-
 <details>
 <summary><b>1. Install Required Dependencies</b></summary>
 
+:warning: ‎ **This setup instructions only provided for Arch Linux (and other Arch-based distributions)** 
+
+Assuming your *AUR Helper* is [paru](https://github.com/Morganamilo/paru).
+
 > First of all you should install the [git version of AwesomeWM](https://github.com/awesomeWM/awesome/).
 
-**Arch users** can use the [awesome-git AUR package](https://aur.archlinux.org/packages/awesome-git/).
    ```sh
    paru -S awesome-git
    ```
 
 > Install necessary dependencies
-
-Assuming your **AUR Helper** is [paru](https://github.com/Morganamilo/paru).
 
    ```sh
    paru -Sy picom-git alacritty rofi todo-bin acpi acpid acpi_call upower \
@@ -177,27 +192,27 @@ And run this command for your system to detect the newly installed fonts.
 
 | <b>Simple, Minimalist and Modern Bar</b> |
 | --- |
-| <img src="assets/wibar.png" width="500px" alt="dashboard preview"> |
+| <a href="#--------"><img src="assets/wibar.png" width="500px" alt="dashboard preview"></a> |
 
 | <b>Aesthetic Dashboard with neat grid layout and Notification Center</b> |
 | --- |
-| <img src="assets/dashboard.png" width="500px" alt="dashboard preview"> |
+| <a href="#--------"><img src="assets/dashboard.png" width="500px" alt="dashboard preview"></a> |
 
 | <b>Complete information, Info Center</b>
 | --- |
-| <img src="assets/info-center.png" width="500px" alt="dashboard preview"> |
+| <a href="#--------"><img src="assets/info-center.png" width="500px" alt="dashboard preview"></a> |
 
 | <b>MacOS like control center</b> |
 | --- |
-| <img src="assets/control-center.png" width="500px" alt="control center preview"> |
+| <a href="#--------"><img src="assets/control-center.png" width="500px" alt="control center preview"></a> |
 
 | <b>Custom mouse-friendly ncmpcpp UI</b> |
 | --- |
-| <img src="assets/ncmpcpp.png" width="500px" alt="ncmpcpp preview"> |
+| <a href="#--------"><img src="assets/ncmpcpp.png" width="500px" alt="ncmpcpp preview"></a> |
 
 | <b>Lockscreen with [PAM Integration](https://github.com/RMTT/lua-pam)</b> |
 | --- |
-|<img src="assets/lockscreen.png" width="500px" alt="word clock lockscreen preview"> |
+| <a href="#--------"><img src="assets/lockscreen.png" width="500px" alt="word clock lockscreen preview"></a> |
 
 <!-- MISCELLANEOUS -->
 ## :four_leaf_clover: ‎ <samp>Miscellaneous</samp>
@@ -332,4 +347,4 @@ Thanks from the bottom of my heart! ‎ :heartpulse:
 
 <br>
 
-<p align="center"><a href="https://github.com/rxyhn/AwesomeWM-Dotfiles/blob/main/.github/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=License&message=GPL-3.0&logoColor=eceff4&logo=github&colorA=0A1419&colorB=78B892"/></a></p>
+<p align="center"><a href="https://github.com/rxyhn/AwesomeWM-Dotfiles/blob/main/.github/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=License&message=GPL-3.0&logoColor=eceff4&logo=github&colorA=162026&colorB=162026"/></a></p>
