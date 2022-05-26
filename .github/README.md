@@ -111,7 +111,7 @@ Main Features:
 >This is step-by-step how to install these dotfiles. Just [R.T.F.M](https://en.wikipedia.org/wiki/RTFM).
 
 <details>
-<summary><b>1. Install Required Dependencies</b></summary>
+<summary><b>1. Install Required Dependencies and Enable Services</b></summary>
 
 :warning: ‎ **This setup instructions only provided for Arch Linux (and other Arch-based distributions)** 
 
@@ -132,10 +132,7 @@ Assuming your *AUR Helper* is [paru](https://github.com/Morganamilo/paru).
    feh mpv mpd mpc mpdris2 ncmpcpp playerctl --needed 
    ```
 
-</details>
-
-<details>
-<summary><b>2. Enable Services</b></summary>
+> Enable Services
 
    ```sh
    systemctl --user enable mpd.service
@@ -145,26 +142,7 @@ Assuming your *AUR Helper* is [paru](https://github.com/Morganamilo/paru).
 </details>
 
 <details>
-<summary><b>3. Install Needed Fonts</b></summary>
-
-> You will need to install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
-
-   ```sh
-   cp -r misc/fonts/* ~/.fonts/
-   # or to ~/.local/share/fonts
-   cp -r misc/fonts/* ~/.local/share/fonts/
-   ```
-
-And run this command for your system to detect the newly installed fonts.
-
-   ```sh
-   fc-cache -v
-   ```
-
-</details>
-
-<details>
-<summary><b>4. Install My AwesomeWM Dotfiles</b></summary>
+<summary><b>2. Install My AwesomeWM Dotfiles</b></summary>
 
 > Clone this repository
 
@@ -177,6 +155,20 @@ And run this command for your system to detect the newly installed fonts.
 
    ```sh
    cp -r config/* ~/.config/
+   ```
+
+> Install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
+
+   ```sh
+   cp -r misc/fonts/* ~/.fonts/
+   # or to ~/.local/share/fonts
+   cp -r misc/fonts/* ~/.local/share/fonts/
+   ```
+
+And run this command for your system to detect the newly installed fonts.
+
+   ```sh
+   fc-cache -v
    ```
 
 > Finally, now you can login with AwesomeWM
