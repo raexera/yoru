@@ -8,6 +8,7 @@ local bling = require("module.bling")
 local playerctl = bling.signal.playerctl.lib()
 local machi = require("module.layout-machi")
 local apps = require("configuration.apps")
+local wibox = require("wibox")
 
 -- Get screen geometry
 local screen_width = awful.screen.focused().geometry.width
@@ -152,7 +153,7 @@ awful.keyboard.append_global_keybindings({
 		dashboard:toggle()
 	end, { description = "toggle dashboard", group = "awesome" }),
 	awful.key({ modkey, shift }, "t", function()
-		systray_toggle()
+		awesome.emit_signal("widget::systray:toggle")
 	end, { description = "toggle systray", group = "awesome" }),
 	awful.key({ modkey }, "grave", function()
 		awful.spawn.with_shell(apps.default.music_player)
