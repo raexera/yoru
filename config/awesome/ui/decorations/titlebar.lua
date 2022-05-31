@@ -192,7 +192,7 @@ client.connect_signal("request::titlebars", function(c)
 			},
 		},
 		bg = beautiful.titlebar_bg,
-		shape = helpers.prrect(beautiful.corner_radius, true, false, false, true),
+		shape = helpers.prrect(beautiful.border_radius, true, false, false, true),
 		widget = wibox.container.background,
 	})
 end)

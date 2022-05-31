@@ -3,9 +3,8 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
 local helpers = require("helpers")
+local dpi = beautiful.xresources.apply_dpi
 
 local window_switcher_first_client -- The client that was focused when the window_switcher was activated
 local window_switcher_minimized_clients = {} -- The clients that were minimized when the window switcher was activated
@@ -87,9 +86,9 @@ local function draw_widget(
 		filter = awful.widget.tasklist.filter.currenttags,
 		buttons = mouse_keys,
 		style = {
-			font = beautiful.font_name .. "Medium 9",
+			font = beautiful.font,
 			fg_normal = beautiful.xforeground,
-			fg_focus = beautiful.accent,
+			fg_focus = beautiful.xcolor4,
 		},
 		layout = {
 			layout = wibox.layout.flex.horizontal,
@@ -98,8 +97,8 @@ local function draw_widget(
 		},
 		widget_template = {
 			widget = wibox.container.background,
-			bg = beautiful.widget_bg,
-			shape = helpers.rrect(beautiful.corner_radius),
+			bg = beautiful.window_switcher_widget_bg,
+			shape = helpers.rrect(beautiful.border_radius),
 			id = "bg_role",
 			forced_width = dpi(450),
 			create_callback = function(self, c, _, __)
@@ -121,7 +120,7 @@ local function draw_widget(
 								horizontal_fit_policy = "auto",
 								vertical_fit_policy = "auto",
 								id = "thumbnail",
-								clip_shape = helpers.rrect(dpi(6)),
+								clip_shape = helpers.rrect(beautiful.border_radius),
 								widget = wibox.widget.imagebox,
 							},
 							margins = dpi(0),
@@ -174,7 +173,7 @@ local function draw_widget(
 			content_fill_horizontal = true,
 			widget = wibox.container.place,
 		},
-		bg = "#00000000",
+		bg = beautiful.transparent,
 		widget = wibox.container.background,
 	})
 end
@@ -183,9 +182,9 @@ local enable = function(opts)
 	local opts = opts or {}
 
 	local type = opts.type or "thumbnail"
-	local background = beautiful.window_switcher_widget_bg or "#00000000"
+	local background = beautiful.window_switcher_widget_bg or "#000000"
 	local border_width = beautiful.window_switcher_widget_border_width or dpi(3)
-	local border_radius = beautiful.window_switcher_widget_border_radius or dpi(6)
+	local border_radius = beautiful.window_switcher_widget_border_radius or dpi(0)
 	local border_color = beautiful.window_switcher_widget_border_color or "#ffffff"
 	local clients_spacing = beautiful.window_switcher_clients_spacing or dpi(20)
 	local client_icon_horizontal_spacing = beautiful.window_switcher_client_icon_horizontal_spacing or dpi(5)
@@ -197,25 +196,32 @@ local enable = function(opts)
 	local name_margins = beautiful.window_switcher_name_margins or dpi(10)
 	local name_valign = beautiful.window_switcher_name_valign or "center"
 	local name_forced_width = beautiful.window_switcher_name_forced_width or dpi(type == "thumbnail" and 200 or 550)
-	local name_font = beautiful.window_switcher_name_font or beautiful.font_name .. "Medium 10"
-	local name_normal_color = beautiful.window_switcher_name_normal_color or beautiful.xforeground
-	local name_focus_color = beautiful.window_switcher_name_focus_color or beautiful.accent
+	local name_font = beautiful.window_switcher_name_font or beautiful.font
+	local name_normal_color = beautiful.window_switcher_name_normal_color or "#FFFFFF"
+	local name_focus_color = beautiful.window_switcher_name_focus_color or "#FF0000"
 	local icon_valign = beautiful.window_switcher_icon_valign or "center"
 	local icon_width = beautiful.window_switcher_icon_width or dpi(40)
+
 	local hide_window_switcher_key = opts.hide_window_switcher_key or "Escape"
+
 	local select_client_key = opts.select_client_key or 1
 	local minimize_key = opts.minimize_key or "n"
 	local unminimize_key = opts.unminimize_key or "N"
 	local kill_client_key = opts.kill_client_key or "q"
+
 	local cycle_key = opts.cycle_key or "Tab"
+
 	local previous_key = opts.previous_key or "Left"
 	local next_key = opts.next_key or "Right"
+
 	local vim_previous_key = opts.vim_previous_key or "h"
 	local vim_next_key = opts.vim_next_key or "l"
+
 	local scroll_previous_key = opts.scroll_previous_key or 4
 	local scroll_next_key = opts.scroll_next_key or 5
+
 	local window_switcher_box = wibox({
-		bg = "#00000000",
+		bg = beautiful.transparent,
 		visible = false,
 		ontop = true,
 		type = "splash",
@@ -229,8 +235,8 @@ local enable = function(opts)
 			},
 			shape_border_width = beautiful.widget_border_width,
 			shape_border_color = beautiful.widget_border_color,
-			bg = "#00000000",
-			shape = helpers.rrect(dpi(6)),
+			bg = beautiful.transparent,
+			shape = helpers.rrect(beautiful.border_radius),
 			widget = wibox.container.background,
 		},
 	})

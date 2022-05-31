@@ -98,16 +98,16 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	-- Screen padding
 	screen[s].padding = { top = dpi(5), left = dpi(5), right = dpi(5) }
 	-- -- Each screen has its own tag table.
-	awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
+	awful.tag({ "1", "2", "3", "4", "5", "6" }, s, awful.layout.layouts[1])
 end)
 
 -- Helper function to be used by decoration themes to enable client rounding
 local function enable_rounding()
 	-- Apply rounded corners to clients if needed
-	if beautiful.corner_radius and beautiful.corner_radius > 0 then
+	if beautiful.border_radius and beautiful.border_radius > 0 then
 		client.connect_signal("manage", function(c, startup)
 			if not c.fullscreen and not c.maximized then
-				c.shape = helpers.rrect(beautiful.corner_radius)
+				c.shape = helpers.rrect(beautiful.border_radius)
 			end
 		end)
 
@@ -116,14 +116,14 @@ local function enable_rounding()
 			if c.fullscreen or c.maximized then
 				c.shape = gears.shape.rectangle
 			else
-				c.shape = helpers.rrect(beautiful.corner_radius)
+				c.shape = helpers.rrect(beautiful.border_radius)
 			end
 		end
 
 		client.connect_signal("property::fullscreen", no_round_corners)
 		client.connect_signal("property::maximized", no_round_corners)
 
-		beautiful.snap_shape = helpers.rrect(beautiful.corner_radius * 2)
+		beautiful.snap_shape = helpers.rrect(beautiful.border_radius * 2)
 	else
 		beautiful.snap_shape = gears.shape.rectangle
 	end

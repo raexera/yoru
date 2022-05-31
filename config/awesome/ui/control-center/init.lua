@@ -23,7 +23,7 @@ local format_item = function(widget)
 		forced_height = dpi(88),
 		bg = beautiful.widget_bg,
 		shape = function(cr, width, height)
-			gears.shape.rounded_rect(cr, width, height, beautiful.control_center_widget_radius)
+			gears.shape.rounded_rect(cr, width, height, dpi(16))
 		end,
 		widget = wibox.container.background,
 	})
@@ -44,7 +44,7 @@ local format_item_no_fix_height = function(widget)
 		},
 		bg = beautiful.widget_bg,
 		shape = function(cr, width, height)
-			gears.shape.rounded_rect(cr, width, height, beautiful.control_center_widget_radius)
+			gears.shape.rounded_rect(cr, width, height, dpi(16))
 		end,
 		widget = wibox.container.background,
 	})
@@ -186,7 +186,7 @@ awful.screen.connect_for_each_screen(function(s)
 			id = "control_center",
 			bg = beautiful.wibar_bg,
 			shape = function(cr, w, h)
-				gears.shape.rounded_rect(cr, w, h, beautiful.control_center_widget_radius)
+				gears.shape.rounded_rect(cr, w, h, dpi(16))
 			end,
 			widget = wibox.container.background,
 		},

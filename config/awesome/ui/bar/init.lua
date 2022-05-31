@@ -168,7 +168,7 @@ awful.screen.connect_for_each_screen(function(s)
 			widget = wibox.container.margin,
 		},
 		bg = beautiful.wibar_bg,
-		shape = helpers.rrect(beautiful.corner_radius),
+		shape = helpers.rrect(beautiful.border_radius),
 		widget = wibox.container.background,
 	})
 end)

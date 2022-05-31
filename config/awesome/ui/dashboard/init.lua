@@ -191,7 +191,7 @@ awful.screen.connect_for_each_screen(function(s)
 				require("ui.widgets.notif-center")(s),
 			},
 			bg = beautiful.dashboard_bg,
-			shape = helpers.rrect(beautiful.corner_radius),
+			shape = helpers.rrect(beautiful.border_radius),
 			widget = wibox.container.background,
 		},
 	})

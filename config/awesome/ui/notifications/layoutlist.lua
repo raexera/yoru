@@ -39,7 +39,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		widget = wibox.widget({
 			{ layout_list, margins = dpi(24), widget = wibox.container.margin },
 			bg = beautiful.xbackground,
-			shape = helpers.rrect(beautiful.corner_radius),
+			shape = helpers.rrect(beautiful.border_radius),
 			widget = wibox.container.background,
 		}),
 		placement = awful.placement.centered,

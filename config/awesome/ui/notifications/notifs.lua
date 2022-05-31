@@ -88,7 +88,7 @@ naughty.connect_signal("request::display", function(n)
 		bg = beautiful.lighter_bg,
 		forced_height = dpi(25),
 		forced_width = dpi(20),
-		shape = helpers.rrect(beautiful.corner_radius),
+		shape = helpers.rrect(beautiful.border_radius),
 		widget = wibox.container.background,
 	}
 
@@ -198,7 +198,7 @@ naughty.connect_signal("request::display", function(n)
 									{
 										image = n.icon,
 										resize = true,
-										clip_shape = helpers.rrect(beautiful.corner_radius),
+										clip_shape = helpers.rrect(beautiful.border_radius),
 										widget = wibox.widget.imagebox,
 									},
 									strategy = "max",
@@ -227,7 +227,7 @@ naughty.connect_signal("request::display", function(n)
 				widget = wibox.container.margin,
 			},
 			bg = beautiful.xbackground,
-			shape = helpers.rrect(beautiful.corner_radius),
+			shape = helpers.rrect(beautiful.border_radius),
 			widget = wibox.container.background,
 		},
 	})

@@ -57,7 +57,7 @@ local popup = awful.popup({
 	maximum_width = dpi(350),
 	offset = { y = dpi(10) },
 	shape = function(cr, w, h)
-		gears.shape.rounded_rect(cr, w, h, beautiful.control_center_widget_radius)
+		gears.shape.rounded_rect(cr, w, h, dpi(16))
 	end,
 	widget = {},
 })

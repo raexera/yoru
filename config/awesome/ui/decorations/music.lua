@@ -427,7 +427,7 @@ local music_create_decoration = function(c)
 			layout = wibox.layout.align.horizontal,
 		},
 		bg = beautiful.music_bg,
-		shape = helpers.prrect(beautiful.corner_radius, true, true, false, false),
+		shape = helpers.prrect(beautiful.border_radius, true, true, false, false),
 		widget = wibox.container.background,
 	})
 
@@ -524,7 +524,7 @@ local music_create_decoration = function(c)
 			},
 		},
 		bg = beautiful.music_bg_accent,
-		shape = helpers.prrect(beautiful.corner_radius, false, false, true, true),
+		shape = helpers.prrect(beautiful.border_radius, false, false, true, true),
 		widget = wibox.container.background,
 	})
 
