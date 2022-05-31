@@ -44,6 +44,7 @@ theme.transparent = "#00000000"
 -- Ui Fonts
 theme.font_name = "SF Pro Display "
 theme.font = theme.font_name .. "Medium 10"
+
 -- Icon Fonts
 theme.icon_font = "Material Icons "
 
@@ -112,7 +113,7 @@ theme.awesome_icon = theme_assets.awesome_icon(dpi(30), theme.xbackground, theme
 -- Icon Theme
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = "Colloid-dark"
+theme.icon_theme = "Papirus-Dark"
 
 -- Borders
 theme.border_width = dpi(0)
