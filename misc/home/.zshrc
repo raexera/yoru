@@ -2,6 +2,9 @@
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# GPG tty.
+export GPG_TTY="${TTY:-$(tty)}"
+
 #env
 export VISUAL=nvim;
 export EDITOR=nvim;

@@ -179,105 +179,15 @@ And run this command for your system to detect the newly installed fonts.
 
 </details>
 
-<!-- GALLERY -->
-## :ocean: ‎ <samp>Gallery</samp>
-
-| <b>Simple, Minimalist and Modern Bar</b> |
-| --- |
-| <a href="#--------"><img src="assets/wibar.png" width="500px" alt="dashboard preview"></a> |
-
-| <b>Aesthetic Dashboard with neat grid layout and Notification Center</b> |
-| --- |
-| <a href="#--------"><img src="assets/dashboard.png" width="500px" alt="dashboard preview"></a> |
-
-| <b>Complete information, Info Center</b>
-| --- |
-| <a href="#--------"><img src="assets/info-center.png" width="500px" alt="dashboard preview"></a> |
-
-| <b>MacOS like control center</b> |
-| --- |
-| <a href="#--------"><img src="assets/control-center.png" width="500px" alt="control center preview"></a> |
-
-| <b>Custom mouse-friendly ncmpcpp UI</b> |
-| --- |
-| <a href="#--------"><img src="assets/ncmpcpp.png" width="500px" alt="ncmpcpp preview"></a> |
-
-| <b>Lockscreen with [PAM Integration](https://github.com/RMTT/lua-pam)</b> |
-| --- |
-| <a href="#--------"><img src="assets/lockscreen.png" width="500px" alt="word clock lockscreen preview"></a> |
-
 <!-- MISCELLANEOUS -->
 ## :four_leaf_clover: ‎ <samp>Miscellaneous</samp>
 
 <details>
-<summary><b>Configure stuff</b></summary>
+<summary><b>VSCode Themes</b></summary>
 
-> The relevant files are inside your `~/.config/awesome` directory.
-
-+ User preferences and default applications
-
-   In `configuration/apps.lua` there is a *Default Applications* section where user preferences and default applications are defined.
-   You should change those to your liking.
-
-   In `configuration/config.lua` there is a *Important Variable* which is used for weather widgets and github activity widgets.
-
-Note: For the weather widgets to work, you will also need to create an account on [openweathermap](https://openweathermap.org), get your key, look for your city ID and the coordinates, and set the key, city ID, and coordinates accordingly.
-
-</details>
-
-<details>
-<summary><b>Keybinds</b></summary>
-
-I use <kbd>super</kbd> AKA Windows key as my main modifier.
-also with <kbd>alt, shift, and ctrl</kbd>
-
-**Keyboard**
-
-| Keybind                                 | Action                                                    |
-|-----------------------------------------|-----------------------------------------------------------|
-| <kbd>super + enter</kbd>                | Spawn terminal                                            |
-| <kbd>super + grave</kbd>                | Spawn music client                                        |
-| <kbd>super + d</kbd>                    | Spawn application launcher                                |
-| <kbd>super + shift + w</kbd>            | Spawn web browser                                         |
-| <kbd>super + shift + x</kbd>            | Spawn color picker                                        |
-| <kbd>super + shift + f</kbd>            | Spawn file manager                                        |
-| <kbd>super + shift + d</kbd>            | Toggle central panel                                      |
-| <kbd>super + shift + t</kbd>            | Toggle system tray                                        |
-| <kbd>super + q</kbd>                    | Close client                                              |
-| <kbd>super + x</kbd>                    | Exit screen                                               |
-| <kbd>super + ctrl + l</kbd>             | Lock screen                                               |
-| <kbd>super + [1-0]</kbd>                | View tag AKA change workspace (for you i3/bsp folks)      |
-| <kbd>super + shift + [1-0]</kbd>        | Move focused client to tag                                |
-| <kbd>super + space</kbd>                | Select next layout                                        |
-| <kbd>super + s</kbd>                    | Set tiling layout                                         |
-| <kbd>super + shift + s</kbd>            | Set floating layout                                       |
-| <kbd>super + c</kbd>                    | Center floating client                                    |
-| <kbd>super + [arrow keys]</kbd>         | Change focus by direction                                 |
-| <kbd>super + f</kbd>                    | Toggle fullscreen                                         |
-| <kbd>super + m</kbd>                    | Toggle maximize                                           |
-| <kbd>super + n</kbd>                    | Minimize                                                  |
-| <kbd>ctrl + super + n</kbd>             | Restore minimized                                         |
-| <kbd>alt + tab</kbd>                    | Window switcher                                           |
-
-<br>
-
-**Mouse on the desktop**
-
-| Mousebind          | Action                                     |
-|--------------------|--------------------------------------------|
-| `left click`       | Dismiss all notifications                  |
-| `right click`      | Main menu                                  |
-| `middle click`     | Toggle central panel                       |
-| `scroll up/down`   | Cycle through tags                         |
-
-*For more information check `awesome/configuration/keys.lua`*
-
-</details>
-
-<details>
-<summary><b>VSCode</b></summary>
-
-<img src="https://user-images.githubusercontent.com/93292023/170319552-a42b920d-9f59-44d9-a9ad-b3aeed55bf6a.png" alt="VSCode Preview" width="500px">
+<a href="#--------">
+   <img src="https://user-images.githubusercontent.com/93292023/170319552-a42b920d-9f59-44d9-a9ad-b3aeed55bf6a.png" alt="VSCode Preview" width="500px">
+</a>
 
 :milky_way: ‎ <samp>Aesthetic VSCode</samp>
 
@@ -314,10 +224,41 @@ EndSection
 
 </details>
 
+<!-- GALLERY -->
+## :ocean: ‎ <samp>Gallery</samp>
+
+| <b>Simple, Minimalist and Modern Bar</b> |
+| --- |
+| <a href="#--------"><img src="assets/wibar.png" width="500px" alt="dashboard preview"></a> |
+
+| <b>Aesthetic Dashboard with neat grid layout and Notification Center</b> |
+| --- |
+| <a href="#--------"><img src="assets/dashboard.png" width="500px" alt="dashboard preview"></a> |
+
+| <b>Complete information, Info Center</b>
+| --- |
+| <a href="#--------"><img src="assets/info-center.png" width="500px" alt="dashboard preview"></a> |
+
+| <b>MacOS like control center</b> |
+| --- |
+| <a href="#--------"><img src="assets/control-center.png" width="500px" alt="control center preview"></a> |
+
+| <b>Custom mouse-friendly ncmpcpp UI</b> |
+| --- |
+| <a href="#--------"><img src="assets/ncmpcpp.png" width="500px" alt="ncmpcpp preview"></a> |
+
+| <b>Lockscreen with [PAM Integration](https://github.com/RMTT/lua-pam)</b> |
+| --- |
+| <a href="#--------"><img src="assets/lockscreen.png" width="500px" alt="word clock lockscreen preview"></a> |
+
+| <b>Minimalist Exitscreen</b> |
+| --- |
+| <a href="#--------"><img src="assets/exitscreen.png" width="500px" alt="exitscreen preview"></a> |
+
 <!-- HISTORY -->
 ## :japan: ‎ <samp>History</samp>
 
-Ngl this is started when im feel bored lol and decided to start using Linux, more precisely in January 2022. Fyi im a **new Linux user,** it was in the [Linuxer Desktop Art](https://facebook.com/groups/linuxart) i saw a linux setup that caught my eye, then I'm interested in trying something similar, So yeaaaaaah this is my current setup, my purpose of doing this is to hone my skills to make an attractive UI also as a hobby. I wanna say thank you to those of you who like and love my setup <3 
+Ngl this is started when im feel bored lol and decided to start using Linux, more precisely in January 2022. Fyi im a **new Linux user,** when it's in [Linuxer Desktop Art](https://facebook.com/groups/linuxart) i saw a linux setup that caught my eye, then I'm interested in and trying something similar, So yeaaaaaah this is my current setup, my purpose of doing this is to hone my skills to make an attractive UI and also as a hobby. I wanna say thank you to those of you who like and love my setup <3 
 
 <pre align="center">
 <a href="#japan--history">

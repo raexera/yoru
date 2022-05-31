@@ -82,7 +82,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		stop_key = { "Escape", "Super_L", "Super_R", "Mod4" },
 		keybindings = {
 			{
-				{ modkey, "Shift" },
+				{ mod, "Shift" },
 				" ",
 				function()
 					awful.layout.set(
@@ -92,7 +92,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 				end,
 			},
 			{
-				{ modkey },
+				{ mod },
 				" ",
 				function()
 					awful.layout.set(gears.table.iterate_value(layout_list.layouts, layout_list.current_layout, 1), nil)

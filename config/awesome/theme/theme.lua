@@ -204,7 +204,7 @@ theme.tabbar_size = 0
 theme.mstab_bar_ontop = true
 
 -- Notifications
-theme.notification_spacing = dpi(20)
+theme.notification_spacing = dpi(12)
 theme.notification_border_radius = theme.corner_radius
 theme.notification_border_width = dpi(0)
 

@@ -1,4 +1,3 @@
-require("module.auto-start")
 require("module.bling")
 require("module.rubato")
 require("module.layout-machi")
