@@ -85,7 +85,7 @@ awful.screen.connect_for_each_screen(function(s)
 	s.weather = require("ui.widgets.weather.weather-info-center")
 
 	-- Profile
-	s.user_profile = require("ui.widgets.user-profile").info_center
+	s.user_profile = require("ui.widgets.user-profile.user-profile-info-center")
 
 	-- Wallpaper
 	local wallpaper_box = wibox.widget({

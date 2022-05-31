@@ -62,7 +62,7 @@ local control_center_row_one = wibox.widget({
 	layout = wibox.layout.align.horizontal,
 	forced_height = dpi(48),
 	nil,
-	format_item(require("ui.widgets.user-profile").control_center),
+	format_item(require("ui.widgets.user-profile.user-profile-control-center")),
 	{
 		format_item({
 			layout = wibox.layout.fixed.horizontal,
