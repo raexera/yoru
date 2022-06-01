@@ -130,15 +130,14 @@ theme.widget_border_width = dpi(2)
 theme.widget_border_color = theme.darker_bg
 
 -- Corner Radius
-theme.border_radius = dpi(6)
+theme.border_radius = dpi(8)
 
 -- Edge snap
 theme.snap_bg = theme.xcolor8
 theme.snap_shape = helpers.rrect(0)
 
 -- Playerctl
-theme.playerctl_ignore = { "firefox", "qutebrowser", "chromium", "brave" }
-theme.playerctl_player = { "spotify", "mpd", "%any" }
+theme.playerctl_player = { "firefox", "spotify", "mpd", "%any" }
 theme.playerctl_update_on_activity = true
 theme.playerctl_position_update_interval = 1
 
@@ -214,8 +213,6 @@ theme.notification_border_radius = theme.border_radius
 theme.notification_border_width = dpi(0)
 
 -- Notif center
-theme.notif_center_radius = theme.border_radius
-theme.notif_center_box_radius = theme.notif_center_radius
 theme.notif_center_notifs_bg = theme.lighter_bg
 theme.notif_center_notifs_accent = theme.xcolor0
 

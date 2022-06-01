@@ -132,30 +132,26 @@ local media_buttons = wibox.widget({
 
 -- Playerctl
 playerctl:connect_signal("metadata", function(_, title, artist, album_path, album, ___, player_name)
-	if player_name == "mpd" then
-		if title == "" then
-			title = "Nothing Playing"
-		end
-		if artist == "" then
-			artist = "Nothing Playing"
-		end
-		if album_path == "" then
-			album_path = gears.filesystem.get_configuration_dir() .. "theme/assets/no_music.png"
-		end
-
-		album_cover:set_image(gears.surface.load_uncached(album_path))
-		title_now:set_markup_silently(title)
-		artist_now:set_markup_silently(artist)
+	if title == "" then
+		title = "Nothing Playing"
 	end
+	if artist == "" then
+		artist = "Nothing Playing"
+	end
+	if album_path == "" then
+		album_path = gears.filesystem.get_configuration_dir() .. "theme/assets/no_music.png"
+	end
+
+	album_cover:set_image(gears.surface.load_uncached(album_path))
+	title_now:set_markup_silently(title)
+	artist_now:set_markup_silently(artist)
 end)
 
 playerctl:connect_signal("playback_status", function(_, playing, player_name)
-	if player_name == "mpd" then
-		if playing then
-			music_play_pause:set_text("")
-		else
-			music_play_pause:set_text("")
-		end
+	if playing then
+		music_play_pause:set_text("")
+	else
+		music_play_pause:set_text("")
 	end
 end)
 

@@ -105,16 +105,7 @@ notifbox_box = function(notif, icon, title, message, app, bgcolor)
 		},
 		bg = bgcolor,
 		shape = function(cr, width, height)
-			gears.shape.partially_rounded_rect(
-				cr,
-				width,
-				height,
-				true,
-				true,
-				true,
-				true,
-				beautiful.notif_center_box_radius
-			)
+			gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.border_radius)
 		end,
 		widget = wibox.container.background,
 	})
@@ -123,16 +114,7 @@ notifbox_box = function(notif, icon, title, message, app, bgcolor)
 	local notifbox = wibox.widget({
 		notifbox_template,
 		shape = function(cr, width, height)
-			gears.shape.partially_rounded_rect(
-				cr,
-				width,
-				height,
-				true,
-				true,
-				true,
-				true,
-				beautiful.notif_center_box_radius
-			)
+			gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, beautiful.border_radius)
 		end,
 		widget = wibox.container.background,
 	})

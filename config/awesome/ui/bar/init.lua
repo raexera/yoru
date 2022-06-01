@@ -55,7 +55,7 @@ awful.screen.connect_for_each_screen(function(s)
 	local layoutbox = wibox.widget({
 		{
 			s.mylayoutbox,
-			margins = { top = dpi(10), bottom = dpi(10), left = dpi(8), right = dpi(8) },
+			margins = dpi(9),
 			widget = wibox.container.margin,
 		},
 		widget = clickable_container,
@@ -84,7 +84,7 @@ awful.screen.connect_for_each_screen(function(s)
 	local control_center_toggle = wibox.widget({
 		{
 			s.control_center_toggle,
-			margins = dpi(3),
+			margins = { top = dpi(2), bottom = dpi(2), left = dpi(3), right = dpi(3) },
 			widget = wibox.container.margin,
 		},
 		widget = clickable_container,
@@ -143,7 +143,7 @@ awful.screen.connect_for_each_screen(function(s)
 				{
 					s.dashboard_toggle,
 					s.mytaglist,
-					spacing = dpi(10),
+					spacing = dpi(5),
 					layout = wibox.layout.fixed.horizontal,
 				},
 				clock,
@@ -159,7 +159,6 @@ awful.screen.connect_for_each_screen(function(s)
 					s.github_activity,
 					control_center_toggle,
 					layoutbox,
-					spacing = dpi(5),
 					layout = wibox.layout.fixed.horizontal,
 				},
 			},

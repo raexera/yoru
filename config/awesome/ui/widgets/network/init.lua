@@ -14,7 +14,7 @@ local return_button = function()
 			text = "",
 			align = "center",
 			valign = "center",
-			font = beautiful.icon_font .. "Round 19",
+			font = beautiful.icon_font .. "Round 20",
 			widget = wibox.widget.textbox,
 		},
 		layout = wibox.layout.align.horizontal,

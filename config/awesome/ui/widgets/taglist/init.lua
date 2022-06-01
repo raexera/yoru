@@ -11,9 +11,9 @@ rubato.set_def_rate(60)
 
 --- useful color constants
 local ia_rgb = color.color({ hex = beautiful.xcolor8, disable_hsl = true }) --inactive color
-local a_rgb = color.color({ hex = beautiful.accent, disable_hsl = true }) --active color
-local u_rgb = color.color({ hex = beautiful.xcolor1, disable_hsl = true }) --urgent color
-local s_rgb = color.color({ hex = beautiful.xforeground, disable_hsl = true }) --slidey color
+local a_rgb = color.color({ hex = beautiful.xforeground, disable_hsl = true }) --active color
+local u_rgb = color.color({ hex = beautiful.accent, disable_hsl = true }) --urgent color
+local s_rgb = color.color({ hex = beautiful.accent, disable_hsl = true }) --slidey color
 
 -- Calculate the diff in colors for some stuff later on
 local diff = {}
@@ -280,7 +280,7 @@ function get_taglist(s)
 			},
 			bg = beautiful.widget_bg,
 			shape = function(cr, width, height)
-				return gears.shape.rounded_rect(cr, width, height, dpi(3))
+				return gears.shape.rounded_rect(cr, width, height, dpi(4))
 			end,
 			shape_clip = true,
 			layout = wibox.container.background,
