@@ -207,6 +207,21 @@ Setup:
 </details>
 
 <details>
+<summary><b>GTK Theme</b></summary>
+
+Setup:
+Copy the gtk folder to your themes folder
+  ```sh
+  cp -rf misc/themes/* ~/.themes/
+  ```
+or
+ ```sh
+ sudo cp -rf misc/themes/* /usr/share/themes/
+ ``` 
+
+</details>
+
+<details>
 <summary><b>Touchpad tap-to-click & natural (reverse) scrolling (<a href="https://wiki.archlinux.org/title/Libinput#Tapping_button_re-mapping">libinput</a>)</b></summary>
 
 `/etc/X11/xorg.conf.d/30-touchpad.conf`
