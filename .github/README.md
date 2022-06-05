@@ -183,7 +183,7 @@ And run this command for your system to detect the newly installed fonts.
 ## :four_leaf_clover: ‎ <samp>Miscellaneous</samp>
 
 <details>
-<summary><b>VSCode Themes</b></summary>
+<summary><b>VSCode Theme</b></summary>
 
 <a href="#--------">
    <img src="https://user-images.githubusercontent.com/93292023/170319552-a42b920d-9f59-44d9-a9ad-b3aeed55bf6a.png" alt="VSCode Preview" width="500px">
@@ -209,15 +209,21 @@ Setup:
 <details>
 <summary><b>GTK Theme</b></summary>
 
+<a href="#--------">
+   <img src="https://user-images.githubusercontent.com/93292023/172054111-51b8e48f-d558-45da-8480-73e574fee6dc.png" alt="gtk theme preview" width="500px">
+</a>
+
+:sparkles: ‎ <samp>Aesthetic-Dark gtk theme</samp>
+
 Setup:
-Copy the gtk folder to your themes folder
-  ```sh
-  cp -rf misc/themes/* ~/.themes/
-  ```
-or
- ```sh
- sudo cp -rf misc/themes/* /usr/share/themes/
- ``` 
+
+   ```sh
+   cp -rf misc/themes/* ~/.themes/
+   # or to /usr/share/themes
+   sudo cp -rf misc/themes/* /usr/share/themes/
+   ``` 
+
+to apply the theme can use [lxappearance](https://archlinux.org/packages/community/x86_64/lxappearance)
 
 </details>
 
