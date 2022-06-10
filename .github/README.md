@@ -304,6 +304,7 @@ Thanks from the bottom of my heart! ‎ :heartpulse:
       - [`ChocolateBread799`](https://github.com/ChocolateBread799)
       - [`janleigh`](https://github.com/janleigh)
       - [`rototrash`](https://github.com/rototrash)
+      - [`Deathemonic`](https://github.com/Deathemonic)
 
    + *And for them, ofc.*
       - [`elenapan`](https://github.com/elenapan)
