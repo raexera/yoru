@@ -223,7 +223,7 @@ Setup:
    sudo cp -rf misc/themes/* /usr/share/themes/
    ``` 
 
-to apply the theme can use [lxappearance](https://archlinux.org/packages/community/x86_64/lxappearance)
+to apply the theme can use ~~[lxappearance](https://archlinux.org/packages/community/x86_64/lxappearance)~~ [](https://archlinux.org/packages/community/x86_64/lxappearance-gtk3)
 
 </details>
 
