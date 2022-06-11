@@ -223,7 +223,7 @@ Setup:
    sudo cp -rf misc/themes/* /usr/share/themes/
    ``` 
 
-to apply the theme can use [lxappearance](https://archlinux.org/packages/community/x86_64/lxappearance)
+to apply the theme can use ~~[lxappearance](https://archlinux.org/packages/community/x86_64/lxappearance)~~ [](https://archlinux.org/packages/community/x86_64/lxappearance-gtk3)
 
 </details>
 
@@ -310,6 +310,7 @@ Thanks from the bottom of my heart! ‎ :heartpulse:
       - [`ChocolateBread799`](https://github.com/ChocolateBread799)
       - [`janleigh`](https://github.com/janleigh)
       - [`rototrash`](https://github.com/rototrash)
+      - [`Deathemonic`](https://github.com/Deathemonic)
 
    + *And for them, ofc.*
       - [`elenapan`](https://github.com/elenapan)
