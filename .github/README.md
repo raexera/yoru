@@ -198,7 +198,7 @@ Setup:
     - [Carbon Product Icons](https://marketplace.visualstudio.com/items?itemName=antfu.icons-carbon)
 
     note: You can use any themes, but some of the colors will be overwritten by mine
-2. copy config file
+2. Copy config file
     ```sh
     cp misc/vscode/User/settings.json ~/.config/Code/User
 
@@ -217,13 +217,19 @@ Setup:
 
 Setup:
 
+1. Copy the themes to the themes folders
    ```sh
-   cp -rf misc/themes/* ~/.themes/
-   # or to /usr/share/themes
-   sudo cp -rf misc/themes/* /usr/share/themes/
+   sudo cp misc/themes/Aethetic-Night.tar.xz /usr/share/themes
+   # or: cp misc/themes/Aethetic-Night.tar.xz ~/.themes
+   cp misc/themes/Aethetic-Night-GTK4.tar.xz ~/.config/gtk-4.0
    ``` 
+2. Extract the themes using tar
+   ```sh
+   sudo tar -xf /usr/themes/Aethetic-Night.tar.xz
+   tar -xf ~/.config/gtk-4.0/Aethetic-Night-GTK4.tar.xz
+   ```
 
-to apply the theme can use ~~[lxappearance](https://archlinux.org/packages/community/x86_64/lxappearance)~~ [](https://archlinux.org/packages/community/x86_64/lxappearance-gtk3)
+To apply the theme use ~~[lxappearance](https://archlinux.org/packages/community/x86_64/lxappearance)~~ [lxappearance-gtk3](https://archlinux.org/packages/community/x86_64/lxappearance-gtk3)
 
 </details>
 
