@@ -219,14 +219,12 @@ Setup:
 
 1. Copy the themes to the themes folders
    ```sh
-   sudo cp misc/themes/Aethetic-Night.tar.xz /usr/share/themes
-   # or: cp misc/themes/Aethetic-Night.tar.xz ~/.themes
-   cp misc/themes/Aethetic-Night-GTK4.tar.xz ~/.config/gtk-4.0
+   sudo cp -rf misc/themes/Aesthetic-Night/* /usr/share/themes
+   cp -rf misc/themes/Aesthetic-Night-GTK4/* ~/.config/gtk-4.0
    ``` 
-2. Extract the themes using tar
+2. Add this line on ``~/.config/gtk-3.0/settings.ini`` for left controls
    ```sh
-   sudo tar -xf /usr/themes/Aethetic-Night.tar.xz
-   tar -xf ~/.config/gtk-4.0/Aethetic-Night-GTK4.tar.xz
+   gtk-decoration-layout=close,maximize,minimize:menu
    ```
 
 To apply the theme use ~~[lxappearance](https://archlinux.org/packages/community/x86_64/lxappearance)~~ [lxappearance-gtk3](https://archlinux.org/packages/community/x86_64/lxappearance-gtk3)
