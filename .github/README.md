@@ -210,7 +210,7 @@ Setup:
 <summary><b>GTK Theme</b></summary>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/93292023/172054111-51b8e48f-d558-45da-8480-73e574fee6dc.png" alt="gtk theme preview" width="500px">
+   <img src="https://user-images.githubusercontent.com/65948476/174463073-0e29c646-6775-420d-8c9f-46276aa4443e.png" alt="gtk theme preview" width="500px">
 </a>
 
 :sparkles: ‎ <samp>Aesthetic-Dark gtk theme</samp>
