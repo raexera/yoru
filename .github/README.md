@@ -232,6 +232,22 @@ To apply the theme use ~~[lxappearance](https://archlinux.org/packages/community
 </details>
 
 <details>
+<summary><b>Kvantum Theme</b></summary>
+
+:sparkles: ‎ <samp>Aesthetic-Night kvantum theme</samp>
+
+Setup:
+
+Copy the themes to the themes folders
+   ```sh
+   sudo cp -rf misc/themes/kvantum ~/.themes
+   ``` 
+
+Apply the theme using the [kvantum engine](https://archlinux.org/packages/community/x86_64/kvantum/), the theme folder is under ``~/.themes/kvantum/Aesthetic-Night``
+
+</details>
+
+<details>
 <summary><b>Touchpad tap-to-click & natural (reverse) scrolling (<a href="https://wiki.archlinux.org/title/Libinput#Tapping_button_re-mapping">libinput</a>)</b></summary>
 
 `/etc/X11/xorg.conf.d/30-touchpad.conf`
