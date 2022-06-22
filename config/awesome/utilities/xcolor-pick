@@ -25,7 +25,7 @@ main() {
     COLOR_CODE="$HEX_COLOR"
 
     printf %s "$COLOR_CODE" | xclip -sel c
-        notify-send -a XColor --icon="$FNAME" xcolor-pick "$COLOR_CODE" --expire-time="$EXPIRE_TIME"
+        notify-send -a "Color Picker" --icon="$FNAME" xcolor-pick "$COLOR_CODE" --expire-time="$EXPIRE_TIME"
 }
 
 main

@@ -1,92 +1,99 @@
 configuration {
-	font:							"Iosevka Bold 9";
+    font:           				"Roboto Medium 10";
     show-icons:                     true;
-	icon-theme: 					"Papirus-Dark";
+	icon-theme: 					"WhiteSur-dark";
     display-drun: 					"";
-    drun-display-format:            "{name}";
+    drun-display-format:            "{icon} {name}";
     disable-history:                false;
 	sidebar-mode: 					false;
+	click-to-exit: 					true;
+    location:                       6;
 }
 
 * {
-    background:                     #0A1419;
-    background-alt:              	#061115;
-    background-bar:                 #162026;
-    foreground:                     #d9d7d6;
-    accent:			            	#6791C9;
+    BG:                             #06111599;
+    BGA:                            #061115;
+    FG:                             #D9D7D6ff;
+    UGT:                            #DF5B61ff;
 }
 
 window {
     transparency:                   "real";
-    background-color:               @background;
-    text-color:                     @foreground;
-	border:							0px;
-	border-color:					@border;
-    border-radius:                  0px;
-	width:							40%;
-    location:                       center;
+    background-color:               @BG;
+    text-color:                     @FG;
+    border-radius:                  8px;
+    width:                          700px;
     x-offset:                       0;
-    y-offset:                       0;
+    y-offset:                       -45px;
 }
 
 prompt {
     enabled: 						true;
-	padding: 						0 1% -0.8% 0;
-	background-color: 				inherit;
-	text-color: 					@foreground;
-	font:							"Material Icons 20";
+	background-color: 				@BG;
+	text-color: 					@FG;
+}
+
+textbox-prompt-colon {
+	expand: 						false;
+	str: 							"";
+    background-color:               @BGA;
+    text-color:                     @FG;
+    padding:                        10px 0px 0px 12px;
+	font:							"Material Icons Round 16";
 }
 
 entry {
-    background-color:               inherit;
-    text-color:                     @foreground;
-    placeholder-color:              @foreground;
+    background-color:               @BGA;
+    text-color:                     @FG;
+    placeholder-color:              @FG;
     expand:                         true;
     horizontal-align:               0;
-    placeholder:                    "Search";
-    padding:                        0.5% 0 0 0;
+    placeholder:                    "Type here to search";
+    font:							"Roboto Bold 12";
     blink:                          true;
-    font:                           "Iosevka Bold 12";
+    padding:                        10px;
 }
 
 inputbar {
-	children: 						[ prompt, entry ];
-    background-color:               @background-bar;
-    text-color:                     @foreground;
+	children: 						[ textbox-prompt-colon, entry ];
+    spacing:                        0px;
+    background-color:               @BGA;
+    text-color:                     @FG;
     expand:                         false;
-	border:							0% 0% 0% 0%;
-    border-radius:                  10px;
-	border-color:					@accent;
-    margin:                         0% 0% 0% 0%;
-    padding:                        1.5%;
+    border-radius:                  8px;
+    position:                       center;
 }
 
+case-indicator {
+    background-color:               @BG;
+    text-color:                     @FG;
+    spacing:                        0;
+}
+
+
 listview {
-    background-color:               @background-alt;
+    background-color:               #00000000;
     columns:                        5;
-    lines:                          5;
-    spacing:                        0%;
+    lines:							5;
+    spacing:                        4px;
     cycle:                          false;
     dynamic:                        true;
     layout:                         vertical;
 }
 
 mainbox {
-    background-color:               @background-alt;
-	border:							0% 0% 0% 0%;
-    border-radius:                  0% 0% 0% 0%;
-	border-color:					@accent;
+    background-color:               @BG;
     children:                       [ inputbar, listview ];
-    spacing:                       	2%;
-    padding:                        2% 1% 2% 1%;
+    spacing:                       	40px;
+    padding:                        30px;
 }
 
 element {
-    background-color:               @background-alt;
-    text-color:                     @foreground;
+    background-color:               #00000000;
+    text-color:                     @FG;
     orientation:                    vertical;
-    border-radius:                  0%;
-    padding:                        2% 0% 2% 0%;
+    border-radius:                  8px;
+    padding:                        20px;
 }
 
 element-icon {
@@ -95,7 +102,6 @@ element-icon {
     horizontal-align:               0.5;
     vertical-align:                 0.5;
     size:                           48px;
-    border:                         0px;
 }
 
 element-text {
@@ -104,14 +110,33 @@ element-text {
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
-    margin:                         0.5% 0.5% -0.5% 0.5%;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    background-color:               @UGT;
+    text-color:                     @FG;
+    border-radius:                  8px;
+}
+
+element normal.active,
+element alternate.active {
+    background-color:               @BGA;
+    text-color:                     @FG;
 }
 
 element selected {
-    background-color:               @background-bar;
-    text-color:                     @foreground;
-	border:							0% 0% 0% 0%;
-    border-radius:                  10px;
-    border-color:                  	@accent;
+    background-color:               @BGA;
+    text-color:                     @FG;
+    border-radius:                  8px;
 }
 
+element selected.urgent {
+    background-color:               @UGT;
+    text-color:                     @FG;
+}
+
+element selected.active {
+    background-color:               @BGA;
+    color:                          @FG;
+}

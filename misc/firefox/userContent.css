@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@namespace url("http://www.w3.org/1999/xhtml");
+
+:root {
+  scrollbar-color: #162026 #061115;
+}
+
+* {
+  scrollbar-width: medium;
+}
+
+@-moz-document url("about:sessionrestore") {
+  * {
+    font-family: "Roboto", sans-serif !important;
+  }
+
+  body {
+    background-color: #061115 !important;
+  }
+
+  #tabsToggle {
+    display: none;
+  }
+
+  html|button:enabled:hover,
+  html|select:not([size], [multiple]):enabled:hover,
+  html|input[type="color"]:hover,
+  xul|button:not([disabled="true"]):hover,
+  xul|menulist:not([disabled="true"]):hover {
+    border-color: #000a0e !important;
+    background-color: #0d181c !important;
+  }
+
+  html|button[autofocus],
+  html|button[type="submit"],
+  xul|button[default],
+  button.primary {
+    border-color: #000a0e !important;
+    background-color: #6791c9 !important;
+  }
+}
+
+@-moz-document url("about:newtab"), url("about:home") {
+  * {
+    font-family: "Roboto", sans-serif !important;
+  }
+
+  body {
+    background-color: #061115 !important;
+  }
+
+  .SnippetBaseContainer {
+    display: none !important;
+  }
+
+  .search-handoff-button {
+    border-radius: 12px !important;
+    border-width: 2px !important;
+    border-color: #000a0e !important;
+    background-size: 0px !important;
+    background-color: #0d181c !important;
+    padding-inline-start: 10px !important;
+    padding-inline-end: 10px !important;
+  }
+
+  .icon-settings {
+    display: none !important;
+  }
+
+  .fake-textbox {
+    text-align: center !important;
+  }
+
+  .search-wrapper input {
+    background-color: #0d181c !important;
+    border-radius: 0px !important;
+    background-image: none !important;
+    background-size: none !important;
+    text-align: center !important;
+    font-size: 17px !important;
+    padding-inline-start: 10px !important;
+    padding-inline-end: 10px !important;
+  }
+
+  .search-wrapper input:focus {
+    text-align: left !important;
+  }
+
+  .body-wrapper {
+    display: none !important;
+  }
+}

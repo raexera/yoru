@@ -79,7 +79,7 @@ function shot() {
 		app_name = 'Screenshot Tool',
 		icon = '${file_loc}',
 		timeout = 10,
-		title = '<b>Screensht!</b>',
+		title = 'Screensht!',
 		message = '${notif_message}',
 		actions = { open_image, delete_image }
 	})

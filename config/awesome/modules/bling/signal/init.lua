@@ -1,0 +1,3 @@
+return {
+    playerctl = require(... .. ".playerctl"),
+}
