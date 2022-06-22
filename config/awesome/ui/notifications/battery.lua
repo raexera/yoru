@@ -14,7 +14,7 @@ awesome.connect_signal("signal::battery", function(percentage, state)
 	if value <= 15 and display_low and state == 2 then
 		naughty.notification({
 			title = "Battery Status",
-			text = "Running low at " .. value .. "%",
+			text = "Running low at " .. math.floor(value) .. "%",
 			app_name = "AwesomeWM",
 			image = gears.color.recolor_image(icons.battery_low, beautiful.xcolor1),
 		})

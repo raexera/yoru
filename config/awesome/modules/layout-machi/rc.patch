@@ -1,0 +1,38 @@
+--- /usr/etc/xdg/awesome/rc.lua	2019-10-02 22:20:36.000000000 -0400
++++ rc.lua	2019-10-06 12:13:41.090197230 -0400
+@@ -17,6 +17,7 @@
+ -- Enable hotkeys help widget for VIM and other apps
+ -- when client with a matching name is opened:
+ require("awful.hotkeys_popup.keys")
++local machi = require("layout-machi")
+ 
+ -- {{{ Error handling
+ -- Check if awesome encountered an error during startup and fell back to
+@@ -34,6 +35,8 @@
+ -- Themes define colours, icons, font and wallpapers.
+ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+ 
++beautiful.layout_machi = machi.get_icon()
++
+ -- This is used later as the default terminal and editor to run.
+ terminal = "xterm"
+ editor = os.getenv("EDITOR") or "nano"
+@@ -48,6 +51,7 @@
+ 
+ -- Table of layouts to cover with awful.layout.inc, order matters.
+ awful.layout.layouts = {
++    machi.default_layout,
+     awful.layout.suit.floating,
+     awful.layout.suit.tile,
+     awful.layout.suit.tile.left,
+@@ -262,6 +266,10 @@
+     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+               {description = "quit awesome", group = "awesome"}),
+ 
++    awful.key({ modkey,           }, ".",    function () machi.default_editor.start_interactive() end,
++              {description = "edit the current layout if it is a machi layout", group = "layout"}),
++    awful.key({ modkey,           }, "/",    function () machi.switcher.start(client.focus) end,
++              {description = "switch between windows for a machi layout", group = "layout"}),
+     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+               {description = "increase master width factor", group = "layout"}),
+     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
