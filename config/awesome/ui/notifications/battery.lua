@@ -10,18 +10,18 @@ local display_charge = true
 awesome.connect_signal("signal::battery", function(percentage, state)
 	local value = percentage
 
-	-- only display message if its not charging and low
+	--- only display message if its not charging and low
 	if value <= 15 and display_low and state == 2 then
 		naughty.notification({
 			title = "Battery Status",
-			text = "Running low at " .. value .. "%",
+			text = "Running low at " .. math.floor(value) .. "%",
 			app_name = "AwesomeWM",
 			image = gears.color.recolor_image(icons.battery_low, beautiful.xcolor1),
 		})
 		display_low = false
 	end
 
-	-- only display message once if its fully charged and high
+	--- only display message once if its fully charged and high
 	if display_high and state == 4 and value > 90 then
 		naughty.notification({
 			title = "Battery Status",
@@ -32,7 +32,7 @@ awesome.connect_signal("signal::battery", function(percentage, state)
 		display_high = false
 	end
 
-	-- only display once if charging
+	--- only display once if charging
 	if display_charge and state == 1 then
 		naughty.notification({
 			title = "Battery Status",

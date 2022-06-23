@@ -1,15 +1,14 @@
-local gears = require("gears")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local ruled = require("ruled")
 local helpers = require("helpers")
 
--- Get screen geometry
+--- Get screen geometry
 local screen_width = awful.screen.focused().geometry.width
 local screen_height = awful.screen.focused().geometry.height
 
 ruled.client.connect_signal("request::rules", function()
-	-- Global
+	--- Global
 	ruled.client.append_rule({
 		id = "global",
 		rule = {},
@@ -26,7 +25,7 @@ ruled.client.connect_signal("request::rules", function()
 		},
 	})
 
-	-- Tasklist order
+	--- Tasklist order
 	ruled.client.append_rule({
 		id = "tasklist_order",
 		rule = {},
@@ -34,13 +33,14 @@ ruled.client.connect_signal("request::rules", function()
 		callback = awful.client.setslave,
 	})
 
-	-- Titlebar rules
+	--- Titlebar rules
 	ruled.client.append_rule({
 		id = "titlebars",
 		rule_any = {
 			class = {
 				"Spotify",
 				"Org.gnome.Nautilus",
+				"Peek",
 			},
 		},
 		properties = {
@@ -48,12 +48,12 @@ ruled.client.connect_signal("request::rules", function()
 		},
 	})
 
-	-- Float
+	--- Float
 	ruled.client.append_rule({
 		id = "floating",
 		rule_any = {
 			instance = {
-				"Devtools", -- Firefox devtools
+				"Devtools", --- Firefox devtools
 			},
 			class = {
 				"Lxappearance",
@@ -72,10 +72,10 @@ ruled.client.connect_signal("request::rules", function()
 				"dialog",
 			},
 		},
-		properties = { floating = true, placement = helpers.centered_client_placement },
+		properties = { floating = true, placement = helpers.client.centered_client_placement },
 	})
 
-	-- Centered
+	--- Centered
 	ruled.client.append_rule({
 		id = "centered",
 		rule_any = {
@@ -83,17 +83,17 @@ ruled.client.connect_signal("request::rules", function()
 				"dialog",
 			},
 			class = {
-				-- "discord",
+				--- "discord",
 			},
 			role = {
 				"GtkFileChooserDialog",
 				"conversation",
 			},
 		},
-		properties = { placement = helpers.centered_client_placement },
+		properties = { placement = helpers.client.centered_client_placement },
 	})
 
-	-- Music clients (usually a terminal running ncmpcpp)
+	--- Music clients (usually a terminal running ncmpcpp)
 	ruled.client.append_rule({
 		rule_any = {
 			class = {
@@ -105,13 +105,13 @@ ruled.client.connect_signal("request::rules", function()
 		},
 		properties = {
 			floating = true,
-			width = screen_width * 0.34,
-			height = screen_height * 0.32,
-			placement = helpers.centered_client_placement,
+			width = screen_width * 0.40,
+			height = screen_height * 0.42,
+			placement = helpers.client.centered_client_placement,
 		},
 	})
 
-	-- Image viewers
+	--- Image viewers
 	ruled.client.append_rule({
 		rule_any = {
 			class = {
@@ -126,34 +126,6 @@ ruled.client.connect_signal("request::rules", function()
 		},
 		callback = function(c)
 			awful.placement.centered(c, { honor_padding = true, honor_workarea = true })
-		end,
-	})
-
-	-- Mpv
-	ruled.client.append_rule({
-		rule = { class = "mpv" },
-		properties = {},
-		callback = function(c)
-			-- make it floating, ontop and move it out of the way if the current tag is maximized
-			if awful.layout.get(awful.screen.focused()) == awful.layout.suit.floating then
-				c.floating = true
-				c.ontop = true
-				c.width = screen_width * 0.30
-				c.height = screen_height * 0.35
-				awful.placement.bottom_right(c, {
-					honor_padding = true,
-					honor_workarea = true,
-					margins = { bottom = beautiful.useless_gap * 2, right = beautiful.useless_gap * 2 },
-				})
-				awful.titlebar.hide(c, beautiful.titlebar_pos)
-			end
-
-			-- restore `ontop` after fullscreen is disabled
-			c:connect_signal("property::fullscreen", function()
-				if not c.fullscreen then
-					c.ontop = true
-				end
-			end)
 		end,
 	})
 end)

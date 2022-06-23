@@ -2,197 +2,151 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
+local dpi = beautiful.xresources.apply_dpi
 local helpers = require("helpers")
+local decorations = require("ui.decorations")
 
-local button_commands = {
-	["close"] = {
-		fun = function(c)
-			c:kill()
-		end,
-		track_property = nil,
-	},
-	["minimize"] = {
-		fun = function(c)
-			c.minimized = true
-		end,
-	},
-	["maximize"] = {
-		fun = function(c)
-			c.maximized = not c.maximized
-			c:raise()
-		end,
-		track_property = "maximized",
-	},
-	["floating"] = {
-		fun = function(c)
-			c.floating = not c.floating
-			c:raise()
-		end,
-		track_property = "floating",
-	},
-}
+--- MacOS like window decorations
+--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-local double_click_event_handler = function(double_click_event)
-	if double_click_timer then
-		double_click_timer:stop()
-		double_click_timer = nil
-		double_click_event()
-		return
-	end
-	double_click_timer = gears.timer.start_new(0.20, function()
-		double_click_timer = nil
-		return false
-	end)
-end
+--- Disable this if using `picom` to round your corners
+--- decorations.enable_rounding()
 
-local create_click_events = function(c)
-	-- Titlebar button/click events
-	local buttons = gears.table.join(
-		awful.button({}, 1, function()
-			double_click_event_handler(function()
-				if c.floating then
-					c.floating = false
-					return
-				end
-				c.maximized = not c.maximized
-				c:raise()
-				return
-			end)
-			c:activate({ context = "titlebar", action = "mouse_move" })
-		end),
-		awful.button({}, 3, function()
-			c:activate({ context = "titlebar", action = "mouse_resize" })
-		end)
+local button_size = dpi(16)
+local button_margin = { top = dpi(2), bottom = dpi(2), left = dpi(5), right = dpi(5) }
+local button_color_unfocused = beautiful.xcolor8
+local button_shape = gears.shape.circle
+
+local function close(c)
+	return decorations.button(
+		c,
+		button_shape,
+		beautiful.xcolor1,
+		button_color_unfocused,
+		beautiful.xcolor9,
+		button_size,
+		button_margin,
+		"close"
 	)
-	return buttons
 end
 
-local function create_titlebar_button(c, shape, color, unfocused_color, hover_color, cmd)
-	local button = wibox.widget({
-		forced_width = dpi(12),
-		forced_height = dpi(12),
-		bg = (client.focus and c == client.focus) and color or unfocused_color,
-		shape = shape,
+local function minimize(c)
+	return decorations.button(
+		c,
+		button_shape,
+		beautiful.xcolor3,
+		button_color_unfocused,
+		beautiful.xcolor11,
+		button_size,
+		button_margin,
+		"minimize"
+	)
+end
+
+local function maximize(c)
+	return decorations.button(
+		c,
+		button_shape,
+		beautiful.xcolor2,
+		button_color_unfocused,
+		beautiful.xcolor10,
+		button_size,
+		button_margin,
+		"maximize"
+	)
+end
+
+--- Add a titlebar if titlebars_enabled is set to true in the rules.
+client.connect_signal("request::titlebars", function(c)
+	awful.titlebar(
+		c,
+		{ position = "top", size = dpi(38), font = beautiful.font_name .. "Medium 10", bg = beautiful.transparent }
+	):setup({
+		{
+			layout = wibox.layout.align.horizontal,
+			{ --- Left
+				{
+					close(c),
+					minimize(c),
+					maximize(c),
+					--- Create some extra padding at the edge
+					helpers.ui.horizontal_pad(dpi(5)),
+					layout = wibox.layout.fixed.horizontal,
+				},
+				left = dpi(10),
+				widget = wibox.container.margin,
+			},
+			{ --- Middle
+				{ --- Title
+					align = "center",
+					font = beautiful.font_name .. "Medium 10",
+					widget = awful.titlebar.widget.titlewidget(c),
+					buttons = {
+						--- Move client
+						awful.button({
+							modifiers = {},
+							button = 1,
+							on_press = function()
+								c.maximized = false
+								c:activate({ context = "mouse_click", action = "mouse_move" })
+							end,
+						}),
+
+						--- Kill client
+						awful.button({
+							modifiers = {},
+							button = 2,
+							on_press = function()
+								c:kill()
+							end,
+						}),
+
+						--- Resize client
+						awful.button({
+							modifiers = {},
+							button = 3,
+							on_press = function()
+								c.maximized = false
+								c:activate({ context = "mouse_click", action = "mouse_resize" })
+							end,
+						}),
+
+						--- Side button up
+						awful.button({
+							modifiers = {},
+							button = 9,
+							on_press = function()
+								c.floating = not c.floating
+							end,
+						}),
+
+						--- Side button down
+						awful.button({
+							modifiers = {},
+							button = 8,
+							on_press = function()
+								c.ontop = not c.ontop
+							end,
+						}),
+					},
+				},
+				layout = wibox.layout.flex.horizontal,
+			},
+			--- Right
+			nil,
+		},
+		bg = beautiful.titlebar_bg,
+		shape = helpers.ui.prrect(beautiful.border_radius, true, true, false, false),
 		widget = wibox.container.background,
 	})
 
-	button:buttons(gears.table.join(awful.button({}, 1, function()
-		button_commands[cmd].fun(c)
-	end)))
-
-	local p = button_commands[cmd].track_property
-	-- Track client property if needed
-	if p then
-		c:connect_signal("property::" .. p, function()
-			button.bg = c[p] and color .. "40" or color
-		end)
-		c:connect_signal("focus", function()
-			button.bg = c[p] and color .. "40" or color
-		end)
-		button:connect_signal("mouse::leave", function()
-			if c == client.focus then
-				button.bg = c[p] and color .. "40" or color
-			else
-				button.bg = unfocused_color
-			end
-		end)
-	else
-		button:connect_signal("mouse::leave", function()
-			if c == client.focus then
-				button.bg = color
-			else
-				button.bg = unfocused_color
-			end
-		end)
-		c:connect_signal("focus", function()
-			button.bg = color
-		end)
-	end
-
-	button:connect_signal("mouse::enter", function()
-		button.bg = hover_color
-	end)
-
-	c:connect_signal("unfocus", function()
-		button.bg = unfocused_color
-	end)
-
-	return button
-end
-
--- Add a titlebar if titlebars_enabled is set to true in the rules.
-client.connect_signal("request::titlebars", function(c)
-	-- buttons for the titlebar
-	local close = create_titlebar_button(
-		c,
-		gears.shape.circle,
-		beautiful.xcolor1,
-		beautiful.titlebar_color_unfocused,
-		beautiful.xcolor9,
-		"close"
-	)
-
-	local minimize = create_titlebar_button(
-		c,
-		gears.shape.circle,
-		beautiful.xcolor3,
-		beautiful.titlebar_color_unfocused,
-		beautiful.xcolor11,
-		"minimize"
-	)
-
-	local maximize = create_titlebar_button(
-		c,
-		gears.shape.circle,
-		beautiful.xcolor2,
-		beautiful.titlebar_color_unfocused,
-		beautiful.xcolor10,
-		"maximize"
-	)
-
-	local floating = create_titlebar_button(
-		c,
-		gears.shape.circle,
-		beautiful.xcolor4,
-		beautiful.titlebar_color_unfocused,
-		beautiful.xcolor12,
-		"floating"
-	)
-
-	-- Titlebars setup
-	--------------------
-	awful.titlebar(c, { position = "left", size = dpi(36), bg = beautiful.transparent }):setup({
-		{
-			layout = wibox.layout.align.vertical,
-			{
-				{
-					close,
-					minimize,
-					maximize,
-					spacing = dpi(10),
-					layout = wibox.layout.fixed.vertical,
-				},
-				margins = dpi(10),
-				widget = wibox.container.margin,
-			},
-			{
-				buttons = create_click_events(c),
-				layout = wibox.layout.flex.vertical,
-			},
-			{
-				{
-					floating,
-					spacing = dpi(10),
-					layout = wibox.layout.fixed.vertical,
-				},
-				margins = dpi(10),
-				widget = wibox.container.margin,
-			},
-		},
+	awful.titlebar(c, {
+		position = "bottom",
+		size = dpi(19),
+		bg = beautiful.transparent,
+	}):setup({
 		bg = beautiful.titlebar_bg,
-		shape = helpers.prrect(beautiful.border_radius, true, false, false, true),
+		shape = helpers.ui.prrect(beautiful.border_radius, false, false, true, true),
 		widget = wibox.container.background,
 	})
 end)

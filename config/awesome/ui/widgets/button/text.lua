@@ -4,10 +4,10 @@
 -------------------------------------------
 
 local gtable = require("gears.table")
-local twidget = require("presentation.ui.widgets.text")
-local ewidget = require("presentation.ui.widgets.button.elevated")
+local twidget = require("ui.widgets.text")
+local ewidget = require("ui.widgets.button.elevated")
 local beautiful = require("beautiful")
-local animation = require("services.animation")
+local animation = require("modules.animation")
 local helpers = require("helpers")
 local setmetatable = setmetatable
 local math = math
@@ -35,9 +35,9 @@ function text_button:set_text(text)
 end
 
 local function effect(widget, text_bg)
-    if text_bg ~= nil then
+	if text_bg ~= nil then
 		widget.text_animation:set(helpers.color.hex_to_rgb(text_bg))
-    end
+	end
 end
 
 local function button(args, type)
@@ -46,37 +46,35 @@ local function button(args, type)
 	args.color = args.text_normal_bg
 	local text_widget = twidget(args)
 
-    args.child = text_widget
-    local widget = type == "normal" and ewidget.normal(args) or ewidget.state(args)
+	args.child = text_widget
+	local widget = type == "normal" and ewidget.normal(args) or ewidget.state(args)
 
-    gtable.crush(widget, text_button, true)
+	gtable.crush(widget, text_button, true)
 	widget._private.text = text_widget
 
-	widget.text_animation = animation:new
-	{
+	widget.text_animation = animation:new({
 		pos = helpers.color.hex_to_rgb(args.text_normal_bg),
 		easing = animation.easing.linear,
 		duration = 0.2,
 		update = function(self, pos)
 			text_widget:set_color(helpers.color.rgb_to_hex(pos))
-		end
-	}
+		end,
+	})
 
-	widget.size_animation = animation:new
-	{
+	widget.size_animation = animation:new({
 		pos = args.size,
 		easing = animation.easing.linear,
 		duration = 0.2,
 		update = function(self, pos)
 			text_widget:set_size(pos)
-		end
-	}
+		end,
+	})
 
 	return widget, text_widget
 end
 
 function text_button.state(args)
-    args = args or {}
+	args = args or {}
 
 	args.text_normal_bg = args.text_normal_bg or beautiful.random_accent_color()
 	args.text_hover_bg = args.text_hover_bg or helpers.color.button_color(args.text_normal_bg, 0.1)
