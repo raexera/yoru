@@ -320,11 +320,11 @@ EndSection
 
 | <b>Lockscreen with [PAM Integration](https://github.com/RMTT/lua-pam)</b>                                   |
 | ----------------------------------------------------------------------------------------------------------- |
-| <a href="#--------"><img src="assets/lockscreen.png" width="500px" alt="word clock lockscreen preview"></a> |
+| <a href="#--------"><img src="assets/lockscreen.gif" width="500px" alt="word clock lockscreen preview"></a> |
 
 | <b>Minimalist Exitscreen</b>                                                                     |
 | ------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="assets/exitscreen.png" width="500px" alt="exitscreen preview"></a> |
+| <a href="#--------"><img src="assets/exitscreen.gif" width="500px" alt="exitscreen preview"></a> |
 
 <!-- HISTORY -->
 
