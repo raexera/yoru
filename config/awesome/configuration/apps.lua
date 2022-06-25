@@ -8,7 +8,7 @@ return {
 		--- Default terminal emulator
 		terminal = "wezterm start --always-new-process",
 		--- Default music client
-		music_player = "wezterm start ncmpcpp --class music",
+		music_player = "wezterm start --class music ncmpcpp",
 		--- Default text editor
 		text_editor = "wezterm start nvim",
 		--- Default code editor

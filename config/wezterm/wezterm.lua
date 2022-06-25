@@ -61,7 +61,10 @@ return {
 	-- Font config
 	font = font_with_fallback(font_name),
 	font_rules = {
-		{ italic = true, font = font_with_fallback(font_name, { italic = true }) },
+		{
+			italic = true,
+			font = font_with_fallback(font_name, { italic = true }),
+		},
 		{
 			italic = true,
 			intensity = "Bold",
@@ -71,7 +74,10 @@ return {
 			intensity = "Bold",
 			font = font_with_fallback(font_name, { bold = true }),
 		},
-		{ intensity = "Half", font = font_with_fallback(font_name .. " Light") },
+		{
+			intensity = "Half",
+			font = font_with_fallback(font_name, { weight = "Light" }),
+		},
 	},
 	font_size = 11,
 	line_height = 1.0,
