@@ -99,7 +99,6 @@ local function widget()
 		widget = wibox.widget.textbox,
 		markup = "Rayhan Kafi Pratama",
 		font = beautiful.font_name .. "Bold 13",
-		align = "left",
 		valign = "center",
 	})
 
@@ -125,8 +124,7 @@ local function widget()
 	local uptime_time = wibox.widget({
 		widget = wibox.widget.textbox,
 		markup = "up 3 hours, 33 minutes",
-		font = beautiful.font_name .. "Regular 11",
-		align = "left",
+		font = beautiful.font_name .. "Regular 10",
 		valign = "center",
 	})
 
@@ -166,6 +164,7 @@ local function widget()
 						speed = 75,
 						uptime_time,
 					},
+					forced_width = dpi(180),
 					layout = wibox.layout.fixed.vertical,
 					spacing = dpi(2),
 				},

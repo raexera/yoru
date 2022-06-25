@@ -48,15 +48,13 @@ local music_art_filter = wibox.widget({
 })
 
 local music_title = wibox.widget({
-	font = beautiful.font_name .. "Regular 14",
-	align = "center",
+	font = beautiful.font_name .. "Regular 13",
 	valign = "center",
 	widget = wibox.widget.textbox,
 })
 
 local music_artist = wibox.widget({
 	font = beautiful.font_name .. "Bold 16",
-	align = "center",
 	valign = "center",
 	widget = wibox.widget.textbox,
 })
@@ -73,28 +71,25 @@ local music = wibox.widget({
 				{
 					{
 						music_text,
-						helpers.ui.vertical_pad(dpi(20)),
+						helpers.ui.vertical_pad(dpi(15)),
 						{
+
 							{
-								{
-									widget = wibox.container.scroll.horizontal,
-									step_function = wibox.container.scroll.step_functions.waiting_nonlinear_back_and_forth,
-									fps = 60,
-									speed = 75,
-									music_artist,
-								},
-								{
-									widget = wibox.container.scroll.horizontal,
-									step_function = wibox.container.scroll.step_functions.waiting_nonlinear_back_and_forth,
-									fps = 60,
-									speed = 75,
-									music_title,
-								},
-								layout = wibox.layout.fixed.vertical,
+								widget = wibox.container.scroll.horizontal,
+								step_function = wibox.container.scroll.step_functions.waiting_nonlinear_back_and_forth,
+								fps = 60,
+								speed = 75,
+								music_artist,
 							},
-							halign = "center",
-							valign = "center",
-							widget = wibox.container.place,
+							{
+								widget = wibox.container.scroll.horizontal,
+								step_function = wibox.container.scroll.step_functions.waiting_nonlinear_back_and_forth,
+								fps = 60,
+								speed = 75,
+								music_title,
+							},
+							forced_width = dpi(170),
+							layout = wibox.layout.fixed.vertical,
 						},
 						layout = wibox.layout.fixed.vertical,
 					},
