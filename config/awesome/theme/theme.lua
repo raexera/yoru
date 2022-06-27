@@ -233,7 +233,7 @@ theme.notification_bg_alt = theme.lighter_xbackground
 
 --- Notif center
 theme.notif_center_notifs_bg = theme.one_bg2
-theme.notif_center_notifs_bg_alt = theme.one_bg2
+theme.notif_center_notifs_bg_alt = theme.one_bg3
 
 --- Swallowing
 theme.dont_swallow_classname_list = {
