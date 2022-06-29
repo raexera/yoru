@@ -4,7 +4,6 @@ local dpi = beautiful.xresources.apply_dpi
 local naughty = require("naughty")
 local gears = require("gears")
 local helpers = require("helpers")
-local clickable_container = require("ui.widgets.clickable-container")
 
 local ui_notifbox_builder = {}
 
@@ -69,14 +68,11 @@ ui_notifbox_builder.notifbox_actions = function(n)
 			{
 				{
 					{
-						{
-							id = "text_role",
-							font = beautiful.font_name .. "Regular 10",
-							widget = wibox.widget.textbox,
-						},
-						widget = wibox.container.place,
+						id = "text_role",
+						font = beautiful.font_name .. "Regular 10",
+						widget = wibox.widget.textbox,
 					},
-					widget = clickable_container,
+					widget = wibox.container.place,
 				},
 				bg = beautiful.notif_center_notifs_bg_alt,
 				shape = gears.shape.rounded_rect,
@@ -90,6 +86,7 @@ ui_notifbox_builder.notifbox_actions = function(n)
 		widget = naughty.list.actions,
 	})
 
+	helpers.ui.add_hover_cursor(actions_template, "hand1")
 	return actions_template
 end
 
@@ -107,23 +104,19 @@ ui_notifbox_builder.notifbox_dismiss = function()
 		layout = wibox.layout.fixed.horizontal,
 	})
 
-	local dismiss_button = wibox.widget({
+	local notifbox_dismiss = wibox.widget({
 		{
 			dismiss_textbox,
 			margins = dpi(5),
 			widget = wibox.container.margin,
 		},
-		widget = clickable_container,
-	})
-
-	local notifbox_dismiss = wibox.widget({
-		dismiss_button,
 		visible = false,
 		bg = beautiful.notif_center_notifs_bg_alt,
 		shape = gears.shape.circle,
 		widget = wibox.container.background,
 	})
 
+	helpers.ui.add_hover_cursor(notifbox_dismiss, "hand1")
 	return notifbox_dismiss
 end
 
