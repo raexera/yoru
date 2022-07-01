@@ -20,6 +20,7 @@ local colors = {
 	darker_background = "#000a0e",
 	background = "#061115",
 	lighter_background = "#0d181c",
+	one_background = "#131e22",
 
 	-- black
 	color0 = "#1c252c",
@@ -79,7 +80,7 @@ return {
 			font = font_with_fallback(font_name, { weight = "Light" }),
 		},
 	},
-	font_size = 11,
+	font_size = 10,
 	line_height = 1.0,
 
 	-- Cursor style
@@ -93,7 +94,7 @@ return {
 	keys = {
 		{
 			key = [[\]],
-			mods = "CTRL|SHIFT",
+			mods = "CTRL|ALT",
 			action = wezterm.action({
 				SplitHorizontal = { domain = "CurrentPaneDomain" },
 			}),
@@ -229,11 +230,13 @@ return {
 		tab_bar = {
 			active_tab = {
 				bg_color = colors.background,
-				fg_color = colors.color8,
+				fg_color = colors.foreground,
 				italic = true,
 			},
-			inactive_tab = { bg_color = colors.darker_background, fg_color = colors.color8 },
-			inactive_tab_hover = { bg_color = colors.color0, fg_color = colors.background },
+			inactive_tab = { bg_color = colors.darker_background, fg_color = colors.background },
+			inactive_tab_hover = { bg_color = colors.one_background, fg_color = colors.darker_background },
+			new_tab = { bg_color = colors.one_background, fg_color = colors.darker_background },
+			new_tab_hover = { bg_color = colors.color4, fg_color = colors.darker_background },
 		},
 	},
 
