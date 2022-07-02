@@ -195,7 +195,7 @@ Log out from your current desktop session and log in into AwesomeWM
    <img src="https://user-images.githubusercontent.com/93292023/174969899-0fc0587f-72fa-4324-a884-8713981c7531.png" width="500px">
 </a>
 
-:milky_way: ‎ <samp>Aesthetic-Dark gtk theme</samp>
+:milky_way: ‎ <samp>Aesthetic-Night gtk theme</samp>
 
 Setup:
 
@@ -210,6 +210,34 @@ Setup:
    ```
 
 To apply the theme use ~~[lxappearance](https://archlinux.org/packages/community/x86_64/lxappearance)~~ [lxappearance-gtk3](https://archlinux.org/packages/community/x86_64/lxappearance-gtk3)
+
+</details>
+
+<details>
+<summary><b>Kvantum Theme</b></summary>
+
+<a href="#--------">
+   <img src="https://user-images.githubusercontent.com/93292023/174969899-0fc0587f-72fa-4324-a884-8713981c7531.png" width="500px">
+</a>
+
+:milky_way: ‎ <samp>Aesthetic-Night kvantum theme</samp>
+
+Setup:
+
+1. Copy the theme to the ``~/.themes/`` folders
+  ```sh
+  cp -rf misc/themes/kvantum ~/.themes/
+  ```
+
+2. To apply the theme use the Kvantum Theme Engine
+
+3. Open **Kvantum** and click ``Select a Kvantum theme folder`` and locate the theme it should be on ``~/.themes/kvantum/Aesthetic-Night/`` and select that folder
+
+4. After that click ``Install this theme``
+
+5. Then click the ``Change/Delete Theme`` section there should be a combo box that says ``Select a theme`` pick **Aesthetic-Night** then click ``Use this theme``
+
+6. Now you should have the theme enabled and installed
 
 </details>
 
