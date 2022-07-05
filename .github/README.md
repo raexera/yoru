@@ -29,7 +29,7 @@
     <img alt="" align="left" src="https://img.shields.io/github/stars/rxyhn/dotfiles?color=162026&labelColor=162026&style=for-the-badge"/>
   </a>
   <a href="#--------">
-    <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=for-the-badge&color=162026&logoColor=white&labelColor=162026"/>
+    <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=flat-square&label=&color=162026&logo=github&logoColor=white&labelColor=162026"/>
   </a>
 </h1>
 
@@ -50,11 +50,7 @@ You might be here for looking my AwesomeWM configuration files? or looking for *
 feel free to steal anything from here but don't forget to give me **credits** :)
 
 AwesomeWM is the most powerful and highly configurable, next generation framework window manager for X,
-Although it takes time and effort to configure it, but I'm very satisfied with the result.
-
-This is a beautiful user interface isn't it?
-
-These dotfiles are made with love, for sure.
+Although it takes time and effort to configure it, but I'm very satisfied with this aesthetic result.
 
 <!-- INFORMATION -->
 
@@ -195,7 +191,7 @@ Log out from your current desktop session and log in into AwesomeWM
    <img src="https://user-images.githubusercontent.com/93292023/174969899-0fc0587f-72fa-4324-a884-8713981c7531.png" width="500px">
 </a>
 
-:milky_way: ‎ <samp>Aesthetic-Dark gtk theme</samp>
+:milky_way: ‎ <samp>Aesthetic-Night gtk theme</samp>
 
 Setup:
 
@@ -330,7 +326,9 @@ EndSection
 
 ## :japan: ‎ <samp>History</samp>
 
-Ngl this is started when im feel bored lol and decided to start using Linux, more precisely in January 2022. Fyi im a **new Linux user,** when it's in [Linuxer Desktop Art](https://facebook.com/groups/linuxart) i saw a linux setup that caught my eye, then I'm interested in and trying something similar, So yeaaaaaah this is my current setup, my purpose of doing this is to hone my skills to make an attractive UI and also as a hobby. I wanna say thank you to those of you who like and love my setup <3
+Ngl this is started when im feel bored lol and decided to start using Linux, more precisely in January 2022. When it's in [Linuxer Desktop Art](https://facebook.com/groups/linuxart) i saw a linux setup that caught my eye, then I'm interested in and trying something similar, So yeaaaaaah this is my current setup, I made this with all Aesthetic I have. Yes! you're right! everything you see here is all about beautiful and aesthetic, and ofc apart from targeting the beautiful UI I also pay attention to the functionality, because I'm targeting an OS that's comfortable to wear and look at. Have a Nice Day! <3
+
+I wanna say thank you to those of you who like and love my setup <3
 
 <pre align="center">
 <a href="#japan--history">
@@ -342,7 +340,7 @@ Ngl this is started when im feel bored lol and decided to start using Linux, mor
 
 ## :money_with_wings: ‎ <samp>TIP JAR</samp>
 
-If you enjoyed it and would like to show your appreciation, you may want to tip me here.
+I've ko-fi account, So if you enjoyed it and would like to show your appreciation, you may want to tip me here.
 
 It is never required but always appreciated.
 
@@ -356,7 +354,7 @@ Thanks from the bottom of my heart! ‎ :heartpulse:
 
 - _Contributors_
 
-  - [`rxyhn`](https://github.com/rxyhn) _there's nothing wrong with thanking yourself right?_
+  - [`rxyhn`](https://github.com/rxyhn)
   - [`ner0z`](https://github.com/ner0z)
   - [`Kasper24`](https://github.com/Kasper24)
   - [`paulhersch`](https://github.com/paulhersch)
@@ -367,6 +365,7 @@ Thanks from the bottom of my heart! ‎ :heartpulse:
 
 - _Thanks to_
 
+  - [`rxyhn`](https://github.com/rxyhn) _there's nothing wrong with thanking yourself right?_
   - [`elenapan`](https://github.com/elenapan)
   - [`manilarome`](https://github.com/manilarome)
 
