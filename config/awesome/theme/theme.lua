@@ -132,8 +132,11 @@ theme.music_accent = theme.lighter_xbackground
 --- ░█░█░░█░░░░█▀▀░█░░░█▀▀░█░█░█▀▀░█░█░░█░░▀▀█
 --- ░▀▀▀░▀▀▀░░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀░░▀░░▀▀▀
 
---- Image Assets
+--- Wallpapers
 theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/montereyNight.png")
+--- theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/paperlikeXcanoopsy.png")
+
+--- Image Assets
 theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/pfp.png")
 theme.music = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/music.png")
 
