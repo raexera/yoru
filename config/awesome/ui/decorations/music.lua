@@ -129,6 +129,94 @@ local visualizer = function(c)
 	})
 end
 
+--- Volume Control
+local function volume_control()
+	local volume_bar = wibox.widget({
+		max_value = 100,
+		value = 50,
+		margins = {
+			top = dpi(15),
+			bottom = dpi(15),
+			left = dpi(5),
+			right = dpi(5),
+		},
+		forced_width = dpi(80),
+		shape = gears.shape.rounded_bar,
+		bar_shape = gears.shape.rounded_bar,
+		color = beautiful.accent,
+		background_color = beautiful.xforeground .. "11",
+		border_width = 0,
+		widget = wibox.widget.progressbar,
+	})
+
+	-- Update bar
+	-- MPD Volume
+	local function volume_info()
+		awful.spawn.easy_async_with_shell("mpc volume | awk '{print substr($2, 1, length($2)-1)}'", function(stdout)
+			local volume = tonumber(stdout)
+			volume_bar.value = volume and volume <= 100 and volume or 100
+		end)
+	end
+
+	-- Run once to initialize widgets
+	volume_info()
+
+	-- Sleeps until mpd volume changes
+	-- >> We use `sed '1~2d'` to remove every other line since the mixer event
+	-- is printed twice for every volume update.
+	-- >> The `-u` option forces sed to work in unbuffered mode in order to print
+	-- without waiting for `mpc idleloop mixer` to finish
+	local mpd_volume_script = [[
+	  sh -c "
+		mpc idleloop mixer | sed -u '1~2d'
+	  "]]
+
+	-- Kill old mpc idleloop mixer process
+	awful.spawn.easy_async_with_shell(
+		"ps x | grep \"mpc idleloop mixer\" | grep -v grep | awk '{print $1}' | xargs kill",
+		function()
+			-- Emit song info with each line printed
+			awful.spawn.with_line_callback(mpd_volume_script, {
+				stdout = function()
+					volume_info()
+				end,
+			})
+		end
+	)
+
+	-- Set up volume bar buttons
+	volume_bar:connect_signal("button::press", function(_, lx, __, button)
+		if button == 1 then
+			awful.spawn.with_shell("mpc volume " .. tostring(math.ceil(lx * 100 / volume_bar.forced_width)))
+		end
+	end)
+
+	local volume = wibox.widget({
+		{
+			align = "left",
+			font = "icomoon 16",
+			markup = helpers.ui.colorize_text("", beautiful.accent),
+			widget = wibox.widget.textbox(),
+		},
+		helpers.ui.horizontal_pad(dpi(3)),
+		volume_bar,
+		helpers.ui.horizontal_pad(dpi(2)),
+		layout = wibox.layout.fixed.horizontal,
+	})
+
+	volume:buttons(gears.table.join(
+		-- Scroll - Increase or decrease volume
+		awful.button({}, 4, function()
+			awful.spawn.with_shell("mpc volume +5")
+		end),
+		awful.button({}, 5, function()
+			awful.spawn.with_shell("mpc volume -5")
+		end)
+	))
+
+	return volume
+end
+
 --- PLayerctl
 --- ~~~~~~~~~
 playerctl_daemon:connect_signal("metadata", function(_, title, artist, album_path, album, ___, player_name)
@@ -170,21 +258,16 @@ local music_create_decoration = function(c)
 		{
 			{
 				{
-					{
-						require("ui.decorations.music.slider"),
-						widget = wibox.container.place,
-						halign = "center",
-						valign = "center",
-					},
-					top = dpi(10),
-					bottom = dpi(10),
-					widget = wibox.container.margin,
+					volume_control(),
+					forced_width = dpi(200),
+					widget = wibox.container.constraint,
 				},
-				forced_width = dpi(200),
-				widget = wibox.container.constraint,
+				music_icon(),
+				layout = wibox.layout.align.horizontal,
 			},
-			music_icon(),
-			layout = wibox.layout.align.horizontal,
+			left = dpi(10),
+			right = dpi(10),
+			widget = wibox.container.margin,
 		},
 		bg = beautiful.music_bg,
 		shape = helpers.ui.prrect(beautiful.border_radius, true, true, false, false),
