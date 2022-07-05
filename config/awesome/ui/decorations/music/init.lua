@@ -8,7 +8,6 @@ local wibox = require("wibox")
 local playerctl_daemon = require("signal.playerctl")
 local widgets = require("ui.widgets")
 local helpers = require("helpers")
-local animation = require("modules.animation")
 
 --- Custom mouse friendly ncmpcpp UI with album art
 --- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -52,127 +51,6 @@ local function music_icon()
 	})
 
 	return music_icon
-end
-
---- Volume slider
-local function volume_slider()
-	local vol_color = beautiful.accent
-
-	local slider = wibox.widget({
-		{
-			id = "slider",
-			max_value = 100,
-			value = 20,
-			margins = {
-				top = dpi(7),
-				bottom = dpi(7),
-				left = dpi(6),
-				right = dpi(6),
-			},
-			forced_width = dpi(60),
-			shape = gears.shape.rounded_bar,
-			bar_shape = gears.shape.rounded_bar,
-			color = vol_color,
-			background_color = vol_color .. "44",
-			widget = wibox.widget.progressbar,
-		},
-		expand = "none",
-		forced_width = 60,
-		layout = wibox.layout.align.horizontal,
-	})
-
-	local stats_tooltip = wibox.widget({
-		visible = false,
-		top_only = true,
-		layout = wibox.layout.stack,
-	})
-
-	local tooltip_counter = 0
-	local tooltip = wibox.widget({
-		font = beautiful.font_name .. "Bold 10",
-		align = "right",
-		valign = "center",
-		widget = wibox.widget.textbox,
-	})
-
-	tooltip_counter = tooltip_counter + 1
-	local index = tooltip_counter
-	stats_tooltip:insert(index, tooltip)
-
-	local button = widgets.button.text.normal({
-		normal_shape = gears.shape.circle,
-		font = beautiful.icon_font .. "Round ",
-		size = 14,
-		text_normal_bg = vol_color,
-		normal_bg = beautiful.music_bg,
-		text = "",
-		paddings = dpi(5),
-		animate_size = false,
-		on_release = function()
-			awful.spawn("pamixer -t")
-		end,
-	})
-
-	local anim = animation:new({
-		pos = 0,
-		duration = 0.2,
-		easing = animation.easing.linear,
-		update = function(self, pos)
-			slider.slider.value = pos
-		end,
-	})
-
-	awesome.connect_signal("signal::volume", function(value, muted)
-		local fill_color
-		local vol_value = tonumber(value) or 0
-
-		if muted == 1 or value == 0 then
-			anim:set(0)
-
-			button.text = ""
-			fill_color = beautiful.xcolor8
-		else
-			anim:set(value)
-
-			button.text = ""
-			fill_color = vol_color
-		end
-
-		slider.slider.value = vol_value
-		slider.slider.color = fill_color
-		tooltip.markup = helpers.ui.colorize_text(vol_value .. "%", vol_color)
-	end)
-
-	slider:connect_signal("mouse::enter", function()
-		--- Raise tooltip to the top of the stack
-		stats_tooltip:set(1, tooltip)
-		stats_tooltip.visible = true
-	end)
-	slider:connect_signal("mouse::leave", function()
-		stats_tooltip.visible = false
-	end)
-
-	slider:buttons(gears.table.join(
-		--- Scrolling
-		awful.button({}, 4, function()
-			awful.spawn("pamixer -i 5")
-		end),
-		awful.button({}, 5, function()
-			awful.spawn("pamixer -d 5")
-		end)
-	))
-
-	local widget = wibox.widget({
-		{
-			button,
-			slider,
-			layout = wibox.layout.fixed.horizontal,
-		},
-		tooltip,
-		layout = wibox.layout.align.horizontal,
-	})
-
-	return widget
 end
 
 --- Music art cover
@@ -292,11 +170,14 @@ local music_create_decoration = function(c)
 		{
 			{
 				{
-					volume_slider(),
+					{
+						require("ui.decorations.music.slider"),
+						widget = wibox.container.place,
+						halign = "center",
+						valign = "center",
+					},
 					top = dpi(10),
 					bottom = dpi(10),
-					right = dpi(10),
-					left = dpi(15),
 					widget = wibox.container.margin,
 				},
 				forced_width = dpi(200),

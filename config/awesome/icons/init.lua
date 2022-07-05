@@ -8,6 +8,8 @@ return {
 	notification_bell = dir .. "notification_bell.svg",
 
 	--- system UI
+	volume = dir .. "volume.svg",
+	brightness = dir .. "brightness.svg",
 	ram = dir .. "ram.svg",
 	cpu = dir .. "cpu.svg",
 	temp = dir .. "temp.svg",

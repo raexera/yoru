@@ -4,20 +4,15 @@ local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local wibox = require("wibox")
-local helpers = require("helpers")
-local animation = require("modules.animation")
+local icons = require("icons")
 
 --- Brightness OSD
 --- ~~~~~~~~~~~~~~
-
-local brightness_osd_icon = wibox.widget({
+local icon = wibox.widget({
 	{
-		id = "popup_icon",
-		markup = helpers.ui.colorize_text("", beautiful.xforeground),
-		font = beautiful.icon_font .. "Round 96",
-		align = "center",
-		valign = "center",
-		widget = wibox.widget.textbox(),
+		image = icons.brightness,
+		resize = true,
+		widget = wibox.widget.imagebox,
 	},
 	forced_height = dpi(150),
 	top = dpi(12),
@@ -25,29 +20,81 @@ local brightness_osd_icon = wibox.widget({
 	widget = wibox.container.margin,
 })
 
-local brightness_osd_bar = wibox.widget({
+local osd_header = wibox.widget({
+	text = "Brightness",
+	font = beautiful.font_name .. "Bold 12",
+	align = "left",
+	valign = "center",
+	widget = wibox.widget.textbox,
+})
+
+local osd_value = wibox.widget({
+	text = "0%",
+	font = beautiful.font_name .. "Bold 12",
+	align = "center",
+	valign = "center",
+	widget = wibox.widget.textbox,
+})
+
+local slider_osd = wibox.widget({
 	nil,
 	{
-		id = "brightness_osd_progressbar",
-		max_value = 100,
-		value = 0,
-		background_color = "#ffffff20",
-		color = beautiful.xforeground,
-		shape = gears.shape.rounded_rect,
+		id = "bri_osd_slider",
 		bar_shape = gears.shape.rounded_rect,
-		forced_height = dpi(24),
-		widget = wibox.widget.progressbar,
+		bar_height = dpi(24),
+		bar_color = "#ffffff20",
+		bar_active_color = "#f2f2f2EE",
+		handle_color = "#ffffff",
+		handle_shape = gears.shape.circle,
+		handle_width = dpi(24),
+		handle_border_color = "#00000012",
+		handle_border_width = dpi(1),
+		maximum = 100,
+		widget = wibox.widget.slider,
 	},
 	nil,
 	expand = "none",
 	layout = wibox.layout.align.vertical,
 })
 
-local brightness_osd_height = dpi(200)
-local brightness_osd_width = dpi(200)
+local bri_osd_slider = slider_osd.bri_osd_slider
+
+bri_osd_slider:connect_signal("property::value", function()
+	local brightness_level = bri_osd_slider:get_value()
+	awful.spawn("brightnessctl set " .. brightness_level .. "%", false)
+
+	-- Update textbox widget text
+	osd_value.text = brightness_level .. "%"
+
+	-- Update the brightness slider if values here change
+	awesome.emit_signal("widget::brightness:update", brightness_level)
+
+	if awful.screen.focused().show_bri_osd then
+		awesome.emit_signal("module::brightness_osd:show", true)
+	end
+end)
+
+bri_osd_slider:connect_signal("button::press", function()
+	awful.screen.focused().show_bri_osd = true
+end)
+
+bri_osd_slider:connect_signal("mouse::enter", function()
+	awful.screen.focused().show_bri_osd = true
+end)
+
+-- The emit will come from brightness slider
+awesome.connect_signal("module::brightness_osd", function(brightness)
+	bri_osd_slider:set_value(brightness)
+end)
+
+local brightness_osd_height = dpi(250)
+local brightness_osd_width = dpi(250)
 
 screen.connect_signal("request::desktop_decoration", function(s)
-	s.brightness_osd = awful.popup({
+	local s = s or {}
+	s.show_bri_osd = false
+
+	s.brightness_osd_overlay = awful.popup({
 		type = "notification",
 		screen = s,
 		height = brightness_osd_height,
@@ -57,6 +104,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		bg = beautiful.transparent,
 		ontop = true,
 		visible = false,
+		offset = dpi(5),
+		preferred_anchors = "middle",
+		preferred_positions = { "left", "right", "top", "bottom" },
 		widget = {
 			{
 				{
@@ -66,17 +116,27 @@ screen.connect_signal("request::desktop_decoration", function(s)
 							layout = wibox.layout.align.horizontal,
 							expand = "none",
 							nil,
-							brightness_osd_icon,
+							icon,
 							nil,
 						},
-						brightness_osd_bar,
+						{
+							layout = wibox.layout.fixed.vertical,
+							spacing = dpi(5),
+							{
+								layout = wibox.layout.align.horizontal,
+								expand = "none",
+								osd_header,
+								nil,
+								osd_value,
+							},
+							slider_osd,
+						},
 						spacing = dpi(10),
 						layout = wibox.layout.fixed.vertical,
 					},
 				},
 				left = dpi(24),
 				right = dpi(24),
-				bottom = dpi(24),
 				widget = wibox.container.margin,
 			},
 			bg = beautiful.xbackground,
@@ -85,41 +145,51 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		},
 	})
 
-	awful.placement.centered(s.brightness_osd)
-
-	local anim = animation:new({
-		pos = 0,
-		duration = 0.2,
-		easing = animation.easing.linear,
-		update = function(self, pos)
-			brightness_osd_bar.brightness_osd_progressbar.value = pos
-		end,
-	})
-
-	local hide_timer = gears.timer({
-		timeout = 2,
-		callback = function()
-			s.brightness_osd.visible = false
-		end,
-	})
-
-	local show = false
-	awesome.connect_signal("signal::brightness", function(value)
-		if show == true then
-			anim:set(value)
-
-			brightness_osd_bar.brightness_osd_progressbar.value = value
-			brightness_osd_bar.brightness_osd_progressbar.color = beautiful.xforeground
-
-			if s.brightness_osd.visible then
-				hide_timer:again()
-			else
-				s.brightness_osd.visible = true
-				hide_timer:again()
-			end
-		else
-			brightness_osd_bar.brightness_osd_progressbar.value = value
-			show = true
-		end
+	-- Reset timer on mouse hover
+	s.brightness_osd_overlay:connect_signal("mouse::enter", function()
+		s.show_bri_osd = true
+		awesome.emit_signal("module::brightness_osd:rerun")
 	end)
+end)
+
+local hide_osd = gears.timer({
+	timeout = 2,
+	autostart = true,
+	callback = function()
+		local focused = awful.screen.focused()
+		focused.brightness_osd_overlay.visible = false
+		focused.show_bri_osd = false
+	end,
+})
+
+awesome.connect_signal("module::brightness_osd:rerun", function()
+	if hide_osd.started then
+		hide_osd:again()
+	else
+		hide_osd:start()
+	end
+end)
+
+local placement_placer = function()
+	local focused = awful.screen.focused()
+	local brightness_osd = focused.brightness_osd_overlay
+	awful.placement.next_to(brightness_osd, {
+		preferred_positions = "top",
+		preferred_anchors = "middle",
+		geometry = focused.bottom_panel or s,
+		offset = { x = 0, y = dpi(-20) },
+	})
+end
+
+awesome.connect_signal("module::brightness_osd:show", function(bool)
+	placement_placer()
+	awful.screen.focused().brightness_osd_overlay.visible = bool
+	if bool then
+		awesome.emit_signal("module::brightness_osd:rerun")
+		awesome.emit_signal("module::volume_osd:show", false)
+	else
+		if hide_osd.started then
+			hide_osd:stop()
+		end
+	end
 end)

@@ -1,6 +1,7 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+require("signal.battery")
 local gears = require("gears")
 local apps = require("configuration.apps")
 local dpi = require("beautiful").xresources.apply_dpi
