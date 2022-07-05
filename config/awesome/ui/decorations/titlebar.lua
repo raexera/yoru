@@ -56,6 +56,10 @@ local function maximize(c)
 	)
 end
 
+--- Tabbed
+local bling = require("modules.bling")
+local tabbed_misc = bling.widget.tabbed_misc
+
 --- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
 	awful.titlebar(
@@ -133,7 +137,25 @@ client.connect_signal("request::titlebars", function(c)
 				layout = wibox.layout.flex.horizontal,
 			},
 			--- Right
-			nil,
+			{
+				{
+					tabbed_misc.titlebar_indicator(c, {
+						icon_size = dpi(15),
+						icon_margin = dpi(6),
+						layout_spacing = dpi(0),
+						bg_color_focus = beautiful.xcolor0,
+						bg_color = beautiful.lighter_xbackground,
+						icon_shape = gears.shape.rectangle,
+					}),
+					bg = beautiful.darker_xbackground,
+					shape = gears.shape.rounded_rect,
+					widget = wibox.container.background,
+				},
+				top = dpi(7),
+				bottom = dpi(7),
+				right = dpi(14),
+				widget = wibox.container.margin,
+			},
 		},
 		bg = beautiful.titlebar_bg,
 		shape = helpers.ui.prrect(beautiful.border_radius, true, true, false, false),
