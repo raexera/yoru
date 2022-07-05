@@ -147,7 +147,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
 	-- Reset timer on mouse hover
 	s.brightness_osd_overlay:connect_signal("mouse::enter", function()
-		s.show_bri_osd = true
+		awful.screen.focused().show_bri_osd = true
 		awesome.emit_signal("module::brightness_osd:rerun")
 	end)
 end)
