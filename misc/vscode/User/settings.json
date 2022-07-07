@@ -10,13 +10,16 @@
   "files.associations": {
     "*.pl": "prolog"
   },
+  "security.workspace.trust.enabled": false,
   "editor.minimap.enabled": false,
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
+  "editor.smoothScrolling": true,
   "editor.suggestSelection": "first",
-  "editor.fontFamily": "FiraCode Nerd Font, Material Icons, monospace",
+  "editor.fontFamily": "JetBrainsMono Nerd Font, Space Mono, Victor Mono, monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
+  "workbench.list.smoothScrolling": true,
   "workbench.colorTheme": "One Dark Pro Darker",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.productIconTheme": "icons-carbon",
@@ -35,6 +38,7 @@
     "tab.activeBackground": "#000A0E",
     "tab.inactiveBackground": "#061115",
     "sideBar.background": "#000A0E",
+    "sideBar.dropBackground": "#000A0E",
     "sideBarSectionHeader.background": "#000A0E",
     "activityBar.background": "#000A0E",
     "statusBar.background": "#000A0E",
@@ -69,10 +73,8 @@
     "terminal.ansiBrightBlue": "#79aaeb",
     "terminal.ansiBrightMagenta": "#c488ec",
     "terminal.ansiBrightCyan": "#7acfe4",
-    "terminal.ansiBrightWhite": "#e5e5e5",
+    "terminal.ansiBrightWhite": "#e5e5e5"
   },
-  "workbench.list.smoothScrolling": true,
-  "editor.smoothScrolling": true,
   "customizeUI.activityBar": "bottom",
   "customizeUI.titleBar": "inline",
   "customizeUI.font.regular": "Roboto",
@@ -84,5 +86,5 @@
     ".tabs-container ": "padding-top:7px; padding-left:2px; padding-bottom:5px",
     ".tabs-container > .tab": "border-radius: 7px 7px 7px 7px; height: 20px; margin-left: 5px; padding-right:4px",
     ".monaco-editor .suggest-widget": "border-radius: 10px 10px 10px 10px; overflow:hidden;"
-  },
+  }
 }

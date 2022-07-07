@@ -7,7 +7,10 @@
 ## The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 
 format = "$all"
-right_format = """$git_branch$git_status$directory"""
+right_format = """$git_branch$git_status$cmd_duration$directory"""
+
+# Disable the blank line at the start of the prompt
+add_newline = false
 
 [line_break]
 disabled = true
@@ -23,12 +26,15 @@ format = "[$hostname](bold blue) "
 disabled = false
 
 [cmd_duration]
-disabled = true
+min_time = 1
+format = "[](fg:#1c252c bg:none)[$duration]($style)[](fg:#1c252c bg:#1c252c)[](fg:#bc83e3 bg:#1c252c)[](fg:#1c252c bg:#bc83e3)[](fg:#bc83e3 bg:none) "
+disabled = false
+style = "fg:#d9d7d6 bg:#1c252c"
 
 [directory]
 format = "[](fg:#1c252c bg:none)[$path]($style)[](fg:#1c252c bg:#1c252c)[](fg:#6791c9 bg:#1c252c)[](fg:#1c252c bg:#6791c9)[](fg:#6791c9 bg:none)"
 style = "fg:#d9d7d6 bg:#1c252c"
-truncation_length = 2
+truncation_length = 3
 truncate_to_repo=false
 
 [git_branch]
@@ -36,7 +42,7 @@ format = "[](fg:#1c252c bg:none)[$branch]($style)[](fg:#1c252c bg:#1c252c)
 style = "fg:#d9d7d6 bg:#1c252c"
 
 [git_status]
-format="[](fg:#1c252c bg:none)[$all_status$ahead_behind]($style)[](fg:#1c252c bg:#1c252c)[](fg:#bc83e3 bg:#1c252c)[](fg:#1c252c bg:#bc83e3)[](fg:#bc83e3 bg:none) "
+format="[](fg:#1c252c bg:none)[$all_status$ahead_behind]($style)[](fg:#1c252c bg:#1c252c)[](fg:#67afc1 bg:#1c252c)[](fg:#1c252c bg:#67afc1)[](fg:#67afc1 bg:none) "
 style = "fg:#d9d7d6 bg:#1c252c"
 conflicted = "="
 ahead =	"⇡${count}"

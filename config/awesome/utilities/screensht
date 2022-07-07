@@ -39,7 +39,7 @@ _AUTHOR_COLOR_='#6791c9'
 
 # Get Lists Font With "convert -list font | grep -iE 'font:.*' | nl"
 _FONT_SIZE_=10
-_FONT_='Fira-Code-Medium-Nerd-Font-Complete'
+_FONT_='JetBrains-Mono-Medium-Nerd-Font-Complete'
 
 # =============================================
 
