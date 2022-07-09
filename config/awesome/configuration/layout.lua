@@ -1,8 +1,6 @@
 local awful = require("awful")
-local beautiful = require("beautiful")
 local bling = require("modules.bling")
 local machi = require("modules.layout-machi")
-beautiful.layout_machi = machi.get_icon()
 
 --- Custom Layouts
 local mstab = bling.layout.mstab

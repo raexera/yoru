@@ -10,6 +10,7 @@ local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local helpers = require("helpers")
+local icons = require("icons")
 
 --- ░█▀█░█▀▀░█▀▀░▀█▀░█░█░█▀▀░▀█▀░▀█▀░█▀▀░░░█▀█░▀█▀░█▀▀░█░█░▀█▀
 --- ░█▀█░█▀▀░▀▀█░░█░░█▀█░█▀▀░░█░░░█░░█░░░░░█░█░░█░░█░█░█▀█░░█░
@@ -140,6 +141,17 @@ theme.wallpaper = gears.surface.load_uncached(gfs.get_configuration_dir() .. "th
 theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/pfp.png")
 theme.music = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/music.png")
 
+--- Layout
+--- You can use your own layout icons like this:
+theme.layout_floating = icons.floating
+theme.layout_max = icons.max
+theme.layout_tile = icons.tile
+theme.layout_dwindle = icons.dwindle
+theme.layout_centered = icons.centered
+theme.layout_mstab = icons.mstab
+theme.layout_equalarea = icons.equalarea
+theme.layout_machi = icons.machi
+
 --- Icon Theme
 --- Define the icon theme for application icons. If not set then the icons
 --- from /usr/share/icons and /usr/share/icons/hicolor will be used.
@@ -201,9 +213,6 @@ theme.tag_preview_widget_border_width = 0
 --- Layout List
 theme.layoutlist_shape_selected = helpers.ui.rrect(theme.border_radius)
 theme.layoutlist_bg_selected = theme.widget_bg
-
---- Recolor Layout icons:
-theme = theme_assets.recolor_layout(theme, theme.xforeground)
 
 --- Gaps
 theme.useless_gap = dpi(2)
