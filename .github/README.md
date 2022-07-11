@@ -210,6 +210,34 @@ To apply the theme use ~~[lxappearance](https://archlinux.org/packages/community
 </details>
 
 <details>
+<summary><b>Kvantum Theme</b></summary>
+
+<a href="#--------">
+   <img src="https://user-images.githubusercontent.com/65948476/176987868-e721fb1b-58e3-44d7-ba23-549c3a68a423.png" width="500px">
+</a>
+
+:milky_way: ‎ <samp>Aesthetic-Night kvantum theme</samp>
+
+Setup:
+
+1. Copy the theme to the ``~/.themes/`` folders
+  ```sh
+  cp -rf misc/themes/kvantum ~/.themes/
+  ```
+
+2. To apply the theme use the Kvantum Theme Engine
+
+3. Open **Kvantum** and click ``Select a Kvantum theme folder`` and locate the theme it should be on ``~/.themes/kvantum/Aesthetic-Night/`` and select that folder
+
+4. After that click ``Install this theme``
+
+5. Then click the ``Change/Delete Theme`` section there should be a combo box that says ``Select a theme`` pick **Aesthetic-Night** then click ``Use this theme``
+
+6. Now you should have the theme enabled and installed
+
+</details>
+
+<details>
 <summary><b>VSCode Theme</b></summary>
 
 <a href="#--------">
@@ -283,6 +311,30 @@ Section "InputClass"
     Option "NaturalScrolling" "true"
 EndSection
 ```
+
+</details>
+
+<details>
+<summary><b>Dotfiles not loaded</b></summary>
+<img src="https://user-images.githubusercontent.com/93292023/175339352-e4858b98-79af-4cd8-9f21-9c8981e5e293.png" width="500px">
+
+> Hey rxyhn! I've already install your dotfiles by follow your [setup](https://github.com/rxyhn/dotfiles#wrench--setup) but sadly i got nothing applied on my desktop :(
+
+Well, maybe this is caused by upower battery widget didn't receive a right path, if u have a battery device then u have to change the battery **device_path** in ``awesome/signal/battery.lua``
+
+> Then how to check my battery path?
+
+```sh
+# Enumerate objects paths for devices
+upower -e
+
+# Proper device_path example
+/org/freedesktop/UPower/devices/battery_BAT0
+```
+
+> But what if I don't have a battery device, How do I solve this problem?
+
+You need to remove or comment battery signal init from ``awesome/signal/init.lua`` and the battery widget it self in ``awesome/ui/panels/bottom-panel/init.lua``
 
 </details>
 
