@@ -113,6 +113,7 @@ Main Features:
 
 <details>
 <summary><b>1. Install Required Dependencies and Enable Services</b></summary>
+<br>
 
 :warning: ‎ **This setup instructions only provided for Arch Linux (and other Arch-based distributions)**
 
@@ -144,11 +145,12 @@ systemctl --user start mpd.service
 
 <details>
 <summary><b>2. Install My AwesomeWM Dotfiles</b></summary>
+<br>
 
 > Clone this repository
 
 ```sh
-git clone --recurse-submodules https://github.com/rxyhn/dotfiles.git
+git clone --depth 1 --recurse-submodules https://github.com/rxyhn/dotfiles.git
 cd dotfiles && git submodule update --remote --merge
 ```
 
@@ -186,6 +188,7 @@ Log out from your current desktop session and log in into AwesomeWM
 
 <details>
 <summary><b>GTK Theme</b></summary>
+<br>
 
 <a href="#--------">
    <img src="https://user-images.githubusercontent.com/93292023/174969899-0fc0587f-72fa-4324-a884-8713981c7531.png" width="500px">
@@ -211,6 +214,7 @@ To apply the theme use ~~[lxappearance](https://archlinux.org/packages/community
 
 <details>
 <summary><b>VSCode Theme</b></summary>
+<br>
 
 <a href="#--------">
    <img src="https://user-images.githubusercontent.com/93292023/174243639-e02473ac-82cc-41b9-a54a-915b4e0e58e5.png" alt="VSCode theme preview" width="500px">
@@ -238,6 +242,7 @@ Setup:
 
 <details>
 <summary><b>Neovim Theme</b></summary>
+<br>
 
 <a href="#--------">
    <img src="https://user-images.githubusercontent.com/93292023/174063775-d246c4be-a08b-49dd-8597-5bb8a3e2520f.png" alt="neovim theme preview" width="500px">
@@ -253,6 +258,7 @@ To get this theme you have to use [nvchad](https://github.com/NvChad/NvChad) as 
 
 <details>
 <summary><b>Firefox Theme</b></summary>
+<br>
 
 <a href="#--------">
    <img src="https://user-images.githubusercontent.com/93292023/174238121-51774ec2-e553-4944-a2c4-c3b94dd97777.png" alt="firefox theme preview" width="500px">
@@ -270,6 +276,7 @@ setup:
 
 <details>
 <summary><b>Touchpad tap-to-click & natural (reverse) scrolling (<a href="https://wiki.archlinux.org/title/Libinput#Tapping_button_re-mapping">libinput</a>)</b></summary>
+<br>
 
 `/etc/X11/xorg.conf.d/30-touchpad.conf`
 
@@ -282,6 +289,141 @@ Section "InputClass"
     Option "TappingButtonMap" "lmr"
     Option "NaturalScrolling" "true"
 EndSection
+```
+
+</details>
+
+<!-- Aesthetic Night Colorscheme -->
+
+## :art: ‎ <samp>Colorscheme</samp>
+
+<a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188349-a1c99905-a44f-493f-b4ff-3e89ab741076.png" width="500px" alt="colorscheme preview"></a>
+
+Introducing the Aesthetic Night colorscheme!
+
+Beautiful and elegant color scheme, perfect for programmers who live in the middle of the night.
+
+With the neat color combination that it can keep the eyes from getting tired! so you can keep writing code and continue all your work all night!
+
+This colorscheme is used for all aspects in these dotfiles, yeeaaaah this aesthetic dotfiles is combined with an aesthetic colorscheme <3
+
+This colorscheme was made by [`ner0z`](https://github.com/ner0z) and modified by me [`rxyhn`](https://github.com/rxyhn)
+
+<!-- ToDo: Fix Color Pallete -->
+
+<details>
+<summary>Palettes</summary>
+<br>
+
+<samp>special</samp>
+
+ <table>
+  <tr>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188727-c01434e1-a6d6-41ed-8ab3-ac35b043abdb.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188768-31284a2f-ab53-4737-b5ab-d1f724f544ee.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188804-31ff8683-c2e5-418a-9e22-02d307284996.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188842-83ef42e4-9f5f-447d-b53c-75c0c95339ee.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188875-267bc761-3882-41e5-90ea-38f956339ca4.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188920-966341f3-28de-4d98-9733-59b27be95454.png" width="70px" ></a></th>
+  </tr>
+  <tr>
+    <td><code>#E5E5E5</code></td>
+    <td><code>#D9D7D6</code></td>
+    <td><code>#000A0E</code></td>
+    <td><code>#061115</code></td>
+    <td><code>#0D181C</code></td>
+    <td><code>#131E22</code></td>
+  </tr>
+</table>
+
+<samp>normal</samp>
+
+ <table>
+  <tr>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190023-df4b3092-8c4e-488f-a84c-d5d3d241a84f.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190103-55e3b55f-749f-463f-b601-d59896abb10d.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190211-cac29640-9329-4b3d-a1cf-9e47427694da.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190380-c58c4920-60ca-4706-b795-6a8c688392ea.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190429-4544c362-ada0-410f-88b5-659946b7d372.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190464-ccfe253d-fab6-48bf-b156-a8586080fbff.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190496-b4cd149a-5f85-4611-a911-9b2fca8300ae.png" width="70px" ></a></th>
+  </tr>
+  <tr>
+    <td><code>#1C252C</code></td>
+    <td><code>#DF5B61</code></td>
+    <td><code>#78B892</code></td>
+    <td><code>#DE8F78</code></td>
+    <td><code>#6791C9</code></td>
+    <td><code>#BC83E3</code></td>
+    <td><code>#67AFC1</code></td>
+  </tr>
+</table>
+
+<samp>bright</samp>
+
+ <table>
+  <tr>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191090-410ca0cf-fcec-4df3-907f-a333848c1401.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191137-c2384bac-6758-4e3a-9e6a-185ca7843489.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191163-6db7614e-d57c-4839-99b4-c2ea213228fe.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191194-c4f7aaea-9857-4abd-aca7-3ef7c41ef591.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191227-8afc6603-cbaa-4e09-8c67-8df92d88c879.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191251-f0540f12-a003-4011-a1c5-8753040254a8.png" width="70px" ></a></th>
+    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191292-43f16803-9f3a-46e6-93cd-4e3d11b32457.png" width="70px" ></a></th>
+  </tr>
+  <tr>
+    <td><code>#484E5B</code></td>
+    <td><code>#F16269</code></td>
+    <td><code>#8CD7AA</code></td>
+    <td><code>#E9967E</code></td>
+    <td><code>#79AAEB</code></td>
+    <td><code>#C488EC</code></td>
+    <td><code>#7ACFE4</code></td>
+  </tr>
+</table>
+
+</details>
+
+<details>
+<summary>Xresources</summary>
+<br>
+
+```cfg
+! special
+*.foreground:   #d9d7d6
+*.background:   #061115
+
+! black
+*.color0:       #1c252c
+*.color8:       #484e5b
+
+! red
+*.color1:       #df5b61
+*.color9:       #f16269
+
+! green
+*.color2:       #78b892
+*.color10:      #8cd7aa
+
+! yellow
+*.color3:       #de8f78
+*.color11:      #e9967e
+
+! blue
+*.color4:       #6791c9
+*.color12:      #79aaeb
+
+! magenta
+*.color5:       #bc83e3
+*.color13:      #c488ec
+
+! cyan
+*.color6:       #67afc1
+*.color14:      #7acfe4
+
+! white
+*.color7:       #d9d7d6
+*.color15:      #e5e5e5
 ```
 
 </details>
