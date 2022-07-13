@@ -217,7 +217,7 @@ To apply the theme use ~~[lxappearance](https://archlinux.org/packages/community
 <br>
 
 <a href="#--------">
-   <img src="" width="500px">
+   <img src="https://cdn.discordapp.com/attachments/700718886118490163/996680624993738832/unknown.png" width="500px">
 </a>
    
 :ringed_planet: ‎ <samp>Aesthetic-Night kvantum theme</samp>
@@ -246,7 +246,7 @@ Setup:
 <br>
 
 <a href="#--------">
-   <img src="" width="500px">
+   <img src="https://cdn.discordapp.com/attachments/992544123179520110/996390535537369088/unknown.png" width="500px">
 </a>
    
 :speech_balloon: ‎ <samp>Aesthetic-Night discord theme</samp>
