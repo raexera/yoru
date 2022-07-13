@@ -213,6 +213,65 @@ To apply the theme use ~~[lxappearance](https://archlinux.org/packages/community
 </details>
 
 <details>
+<summary><b>Kvantum Theme</b></summary>
+<br>
+
+<a href="#--------">
+   <img src="https://user-images.githubusercontent.com/65948476/178671584-0ee7d967-9792-4965-ba0d-61381211d977.png" width="500px">
+</a>
+   
+:ringed_planet: ‎ <samp>Aesthetic-Night kvantum theme</samp>
+
+Setup:
+
+1. Copy the theme to the ``~/.themes/`` folders
+  ```sh
+  cp -rf misc/themes/kvantum ~/.themes/
+  ```
+
+2. To apply the theme use the Kvantum Theme Engine
+
+3. Open **Kvantum** and click ``Select a Kvantum theme folder`` and locate the theme it should be on ``~/.themes/kvantum/Aesthetic-Night/`` and select that folder
+
+4. After that click ``Install this theme``
+
+5. Then click the ``Change/Delete Theme`` section there should be a combo box that says ``Select a theme`` pick **Aesthetic-Night** then click ``Use this theme``
+
+6. Now you should have the theme enabled and installed
+
+</details>
+
+<details>
+<summary><b>Discord Theme</b></summary>
+<br>
+
+<a href="#--------">
+   <img src="https://user-images.githubusercontent.com/65948476/178671777-e840a187-9e52-494d-b738-7ce1b6c6a8de.png" width="500px">
+</a>
+   
+:speech_balloon: ‎ <samp>Aesthetic-Night discord theme</samp>
+
+Setup:
+
+* Powercord
+   
+   Copy the discord folder to the powercord themes folder 
+   
+   ```sh
+   cp -rf misc/discord %THE DIRECTORY WHICH POWERCORD IS INSTALLED%/powercord/src/Powercord/themes/
+   ```
+
+* Betterdiscord
+   
+   Copy the discord folder to the betterdiscord themes folder
+   
+   ```sh
+   cp -rf misc/discord ~/.config/BetterDiscord/themes
+   ```
+
+</details>
+
+<details>
 <summary><b>VSCode Theme</b></summary>
 <br>
 
@@ -271,6 +330,34 @@ setup:
 1. Go to `about:config` in Firefox.
 2. Search for `toolkit.legacyUserProfileCustomizations.stylesheets` and set it to `true`.
 3. move the contents from [`misc/firefox`](misc/firefox) to `$HOME/.mozilla/firefox/xxxxxxxx.default-release/chrome`.
+
+</details>
+
+<details>
+<summary><b>Dotfiles not loaded</b></summary>
+<br>
+
+<a href="#--------">
+   <img src="https://user-images.githubusercontent.com/93292023/175339352-e4858b98-79af-4cd8-9f21-9c8981e5e293.png" alt="error desktop" width="500px">
+</a>
+
+> Hey rxyhn! I've already install your dotfiles by follow your setup but sadly I got nothing applied on my desktop.
+
+well, maybe this is caused by upower battery widget didn't receive a right path, If u have a battery device then u have to change the battery ``device_path`` in [awesome/signal/battery.lua](https://github.com/rxyhn/dotfiles/blob/9b60c4905904c1a09a3f76f50e35e541200e437d/config/awesome/signal/battery.lua#L8)
+
+> Then how to check my battery path?
+
+```sh
+# Enumerate objects paths for devices
+upower -e
+
+# Proper device_path example
+/org/freedesktop/UPower/devices/battery_BAT0
+```
+   
+> I don't have a battery device, How do I solve this problem?
+
+You have to remove or comment battery signal init from [awesome/signal/init.lua](https://github.com/rxyhn/dotfiles/blob/9b60c4905904c1a09a3f76f50e35e541200e437d/config/awesome/signal/init.lua#L1) and the battery widget it self in [awesome/ui/panels/bottom-panel/init.lua](https://github.com/rxyhn/dotfiles/blob/1b687b439e47d8773afb1147e1b5a183c7c86308/config/awesome/ui/panels/bottom-panel/init.lua#L264)
 
 </details>
 
@@ -501,7 +588,7 @@ Thanks from the bottom of my heart! ‎ :heartpulse:
   - [`Kasper24`](https://github.com/Kasper24)
   - [`paulhersch`](https://github.com/paulhersch)
   - [`rototrash`](https://github.com/rototrash)
-  - [`Deathemonic`](https://github.com/Deathemonic)
+  - [`Deathemonic`](https://github.com/Deathemonic) _I make aesthetic ports_
   - [`janleigh`](https://github.com/janleigh)
   - [`ChocolateBread799`](https://github.com/ChocolateBread799)
 
