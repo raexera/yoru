@@ -1,0 +1,8 @@
+{
+    "name": "AestheticNight",
+    "description": "A theme based on Google's Material Design",
+    "version": "3.0.3",
+    "author": "Deathemonic",
+    "theme": "AestheticNight.css",
+    "license": "MIT"
+}
