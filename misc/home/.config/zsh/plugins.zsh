@@ -15,23 +15,25 @@ if [[ ! -f ${ZINIT_HOME}/zinit.git/zinit.zsh ]]; then
 fi
 
 source "${ZINIT_HOME}/zinit.git/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-zinit ice wait lucid
-zinit light zsh-users/zsh-history-substring-search
 
 zinit ice blockf atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
 
-zinit ice wait lucid atload'_zsh_autosuggest_start'
-zinit light zsh-users/zsh-autosuggestions
+autoload compinit
+compinit
 
 zinit light-mode for \
-  zdharma-continuum/fast-syntax-highlighting \
   hlissner/zsh-autopair \
-  marlonrichert/zsh-autocomplete \
-  MichaelAquilina/zsh-you-should-use
+  zdharma-continuum/fast-syntax-highlighting \
+  MichaelAquilina/zsh-you-should-use \
+  zsh-users/zsh-autosuggestions \
+  Aloxaf/fzf-tab
+
+zinit ice wait'3' lucid
+zinit light zsh-users/zsh-history-substring-search
+
+zinit ice wait'2' lucid
+zinit light zdharma-continuum/history-search-multi-word
 
 # FZF
 zinit ice from"gh-r" as"command"

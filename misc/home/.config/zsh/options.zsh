@@ -8,23 +8,12 @@ zmodload zsh/zpty
 zmodload zsh/complist
 
 autoload _vi_search_fix
-
-autoload -Uz compinit
-compinit
-
 autoload -Uz colors
+autoload -U compinit
 colors
 
 zle -N _vi_search_fix
 zle -N _sudo_command_line
-
-# Set editor default keymap to emacs (`-e`) or vi (`-v`)
-bindkey -e
-
-# History
-HISTFILE="$XDG_CACHE_HOME/zsh/.zhistory"
-HISTSIZE=10000
-SAVEHIST=10000
 
 # Completion
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -34,19 +23,10 @@ zstyle ":completion:*" special-dirs true
 zstyle ":completion:*" ignored-patterns
 zstyle ":completion:*" completer _complete
 
-# Autocomplete
-zstyle ':autocomplete:*' default-context ''
-zstyle ':autocomplete:*' min-delay 0.05
-zstyle ':autocomplete:*' min-input 1
-zstyle ':autocomplete:*' ignored-input ''
-zstyle ':autocomplete:*' list-lines 16
-zstyle ':autocomplete:history-search:*' list-lines 16
-zstyle ':autocomplete:history-incremental-search-*:*' list-lines 16
-zstyle ':autocomplete:*' recent-dirs cdr
-zstyle ':autocomplete:*' insert-unambiguous no
-zstyle ':autocomplete:*' widget-style complete-word
-zstyle ':autocomplete:*' fzf-completion no
-zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
+# History
+HISTFILE="$XDG_CACHE_HOME/zsh/.zhistory"
+HISTSIZE=10000
+SAVEHIST=10000
 
 # Autosuggestion
 export ZSH_AUTOSUGGEST_USE_ASYNC="true"
@@ -90,5 +70,8 @@ NOMATCH
 CORRECT
 EQUALS
 EOF
+
+# Set editor default keymap to emacs (`-e`) or vi (`-v`)
+bindkey -e
 
 # vim:ft=zsh:nowrap
