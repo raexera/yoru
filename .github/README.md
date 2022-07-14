@@ -327,7 +327,7 @@ Setup:
 - Betterdiscord
   Copy the discord folder to the betterdiscord themes folder
   ```sh
-  cp -rf misc/discord ~/.config/BetterDiscord/themes
+  cp misc/discord/AestheticNight.theme.css ~/.config/BetterDiscord/themes/
   ```
 
 </details>
