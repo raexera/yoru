@@ -246,7 +246,7 @@ Setup:
 <br>
 
 <a href="#--------">
-   <img src="https://cdn.discordapp.com/attachments/992544123179520110/996390535537369088/unknown.png" width="500px">
+   <img src="https://user-images.githubusercontent.com/65948476/178905608-129ad8e8-b4b7-4023-82c0-3cf4405f8483.png" width="500px">
 </a>
    
 :speech_balloon: ‎ <samp>Aesthetic-Night discord theme</samp>
@@ -330,34 +330,6 @@ setup:
 1. Go to `about:config` in Firefox.
 2. Search for `toolkit.legacyUserProfileCustomizations.stylesheets` and set it to `true`.
 3. move the contents from [`misc/firefox`](misc/firefox) to `$HOME/.mozilla/firefox/xxxxxxxx.default-release/chrome`.
-
-</details>
-
-<details>
-<summary><b>Dotfiles not loaded</b></summary>
-<br>
-
-<a href="#--------">
-   <img src="https://user-images.githubusercontent.com/93292023/175339352-e4858b98-79af-4cd8-9f21-9c8981e5e293.png" alt="error desktop" width="500px">
-</a>
-
-> Hey rxyhn! I've already install your dotfiles by follow your setup but sadly I got nothing applied on my desktop.
-
-well, maybe this is caused by upower battery widget didn't receive a right path, If u have a battery device then u have to change the battery ``device_path`` in [awesome/signal/battery.lua](https://github.com/rxyhn/dotfiles/blob/9b60c4905904c1a09a3f76f50e35e541200e437d/config/awesome/signal/battery.lua#L8)
-
-> Then how to check my battery path?
-
-```sh
-# Enumerate objects paths for devices
-upower -e
-
-# Proper device_path example
-/org/freedesktop/UPower/devices/battery_BAT0
-```
-   
-> I don't have a battery device, How do I solve this problem?
-
-You have to remove or comment battery signal init from [awesome/signal/init.lua](https://github.com/rxyhn/dotfiles/blob/9b60c4905904c1a09a3f76f50e35e541200e437d/config/awesome/signal/init.lua#L1) and the battery widget it self in [awesome/ui/panels/bottom-panel/init.lua](https://github.com/rxyhn/dotfiles/blob/1b687b439e47d8773afb1147e1b5a183c7c86308/config/awesome/ui/panels/bottom-panel/init.lua#L264)
 
 </details>
 
@@ -588,7 +560,7 @@ Thanks from the bottom of my heart! ‎ :heartpulse:
   - [`Kasper24`](https://github.com/Kasper24)
   - [`paulhersch`](https://github.com/paulhersch)
   - [`rototrash`](https://github.com/rototrash)
-  - [`Deathemonic`](https://github.com/Deathemonic) _I make aesthetic ports_
+  - [`Deathemonic`](https://github.com/Deathemonic)
   - [`janleigh`](https://github.com/janleigh)
   - [`ChocolateBread799`](https://github.com/ChocolateBread799)
 
