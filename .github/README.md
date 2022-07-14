@@ -246,7 +246,7 @@ Setup:
 <br>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/65948476/178923865-cb09c838-fe29-4d79-8ae5-c2a51a5c2930.png" width="500px">
+   <img src="https://user-images.githubusercontent.com/65948476/178924926-c618be15-23ff-4331-83fe-613ad962c9f2.png" width="500px">
 </a>
    
 :speech_balloon: ‎ <samp>Aesthetic-Night discord theme</samp>
