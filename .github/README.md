@@ -187,91 +187,6 @@ Log out from your current desktop session and log in into AwesomeWM
 ## :four_leaf_clover: ‎ <samp>Miscellaneous</samp>
 
 <details>
-<summary><b>GTK Theme</b></summary>
-<br>
-
-<a href="#--------">
-   <img src="https://user-images.githubusercontent.com/93292023/174969899-0fc0587f-72fa-4324-a884-8713981c7531.png" width="500px">
-</a>
-
-:milky_way: ‎ <samp>Aesthetic-Night gtk theme</samp>
-
-Setup:
-
-1. Copy the themes to the themes folders
-   ```sh
-   sudo cp -rf misc/themes/Aesthetic-Night/* /usr/share/themes
-   cp -rf misc/themes/Aesthetic-Night-GTK4/* ~/.config/gtk-4.0
-   ```
-2. Add this line on `~/.config/gtk-3.0/settings.ini` for left controls
-   ```sh
-   gtk-decoration-layout=close,maximize,minimize:menu
-   ```
-
-To apply the theme use ~~[lxappearance](https://archlinux.org/packages/community/x86_64/lxappearance)~~ [lxappearance-gtk3](https://archlinux.org/packages/community/x86_64/lxappearance-gtk3)
-
-</details>
-
-<details>
-<summary><b>Kvantum Theme</b></summary>
-<br>
-
-<a href="#--------">
-   <img src="https://cdn.discordapp.com/attachments/700718886118490163/996680624993738832/unknown.png" width="500px">
-</a>
-   
-:ringed_planet: ‎ <samp>Aesthetic-Night kvantum theme</samp>
-
-Setup:
-
-1. Copy the theme to the ``~/.themes/`` folders
-  ```sh
-  cp -rf misc/themes/kvantum ~/.themes/
-  ```
-
-2. To apply the theme use the Kvantum Theme Engine
-
-3. Open **Kvantum** and click ``Select a Kvantum theme folder`` and locate the theme it should be on ``~/.themes/kvantum/Aesthetic-Night/`` and select that folder
-
-4. After that click ``Install this theme``
-
-5. Then click the ``Change/Delete Theme`` section there should be a combo box that says ``Select a theme`` pick **Aesthetic-Night** then click ``Use this theme``
-
-6. Now you should have the theme enabled and installed
-
-</details>
-
-<details>
-<summary><b>Discord Theme</b></summary>
-<br>
-
-<a href="#--------">
-   <img src="https://user-images.githubusercontent.com/65948476/178924926-c618be15-23ff-4331-83fe-613ad962c9f2.png" width="500px">
-</a>
-   
-:speech_balloon: ‎ <samp>Aesthetic-Night discord theme</samp>
-
-Setup:
-
-* Powercord
-   
-   Copy the discord folder to the powercord themes folder 
-   
-   ```sh
-   cp -rf misc/discord %THE DIRECTORY WHICH POWERCORD IS INSTALLED%/powercord/src/Powercord/themes/
-   ```
-
-* Betterdiscord
-   
-   Copy the discord folder to the betterdiscord themes folder
-   
-   ```sh
-   cp -rf misc/discord ~/.config/BetterDiscord/themes
-   ```
-
-</details>
-
-<details>
 <summary><b>VSCode Theme</b></summary>
 <br>
 
@@ -316,6 +231,62 @@ To get this theme you have to use [nvchad](https://github.com/NvChad/NvChad) as 
 </details>
 
 <details>
+<summary><b>GTK Theme</b></summary>
+<br>
+
+<a href="#--------">
+   <img src="https://user-images.githubusercontent.com/93292023/174969899-0fc0587f-72fa-4324-a884-8713981c7531.png" width="500px">
+</a>
+
+:milky_way: ‎ <samp>Aesthetic-Night gtk theme</samp>
+
+Setup:
+
+1. Copy the themes to the themes folders
+   ```sh
+   sudo cp -rf misc/themes/Aesthetic-Night/* /usr/share/themes
+   cp -rf misc/themes/Aesthetic-Night-GTK4/* ~/.config/gtk-4.0
+   ```
+2. Add this line on `~/.config/gtk-3.0/settings.ini` for left controls
+   ```sh
+   gtk-decoration-layout=close,maximize,minimize:menu
+   ```
+
+To apply the theme use ~~[lxappearance](https://archlinux.org/packages/community/x86_64/lxappearance)~~ [lxappearance-gtk3](https://archlinux.org/packages/community/x86_64/lxappearance-gtk3)
+
+</details>
+
+<details>
+<summary><b>Kvantum Theme</b></summary>
+<br>
+
+<a href="#--------">
+   <img src="https://cdn.discordapp.com/attachments/700718886118490163/996680624993738832/unknown.png" width="500px">
+</a>
+   
+:ringed_planet: ‎ <samp>Aesthetic Kvantum Theme</samp>
+
+Setup:
+
+1. Copy the theme to the `~/.themes/` folders
+
+```sh
+cp -rf misc/themes/kvantum ~/.themes/
+```
+
+2. To apply the theme use the Kvantum Theme Engine
+
+3. Open **Kvantum** and click `Select a Kvantum theme folder` and locate the theme it should be on `~/.themes/kvantum/Aesthetic-Night/` and select that folder
+
+4. After that click `Install this theme`
+
+5. Then click the `Change/Delete Theme` section there should be a combo box that says `Select a theme` pick **Aesthetic-Night** then click `Use this theme`
+
+6. Now you should have the theme enabled and installed
+
+</details>
+
+<details>
 <summary><b>Firefox Theme</b></summary>
 <br>
 
@@ -330,6 +301,34 @@ setup:
 1. Go to `about:config` in Firefox.
 2. Search for `toolkit.legacyUserProfileCustomizations.stylesheets` and set it to `true`.
 3. move the contents from [`misc/firefox`](misc/firefox) to `$HOME/.mozilla/firefox/xxxxxxxx.default-release/chrome`.
+
+</details>
+
+<details>
+<summary><b>Discord Theme</b></summary>
+<br>
+
+<a href="#--------">
+   <img src="https://user-images.githubusercontent.com/93292023/178931074-e4fee64a-c48d-47df-bf0f-55526f42b307.png" width="500px">
+</a>
+   
+:speech_balloon: ‎ <samp>Aesthetic Discord Theme</samp>
+
+Setup:
+
+- Powercord
+
+  Copy the discord folder to the powercord themes folder
+
+  ```sh
+  cp -rf misc/discord %THE DIRECTORY WHICH POWERCORD IS INSTALLED%/powercord/src/Powercord/themes/
+  ```
+
+- Betterdiscord
+  Copy the discord folder to the betterdiscord themes folder
+  ```sh
+  cp -rf misc/discord ~/.config/BetterDiscord/themes
+  ```
 
 </details>
 
