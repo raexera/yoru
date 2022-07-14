@@ -213,6 +213,65 @@ To apply the theme use ~~[lxappearance](https://archlinux.org/packages/community
 </details>
 
 <details>
+<summary><b>Kvantum Theme</b></summary>
+<br>
+
+<a href="#--------">
+   <img src="https://cdn.discordapp.com/attachments/700718886118490163/996680624993738832/unknown.png" width="500px">
+</a>
+   
+:ringed_planet: ‎ <samp>Aesthetic-Night kvantum theme</samp>
+
+Setup:
+
+1. Copy the theme to the ``~/.themes/`` folders
+  ```sh
+  cp -rf misc/themes/kvantum ~/.themes/
+  ```
+
+2. To apply the theme use the Kvantum Theme Engine
+
+3. Open **Kvantum** and click ``Select a Kvantum theme folder`` and locate the theme it should be on ``~/.themes/kvantum/Aesthetic-Night/`` and select that folder
+
+4. After that click ``Install this theme``
+
+5. Then click the ``Change/Delete Theme`` section there should be a combo box that says ``Select a theme`` pick **Aesthetic-Night** then click ``Use this theme``
+
+6. Now you should have the theme enabled and installed
+
+</details>
+
+<details>
+<summary><b>Discord Theme</b></summary>
+<br>
+
+<a href="#--------">
+   <img src="https://user-images.githubusercontent.com/65948476/178924926-c618be15-23ff-4331-83fe-613ad962c9f2.png" width="500px">
+</a>
+   
+:speech_balloon: ‎ <samp>Aesthetic-Night discord theme</samp>
+
+Setup:
+
+* Powercord
+   
+   Copy the discord folder to the powercord themes folder 
+   
+   ```sh
+   cp -rf misc/discord %THE DIRECTORY WHICH POWERCORD IS INSTALLED%/powercord/src/Powercord/themes/
+   ```
+
+* Betterdiscord
+   
+   Copy the discord folder to the betterdiscord themes folder
+   
+   ```sh
+   cp -rf misc/discord ~/.config/BetterDiscord/themes
+   ```
+
+</details>
+
+<details>
 <summary><b>VSCode Theme</b></summary>
 <br>
 
