@@ -3,6 +3,6 @@
     "description": "A fork of Meterial Discord Recolored into Aesthetic Night (Original Author by: Capnkitten)",
     "version": "3.0.5",
     "author": "Deathemonic",
-    "theme": "AestheticNight.css",
+    "theme": "AestheticNight.theme.css",
     "license": "MIT"
 }
