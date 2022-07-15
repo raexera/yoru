@@ -201,9 +201,9 @@ then
 elif [ "$1" = 'full' ];
 then
 	msg="Full screenshot saved and copied to clipboard!"
-	main 'scrot -q100' "${msg}"
+	main 'maim -u -m 10' "${msg}"
 elif [ "$1" = 'area' ];
 then
 	msg='Area screenshot saved and copied to clipboard!'
-	main 'scrot -q100 -s -f -b' "${msg}"
+	main 'maim -u -m 10 -s -b 2 -c 0.35,0.55,0.85,0.25 -l' "${msg}"
 fi

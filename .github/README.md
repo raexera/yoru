@@ -130,7 +130,7 @@ paru -S awesome-git
 ```sh
 paru -Sy picom-git wezterm rofi acpi acpid acpi_call upower lxappearance-gtk3 \
 jq inotify-tools polkit-gnome xdotool xclip gpick ffmpeg blueman redshift \
-pipewire pipewire-alsa pipewire-pulse pamixer brightnessctl feh scrot \
+pipewire pipewire-alsa pipewire-pulse pamixer brightnessctl feh maim \
 mpv mpd mpc mpdris2 python-mutagen ncmpcpp playerctl --needed
 ```
 
