@@ -229,7 +229,9 @@ return function(s)
 			end)
 		)
 
-		s.mylayoutbox = awful.widget.layoutbox()
+		s.mylayoutbox = awful.widget.layoutbox({
+			screen = s,
+		})
 		s.mylayoutbox:buttons(layoutbox_buttons)
 
 		local widget = wbutton.elevated.state({
