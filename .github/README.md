@@ -208,7 +208,7 @@ Setup:
 2. copy config file
 
    ```sh
-   cp misc/vscode/User/settings.json ~/.config/Code/User
+   cp misc/themes/vscode/User/settings.json ~/.config/Code/User
 
    ```
 
@@ -244,8 +244,8 @@ Setup:
 
 1. Copy the themes to the themes folders
    ```sh
-   sudo cp -rf misc/themes/Aesthetic-Night/* /usr/share/themes
-   cp -rf misc/themes/Aesthetic-Night-GTK4/* ~/.config/gtk-4.0
+   sudo cp -rf misc/themes/gtk/Aesthetic-Night/* /usr/share/themes
+   cp -rf misc/themes/gtk/Aesthetic-Night-GTK4/* ~/.config/gtk-4.0
    ```
 2. Add this line on `~/.config/gtk-3.0/settings.ini` for left controls
    ```sh
@@ -300,7 +300,7 @@ setup:
 
 1. Go to `about:config` in Firefox.
 2. Search for `toolkit.legacyUserProfileCustomizations.stylesheets` and set it to `true`.
-3. move the contents from [`misc/firefox`](misc/firefox) to `$HOME/.mozilla/firefox/xxxxxxxx.default-release/chrome`.
+3. move the contents from [`misc/themes/firefox`](misc/themes/firefox) to `$HOME/.mozilla/firefox/xxxxxxxx.default-release/chrome`.
 
 </details>
 
@@ -321,13 +321,15 @@ Setup:
   Copy the discord folder to the powercord themes folder
 
   ```sh
-  cp -rf misc/discord %THE DIRECTORY WHICH POWERCORD IS INSTALLED%/powercord/src/Powercord/themes/
+  cp -rf misc/themes/discord /PATH/TO/DIRECTORY/WHICH/POWERCORD/IS/INSTALLED/src/Powercord/themes/
   ```
 
 - Betterdiscord
-  Copy the discord folder to the betterdiscord themes folder
+
+  Copy the discord css to the betterdiscord themes folder
+
   ```sh
-  cp -rf misc/discord ~/.config/BetterDiscord/themes
+  cp misc/themes/discord/AestheticNight.theme.css ~/.config/BetterDiscord/themes/
   ```
 
 </details>

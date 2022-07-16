@@ -10,3 +10,6 @@
 [submodule "config/awesome/modules/layout-machi"]
 	path = config/awesome/modules/layout-machi
 	url = https://github.com/xinhaoyuan/layout-machi.git
+[submodule "misc/themes"]
+	path = misc/themes
+	url = https://github.com/rxyhn/AestheticStuff.git
