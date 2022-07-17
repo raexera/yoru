@@ -8,7 +8,7 @@ set -o pipefail
 |__   |   --|    -|   __|   __| | | |__   |     | | |
 |_____|_____|__|__|_____|_____|_|___|_____|__|__| |_|
 Simple Script To Take Aesthetic Screenshots!
-using scrot, imagemagick, colord and AwesomeWM API
+using maim, imagemagick, colord and AwesomeWM API
 
 @author rxyhn
 https://github.com/rxyhn
