@@ -75,7 +75,7 @@ AwesomeWM Modules:
   - Clean and efficient api for color conversion in lua
 - **[layout-machi](https://github.com/xinhaoyuan/layout-machi)**
   - Manual layout for Awesome with an interactive editor
-- **[UPower Battery Widget](https://github.com/Aire-One/awesome-battery_widget)**
+- **[UPower](https://github.com/Aire-One/awesome-battery_widget)**
   - A UPowerGlib based battery widget for the Awesome WM
 
 Main Features:
