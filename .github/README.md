@@ -533,6 +533,33 @@ You know what? this Font is absolutely Awesome! if combined with Aesthetic Night
   </a>
   </details>
 
+<b>Installation:</b>
+
+1. Clone or Download this repository
+2. Change the current directory to `dotfiles/misc/fonts/Aesthetic Iosevka`
+3. Choose the variant you want, or choose both
+4. Take actions depending on your OS:
+   - **Windows**: Select the font files and drag into font [settings](ms-settings:fonts) / font control panel page.
+     - On Windows 10 1809 or newer, the default font installation is per-user, and it may cause compatibility issues for some applications, mostly written in Java. To cope with this, right click and select “Install for all users” instead. [Ref.](https://youtrack.jetbrains.com/issue/JRE-1166?p=IDEA-200145)
+   - **macOS**: [Follow instructions here](http://support.apple.com/kb/HT2509).
+   - **Linux** : Copy the font files to your fonts directory then run `sudo fc-cache`.
+
+<b>Usage:</b>
+
+- Original:
+
+  ```json
+  "editor.fontFamily": "Aesthetic Iosevka Original",
+  "editor.fontLigatures": true,
+  ```
+
+- Nerd Font:
+
+  ```json
+  "editor.fontFamily": "AestheticIosevka Nerd Font",
+  "editor.fontLigatures": true,
+  ```
+
 <!-- GALLERY -->
 
 ## :ocean: ‎ <samp>Gallery</samp>
