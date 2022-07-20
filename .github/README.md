@@ -162,6 +162,21 @@ cp -r config/* ~/.config/
 
 > Install a few fonts (mainly icon fonts) in order for text and icons to be rendered properly.
 
+Necessary fonts:
+
+- **Roboto** - [here](https://fonts.google.com/specimen/Roboto)
+- **Material Design Icons** - [here](https://github.com/google/material-design-icons)
+- **Icomoon** - [here](https://www.dropbox.com/s/hrkub2yo9iapljz/icomoon.zip?dl=0)
+
+Optional fonts:
+
+- **My custom Iosevka build(Aesthetic Iosevka)** - [here](https://github.com/rxyhn/dotfiles/tree/main/misc/fonts/Aesthetic%20Iosevka)
+- **Azuki Font** - [here](https://www.freejapanesefont.com/azuki-font-あずきフォント)
+
+Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`.
+
+Or you can find the required fonts inside the `misc/fonts` folder of this repository.
+
 ```sh
 cp -r misc/fonts/* ~/.fonts/
 # or to ~/.local/share/fonts
@@ -171,7 +186,7 @@ cp -r misc/fonts/* ~/.local/share/fonts/
 And run this command for your system to detect the newly installed fonts.
 
 ```sh
-fc-cache -v
+fc-cache -fv
 ```
 
 > Finally, now you can login with AwesomeWM
@@ -487,6 +502,34 @@ This colorscheme was made by [`ner0z`](https://github.com/ner0z) and modified by
 ```
 
 </details>
+
+<!-- Aesthetic Iosevka Font -->
+
+## :bookmark_tabs: ‎ <samp>Fonts</samp>
+
+I have created a Custom Font that based on [Iosevka Custom Build](https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md), has two variants `Original` and [`Nerd Font`](https://github.com/ryanoasis/nerd-fonts). This font supports ligatures!
+
+This is My Favorite Monospace Font! This font is used in my terminal emulator and all my code editor. Yes, for better Code.
+
+You know what? this Font is absolutely Awesome! if combined with Aesthetic Night Colorscheme!
+
+<b>Font Preview:</b>
+
+- <details>
+  <summary>Regular</summary>
+  <br>
+  <a href="#--------">
+  <img src="https://user-images.githubusercontent.com/93292023/179895783-e4e96572-821c-4684-8b22-886f508d5e8e.png" alt="font preview" width="500px">
+  </a>
+  </details>
+
+- <details>
+  <summary>Italic</summary>
+  <br>
+  <a href="#--------">
+  <img src="https://user-images.githubusercontent.com/93292023/179895825-5dade677-4fc6-4345-a564-719a649c0f2d.png" alt="font preview" width="500px">
+  </a>
+  </details>
 
 <!-- GALLERY -->
 
