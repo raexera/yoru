@@ -82,24 +82,26 @@ Main Features:
 
 - **Eye-catching Colorscheme**
 - **MacOS like window decorations**
-- **Dashboard**
-- **Info Center**
-- **Notification Center**
+- **Dashboard Panel**
+- **Info Center Panel**
+- **Notification Center Panel**
 - **Bottom Panel**
 - **Word Clock Lockscreen**
 - **Minimalist Exit Screen**
 - **Music Player**
 - **App Launcher**
 - **Github Activity Previews**
-- **Brightness / Volume OSD**
+- **Brightness / Volume OSDs**
 - **LayoutList PopUP**
 - **Battery Indicator**
 - **Wifi Indicator**
-- **Calendar**
-- **Weather**
+- **Calendar Widget**
+- **Weather Widget**
+- **Quick Settings Widget**
+- **Hardware Monitor Widget**
 - **Animated Workspace Indicator**
 - **Beautiful Naughty Notification**
-- **Main Menu**
+- **Right-Click Main Menu**
 
 <br>
 
