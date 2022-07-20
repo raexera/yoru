@@ -12,7 +12,7 @@ local function font_with_fallback(name, params)
 	return wezterm.font_with_fallback(names, params)
 end
 
-local font_name = "JetBrainsMono Nerd Font"
+local font_name = "AestheticIosevka Nerd Font Mono"
 
 return {
 	-- OpenGL for GPU acceleration, Software for CPU

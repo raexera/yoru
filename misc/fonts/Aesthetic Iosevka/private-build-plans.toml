@@ -1,0 +1,107 @@
+# Custom Iosevka build
+#
+# @author rxyhn
+# https://github.com/rxyhn
+
+# Aesthetic Iosevka
+[buildPlans.aesthetic-iosevka-original]  # <aesthetic-iosevka-original> is your plan name
+family = "Aesthetic Iosevka Original"    # Font menu family name
+spacing = "term"                         # Optional; Values: `normal`, `term`, `fontconfig-mono`, or `fixed`
+serifs = "sans"                          # Optional; Values: `sans` or `slab`
+
+# Configure variants
+[buildPlans.aesthetic-iosevka-original.variants]
+inherits = "ss14"
+
+# Configure single character's variant
+[buildPlans.aesthetic-iosevka-original.variants.design]
+capital-b = "more-asymmetric-serifless"
+capital-g = "toothless-corner-serifless-hooked"
+capital-k = "straight-serifless"
+capital-q = "crossing"
+capital-w = "straight"
+a = "single-storey-earless-corner-serifless"
+b = "toothless-corner"
+d = "toothless-corner-serifless"
+e = "flat-crossbar"
+f = "serifless"
+g = "earless-corner"
+i = "serifed-flat-tailed"
+j = "serifed"
+k = "straight-serifless"
+l = "serifed-flat-tailed"
+m = "earless-corner-double-arch-short-leg"
+n = "earless-corner-straight"
+p = "earless-corner"
+q = "earless-corner"
+r = "earless-corner"
+t = "standard"
+u = "toothless-corner"
+v = "straight"
+w = "straight"
+y = "straight"
+zero = "slashed"
+one = "base"
+two = "straight-neck"
+three = "flat-top"
+four = "semi-open-non-crossing"
+five = "vertical-upper-left-bar"
+six = "open-contour"
+seven = "bend-serifless"
+eight = "crossing-asymmetric"
+nine = "open-contour"
+paren = "normal"
+question = "smooth"
+tilde = "low"
+asterisk = "penta-low"
+underscore = "low"
+punctuation-dot = "round"
+percent = "dots"
+at = "short"
+brace = "curly"
+cent = "bar-interrupted"
+dollar = "interrupted"
+number-sign = "slanted"
+digit-form = "lining"
+
+# Configure single character's variant for Italic only; Overrides [design]
+[buildPlans.aesthetic-iosevka-original.variants.italic]
+a = "single-storey-earless-rounded-serifless"
+b = "toothless-rounded"
+d = "toothless-rounded-serifless"
+e = "rounded"
+f = "tailed"
+g = "earless-rounded"
+i = "tailed-serifed"
+j = "serifed"
+k = "cursive-serifless"
+l = "tailed-serifed"
+m = "earless-rounded-double-arch-short-leg"
+n = "earless-rounded-straight"
+p = "earless-rounded"
+q = "earless-rounded"
+r = "earless-rounded"
+t = "standard"
+u = "toothless-rounded"
+v = "cursive"
+w = "cursive"
+y = "cursive"
+
+# Override default building weights
+# When buildPlans.<plan name>.weights is absent
+# All weights would built and mapped to default shape/CSS
+[buildPlans.aesthetic-iosevka-original.weights.regular]
+shape = 400  # Weight for glyph shapes.
+menu  = 400  # Weight for the font's names.
+css   = 400  # Weight for webfont CSS.
+
+[buildPlans.aesthetic-iosevka-original.weights.bold]
+shape = 700
+menu  = 700
+css   = 700
+
+# Metric overrides
+# Certain metrics like line height (leading) could be overridden in your build plan file.
+# Edit the values to change the metrics. Remove this section when overriding is not needed.
+[buildPlans.aesthetic-iosevka-original.metric-override]
+leading = 1250
