@@ -600,9 +600,9 @@ You know what? This Font is absolutely Awesome if combined with Aesthetic Night 
 
 ## :japan: ‎ <samp>History</samp>
 
-Ngl is started when I am felt bored lol and decided to start using Linux, more precisely in January 2022. When it's in [Linuxer Desktop Art](https://facebook.com/groups/linuxart) I saw a Linux setup that caught my eye, then I'm interested in and trying something similar, So yeaaaaaah this is my current setup, I made this with all Aesthetic I have. Yes! You are right! Everything you see here is all about beautiful and aesthetic, and ofc apart from targeting the beautiful UI I also pay attention to the functionality, because I'm targeting an OS that's comfortable to wear and look at. Have a Nice Day! <3
+Ngl started when I was bored lol. I decided to start using Linux more precisely in January 2022. When it's in [Linuxer Desktop Art](https://facebook.com/groups/linuxart), I saw a Linux setup that caught my eye. Then I became interested in it and tried something similar, which is how I ended up with my current setup. I used all of my aesthetics to create this. Yes, you are correct! Everything you see here is about being beautiful and aesthetic. Of course, aside from focusing on the beautiful UI, I also focus on functionality because I want an OS that is comfortable to wear and look at. Have a Wonderful Day! <3
 
-I wanna say thank you to those of you who like and love my setup. <3
+I'd like to thank everyone who likes and enjoys my setup. <3
 
 <pre align="center">
 <a href="#japan--history">
