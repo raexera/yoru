@@ -600,7 +600,7 @@ You know what? This Font is absolutely Awesome if combined with Aesthetic Night 
 
 ## :japan: ‎ <samp>History</samp>
 
-Ngl started when I was bored lol. I decided to start using Linux more precisely in January 2022. When it's in [Linuxer Desktop Art](https://facebook.com/groups/linuxart), I saw a Linux setup that caught my eye. Then I became interested in it and tried something similar, which is how I ended up with my current setup. I used all of my aesthetics to create this. Yes, you are correct! Everything you see here is about being beautiful and aesthetic. Of course, aside from focusing on the beautiful UI, I also focus on functionality because I want an OS that is comfortable to wear and look at. Have a Wonderful Day! <3
+Ngl started when I was bored lol and decided to start using Linux more precisely in January 2022. When it's in [Linuxer Desktop Art](https://facebook.com/groups/linuxart), I saw a Linux setup that caught my eye. Then I became interested in it and tried something similar, which is how I ended up with my current setup. I used all of my aesthetics to create this. Yes, you are correct! Everything you see here is about being beautiful and aesthetic. Of course, aside from focusing on the beautiful UI, I also focus on functionality because I want an OS that is comfortable to wear and look at. Have a Wonderful Day! <3
 
 I'd like to thank everyone who likes and enjoys my setup. <3
 
