@@ -380,9 +380,9 @@ Introducing the Aesthetic Night colorscheme!
 
 Beautiful and elegant color schemes are perfect for programmers who live in the middle of the night.
 
-The nearest color combination that it can keep the eyes from getting tired! So you can keep writing code and continue all your work all night!
+The nearest color combination can keep the eyes from getting tired! So you can keep writing code and continue all your work all night!
 
-This colorscheme is used for all aspects in these dotfiles, yeeaaaah this aesthetic dotfiles is combined with an aesthetic colorscheme <3
+This colorscheme is used for all aspects of these dotfiles. Yeeaaaah these aesthetic dotfiles are combined with an aesthetic colorscheme <3
 
 This colorscheme was made by [`ner0z`](https://github.com/ner0z) and modified by me [`rxyhn`](https://github.com/rxyhn)
 
@@ -513,7 +513,7 @@ I have created a Custom Font that based on [Iosevka Custom Build](https://github
 
 This is My Favorite Monospace Font! This font is used in my terminal emulator and all my code editor. Yes, for better Code.
 
-You know what? This Font is absolutely Awesome! If combined with Aesthetic Night Colorscheme!
+You know what? This Font is absolutely Awesome if combined with Aesthetic Night Colorscheme!
 
 <b>Font Preview:</b>
 
