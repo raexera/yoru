@@ -313,7 +313,7 @@ cp -rf misc/themes/kvantum ~/.themes/
 
 :snowman_with_snow: ‎ <samp>Aesthetic Firefox</samp>
 
-setup:
+Setup:
 
 1. Go to `about:config` in Firefox.
 2. Search for `toolkit.legacyUserProfileCustomizations.stylesheets` and set it to `true`.
@@ -348,7 +348,36 @@ Setup:
   ```sh
   cp misc/themes/discord/AestheticNight.theme.css ~/.config/BetterDiscord/themes/
   ```
+   
+> :warning: WARNING: Using 3rd Party Clients are against Discord Terms and Service
+   
+</details>  
+    
+<details>
+<summary><b>Telegram Theme</b></summary>
+<br>
 
+# Preview Wanted
+
+:telephone_receiver: <samp>Aesthetic Telegram Theme</samp>
+   
+Setup:
+
+   - First Method
+   
+      1. Go to: https://t.me/addtheme/aesthetic_night
+   
+      2. Open the link with your Telegram client of choice
+   
+      3. Apply the theme
+   
+   - Second Method
+   
+      1. Open Telegram go to ``Settings>Chat Settings>3DotMenu>Create new theme>IMPORT EXISTING THEME`` 
+   
+      2. Locate the theme ``misc/telegram/Aesthetic-Night.tdesktop-theme``
+   
+> :warning: WARNING: This theme will only work on **Telegram Desktop** this won't on ``MacOS, Android, and iOS``
 </details>
 
 <details>
