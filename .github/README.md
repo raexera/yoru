@@ -349,7 +349,7 @@ Setup:
   cp misc/themes/discord/AestheticNight.theme.css ~/.config/BetterDiscord/themes/
   ```
    
-> :warning: WARNING: Using 3rd Party Clients are against Discord Terms and Service
+> :warning: Using 3rd Party Clients are against Discord Terms and Service
    
 </details>  
     
@@ -357,7 +357,9 @@ Setup:
 <summary><b>Telegram Theme</b></summary>
 <br>
 
-# Preview Wanted
+<a href="#--------">
+   <img src="https://user-images.githubusercontent.com/65948476/180603733-bf41913f-f816-425d-9c4e-653a68b2c000.png" width="500px">
+</a>
 
 :telephone_receiver: <samp>Aesthetic Telegram Theme</samp>
    
@@ -377,7 +379,7 @@ Setup:
    
       2. Locate the theme ``misc/telegram/Aesthetic-Night.tdesktop-theme``
    
-> :warning: WARNING: This theme will only work on **Telegram Desktop** this won't on ``MacOS, Android, and iOS``
+> :warning: This theme will only work on **Telegram Desktop** this won't on ``MacOS, Android, and iOS``
 </details>
 
 <details>
