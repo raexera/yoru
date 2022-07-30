@@ -411,9 +411,9 @@ Introducing the Aesthetic Night colorscheme!
 
 Beautiful and elegant color schemes are perfect for programmers who live in the middle of the night.
 
-The nearest color combination that it can keep the eyes from getting tired! So you can keep writing code and continue all your work all night!
+The nearest color combination can keep the eyes from getting tired! So you can keep writing code and continue all your work all night!
 
-This colorscheme is used for all aspects in these dotfiles, yeeaaaah this aesthetic dotfiles is combined with an aesthetic colorscheme <3
+This colorscheme is used for all aspects of these dotfiles. Yeeaaaah these aesthetic dotfiles are combined with an aesthetic colorscheme <3
 
 This colorscheme was made by [`ner0z`](https://github.com/ner0z) and modified by me [`rxyhn`](https://github.com/rxyhn)
 
@@ -544,7 +544,7 @@ I have created a Custom Font that based on [Iosevka Custom Build](https://github
 
 This is My Favorite Monospace Font! This font is used in my terminal emulator and all my code editor. Yes, for better Code.
 
-You know what? This Font is absolutely Awesome! If combined with Aesthetic Night Colorscheme!
+You know what? This Font is absolutely Awesome if combined with Aesthetic Night Colorscheme!
 
 <b>Font Preview:</b>
 
@@ -631,9 +631,9 @@ You know what? This Font is absolutely Awesome! If combined with Aesthetic Night
 
 ## :japan: ‎ <samp>History</samp>
 
-Ngl is started when I am felt bored lol and decided to start using Linux, more precisely in January 2022. When it's in [Linuxer Desktop Art](https://facebook.com/groups/linuxart) I saw a Linux setup that caught my eye, then I'm interested in and trying something similar, So yeaaaaaah this is my current setup, I made this with all Aesthetic I have. Yes! You are right! Everything you see here is all about beautiful and aesthetic, and ofc apart from targeting the beautiful UI I also pay attention to the functionality, because I'm targeting an OS that's comfortable to wear and look at. Have a Nice Day! <3
+Ngl started when I was bored lol and decided to start using Linux more precisely in January 2022. When it's in [Linuxer Desktop Art](https://facebook.com/groups/linuxart), I saw a Linux setup that caught my eye. Then I became interested in it and tried something similar, which is how I ended up with my current setup. I used all of my aesthetics to create this. Yes, you are correct! Everything you see here is about being beautiful and aesthetic. Of course, aside from focusing on the beautiful UI, I also focus on functionality because I want an OS that is comfortable to wear and look at. Have a Wonderful Day! <3
 
-I wanna say thank you to those of you who like and love my setup. <3
+I'd like to thank everyone who likes and enjoys my setup. <3
 
 <pre align="center">
 <a href="#japan--history">
