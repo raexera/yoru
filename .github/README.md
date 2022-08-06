@@ -1,4 +1,4 @@
-<!-- DOTFILES BANNER -->
+<!-- YORU BANNER -->
 <div align="center">
    <a href="#--------">
       <img src="assets/rxhyn-dotfile-header.png" alt="Home Preview">
@@ -7,7 +7,7 @@
 
 <p align="center">
 <a href="#wrench--setup"><img width="150px" style="padding: 0 10px;" src="assets/button-setup.png"></a>
-<a href="https://github.com/rxyhn/dotfiles/wiki"><img width="150px" style="padding: 0 10px;" src="assets/button-wiki.png"></a>
+<a href="https://github.com/rxyhn/yoru/wiki"><img width="150px" style="padding: 0 10px;" src="assets/button-wiki.png"></a>
 <a href="#ocean--gallery"><img width="150px" style="padding: 0 10px;" src="assets/button-gallery.png"></a>
 <a href="#money_with_wings--tip-jar"><img width="150px" style="padding: 0 10px;" src="assets/button-tipjar.png"></a>
 </p>
@@ -26,10 +26,10 @@
 <!-- BADGES -->
 <h1>
   <a href="#--------">
-    <img alt="" align="left" src="https://img.shields.io/github/stars/rxyhn/dotfiles?color=162026&labelColor=162026&style=for-the-badge"/>
+    <img alt="" align="left" src="https://img.shields.io/github/stars/rxyhn/yoru?color=162026&labelColor=162026&style=for-the-badge"/>
   </a>
   <a href="#--------">
-    <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/dotfiles?style=flat-square&label=&color=162026&logo=github&logoColor=white&labelColor=162026"/>
+    <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/yoru?style=flat-square&label=&color=162026&logo=github&logoColor=white&labelColor=162026"/>
   </a>
 </h1>
 
@@ -105,13 +105,13 @@ Main Features:
 
 <br>
 
-> This repo has a wiki! You can check it by clicking ~~[here](https://www.youtube.com/watch?v=UIp6_0kct_U)~~ [here](https://github.com/rxyhn/dotfiles/wiki).
+> This repo has a wiki! You can check it by clicking ~~[here](https://www.youtube.com/watch?v=UIp6_0kct_U)~~ [here](https://github.com/rxyhn/yoru/wiki).
 
 <!-- SETUP -->
 
 ## :wrench: ‎ <samp>Setup</samp>
 
-> This is step-by-step how to install these dotfiles. Just [R.T.F.M](https://en.wikipedia.org/wiki/RTFM).
+> This is step-by-step how to install yoru on your system. Just [R.T.F.M](https://en.wikipedia.org/wiki/RTFM).
 
 <details>
 <summary><b>1. Install Required Dependencies and Enable Services</b></summary>
@@ -146,14 +146,14 @@ systemctl --user start mpd.service
 </details>
 
 <details>
-<summary><b>2. Install My AwesomeWM Dotfiles</b></summary>
+<summary><b>2. Install Yoru</b></summary>
 <br>
 
 > Clone this repository
 
 ```sh
-git clone --depth 1 --recurse-submodules https://github.com/rxyhn/dotfiles.git
-cd dotfiles && git submodule update --remote --merge
+git clone --depth 1 --recurse-submodules https://github.com/rxyhn/yoru.git
+cd yoru && git submodule update --remote --merge
 ```
 
 > Copy config files
@@ -172,7 +172,7 @@ Necessary fonts:
 
 Optional fonts:
 
-- **My custom Iosevka build(Aesthetic Iosevka)** - [here](https://github.com/rxyhn/dotfiles/tree/main/misc/fonts/Aesthetic%20Iosevka)
+- **My custom Iosevka build(Aesthetic Iosevka)** - [here](https://github.com/rxyhn/yoru/tree/main/misc/fonts/Aesthetic%20Iosevka)
 - **Azuki Font** - [here](https://www.freejapanesefont.com/azuki-font-あずきフォント)
 
 Once you download them and unpack them, place them into `~/.fonts` or `~/.local/share/fonts`.
@@ -193,7 +193,7 @@ fc-cache -fv
 
 > Finally, now you can login with AwesomeWM
 
-Congratulations, at this point you have installed this aesthetic dotfiles! :tada:
+Congratulations, at this point you have installed yoru! :tada:
 
 Log out from your current desktop session and log in into AwesomeWM
 
@@ -348,9 +348,9 @@ Setup:
   ```sh
   cp misc/themes/discord/AestheticNight.theme.css ~/.config/BetterDiscord/themes/
   ```
-   
+
 > :warning: Using 3rd Party Clients are against Discord Terms and Service
-   
+
 </details>  
     
 <details>
@@ -362,24 +362,25 @@ Setup:
 </a>
 
 :telephone_receiver: <samp>Aesthetic Telegram Theme</samp>
-   
+
 Setup:
 
-   - First Method
-   
-      1. Go to: https://t.me/addtheme/aesthetic_night
-   
-      2. Open the link with your Telegram client of choice
-   
-      3. Apply the theme
-   
-   - Second Method
-   
-      1. Open Telegram go to ``Settings>Chat Settings>3DotMenu>Create new theme>IMPORT EXISTING THEME`` 
-   
-      2. Locate the theme ``misc/telegram/Aesthetic-Night.tdesktop-theme``
-   
-> :warning: This theme will only work on **Telegram Desktop** this won't on ``MacOS, Android, and iOS``
+- First Method
+
+  1. Go to: https://t.me/addtheme/aesthetic_night
+
+  2. Open the link with your Telegram client of choice
+
+  3. Apply the theme
+
+- Second Method
+
+  1. Open Telegram go to `Settings>Chat Settings>3DotMenu>Create new theme>IMPORT EXISTING THEME`
+
+  2. Locate the theme `misc/telegram/Aesthetic-Night.tdesktop-theme`
+
+> :warning: This theme will only work on **Telegram Desktop** this won't on `MacOS, Android, and iOS`
+
 </details>
 
 <details>
@@ -413,7 +414,7 @@ Beautiful and elegant color schemes are perfect for programmers who live in the 
 
 The nearest color combination that it can keep the eyes from getting tired! So you can keep writing code and continue all your work all night!
 
-This colorscheme is used for all aspects in these dotfiles, yeeaaaah this aesthetic dotfiles is combined with an aesthetic colorscheme <3
+This colorscheme is used for all aspects in these environment, yeeaaaah this aesthetic configuration is combined with an aesthetic colorscheme <3
 
 This colorscheme was made by [`ner0z`](https://github.com/ner0z) and modified by me [`rxyhn`](https://github.com/rxyhn)
 
@@ -567,7 +568,7 @@ You know what? This Font is absolutely Awesome! If combined with Aesthetic Night
 <b>Installation:</b>
 
 1. Clone or Download this repository
-2. Change the current directory to `dotfiles/misc/fonts/Aesthetic Iosevka`
+2. Change the current directory to `yoru/misc/fonts/Aesthetic Iosevka`
 3. Choose the variant you want, or choose both
 4. Take actions depending on your OS:
    - **Windows**: Select the font files and drag into font [settings](ms-settings:fonts) / font control panel page.
@@ -637,9 +638,20 @@ I wanna say thank you to those of you who like and love my setup. <3
 
 <pre align="center">
 <a href="#japan--history">
-<img alt="" align="center" width="96%" src="https://api.star-history.com/svg?repos=rxyhn/dotfiles&type=Date"/>
+<img alt="" align="center" width="96%" src="https://api.star-history.com/svg?repos=rxyhn/yoru&type=Date"/>
 </a>
 </pre>
+
+## :scroll: ‎ <samp>License</samp>
+
+Yoru is under <a href="https://github.com/rxyhn/yoru/blob/main/LICENSE">GNU GPL-3.0 License.
+</a>
+
+<!-- Author -->
+
+## :bust_in_silhouette: ‎ <samp>Author</samp>
+
+Yoru is created by <a href="https://github.com/rxyhn">Rxyhn</a>.
 
 <!-- TIP JAR -->
 
@@ -659,21 +671,6 @@ Thanks from the bottom of my heart! ‎ :heartpulse:
 
 - _Contributors_
 
-  - [`rxyhn`](https://github.com/rxyhn)
-  - [`ner0z`](https://github.com/ner0z)
-  - [`Kasper24`](https://github.com/Kasper24)
-  - [`paulhersch`](https://github.com/paulhersch)
-  - [`rototrash`](https://github.com/rototrash)
-  - [`Deathemonic`](https://github.com/Deathemonic)
-  - [`janleigh`](https://github.com/janleigh)
-  - [`ChocolateBread799`](https://github.com/ChocolateBread799)
-
-- _Thanks to_
-
-  - [`rxyhn`](https://github.com/rxyhn) _there's nothing wrong with thanking yourself right?_
-  - [`elenapan`](https://github.com/elenapan)
-  - [`manilarome`](https://github.com/manilarome)
-
-<br>
-
-<p align="center"><a href="https://github.com/rxyhn/AwesomeWM-Dotfiles/blob/main/.github/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=License&message=GPL-3.0&logoColor=eceff4&logo=github&colorA=162026&colorB=162026"/></a></p>
+  <a href="https://github.com/rxyhn/yoru/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=rxyhn/yoru"/>
+  </a>
