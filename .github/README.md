@@ -17,7 +17,7 @@
 <!-- RICE PREVIEW -->
 <div align="center">
    <a href="#--------">
-      <img src="assets/aesthetic.png" alt="Rice Preview">
+      <img src="assets/yoru.png" alt="Rice Preview">
    </a>
 </div>
 
@@ -39,7 +39,7 @@
 
 <a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="150" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
 
-<b> Rxyhn's Aesthetic AwesomeWM Configuration Files! </b>
+<b> Yoru (夜) Aesthetic and Beautiful Awesome Environment </b>
 
 Welcome to my AwesomeWM configuration files!
 
@@ -132,7 +132,7 @@ paru -S awesome-git
 ```sh
 paru -Sy picom-git wezterm rofi acpi acpid acpi_call upower lxappearance-gtk3 \
 jq inotify-tools polkit-gnome xdotool xclip gpick ffmpeg blueman redshift \
-pipewire pipewire-alsa pipewire-pulse pamixer brightnessctl feh maim \
+pipewire pipewire-alsa pipewire-pulse alsa-utils brightnessctl feh maim \
 mpv mpd mpc mpdris2 python-mutagen ncmpcpp playerctl --needed
 ```
 
@@ -201,17 +201,17 @@ Log out from your current desktop session and log in into AwesomeWM
 
 <!-- MISCELLANEOUS -->
 
-## :four_leaf_clover: ‎ <samp>Miscellaneous</samp>
+<!-- ## :four_leaf_clover: ‎ <samp>Miscellaneous</samp>
 
-<!-- <details>
+<details>
 <summary><b>VSCode Theme</b></summary>
 <br>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/93292023/174243639-e02473ac-82cc-41b9-a54a-915b4e0e58e5.png" alt="VSCode theme preview" width="500px">
+   <img src="" alt="VSCode theme preview" width="500px">
 </a>
 
-:comet: ‎ <samp>Aesthetic VSCode</samp>
+:comet: ‎ <samp>Yoru VSCode</samp>
 
 Setup:
 
@@ -236,12 +236,12 @@ Setup:
 <br>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/93292023/174063775-d246c4be-a08b-49dd-8597-5bb8a3e2520f.png" alt="neovim theme preview" width="500px">
+   <img src="" alt="neovim theme preview" width="500px">
 </a>
 
-:cyclone: ‎ <samp>Aesthetic Neovim</samp>
+:cyclone: ‎ <samp>Yoru Neovim</samp>
 
-This is nvchad's port of my aesthetic theme named `rxyhn`
+This is nvchad's port of my aesthetic theme named `yoru`
 
 To get this theme you have to use [nvchad](https://github.com/NvChad/NvChad) as your neovim config, and then apply my theme.
 
@@ -252,17 +252,17 @@ To get this theme you have to use [nvchad](https://github.com/NvChad/NvChad) as 
 <br>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/93292023/174969899-0fc0587f-72fa-4324-a884-8713981c7531.png" width="500px">
+   <img src="" width="500px">
 </a>
 
-:milky_way: ‎ <samp>Aesthetic-Night gtk theme</samp>
+:milky_way: ‎ <samp>Yoru gtk theme</samp>
 
 Setup:
 
 1. Copy the themes to the themes folders
    ```sh
-   sudo cp -rf misc/themes/gtk/Aesthetic-Night/* /usr/share/themes
-   cp -rf misc/themes/gtk/Aesthetic-Night-GTK4/* ~/.config/gtk-4.0
+   sudo cp -rf misc/themes/gtk/Yoru/* /usr/share/themes
+   cp -rf misc/themes/gtk/Yoru-GTK4/* ~/.config/gtk-4.0
    ```
 2. Add this line on `~/.config/gtk-3.0/settings.ini` for left controls
    ```sh
@@ -278,10 +278,10 @@ To apply the theme use ~~[lxappearance](https://archlinux.org/packages/community
 <br>
 
 <a href="#--------">
-   <img src="https://cdn.discordapp.com/attachments/700718886118490163/996680624993738832/unknown.png" width="500px">
+   <img src="" width="500px">
 </a>
 
-:ringed_planet: ‎ <samp>Aesthetic Kvantum Theme</samp>
+:ringed_planet: ‎ <samp>Yoru Kvantum Theme</samp>
 
 Setup:
 
@@ -293,11 +293,11 @@ cp -rf misc/themes/kvantum ~/.themes/
 
 2. To apply the theme use the Kvantum Theme Engine
 
-3. Open **Kvantum** and click `Select a Kvantum theme folder` and locate the theme it should be on `~/.themes/kvantum/Aesthetic-Night/` and select that folder
+3. Open **Kvantum** and click `Select a Kvantum theme folder` and locate the theme it should be on `~/.themes/kvantum/Yoru/` and select that folder
 
 4. After that click `Install this theme`
 
-5. Then click the `Change/Delete Theme` section there should be a combo box that says `Select a theme` pick **Aesthetic-Night** then click `Use this theme`
+5. Then click the `Change/Delete Theme` section there should be a combo box that says `Select a theme` pick **Yoru** then click `Use this theme`
 
 6. Now you should have the theme enabled and installed
 
@@ -308,10 +308,10 @@ cp -rf misc/themes/kvantum ~/.themes/
 <br>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/93292023/174238121-51774ec2-e553-4944-a2c4-c3b94dd97777.png" alt="firefox theme preview" width="500px">
+   <img src="" alt="firefox theme preview" width="500px">
 </a>
 
-:snowman_with_snow: ‎ <samp>Aesthetic Firefox</samp>
+:snowman_with_snow: ‎ <samp>Yoru Firefox</samp>
 
 Setup:
 
@@ -326,10 +326,10 @@ Setup:
 <br>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/93292023/178931074-e4fee64a-c48d-47df-bf0f-55526f42b307.png" width="500px">
+   <img src="" width="500px">
 </a>
 
-:speech_balloon: ‎ <samp>Aesthetic Discord Theme</samp>
+:speech_balloon: ‎ <samp>Yoru Discord Theme</samp>
 
 Setup:
 
@@ -346,7 +346,7 @@ Setup:
   Copy the discord css to the betterdiscord themes folder
 
   ```sh
-  cp misc/themes/discord/AestheticNight.theme.css ~/.config/BetterDiscord/themes/
+  cp misc/themes/discord/Yoru.theme.css ~/.config/BetterDiscord/themes/
   ```
 
 > :warning: Using 3rd Party Clients are against Discord Terms and Service
@@ -358,16 +358,16 @@ Setup:
 <br>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/65948476/180603733-bf41913f-f816-425d-9c4e-653a68b2c000.png" width="500px">
+   <img src="" width="500px">
 </a>
 
-:telephone_receiver: <samp>Aesthetic Telegram Theme</samp>
+:telephone_receiver: <samp>Yoru Telegram Theme</samp>
 
 Setup:
 
 - First Method
 
-  1. Go to: https://t.me/addtheme/aesthetic_night
+  1. Go to: https://t.me/addtheme/yoru
 
   2. Open the link with your Telegram client of choice
 
@@ -377,11 +377,11 @@ Setup:
 
   1. Open Telegram go to `Settings>Chat Settings>3DotMenu>Create new theme>IMPORT EXISTING THEME`
 
-  2. Locate the theme `misc/telegram/Aesthetic-Night.tdesktop-theme`
+  2. Locate the theme `misc/telegram/Yoru.tdesktop-theme`
 
 > :warning: This theme will only work on **Telegram Desktop** this won't on `MacOS, Android, and iOS`
 
-</details> -->
+</details> 
 
 <details>
 <summary><b>Touchpad tap-to-click & natural (reverse) scrolling (<a href="https://wiki.archlinux.org/title/Libinput#Tapping_button_re-mapping">libinput</a>)</b></summary>
@@ -400,13 +400,13 @@ Section "InputClass"
 EndSection
 ```
 
-</details>
+</details> -->
 
 <!-- Yoru Colorscheme -->
 
 ## :art: ‎ <samp>Colorscheme</samp>
 
-<a href="#--------"><img src="assets/yoru.png" width="500px" alt="colorscheme preview"></a>
+<a href="#--------"><img src="assets/yoru-colorscheme.png" width="500px" alt="colorscheme preview"></a>
 
 Introducing the Yoru(夜) colorscheme!
 
@@ -532,7 +532,7 @@ I have created a Custom Font that based on [Iosevka Custom Build](https://github
 
 This is My Favorite Monospace Font! This font is used in my terminal emulator and all my code editor. Yes, for better Code.
 
-You know what? This Font is absolutely Awesome! If combined with Aesthetic Night Colorscheme!
+You know what? This Font is absolutely Awesome! If combined with Yoru Colorscheme!
 
 <b>Font Preview:</b>
 
