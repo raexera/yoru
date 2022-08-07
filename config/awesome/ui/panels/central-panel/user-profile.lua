@@ -25,10 +25,7 @@ local function create_boxed_widget(widget_to_be_boxed, width, height, bg_color)
 			{
 				--- The actual widget goes here
 				widget_to_be_boxed,
-				top = dpi(10),
-				bottom = dpi(10),
-				left = dpi(10),
-				right = dpi(10),
+				margins = dpi(15),
 				widget = wibox.container.margin,
 			},
 			widget = box_container,
@@ -50,7 +47,7 @@ local function widget()
 			valign = "center",
 			widget = wibox.widget.textbox,
 		},
-		bg = beautiful.accent,
+		bg = beautiful.white,
 		widget = wibox.container.background,
 		shape = gears.shape.circle,
 		forced_height = dpi(25),
@@ -68,8 +65,6 @@ local function widget()
 					valign = "center",
 					widget = wibox.widget.imagebox,
 				},
-				border_width = dpi(2),
-				border_color = beautiful.accent,
 				shape = gears.shape.circle,
 				widget = wibox.container.background,
 			},
@@ -124,7 +119,7 @@ local function widget()
 	local uptime_time = wibox.widget({
 		widget = wibox.widget.textbox,
 		markup = "up 3 hours, 33 minutes",
-		font = beautiful.font_name .. "Regular 10",
+		font = beautiful.font_name .. "Medium 10",
 		valign = "center",
 	})
 
@@ -164,7 +159,7 @@ local function widget()
 						speed = 75,
 						uptime_time,
 					},
-					forced_width = dpi(180),
+					forced_width = dpi(200),
 					layout = wibox.layout.fixed.vertical,
 					spacing = dpi(2),
 				},
@@ -182,7 +177,7 @@ local function widget()
 					forced_width = dpi(50),
 					forced_height = dpi(50),
 					font = "icomoon bold ",
-					text_normal_bg = beautiful.xforeground,
+					text_normal_bg = beautiful.accent,
 					normal_bg = beautiful.one_bg3,
 					text = "",
 					size = 17,
@@ -195,7 +190,7 @@ local function widget()
 					forced_width = dpi(50),
 					forced_height = dpi(50),
 					font = "icomoon bold ",
-					text_normal_bg = beautiful.accent,
+					text_normal_bg = beautiful.color1,
 					normal_bg = beautiful.one_bg3,
 					text = "",
 					size = 17,
@@ -215,4 +210,4 @@ local function widget()
 	return profile
 end
 
-return create_boxed_widget(widget(), dpi(350), dpi(145), beautiful.widget_bg)
+return create_boxed_widget(widget(), dpi(350), dpi(160), beautiful.widget_bg)

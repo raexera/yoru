@@ -40,7 +40,7 @@ local function button(args)
 	args.halign = args.halign or "center"
 	args.valign = args.valign or "center"
 
-	args.bg = args.normal_bg or beautiful.xbackground
+	args.bg = args.normal_bg or beautiful.black
 	args.shape = args.normal_shape or helpers.ui.rrect(beautiful.border_radius)
 	args.border_width = args.normal_border_width or nil
 	args.border_color = args.normal_border_color or beautiful.transparent
@@ -82,7 +82,7 @@ end
 function elevated_button.state(args)
 	args = args or {}
 
-	args.normal_bg = args.normal_bg or beautiful.xbackground
+	args.normal_bg = args.normal_bg or beautiful.black
 	args.hover_bg = args.hover_bg or helpers.color.button_color(args.normal_bg, 0.1)
 	args.press_bg = args.press_bg or helpers.color.button_color(args.normal_bg, 0.2)
 
@@ -307,7 +307,7 @@ end
 function elevated_button.normal(args)
 	args = args or {}
 
-	args.normal_bg = args.normal_bg or beautiful.xbackground
+	args.normal_bg = args.normal_bg or beautiful.black
 	args.hover_bg = args.hover_bg or helpers.color.button_color(args.normal_bg, 0.1)
 	args.press_bg = args.press_bg or helpers.color.button_color(args.normal_bg, 0.2)
 

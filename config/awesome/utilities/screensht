@@ -23,13 +23,13 @@ _ORIGINAL_DIR_=$_SCREENSHOT_DIR_/Original
 _LOG_FILE_="$_SCREENSHOT_DIR_/.screensht.log"
 
 # Color
-_FG_COLOR_='#d9d7d6'
-_BG_COLOR_='#162026'
+_FG_COLOR_='#edeff0'
+_BG_COLOR_='#343637'
 _BG_SIZE_=10
 
 # Border Size Applied when value greater than or equal 3
 _BORDER_SIZE_=0
-_SHADOW_SIZE_='50x10+0+10'  # [ weight ] x [ radius ] + [ horizontal ] x [ vertical ]
+_SHADOW_SIZE_='100x40+0+16'  # [ weight ] x [ radius ] + [ horizontal ] x [ vertical ]
 _ROUNDED_CORNER_=8
 
 # Author Config
@@ -38,7 +38,7 @@ _AUTHOR_NAME_=" $USER"
 _AUTHOR_COLOR_='#6791c9'
 
 # Get Lists Font With "convert -list font | grep -iE 'font:.*' | nl"
-_FONT_SIZE_=10
+_FONT_SIZE_=11
 _FONT_='AestheticIosevka-Nerd-Font-Complete'
 
 # =============================================

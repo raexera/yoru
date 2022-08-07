@@ -9,7 +9,7 @@ local bling = require("modules.bling")
 client.connect_signal("request::manage", function(c)
 	--- Add missing icon to client
 	if not c.icon then
-		local icon = gears.surface(beautiful.theme_assets.awesome_icon(24, beautiful.xcolor8, beautiful.xbackground))
+		local icon = gears.surface(beautiful.theme_assets.awesome_icon(24, beautiful.color8, beautiful.black))
 		c.icon = icon._native
 		icon:finish()
 	end
@@ -50,6 +50,7 @@ awful.screen.connect_for_each_screen(function(s)
 			wallpaper = wallpaper(s)
 		end
 
+		-- gears.wallpaper.set("#2E2E2E", s, false, nil)
 		gears.wallpaper.maximized(wallpaper, s, false, nil)
 	end
 end)

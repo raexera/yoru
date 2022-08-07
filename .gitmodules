@@ -10,6 +10,3 @@
 [submodule "config/awesome/modules/UPower"]
 	path = config/awesome/modules/UPower
 	url = https://github.com/Aire-One/awesome-battery_widget
-[submodule "misc/themes"]
-	path = misc/themes
-	url = https://github.com/rxyhn/AestheticStuff.git

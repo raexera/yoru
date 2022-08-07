@@ -26,7 +26,7 @@ local function new(args)
 	args.valign = args.valign or nil
 	args.child = args.child or nil
 
-	args.bg = args.bg or beautiful.xbackground
+	args.bg = args.bg or beautiful.black
 	args.shape = args.shape or helpers.ui.rrect(beautiful.border_radius)
 	args.border_width = args.border_width or dpi(0)
 	args.border_color = args.border_color or beautiful.transparent

@@ -16,12 +16,16 @@ zle -N _vi_search_fix
 zle -N _sudo_command_line
 
 # Completion
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ":completion:*" sort false
-zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
-zstyle ":completion:*" special-dirs true
-zstyle ":completion:*" ignored-patterns
-zstyle ":completion:*" completer _complete
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
 
 # History
 HISTFILE="$XDG_CACHE_HOME/zsh/.zhistory"
@@ -29,9 +33,10 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 # Autosuggestion
-export ZSH_AUTOSUGGEST_USE_ASYNC="true"
-export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd" "completion")
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#484e5b,underline"
+ZSH_AUTOSUGGEST_USE_ASYNC="true"
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor regexp root line)
+ZSH_HIGHLIGHT_MAXLENGTH=512
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$color8,bold"
 
 while read -r opt
 do 
@@ -71,7 +76,9 @@ CORRECT
 EQUALS
 EOF
 
+command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
+
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)
 bindkey -e
 
-# vim:ft=zsh:nowrap
+# vim:filetype=zsh:nowrap

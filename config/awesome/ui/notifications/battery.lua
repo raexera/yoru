@@ -16,7 +16,7 @@ awesome.connect_signal("signal::battery", function(percentage, state)
 			title = "Battery Status",
 			text = "Running low at " .. math.floor(value) .. "%",
 			app_name = "AwesomeWM",
-			image = gears.color.recolor_image(icons.battery_low, beautiful.xcolor1),
+			image = gears.color.recolor_image(icons.battery_low, beautiful.color1),
 		})
 		display_low = false
 	end
@@ -27,7 +27,7 @@ awesome.connect_signal("signal::battery", function(percentage, state)
 			title = "Battery Status",
 			text = "Fully charged!",
 			app_name = "AwesomeWM",
-			image = gears.color.recolor_image(icons.battery, beautiful.xcolor2),
+			image = gears.color.recolor_image(icons.battery, beautiful.color2),
 		})
 		display_high = false
 	end
@@ -38,7 +38,7 @@ awesome.connect_signal("signal::battery", function(percentage, state)
 			title = "Battery Status",
 			text = "Charging",
 			app_name = "AwesomeWM",
-			image = gears.color.recolor_image(icons.charging, beautiful.xcolor6),
+			image = gears.color.recolor_image(icons.charging, beautiful.color6),
 		})
 		display_charge = false
 	end

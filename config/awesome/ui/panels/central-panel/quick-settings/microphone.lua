@@ -1,11 +1,10 @@
 local awful = require("awful")
-local watch = awful.widget.watch
 local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local widgets = require("ui.widgets")
 
---- Microphone Widget
+--- Mic Widget
 --- ~~~~~~~~~~~~~~~~~
 
 local function button(icon)
@@ -23,19 +22,30 @@ local function button(icon)
 	})
 end
 
-local widget = button("")
+local widget = button("")
 
+local update_widget = function()
+	awful.spawn.easy_async_with_shell(
+		[[
+		amixer sget Capture toggle | tail -n 1 | awk '{print $6}' | tr -d '[]'
+		]],
+		function(stdout)
+			if stdout:match("on") then
+				widget:turn_off()
+			else
+				widget:turn_on()
+			end
+		end
+	)
+end
+
+--- run once every startup/reload
+update_widget()
+
+--- buttons
 widget:buttons(gears.table.join(awful.button({}, 1, nil, function()
-	awful.spawn.with_shell("pamixer --default-source -t")
+	awful.spawn("amixer sset Capture toggle", false)
+	update_widget()
 end)))
-
-watch("pamixer --default-source --get-mute", 5, function(_, stdout)
-	if stdout:match("true") then
-		widget:turn_off()
-	else
-		widget:turn_on()
-	end
-	collectgarbage("collect")
-end, widget)
 
 return widget

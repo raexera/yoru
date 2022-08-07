@@ -59,7 +59,7 @@ local function widget()
 		widgets.text({
 			halign = "center",
 			size = 25,
-			color = beautiful.xcolor1,
+			color = beautiful.color1,
 			text = "Missing Credentials",
 		}),
 	})
@@ -72,13 +72,13 @@ local function widget()
 			widgets.text({
 				halign = "center",
 				size = 125,
-				color = beautiful.xcolor3,
+				color = beautiful.color3,
 				font = "Material Icons Round ",
 				text = "",
 			}),
 			widgets.text({
 				halign = "center",
-				color = beautiful.xcolor3,
+				color = beautiful.color3,
 				text = "Error",
 				bold = true,
 			}),

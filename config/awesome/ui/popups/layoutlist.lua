@@ -39,14 +39,14 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	local layout_popup = awful.popup({
 		widget = wibox.widget({
 			{ layout_list, margins = dpi(24), widget = wibox.container.margin },
-			bg = beautiful.xbackground,
+			bg = beautiful.black,
 			shape = helpers.ui.rrect(beautiful.border_radius),
 			widget = wibox.container.background,
 		}),
 		placement = awful.placement.centered,
 		ontop = true,
 		visible = false,
-		bg = beautiful.xbackground .. "00",
+		bg = beautiful.black .. "00",
 	})
 
 	function gears.table.iterate_value(t, value, step_size, filter, start_at)

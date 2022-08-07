@@ -24,7 +24,7 @@ local function music_icon()
 	local small_music_icon = wibox.widget({
 		align = "center",
 		font = beautiful.icon_font .. "Round 11",
-		markup = helpers.ui.colorize_text("", beautiful.xforeground),
+		markup = helpers.ui.colorize_text("", beautiful.white),
 		widget = wibox.widget.textbox(),
 	})
 
@@ -105,7 +105,7 @@ local playlist = function(c)
 		normal_shape = gears.shape.rounded_rect,
 		font = beautiful.icon_font .. "Round ",
 		size = 14,
-		text_normal_bg = beautiful.xforeground,
+		text_normal_bg = beautiful.white,
 		normal_bg = beautiful.music_bg_accent,
 		text = "",
 		on_release = function()
@@ -120,7 +120,7 @@ local visualizer = function(c)
 		normal_shape = gears.shape.rounded_rect,
 		font = "icomoon ",
 		size = 14,
-		text_normal_bg = beautiful.xforeground,
+		text_normal_bg = beautiful.white,
 		normal_bg = beautiful.music_bg_accent,
 		text = "",
 		on_release = function()
@@ -144,7 +144,7 @@ local function volume_control()
 		shape = gears.shape.rounded_bar,
 		bar_shape = gears.shape.rounded_bar,
 		color = beautiful.accent,
-		background_color = beautiful.xforeground .. "11",
+		background_color = beautiful.white .. "11",
 		border_width = 0,
 		widget = wibox.widget.progressbar,
 	})
@@ -241,7 +241,7 @@ playerctl_daemon:connect_signal("position", function(_, interval_sec, length_sec
 	if player_name == "mpd" then
 		local pos_now = tostring(os.date("!%M:%S", math.floor(interval_sec)))
 		local pos_length = tostring(os.date("!%M:%S", math.floor(length_sec)))
-		local pos_markup = pos_now .. helpers.ui.colorize_text(" / " .. pos_length, beautiful.xcolor8)
+		local pos_markup = pos_now .. helpers.ui.colorize_text(" / " .. pos_length, beautiful.color8)
 
 		music_pos:set_markup_silently(pos_markup)
 		music_bar.value = (interval_sec / length_sec) * 100
@@ -329,11 +329,11 @@ local music_create_decoration = function(c)
 						layout = wibox.layout.fixed.horizontal,
 					},
 					{
-						widgets.playerctl.shuffle(beautiful.xforeground, beautiful.music_bg_accent),
-						widgets.playerctl.previous(12, beautiful.xforeground, beautiful.music_bg_accent),
+						widgets.playerctl.shuffle(beautiful.white, beautiful.music_bg_accent),
+						widgets.playerctl.previous(12, beautiful.white, beautiful.music_bg_accent),
 						widgets.playerctl.play(beautiful.music_bg_accent, beautiful.accent),
-						widgets.playerctl.next(12, beautiful.xforeground, beautiful.music_bg_accent),
-						widgets.playerctl.loop(beautiful.xforeground, beautiful.music_bg_accent),
+						widgets.playerctl.next(12, beautiful.white, beautiful.music_bg_accent),
+						widgets.playerctl.loop(beautiful.white, beautiful.music_bg_accent),
 						spacing = dpi(10),
 						layout = wibox.layout.fixed.horizontal,
 					},

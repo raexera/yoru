@@ -81,7 +81,7 @@ return function(s)
 						self.widget.children[1].bg = beautiful.accent
 						self.indicator_animation:set(dpi(32))
 					elseif #c3:clients() == 0 then
-						self.widget.children[1].bg = beautiful.xcolor8
+						self.widget.children[1].bg = beautiful.color8
 						self.indicator_animation:set(dpi(8))
 					else
 						self.widget.children[1].bg = beautiful.accent
@@ -105,7 +105,7 @@ return function(s)
 						self.widget.children[1].bg = beautiful.accent
 						self.indicator_animation:set(dpi(32))
 					elseif #c3:clients() == 0 then
-						self.widget.children[1].bg = beautiful.xcolor8
+						self.widget.children[1].bg = beautiful.color8
 						self.indicator_animation:set(dpi(8))
 					else
 						self.widget.children[1].bg = beautiful.accent

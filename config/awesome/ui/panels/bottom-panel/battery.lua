@@ -12,13 +12,13 @@ local wbutton = require("ui.widgets.button")
 --- ~~~~~~~~~~~~~~
 
 return function()
-	local happy_color = beautiful.xcolor2
-	local sad_color = beautiful.xcolor1
-	local ok_color = beautiful.xcolor3
-	local charging_color = beautiful.xcolor6
+	local happy_color = beautiful.color2
+	local sad_color = beautiful.color1
+	local ok_color = beautiful.color3
+	local charging_color = beautiful.color6
 
 	local charging_icon = wibox.widget({
-		markup = helpers.ui.colorize_text("", beautiful.xforeground),
+		markup = helpers.ui.colorize_text("", beautiful.white),
 		font = beautiful.icon_font .. "Round 14",
 		align = "center",
 		valign = "center",
@@ -33,9 +33,9 @@ return function()
 		paddings = dpi(2),
 		bar_shape = helpers.ui.rrect(2),
 		shape = helpers.ui.rrect(5),
-		color = beautiful.xforeground,
+		color = beautiful.white,
 		background_color = beautiful.transparent,
-		border_color = beautiful.xforeground,
+		border_color = beautiful.white,
 		widget = wibox.widget.progressbar,
 	})
 
@@ -43,7 +43,7 @@ return function()
 		{
 			wibox.widget.textbox,
 			widget = wibox.container.background,
-			bg = beautiful.xforeground,
+			bg = beautiful.white,
 			forced_width = dpi(8.2),
 			forced_height = dpi(8.2),
 			shape = function(cr, width, height)

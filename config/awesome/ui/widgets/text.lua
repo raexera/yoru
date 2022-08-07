@@ -98,7 +98,7 @@ local function new(args)
 	args.bold = args.bold ~= nil and args.bold or false
 	args.italic = args.italic ~= nil and args.italic or false
 	args.size = args.size or 20
-	args.color = args.color or beautiful.xforeground
+	args.color = args.color or beautiful.white
 	args.text = args.text ~= nil and args.text or ""
 
 	local widget = wibox.widget({

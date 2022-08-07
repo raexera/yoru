@@ -63,9 +63,9 @@ local function draw_widget(mouse_keys)
 		buttons = mouse_keys,
 		style = {
 			font = beautiful.font,
-			bg_normal = beautiful.xbackground,
-			bg_focus = beautiful.lighter_xbackground,
-			fg_normal = beautiful.xforeground,
+			bg_normal = beautiful.black,
+			bg_focus = beautiful.lighter_black,
+			fg_normal = beautiful.white,
 			fg_focus = beautiful.accent,
 			shape = gears.shape.rounded_rect,
 		},
@@ -117,7 +117,7 @@ local function draw_widget(mouse_keys)
 			margins = dpi(15),
 			widget = wibox.container.margin,
 		},
-		bg = beautiful.xbackground,
+		bg = beautiful.black,
 		shape = gears.shape.rounded_rect,
 		widget = wibox.container.background,
 	})

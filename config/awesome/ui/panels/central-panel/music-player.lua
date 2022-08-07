@@ -1,3 +1,4 @@
+local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
@@ -59,8 +60,55 @@ local music_artist = wibox.widget({
 	widget = wibox.widget.textbox,
 })
 
-local music = wibox.widget({
-	{
+--- Volume Control
+local function volume_control()
+	local volume_bar = wibox.widget({
+		max_value = 100,
+		value = 100,
+		shape = gears.shape.rounded_bar,
+		bar_shape = gears.shape.rounded_bar,
+		color = beautiful.accent,
+		background_color = beautiful.grey,
+		border_width = 0,
+		widget = wibox.widget.progressbar,
+	})
+
+	-- Update bar
+	local function set_slider_value(self, volume)
+		volume_bar.value = volume * 100
+	end
+
+	playerctl_daemon:connect_signal("volume", set_slider_value)
+
+	volume_bar:connect_signal("button::press", function()
+		playerctl_daemon:disconnect_signal("volume", set_slider_value)
+	end)
+
+	volume_bar:connect_signal("button::release", function()
+		playerctl_daemon:connect_signal("volume", set_slider_value)
+	end)
+
+	local volume = wibox.widget({
+		volume_bar,
+		direction = "east",
+		widget = wibox.container.rotate,
+	})
+
+	volume:buttons(gears.table.join(
+		-- Scroll - Increase or decrease volume
+		awful.button({}, 4, function()
+			awful.spawn.with_shell("playerctl volume 0.05+")
+		end),
+		awful.button({}, 5, function()
+			awful.spawn.with_shell("playerctl volume 0.05-")
+		end)
+	))
+
+	return volume
+end
+
+local function music()
+	return wibox.widget({
 		{
 			{
 				music_art_container,
@@ -96,9 +144,9 @@ local music = wibox.widget({
 					nil,
 					{
 						{
-							widgets.playerctl.previous(20, beautiful.xforeground, beautiful.transparent),
+							widgets.playerctl.previous(20, beautiful.white, beautiful.transparent),
 							widgets.playerctl.play(beautiful.accent, beautiful.transparent),
-							widgets.playerctl.next(20, beautiful.xforeground, beautiful.transparent),
+							widgets.playerctl.next(20, beautiful.white, beautiful.transparent),
 							layout = wibox.layout.flex.horizontal,
 						},
 						forced_height = dpi(70),
@@ -116,10 +164,27 @@ local music = wibox.widget({
 			},
 			layout = wibox.layout.stack,
 		},
+		forced_width = dpi(260),
+		shape = helpers.ui.prrect(beautiful.border_radius, false, true, true, false),
 		bg = beautiful.widget_bg,
-		shape = helpers.ui.rrect(beautiful.border_radius),
-		forced_width = dpi(200),
+		widget = wibox.container.background,
+	})
+end
+
+local music_widget = wibox.widget({
+	{
+		{
+			music(),
+			{
+				volume_control(),
+				margins = { top = dpi(20), bottom = dpi(20), left = dpi(10), right = dpi(10) },
+				widget = wibox.container.margin,
+			},
+			layout = wibox.layout.align.horizontal,
+		},
 		forced_height = dpi(200),
+		bg = beautiful.one_bg3,
+		shape = helpers.ui.rrect(beautiful.border_radius),
 		widget = wibox.container.background,
 	},
 	margins = dpi(10),
@@ -141,7 +206,7 @@ playerctl_daemon:connect_signal("metadata", function(_, title, artist, album_pat
 	end
 
 	music_art:set_image(gears.surface.load_uncached(album_path))
-	music_title:set_markup_silently(helpers.ui.colorize_text(title, beautiful.xforeground))
+	music_title:set_markup_silently(helpers.ui.colorize_text(title, beautiful.white))
 	music_artist:set_markup_silently(helpers.ui.colorize_text(artist, beautiful.accent))
 end)
 
@@ -153,4 +218,4 @@ playerctl_daemon:connect_signal("playback_status", function(_, playing, __)
 	end
 end)
 
-return music
+return music_widget

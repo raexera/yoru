@@ -96,7 +96,7 @@ ui_notifbox_builder.notifbox_dismiss = function()
 		{
 			id = "dismiss_icon",
 			font = beautiful.icon_font .. "Round 10",
-			markup = helpers.ui.colorize_text("", beautiful.xcolor1),
+			markup = helpers.ui.colorize_text("", beautiful.color1),
 			align = "center",
 			valign = "center",
 			widget = wibox.widget.textbox,

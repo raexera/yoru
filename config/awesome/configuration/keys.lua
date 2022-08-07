@@ -161,17 +161,17 @@ awful.keyboard.append_global_keybindings({
 
 	--- Volume control
 	awful.key({}, "XF86AudioRaiseVolume", function()
-		awful.spawn("pamixer -i 5", false)
+		awful.spawn("amixer sset Master 5%+", false)
 		awesome.emit_signal("widget::volume")
 		awesome.emit_signal("module::volume_osd:show", true)
 	end, { description = "increase volume", group = "hotkeys" }),
 	awful.key({}, "XF86AudioLowerVolume", function()
-		awful.spawn("pamixer -d 5", false)
+		awful.spawn("amixer sset Master 5%-", false)
 		awesome.emit_signal("widget::volume")
 		awesome.emit_signal("module::volume_osd:show", true)
 	end, { description = "decrease volume", group = "hotkeys" }),
 	awful.key({}, "XF86AudioMute", function()
-		awful.spawn("pamixer -t", false)
+		awful.spawn("amixer sset Master toggle", false)
 	end, { description = "mute volume", group = "hotkeys" }),
 
 	--- Music

@@ -54,7 +54,7 @@ local volume_slider = slider.volume_slider
 
 volume_slider:connect_signal("property::value", function()
 	local volume_level = volume_slider:get_value()
-	awful.spawn("pamixer --set-volume " .. volume_level, false)
+	awful.spawn("amixer set Master " .. volume_level .. "%", false)
 
 	-- Update textbox widget text
 	osd_value.text = volume_level .. "%"
@@ -81,11 +81,14 @@ volume_slider:buttons(gears.table.join(
 ))
 
 local update_slider = function()
-	awful.spawn.easy_async_with_shell("pamixer --get-volume", function(stdout)
-		local value = string.gsub(stdout, "^%s*(.-)%s*$", "%1")
-		volume_slider:set_value(tonumber(value))
-		osd_value.text = value .. "%"
-	end)
+	awful.spawn.easy_async_with_shell(
+		"amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {sub(/%/, \"\"); printf \"%0.0f\", $2}'",
+		function(stdout)
+			local value = string.gsub(stdout, "^%s*(.-)%s*$", "%1")
+			volume_slider:set_value(tonumber(value))
+			osd_value.text = value .. "%"
+		end
+	)
 end
 
 -- Update on startup

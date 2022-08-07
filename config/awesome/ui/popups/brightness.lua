@@ -139,7 +139,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 				right = dpi(24),
 				widget = wibox.container.margin,
 			},
-			bg = beautiful.xbackground,
+			bg = beautiful.black,
 			shape = gears.shape.rounded_rect,
 			widget = wibox.container.background,
 		},

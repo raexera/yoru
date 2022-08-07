@@ -28,7 +28,7 @@ lock_screen_box = wibox({ visible = false, ontop = true, type = "splash", screen
 awful.placement.maximize(lock_screen_box)
 
 lock_screen_box.bg = beautiful.transparent
-lock_screen_box.fg = beautiful.xforeground
+lock_screen_box.fg = beautiful.white
 
 --- Add lockscreen to each screen
 awful.screen.connect_for_each_screen(function(s)
@@ -37,7 +37,7 @@ awful.screen.connect_for_each_screen(function(s)
 	else
 		s.mylockscreen = helpers.ui.screen_mask(
 			s,
-			beautiful.lock_screen_bg or beautiful.exit_screen_bg or beautiful.xbackground
+			beautiful.lock_screen_bg or beautiful.exit_screen_bg or beautiful.black
 		)
 	end
 end)
@@ -169,7 +169,7 @@ end
 local function activate_word(w)
 	for i, m in pairs(char_map[w]) do
 		local text = m.text
-		m.markup = helpers.ui.colorize_text(text, beautiful.xforeground)
+		m.markup = helpers.ui.colorize_text(text, beautiful.white)
 	end
 end
 
@@ -285,12 +285,12 @@ end
 
 local animation_colors = {
 	--- Rainbow sequence
-	beautiful.xcolor1,
-	beautiful.xcolor5,
-	beautiful.xcolor4,
-	beautiful.xcolor6,
-	beautiful.xcolor2,
-	beautiful.xcolor3,
+	beautiful.color1,
+	beautiful.color5,
+	beautiful.color4,
+	beautiful.color6,
+	beautiful.color2,
+	beautiful.color3,
 }
 
 local animation_directions = { "north", "west", "south", "east" }
@@ -306,7 +306,7 @@ local function key_animation(char_inserted)
 		if characters_entered == 0 then
 			reset()
 		else
-			color = beautiful.xcolor7 .. "55"
+			color = beautiful.color7 .. "55"
 		end
 	end
 

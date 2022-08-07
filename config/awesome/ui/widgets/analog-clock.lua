@@ -14,7 +14,7 @@ local function create_minute_pointer(minute)
 	cr:translate(500, 500)
 	cr:rotate(angle)
 	cr:translate(-500, -500)
-	cr:set_source(gears.color(beautiful.xforeground))
+	cr:set_source(gears.color(beautiful.white))
 	cr:rectangle(485, 100, 30, 420)
 	cr:fill()
 	return img
