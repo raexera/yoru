@@ -1,7 +1,7 @@
 <!-- YORU BANNER -->
 <div align="center">
    <a href="#--------">
-      <img src="assets/rxhyn-dotfile-header.png" alt="Home Preview">
+      <img src="assets/yoru-banner.png" alt="Home Preview">
    </a>
 </div>
 
@@ -17,7 +17,7 @@
 <!-- RICE PREVIEW -->
 <div align="center">
    <a href="#--------">
-      <img src="assets/aesthetic.png" alt="Rice Preview">
+      <img src="assets/yoru.png" alt="Rice Preview">
    </a>
 </div>
 
@@ -39,7 +39,7 @@
 
 <a href="https://awesomewm.org/"><img alt="AwesomeWM Logo" height="150" align = "left" src="https://awesomewm.org/doc/api/images/AUTOGEN_wibox_logo_logo_and_name.svg"></a>
 
-<b> Rxyhn's Aesthetic AwesomeWM Configuration Files! </b>
+<b> Yoru (夜) Aesthetic and Beautiful Awesome Environment </b>
 
 Welcome to my AwesomeWM configuration files!
 
@@ -132,7 +132,7 @@ paru -S awesome-git
 ```sh
 paru -Sy picom-git wezterm rofi acpi acpid acpi_call upower lxappearance-gtk3 \
 jq inotify-tools polkit-gnome xdotool xclip gpick ffmpeg blueman redshift \
-pipewire pipewire-alsa pipewire-pulse pamixer brightnessctl feh maim \
+pipewire pipewire-alsa pipewire-pulse alsa-utils brightnessctl feh maim \
 mpv mpd mpc mpdris2 python-mutagen ncmpcpp playerctl --needed
 ```
 
@@ -201,17 +201,17 @@ Log out from your current desktop session and log in into AwesomeWM
 
 <!-- MISCELLANEOUS -->
 
-## :four_leaf_clover: ‎ <samp>Miscellaneous</samp>
+<!-- ## :four_leaf_clover: ‎ <samp>Miscellaneous</samp>
 
 <details>
 <summary><b>VSCode Theme</b></summary>
 <br>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/93292023/174243639-e02473ac-82cc-41b9-a54a-915b4e0e58e5.png" alt="VSCode theme preview" width="500px">
+   <img src="" alt="VSCode theme preview" width="500px">
 </a>
 
-:comet: ‎ <samp>Aesthetic VSCode</samp>
+:comet: ‎ <samp>Yoru VSCode</samp>
 
 Setup:
 
@@ -236,12 +236,12 @@ Setup:
 <br>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/93292023/174063775-d246c4be-a08b-49dd-8597-5bb8a3e2520f.png" alt="neovim theme preview" width="500px">
+   <img src="" alt="neovim theme preview" width="500px">
 </a>
 
-:cyclone: ‎ <samp>Aesthetic Neovim</samp>
+:cyclone: ‎ <samp>Yoru Neovim</samp>
 
-This is nvchad's port of my aesthetic theme named `rxyhn`
+This is nvchad's port of my aesthetic theme named `yoru`
 
 To get this theme you have to use [nvchad](https://github.com/NvChad/NvChad) as your neovim config, and then apply my theme.
 
@@ -252,17 +252,17 @@ To get this theme you have to use [nvchad](https://github.com/NvChad/NvChad) as 
 <br>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/93292023/174969899-0fc0587f-72fa-4324-a884-8713981c7531.png" width="500px">
+   <img src="" width="500px">
 </a>
 
-:milky_way: ‎ <samp>Aesthetic-Night gtk theme</samp>
+:milky_way: ‎ <samp>Yoru gtk theme</samp>
 
 Setup:
 
 1. Copy the themes to the themes folders
    ```sh
-   sudo cp -rf misc/themes/gtk/Aesthetic-Night/* /usr/share/themes
-   cp -rf misc/themes/gtk/Aesthetic-Night-GTK4/* ~/.config/gtk-4.0
+   sudo cp -rf misc/themes/gtk/Yoru/* /usr/share/themes
+   cp -rf misc/themes/gtk/Yoru-GTK4/* ~/.config/gtk-4.0
    ```
 2. Add this line on `~/.config/gtk-3.0/settings.ini` for left controls
    ```sh
@@ -278,10 +278,10 @@ To apply the theme use ~~[lxappearance](https://archlinux.org/packages/community
 <br>
 
 <a href="#--------">
-   <img src="https://cdn.discordapp.com/attachments/700718886118490163/996680624993738832/unknown.png" width="500px">
+   <img src="" width="500px">
 </a>
-   
-:ringed_planet: ‎ <samp>Aesthetic Kvantum Theme</samp>
+
+:ringed_planet: ‎ <samp>Yoru Kvantum Theme</samp>
 
 Setup:
 
@@ -293,11 +293,11 @@ cp -rf misc/themes/kvantum ~/.themes/
 
 2. To apply the theme use the Kvantum Theme Engine
 
-3. Open **Kvantum** and click `Select a Kvantum theme folder` and locate the theme it should be on `~/.themes/kvantum/Aesthetic-Night/` and select that folder
+3. Open **Kvantum** and click `Select a Kvantum theme folder` and locate the theme it should be on `~/.themes/kvantum/Yoru/` and select that folder
 
 4. After that click `Install this theme`
 
-5. Then click the `Change/Delete Theme` section there should be a combo box that says `Select a theme` pick **Aesthetic-Night** then click `Use this theme`
+5. Then click the `Change/Delete Theme` section there should be a combo box that says `Select a theme` pick **Yoru** then click `Use this theme`
 
 6. Now you should have the theme enabled and installed
 
@@ -308,10 +308,10 @@ cp -rf misc/themes/kvantum ~/.themes/
 <br>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/93292023/174238121-51774ec2-e553-4944-a2c4-c3b94dd97777.png" alt="firefox theme preview" width="500px">
+   <img src="" alt="firefox theme preview" width="500px">
 </a>
 
-:snowman_with_snow: ‎ <samp>Aesthetic Firefox</samp>
+:snowman_with_snow: ‎ <samp>Yoru Firefox</samp>
 
 Setup:
 
@@ -326,10 +326,10 @@ Setup:
 <br>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/93292023/178931074-e4fee64a-c48d-47df-bf0f-55526f42b307.png" width="500px">
+   <img src="" width="500px">
 </a>
-   
-:speech_balloon: ‎ <samp>Aesthetic Discord Theme</samp>
+
+:speech_balloon: ‎ <samp>Yoru Discord Theme</samp>
 
 Setup:
 
@@ -346,28 +346,28 @@ Setup:
   Copy the discord css to the betterdiscord themes folder
 
   ```sh
-  cp misc/themes/discord/AestheticNight.theme.css ~/.config/BetterDiscord/themes/
+  cp misc/themes/discord/Yoru.theme.css ~/.config/BetterDiscord/themes/
   ```
 
 > :warning: Using 3rd Party Clients are against Discord Terms and Service
 
-</details>  
-    
+</details>
+
 <details>
 <summary><b>Telegram Theme</b></summary>
 <br>
 
 <a href="#--------">
-   <img src="https://user-images.githubusercontent.com/65948476/180603733-bf41913f-f816-425d-9c4e-653a68b2c000.png" width="500px">
+   <img src="" width="500px">
 </a>
 
-:telephone_receiver: <samp>Aesthetic Telegram Theme</samp>
+:telephone_receiver: <samp>Yoru Telegram Theme</samp>
 
 Setup:
 
 - First Method
 
-  1. Go to: https://t.me/addtheme/aesthetic_night
+  1. Go to: https://t.me/addtheme/yoru
 
   2. Open the link with your Telegram client of choice
 
@@ -377,11 +377,11 @@ Setup:
 
   1. Open Telegram go to `Settings>Chat Settings>3DotMenu>Create new theme>IMPORT EXISTING THEME`
 
-  2. Locate the theme `misc/telegram/Aesthetic-Night.tdesktop-theme`
+  2. Locate the theme `misc/telegram/Yoru.tdesktop-theme`
 
 > :warning: This theme will only work on **Telegram Desktop** this won't on `MacOS, Android, and iOS`
 
-</details>
+</details> 
 
 <details>
 <summary><b>Touchpad tap-to-click & natural (reverse) scrolling (<a href="https://wiki.archlinux.org/title/Libinput#Tapping_button_re-mapping">libinput</a>)</b></summary>
@@ -400,98 +400,25 @@ Section "InputClass"
 EndSection
 ```
 
-</details>
+</details> -->
 
-<!-- Aesthetic Night Colorscheme -->
+<!-- Yoru Colorscheme -->
 
 ## :art: ‎ <samp>Colorscheme</samp>
 
-<a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188349-a1c99905-a44f-493f-b4ff-3e89ab741076.png" width="500px" alt="colorscheme preview"></a>
+<a href="#--------"><img src="assets/yoru-colorscheme.png" width="500px" alt="colorscheme preview"></a>
 
-Introducing the Aesthetic Night colorscheme!
+Introducing the Yoru(夜) colorscheme!
 
-Beautiful and elegant color schemes are perfect for programmers who live in the middle of the night.
+Yoru means night in english. So this beautiful and elegant color schemes are perfect for programmers who live in the middle of the night.
 
 The nearest color combination that it can keep the eyes from getting tired! So you can keep writing code and continue all your work all night!
 
 This colorscheme is used for all aspects in these environment, yeeaaaah this aesthetic configuration is combined with an aesthetic colorscheme <3
 
-This colorscheme was made by [`ner0z`](https://github.com/ner0z) and modified by me [`rxyhn`](https://github.com/rxyhn)
+This colorscheme was made by me [`rxyhn`](https://github.com/rxyhn)
 
 <!-- ToDo: Fix Color Pallete -->
-
-<details>
-<summary>Palettes</summary>
-<br>
-
-<samp>special</samp>
-
- <table>
-  <tr>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188727-c01434e1-a6d6-41ed-8ab3-ac35b043abdb.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188768-31284a2f-ab53-4737-b5ab-d1f724f544ee.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188804-31ff8683-c2e5-418a-9e22-02d307284996.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188842-83ef42e4-9f5f-447d-b53c-75c0c95339ee.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188875-267bc761-3882-41e5-90ea-38f956339ca4.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178188920-966341f3-28de-4d98-9733-59b27be95454.png" width="70px" ></a></th>
-  </tr>
-  <tr>
-    <td><code>#E5E5E5</code></td>
-    <td><code>#D9D7D6</code></td>
-    <td><code>#000A0E</code></td>
-    <td><code>#061115</code></td>
-    <td><code>#0D181C</code></td>
-    <td><code>#131E22</code></td>
-  </tr>
-</table>
-
-<samp>normal</samp>
-
- <table>
-  <tr>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190023-df4b3092-8c4e-488f-a84c-d5d3d241a84f.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190103-55e3b55f-749f-463f-b601-d59896abb10d.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190211-cac29640-9329-4b3d-a1cf-9e47427694da.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190380-c58c4920-60ca-4706-b795-6a8c688392ea.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190429-4544c362-ada0-410f-88b5-659946b7d372.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190464-ccfe253d-fab6-48bf-b156-a8586080fbff.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178190496-b4cd149a-5f85-4611-a911-9b2fca8300ae.png" width="70px" ></a></th>
-  </tr>
-  <tr>
-    <td><code>#1C252C</code></td>
-    <td><code>#DF5B61</code></td>
-    <td><code>#78B892</code></td>
-    <td><code>#DE8F78</code></td>
-    <td><code>#6791C9</code></td>
-    <td><code>#BC83E3</code></td>
-    <td><code>#67AFC1</code></td>
-  </tr>
-</table>
-
-<samp>bright</samp>
-
- <table>
-  <tr>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191090-410ca0cf-fcec-4df3-907f-a333848c1401.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191137-c2384bac-6758-4e3a-9e6a-185ca7843489.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191163-6db7614e-d57c-4839-99b4-c2ea213228fe.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191194-c4f7aaea-9857-4abd-aca7-3ef7c41ef591.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191227-8afc6603-cbaa-4e09-8c67-8df92d88c879.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191251-f0540f12-a003-4011-a1c5-8753040254a8.png" width="70px" ></a></th>
-    <th><a href="#--------"><img src="https://user-images.githubusercontent.com/93292023/178191292-43f16803-9f3a-46e6-93cd-4e3d11b32457.png" width="70px" ></a></th>
-  </tr>
-  <tr>
-    <td><code>#484E5B</code></td>
-    <td><code>#F16269</code></td>
-    <td><code>#8CD7AA</code></td>
-    <td><code>#E9967E</code></td>
-    <td><code>#79AAEB</code></td>
-    <td><code>#C488EC</code></td>
-    <td><code>#7ACFE4</code></td>
-  </tr>
-</table>
-
-</details>
 
 <details>
 <summary>Xresources</summary>
@@ -499,40 +426,100 @@ This colorscheme was made by [`ner0z`](https://github.com/ner0z) and modified by
 
 ```cfg
 ! special
-*.foreground:   #d9d7d6
-*.background:   #061115
+*.foreground:   #edeff0
+*.background:   #0c0e0f
 
 ! black
-*.color0:       #1c252c
-*.color8:       #484e5b
+*.color0:       #232526
+*.color8:       #2c2e2f
 
 ! red
 *.color1:       #df5b61
-*.color9:       #f16269
+*.color9:       #e8646a
 
 ! green
 *.color2:       #78b892
-*.color10:      #8cd7aa
+*.color10:      #81c19b
 
 ! yellow
 *.color3:       #de8f78
-*.color11:      #e9967e
+*.color11:      #e79881
 
 ! blue
 *.color4:       #6791c9
-*.color12:      #79aaeb
+*.color12:      #709ad2
 
 ! magenta
 *.color5:       #bc83e3
-*.color13:      #c488ec
+*.color13:      #c58cec
 
 ! cyan
 *.color6:       #67afc1
-*.color14:      #7acfe4
+*.color14:      #70b8ca
 
 ! white
-*.color7:       #d9d7d6
-*.color15:      #e5e5e5
+*color7:        #e4e6e7
+*color15:       #f2f4f5
+```
+
+</details>
+
+<details>
+<summary>Base46</summary>
+<br>
+
+```lua
+base_30 = {
+	white = "#edeff0",
+	darker_black = "#060809",
+	black = "#0c0e0f",
+	lighter_black = "#121415",
+	one_bg = "#161819",
+	one_bg2 = "#1f2122",
+	one_bg3 = "#27292a",
+	grey = "#343637",
+	grey_fg = "#3e4041",
+	grey_fg2 = "#484a4b",
+	light_grey = "#505253",
+	red = "#DF5B61",
+	baby_pink = "#EE6A70",
+	pink = "#e8646a",
+	line = "#1b1d1e",
+	green = "#78B892",
+	vibrant_green = "#81c19b",
+	nord_blue = "#5A84BC",
+	blue = "#6791C9",
+	yellow = "#ecd28b",
+	sun = "#f6dc95",
+	purple = "#c58cec",
+	dark_purple = "#BC83E3",
+	teal = "#70b8ca",
+	orange = "#E89982",
+	cyan = "#67AFC1",
+	statusline_bg = "#101213",
+	lightbg = "#1d1f20",
+	pmenu_bg = "#78B892",
+	folder_bg = "#6791C9",
+}
+
+base_16 = {
+	base00 = "#0c0e0f",
+	base01 = "#121415",
+	base02 = "#161819",
+	base03 = "#1f2122",
+	base04 = "#27292a",
+	base05 = "#edeff0",
+	base06 = "#e4e6e7",
+	base07 = "#f2f4f5",
+	base08 = "#f26e74",
+	base09 = "#ecd28b",
+	base0A = "#e79881",
+	base0B = "#82c29c",
+	base0C = "#6791C9",
+	base0D = "#709ad2",
+	base0E = "#c58cec",
+	base0F = "#e8646a",
+}
 ```
 
 </details>
@@ -545,7 +532,7 @@ I have created a Custom Font that based on [Iosevka Custom Build](https://github
 
 This is My Favorite Monospace Font! This font is used in my terminal emulator and all my code editor. Yes, for better Code.
 
-You know what? This Font is absolutely Awesome! If combined with Aesthetic Night Colorscheme!
+You know what? This Font is absolutely Awesome! If combined with Yoru Colorscheme!
 
 <b>Font Preview:</b>
 
@@ -594,7 +581,7 @@ You know what? This Font is absolutely Awesome! If combined with Aesthetic Night
 
 <!-- GALLERY -->
 
-## :ocean: ‎ <samp>Gallery</samp>
+<!-- ## :ocean: ‎ <samp>Gallery</samp>
 
 | <b>Modern Bottom Panel with Animation</b>                                                            |
 | ---------------------------------------------------------------------------------------------------- |
@@ -626,7 +613,7 @@ You know what? This Font is absolutely Awesome! If combined with Aesthetic Night
 
 | <b>Minimalist Exitscreen</b>                                                                     |
 | ------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="assets/exitscreen.gif" width="500px" alt="exitscreen preview"></a> |
+| <a href="#--------"><img src="assets/exitscreen.gif" width="500px" alt="exitscreen preview"></a> | -->
 
 <!-- HISTORY -->
 
