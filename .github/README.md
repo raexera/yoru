@@ -1,7 +1,7 @@
 <!-- YORU BANNER -->
 <div align="center">
    <a href="#--------">
-      <img src="assets/rxhyn-dotfile-header.png" alt="Home Preview">
+      <img src="assets/yoru-banner.png" alt="Home Preview">
    </a>
 </div>
 
