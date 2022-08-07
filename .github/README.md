@@ -26,10 +26,10 @@
 <!-- BADGES -->
 <h1>
   <a href="#--------">
-    <img alt="" align="left" src="https://img.shields.io/github/stars/rxyhn/yoru?color=162026&labelColor=162026&style=for-the-badge"/>
+    <img alt="" align="right" src="https://img.shields.io/github/stars/rxyhn/yoru?color=0C0E0F&labelColor=0C0E0F&style=for-the-badge"/>
   </a>
   <a href="#--------">
-    <img alt="" align="right" src="https://badges.pufler.dev/visits/rxyhn/yoru?style=flat-square&label=&color=162026&logo=github&logoColor=white&labelColor=162026"/>
+    <img alt="" align="left" src="https://badges.pufler.dev/visits/rxyhn/yoru?style=flat-square&label=&color=0C0E0F&logo=github&logoColor=white&labelColor=0C0E0F"/>
   </a>
 </h1>
 
@@ -408,7 +408,7 @@ EndSection
 
 <a href="#--------"><img src="assets/yoru-colorscheme.png" width="500px" alt="colorscheme preview"></a>
 
-Introducing the Yoru(夜) colorscheme!
+Introducing the Yoru (夜) colorscheme!
 
 Yoru means night in english. So this beautiful and elegant color schemes are perfect for programmers who live in the middle of the night.
 
@@ -621,7 +621,7 @@ You know what? This Font is absolutely Awesome! If combined with Yoru Colorschem
 
 Ngl is started when I am felt bored lol and decided to start using Linux, more precisely in January 2022. When it's in [Linuxer Desktop Art](https://facebook.com/groups/linuxart) I saw a Linux setup that caught my eye, then I'm interested in and trying something similar, So yeaaaaaah this is my current setup, I made this with all Aesthetic I have. Yes! You are right! Everything you see here is all about beautiful and aesthetic, and ofc apart from targeting the beautiful UI I also pay attention to the functionality, because I'm targeting an OS that's comfortable to wear and look at. Have a Nice Day! <3
 
-I wanna say thank you to those of you who like and love my setup. <3
+I wanna say thank you to those of you who like and love yoru. <3
 
 <pre align="center">
 <a href="#japan--history">
