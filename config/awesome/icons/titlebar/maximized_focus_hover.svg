@@ -1,1 +1,54 @@
-<svg height="240" width="240" xmlns="http://www.w3.org/2000/svg"><circle cx="120" cy="120" fill="#4eda61" r="100" stroke="#49ca4b" stroke-width="10"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 8.4666665 8.4666666"
+   version="1.1"
+   id="svg4249"
+   inkscape:export-filename="../../png/maximize/maximize_3.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="maximize_3.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview4251"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.6568543"
+     inkscape:cx="27.577164"
+     inkscape:cy="18.384776"
+     inkscape:window-width="1260"
+     inkscape:window-height="724"
+     inkscape:window-x="10"
+     inkscape:window-y="66"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs4246" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="mdi-close-normal"
+       style="fill:#5aa578;fill-rule:evenodd;stroke-width:0.264583;paint-order:normal;fill-opacity:1"
+       d="M 4.2333333 0 A 4.2333331 4.2333331 0 0 0 0 4.2333333 A 4.2333331 4.2333331 0 0 0 4.2333333 8.4666667 A 4.2333331 4.2333331 0 0 0 8.4666667 4.2333333 A 4.2333331 4.2333331 0 0 0 4.2333333 0 z M 3.0907674 2.0789429 L 5.7303996 2.0789429 C 6.0818693 2.0789429 6.369637 2.3661641 6.369637 2.7176636 L 6.369637 5.3572957 L 3.0907674 2.0789429 z M 2.0970296 3.0990356 L 5.3862345 6.3877238 L 2.7362671 6.3877238 C 2.3847577 6.3877238 2.0970296 6.1005024 2.0970296 5.7490031 L 2.0970296 3.0990356 z " />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+       d="M 10.768947,5.8246909 10.743132,3.2134246"
+       id="path7007" />
+  </g>
+</svg>
