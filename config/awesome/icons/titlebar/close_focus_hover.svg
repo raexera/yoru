@@ -1,1 +1,50 @@
-<svg height="240" width="240" xmlns="http://www.w3.org/2000/svg"><circle cx="120" cy="120" fill="#ff8f8a" r="100" stroke="#e97872" stroke-width="10"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 8.4666665 8.4666666"
+   version="1.1"
+   id="svg4249"
+   inkscape:export-filename="../../png/close/close_3.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="close_3.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview4251"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="4.7572175"
+     inkscape:cx="16.606346"
+     inkscape:cy="11.771587"
+     inkscape:window-width="1260"
+     inkscape:window-height="724"
+     inkscape:window-x="10"
+     inkscape:window-y="66"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs4246" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="mdi-close-normal"
+       style="fill:#d6333a;fill-rule:evenodd;stroke-width:0.264583;paint-order:normal;fill-opacity:1"
+       d="M 4.2333333 0 A 4.2333331 4.2333331 0 0 0 0 4.2333333 A 4.2333331 4.2333331 0 0 0 4.2333333 8.4666667 A 4.2333331 4.2333331 0 0 0 8.4666667 4.2333333 A 4.2333331 4.2333331 0 0 0 4.2333333 0 z M 2.9233358 2.3647135 C 3.0626872 2.3652697 3.201458 2.419258 3.3078084 2.5264608 L 4.2364339 3.462321 L 5.1722941 2.5342122 C 5.3866996 2.3215115 5.7306056 2.3229073 5.9433065 2.5373128 C 6.1560098 2.7517182 6.1546114 3.0956244 5.9402059 3.3083252 L 5.0043457 4.2364339 L 5.9324544 5.1722941 C 6.1451522 5.3866996 6.1442761 5.7306057 5.9298706 5.9433065 C 5.7154651 6.1560044 5.371559 6.1546114 5.1588582 5.9402059 L 4.2302327 5.0043457 L 3.2943726 5.9329712 C 3.0799671 6.1456691 2.736061 6.1442761 2.5233602 5.9298706 C 2.3106623 5.7154652 2.3120553 5.371559 2.5264608 5.1588582 L 3.462321 4.2302327 L 2.5342122 3.2943726 C 2.3215115 3.0799671 2.3223906 2.7360611 2.5367961 2.5233602 C 2.6439988 2.4170098 2.7839844 2.3641573 2.9233358 2.3647135 z " />
+  </g>
+</svg>
