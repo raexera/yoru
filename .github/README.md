@@ -644,13 +644,14 @@ Yoru is created by <a href="https://github.com/rxyhn">Rxyhn</a>.
 
 ## :money_with_wings: ‎ <samp>TIP JAR</samp>
 
-I have a ko-fi account, so if you enjoyed it and would like to show your appreciation, you may want to tip me here.
+If you enjoyed it and would like to show your appreciation, you may want to tip me here.
 
 It is never required but always appreciated.
 
 Thanks from the bottom of my heart! ‎ :heartpulse:
 
-[![](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/rxyhn)
+[![](https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#EA4AAA)](https://github.com/sponsors/rxyhn)
+[![](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/rxyhn)
 
 <!-- ACKNOWLEDGEMENTS -->
 
