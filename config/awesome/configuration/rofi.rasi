@@ -14,7 +14,7 @@ configuration {
     BG:                             #10121399;
     BGA:                            #101213;
     FG:                             #edeff0ff;
-    UGT:                            #DF5B61ff;
+    UGT:                            #df5b61ff;
 }
 
 window {
@@ -24,7 +24,7 @@ window {
     border-radius:                  8px;
     width:                          700px;
     x-offset:                       0;
-    y-offset:                       -45px;
+    y-offset:                       -4.3%;
 }
 
 prompt {

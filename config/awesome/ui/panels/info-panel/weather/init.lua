@@ -141,6 +141,7 @@ local hourly_widget_2 = hourly_widget()
 local hourly_widget_3 = hourly_widget()
 local hourly_widget_4 = hourly_widget()
 local hourly_widget_5 = hourly_widget()
+local hourly_widget_6 = hourly_widget()
 
 local weather_widget = wibox.widget({
 	{
@@ -156,6 +157,8 @@ local weather_widget = wibox.widget({
 		hourly_widget_3,
 		hourly_widget_4,
 		hourly_widget_5,
+		hourly_widget_6,
+		spacing = dpi(10),
 		layout = wibox.layout.flex.horizontal,
 	},
 	spacing = dpi(10),
@@ -205,6 +208,7 @@ awful.widget.watch(string.format(GET_FORECAST_CMD, url), 600, function(_, stdout
 		hourly_widget_3.update(result.hourly[3])
 		hourly_widget_4.update(result.hourly[4])
 		hourly_widget_5.update(result.hourly[5])
+		hourly_widget_6.update(result.hourly[6])
 	end
 end)
 

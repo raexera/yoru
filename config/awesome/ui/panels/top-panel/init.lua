@@ -9,15 +9,15 @@ local widgets = require("ui.widgets")
 local wbutton = require("ui.widgets.button")
 local animation = require("modules.animation")
 
---- Modern Bottom Panel
+--- Modern Top Panel
 --- ~~~~~~~~~~~~~~~~~~~
 
 return function(s)
 	--- Widgets
 	--- ~~~~~~~~~~
-	s.clock = require("ui.panels.bottom-panel.clock")(s)
-	s.battery = require("ui.panels.bottom-panel.battery")()
-	s.network = require("ui.panels.bottom-panel.network")()
+	s.clock = require("ui.panels.top-panel.clock")(s)
+	s.battery = require("ui.panels.top-panel.battery")()
+	s.network = require("ui.panels.top-panel.network")()
 
 	--- Animated tag list
 	--- ~~~~~~~~~~~~~~~~~
@@ -240,16 +240,16 @@ return function(s)
 		return widget
 	end
 
-	--- Create the bottom_panel
+	--- Create the top_panel
 	--- ~~~~~~~~~~~~~~~~~~~~~~~
-	s.bottom_panel = awful.popup({
+	s.top_panel = awful.popup({
 		screen = s,
 		type = "dock",
 		maximum_height = beautiful.wibar_height,
 		minimum_width = s.geometry.width,
 		maximum_width = s.geometry.width,
 		placement = function(c)
-			awful.placement.bottom(c)
+			awful.placement.top(c)
 		end,
 		bg = beautiful.transparent,
 		widget = {
@@ -277,31 +277,31 @@ return function(s)
 		},
 	})
 
-	s.bottom_panel:struts({
-		bottom = s.bottom_panel.maximum_height,
+	s.top_panel:struts({
+		top = s.top_panel.maximum_height,
 	})
 
-	--- Remove bottom_panel on full screen
-	local function remove_bottom_panel(c)
+	--- Remove top_panel on full screen
+	local function remove_top_panel(c)
 		if c.fullscreen or c.maximized then
-			c.screen.bottom_panel.visible = false
+			c.screen.top_panel.visible = false
 		else
-			c.screen.bottom_panel.visible = true
+			c.screen.top_panel.visible = true
 		end
 	end
 
-	--- Remove bottom_panel on full screen
-	local function add_bottom_panel(c)
+	--- Remove top_panel on full screen
+	local function add_top_panel(c)
 		if c.fullscreen or c.maximized then
-			c.screen.bottom_panel.visible = true
+			c.screen.top_panel.visible = true
 		end
 	end
 
 	--- Hide bar when a splash widget is visible
 	awesome.connect_signal("widgets::splash::visibility", function(vis)
-		screen.primary.bottom_panel.visible = not vis
+		screen.primary.top_panel.visible = not vis
 	end)
 
-	client.connect_signal("property::fullscreen", remove_bottom_panel)
-	client.connect_signal("request::unmanage", add_bottom_panel)
+	client.connect_signal("property::fullscreen", remove_top_panel)
+	client.connect_signal("request::unmanage", add_top_panel)
 end

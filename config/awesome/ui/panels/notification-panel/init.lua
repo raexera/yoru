@@ -20,26 +20,41 @@ return function(s)
 		ontop = true,
 		visible = false,
 		placement = function(w)
-			awful.placement.bottom_right(w, {
-				margins = { top = dpi(5), bottom = beautiful.wibar_height + dpi(5), left = dpi(5), right = dpi(5) },
-			})
+			awful.placement.top_right(w)
+			awful.placement.maximize_vertically(
+				w,
+				{ honor_workarea = true, margins = { top = beautiful.useless_gap * 2 } }
+			)
 		end,
 		widget = {
 			{
-				{
-					layout = wibox.layout.flex.vertical,
-					spacing = dpi(20),
-					nil,
-					require("ui.panels.notification-panel.notif-center")(s),
-					require("ui.panels.notification-panel.github-activity"),
-					nil,
+				{ ----------- TOP GROUP -----------
+					helpers.ui.vertical_pad(dpi(30)),
+					{
+						require("ui.panels.notification-panel.notif-center")(s),
+						margins = dpi(20),
+						widget = wibox.container.margin,
+					},
+					layout = wibox.layout.fixed.vertical,
 				},
-				margins = dpi(20),
-				widget = wibox.container.margin,
+				{ ----------- MIDDLE GROUP -----------
+					{
+						{
+							require("ui.panels.notification-panel.github-activity"),
+							margins = dpi(20),
+							widget = wibox.container.margin,
+						},
+						helpers.ui.vertical_pad(dpi(30)),
+						layout = wibox.layout.fixed.vertical,
+					},
+					shape = helpers.ui.prrect(beautiful.border_radius * 2, true, false, false, false),
+					bg = beautiful.widget_bg,
+					widget = wibox.container.background,
+				},
+				layout = wibox.layout.flex.vertical,
 			},
-			id = "notification_panel",
+			shape = helpers.ui.prrect(beautiful.border_radius * 2, true, false, false, false),
 			bg = beautiful.wibar_bg,
-			shape = helpers.ui.rrect(beautiful.border_radius),
 			widget = wibox.container.background,
 		},
 	})

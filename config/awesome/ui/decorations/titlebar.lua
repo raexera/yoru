@@ -27,17 +27,17 @@ client.connect_signal("request::titlebars", function(c)
 					{
 						{
 							awful.titlebar.widget.closebutton(c),
-							margins = { top = dpi(6), bottom = dpi(6), left = dpi(2), right = dpi(2) },
+							margins = { top = dpi(7), bottom = dpi(7), left = dpi(3), right = dpi(3) },
 							widget = wibox.container.margin,
 						},
 						{
 							awful.titlebar.widget.minimizebutton(c),
-							margins = { top = dpi(6), bottom = dpi(6), left = dpi(2), right = dpi(2) },
+							margins = { top = dpi(7), bottom = dpi(7), left = dpi(3), right = dpi(3) },
 							widget = wibox.container.margin,
 						},
 						{
 							awful.titlebar.widget.maximizedbutton(c),
-							margins = { top = dpi(6), bottom = dpi(6), left = dpi(2), right = dpi(2) },
+							margins = { top = dpi(7), bottom = dpi(7), left = dpi(3), right = dpi(3) },
 							widget = wibox.container.margin,
 						},
 						layout = wibox.layout.fixed.horizontal,

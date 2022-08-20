@@ -136,7 +136,7 @@ local function github_activity()
 
 			local avatar = widgets.button.elevated.normal({
 				paddings = dpi(5),
-				normal_bg = beautiful.wibar_bg,
+				normal_bg = beautiful.widget_bg,
 				child = {
 					widget = wibox.widget.imagebox,
 					forced_width = dpi(40),
@@ -151,7 +151,7 @@ local function github_activity()
 
 			local repo_info = widgets.button.elevated.normal({
 				paddings = dpi(5),
-				normal_bg = beautiful.wibar_bg,
+				normal_bg = beautiful.widget_bg,
 				halign = "left",
 				child = {
 					{

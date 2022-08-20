@@ -50,7 +50,6 @@ awful.screen.connect_for_each_screen(function(s)
 			wallpaper = wallpaper(s)
 		end
 
-		-- gears.wallpaper.set("#2E2E2E", s, false, nil)
 		gears.wallpaper.maximized(wallpaper, s, false, nil)
 	end
 end)
@@ -67,9 +66,9 @@ bling.widget.tag_preview.enable({
 	honor_workarea = true,
 	honor_padding = true,
 	placement_fn = function(c)
-		awful.placement.bottom(c, {
+		awful.placement.top(c, {
 			margins = {
-				bottom = dpi(60),
+				top = dpi(60),
 			},
 		})
 	end,
