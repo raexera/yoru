@@ -581,23 +581,23 @@ You know what? This Font is absolutely Awesome! If combined with Yoru Colorschem
 
 <!-- GALLERY -->
 
-<!-- ## :ocean: ‎ <samp>Gallery</samp>
+## :ocean: ‎ <samp>Gallery</samp>
 
-| <b>Modern Bottom Panel with Animation</b>                                                            |
+| <b>Modern Top Panel</b>                                                                              |
 | ---------------------------------------------------------------------------------------------------- |
-| <a href="#--------"><img src="assets/bottom-panel.gif" width="500px" alt="bottom panel preview"></a> |
+| <a href="#--------"><img src="assets/top_panel.gif" width="500px" alt="bottom panel preview"></a>    |
 
-| <b>Aesthetic Dashboard with neat grid layout</b>                                                   |
+| <b>Aesthetic Dashboard</b>                                                                         |
 | -------------------------------------------------------------------------------------------------- |
-| <a href="#--------"><img src="assets/central-panel.gif" width="500px" alt="dashboard preview"></a> |
+| <a href="#--------"><img src="assets/central_panel.gif" width="500px" alt="dashboard preview"></a> |
 
-| <b>Good looking Info Center</b>
-| --- |
-| <a href="#--------"><img src="assets/info-panel.gif" width="500px" alt="info center preview"></a> |
+| <b>Simple & Good looking Info Center</b>                                                          |
+| ------------------------------------------------------------------------------------------------- |
+| <a href="#--------"><img src="assets/info_panel.gif" width="500px" alt="info center preview"></a> |
 
 | <b>Beautiful Notification Center</b>                                                                       |
 | ---------------------------------------------------------------------------------------------------------- |
-| <a href="#--------"><img src="assets/notif-panel.gif" width="500px" alt="notification center preview"></a> |
+| <a href="#--------"><img src="assets/notif_panel.gif" width="500px" alt="notification center preview"></a> |
 
 | <b>Naughty Notifications</b>                                                                     |
 | ------------------------------------------------------------------------------------------------ |
@@ -605,7 +605,7 @@ You know what? This Font is absolutely Awesome! If combined with Yoru Colorschem
 
 | <b>Custom mouse-friendly ncmpcpp UI</b>                                                         |
 | ----------------------------------------------------------------------------------------------- |
-| <a href="#--------"><img src="assets/music-player.gif" width="500px" alt="ncmpcpp preview"></a> |
+| <a href="#--------"><img src="assets/music_player.gif" width="500px" alt="ncmpcpp preview"></a> |
 
 | <b>Lockscreen with [PAM Integration](https://github.com/RMTT/lua-pam)</b>                                   |
 | ----------------------------------------------------------------------------------------------------------- |
@@ -613,7 +613,7 @@ You know what? This Font is absolutely Awesome! If combined with Yoru Colorschem
 
 | <b>Minimalist Exitscreen</b>                                                                     |
 | ------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="assets/exitscreen.gif" width="500px" alt="exitscreen preview"></a> | -->
+| <a href="#--------"><img src="assets/exitscreen.gif" width="500px" alt="exitscreen preview"></a> |
 
 <!-- HISTORY -->
 
