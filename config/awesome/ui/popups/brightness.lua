@@ -173,12 +173,7 @@ end)
 local placement_placer = function()
 	local focused = awful.screen.focused()
 	local brightness_osd = focused.brightness_osd_overlay
-	awful.placement.next_to(brightness_osd, {
-		preferred_positions = "top",
-		preferred_anchors = "middle",
-		geometry = focused.bottom_panel or s,
-		offset = { x = 0, y = dpi(-20) },
-	})
+	awful.placement.centered(brightness_osd)
 end
 
 awesome.connect_signal("module::brightness_osd:show", function(bool)
