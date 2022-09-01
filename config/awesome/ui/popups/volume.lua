@@ -173,12 +173,7 @@ end)
 local placement_placer = function()
 	local focused = awful.screen.focused()
 	local volume_osd = focused.volume_osd_overlay
-	awful.placement.next_to(volume_osd, {
-		preferred_positions = "top",
-		preferred_anchors = "middle",
-		geometry = focused.bottom_panel or s,
-		offset = { x = 0, y = dpi(-20) },
-	})
+	awful.placement.centered(volume_osd)
 end
 
 awesome.connect_signal("module::volume_osd:show", function(bool)
