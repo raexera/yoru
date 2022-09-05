@@ -53,18 +53,20 @@ local function widget()
 		forced_height = dpi(25),
 		forced_width = dpi(25),
 	})
-
+	
+	local pfp_imgbox = wibox.widget({	
+		image = beautiful.pfp,
+		resize = true,
+		clip_shape = gears.shape.circle,
+		halign = "center",
+		valign = "center",
+		widget = wibox.widget.imagebox,
+	})
+	
 	local image = wibox.widget({
 		{
 			{
-				{
-					image = beautiful.pfp,
-					resize = true,
-					clip_shape = gears.shape.circle,
-					halign = "center",
-					valign = "center",
-					widget = wibox.widget.imagebox,
-				},
+				pfp_imgbox,
 				shape = gears.shape.circle,
 				widget = wibox.container.background,
 			},
@@ -88,6 +90,22 @@ local function widget()
 		},
 		layout = wibox.layout.stack,
 	})
+
+	local function pfp(name)
+		local path = "/var/lib/AccountsService/icons/" .. name
+		local img = gears.surface.load_uncached(path)
+		if img ~= nil then pfp_imgbox:set_image(img) end
+	end
+
+	awful.spawn.easy_async_with_shell(
+		[[
+		sh -c 'whoami'
+		]],
+		function(stdout)
+			local stdout = stdout:gsub("%\n", "")
+			pfp(stdout)
+		end
+	)
 
 	--- username
 	local profile_name = wibox.widget({
