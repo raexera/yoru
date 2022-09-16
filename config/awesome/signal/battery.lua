@@ -5,7 +5,7 @@
 ---      state
 local upower_widget = require("modules.UPower")
 local battery_listener = upower_widget({
-	device_path = "/org/freedesktop/UPower/devices/battery_BAT0",
+	device_path = "/org/freedesktop/UPower/devices/battery_BAT1",
 	instant_update = true,
 })
 
