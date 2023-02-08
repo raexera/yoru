@@ -5,6 +5,7 @@ echo "Welcome!" && sleep 2
 
 #Default vars
 HELPER="paru"
+ROOT="~/"
 
 # does full system update
 echo "Doing a system update, cause stuff may break if it's not the latest version..."
@@ -72,3 +73,23 @@ sudo systemctl --user start mpd.service
 # Clone the repo :D
 git clone --depth 1 --recurse-submodules https://github.com/rxyhn/yoru.git
 cd yoru && git submodule update --remote --merge
+
+echo "Do you have seperate root and home partitions? 1) yes     2) no"
+read -r -p "Well do you?: " num
+
+if [ $num -eq 2 ]
+then
+    ROOT="/home/*"
+    echo "Installing the dots :D"
+    cp -r config/* $ROOT/.config/
+    cp -r misc/fonts/* $ROOT/.local/share/fonts/
+fi
+
+if ! command -v $ROOT &> /dev/null
+then
+    echo "Installing the dots :D"
+    sudo cp -r config/* $ROOT/.config/
+    sudo cp -r misc/fonts/* $ROOT/.local/share/fonts/
+fi
+
+fc-cache -fv
