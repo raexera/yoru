@@ -1,4 +1,4 @@
-# Choose an AUR helper
+# Choose an AUR helper and install needed dependencies + Awesome itself (the git version of course)
 echo "We need an AUR helper. It is essential. 1) paru       2) yay"
 read -r -p "What is the AUR helper of your choice? (Default is paru): " num
 
@@ -13,8 +13,6 @@ then
         git clone https://aur.archlinux.org/$HELPER.git ~/.srcs/$HELPER
         (cd ~/.srcs/$HELPER/ && makepkg -si )
 fi
-
-# Install needed dependencies + Awesome itself (the git version of course)
 
 $HELPER -Sy --needed picom-git  \
             wezterm             \
