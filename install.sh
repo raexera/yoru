@@ -34,38 +34,10 @@ then
         (cd ~/.srcs/$HELPER/ && makepkg -si )
 fi
 
-$HELPER -Sy --needed picom-git  \
-            wezterm             \
-            rofi                \
-            acpi                \
-            acpid               \
-            acpi_call           \
-            upower              \
-            lxappearance-gtk3   \
-            jq                  \
-            inotify-tools       \
-            polkit-gnome        \
-            xdotool             \
-            xclip               \
-            gpick               \
-            ffmpeg              \
-            blueman             \ 
-            redshift            \
-            pipewire            \
-            pipewire-alsa       \
-            pipewire-pulse      \
-            alsa-utils          \
-            brightnessctl       \
-            feh                 \
-            maim                \
-            mpv                 \
-            mpd                 \
-            mpc                 \
-            mpdris2             \
-            python-mutagen      \
-            ncmpcpp             \
-            playerctl           \
-            awesome-git         \
+$HELPER -Sy picom-git wezterm rofi acpi acpid acpi_call upower lxappearance-gtk3 \
+jq inotify-tools polkit-gnome xdotool xclip gpick ffmpeg blueman redshift \
+pipewire pipewire-alsa pipewire-pulse alsa-utils brightnessctl feh maim \
+mpv mpd mpc mpdris2 python-mutagen ncmpcpp playerctl --needed
 
 sudo systemctl --user enable mpd.service
 sudo systemctl --user start mpd.service
