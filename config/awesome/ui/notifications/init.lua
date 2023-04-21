@@ -132,7 +132,7 @@ naughty.connect_signal("request::display", function(n)
 	local dismiss = widgets.button.text.normal({
 		font = beautiful.icon_font .. "Round ",
 		paddings = dpi(2),
-		size = 10,
+		size = 8,
 		bold = true,
 		text = "",
 		text_normal_bg = accent_colors,

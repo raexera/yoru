@@ -1,7 +1,7 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-require("signal.battery")
+local upower_daemon = require("signal.battery")
 local gears = require("gears")
 local apps = require("configuration.apps")
 local dpi = require("beautiful").xresources.apply_dpi
@@ -96,7 +96,12 @@ return function()
 	})
 
 	local last_value = 100
-	awesome.connect_signal("signal::battery", function(value, state)
+
+	upower_daemon:connect_signal("no_devices", function (_)
+		widget.visible = false
+	end)
+
+	upower_daemon:connect_signal("update", function (self, value, state)
 		battery_bar.value = value
 		last_value = value
 
