@@ -18,6 +18,10 @@ local tabbed_misc = bling.widget.tabbed_misc
 
 --- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
+	if c.requests_no_titlebar then
+		return
+	end
+
 	awful
 		.titlebar(c, { position = "top", size = dpi(36), font = beautiful.font_name .. "Medium 10", bg = beautiful.transparent })
 		:setup({
