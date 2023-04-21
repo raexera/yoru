@@ -1,3 +1,4 @@
+local aspawn = require("awful.spawn")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
 local gtimer = require("gears.timer")
@@ -15,6 +16,32 @@ local PATH = helpers.filesystem.get_cache_dir("github")
 
 function github:get_username()
 	return self._private.username
+end
+
+function github:check_username(callback)
+	local username_file = PATH .. "username.txt"
+
+	local function continue()
+		helpers.filesystem.read_file(username_file, function (username)
+			if username ~= nil and username ~= self:get_username() then
+				aspawn("rm -rf " .. PATH)
+				helpers.filesystem.make_directory(PATH, function ()
+					helpers.filesystem.save_file(username_file, self._private.username, function ()
+						callback(true)
+					end)
+				end)
+			end
+
+			callback(false)
+		end)
+	end
+
+	helpers.filesystem.is_file_readable(username_file, function (is_readable)
+		if not is_readable then
+			helpers.filesystem.save_file(username_file, self._private.username, continue)
+		end
+		continue()
+	end)
 end
 
 local function github_events(self)
@@ -157,13 +184,15 @@ local function new()
 	ret._private = {}
 	ret._private.username = user_vars.widget.github.username
 
-	if ret._private.username ~= nil then
-		ret:refresh()
-	else
-		gtimer.delayed_call(function()
-			ret:emit_signal("missing_credentials")
-		end)
-	end
+	ret:check_username(function (_)
+		if ret._private.username ~= nil then
+			ret:refresh()
+		else
+			gtimer.delayed_call(function ()
+				ret:emit_signal("missing_credentials")
+			end)
+		end
+	end)
 
 	return ret
 end
