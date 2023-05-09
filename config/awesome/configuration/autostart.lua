@@ -9,7 +9,8 @@ local function autostart_apps()
 		awful.spawn("picom --config " .. config_dir .. "configuration/picom.conf", false)
 	end)
 	--- Music Server
-	helpers.run.run_once_pgrep("mpd")
+	helpers.run.run_once_pgrep("mopidy")
+	helpers.run.run_once_pgrep("mopidy local scan")
 	helpers.run.run_once_pgrep("mpDris2")
 	--- Polkit Agent
 	helpers.run.run_once_ps(
@@ -19,6 +20,7 @@ local function autostart_apps()
 	--- Other stuff
 	helpers.run.run_once_grep("blueman-applet")
 	helpers.run.run_once_grep("nm-applet")
+	helpers.run.run_once_grep("xss-lock -- .config/awesome/utilities/lockOnClose.sh")
 end
 
 autostart_apps()

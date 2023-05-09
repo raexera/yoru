@@ -2,7 +2,7 @@
 # ---
 ncmpcpp_directory = ~/.config/ncmpcpp
 lyrics_directory  = ~/.config/ncmpcpp/lyrics
-mpd_music_dir     = ~/Music
+# mpd_music_dir     = ~/Music
 
 # GENERAL
 # ---
@@ -30,10 +30,10 @@ startup_screen = "playlist"
 
 # VISUALIZER
 # ---
-visualizer_data_source = "/tmp/mpd.fifo"
+visualizer_data_source = "localhost:5555"
 visualizer_output_name = "Visualizer"
 visualizer_in_stereo = "no"
-visualizer_sync_interval = "30"
+#visualizer_sync_interval = "30"
 visualizer_type = "ellipse"
 visualizer_fps = "60"
 visualizer_look = ●▮
@@ -68,3 +68,7 @@ song_list_format = "$8%a - %t$R  %l"
 song_columns_list_format = "(53)[white]{tr} (45)[blue]{a}"
 song_library_format = {{%a - %t} (%b)}|{%f}
 song_window_title_format = "Music"
+
+# MISCELLANEOUS
+# ---
+lyrics_fetchers =  genius, azlyrics, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, internet

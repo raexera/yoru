@@ -133,15 +133,12 @@ paru -S awesome-git
 paru -Sy picom-git wezterm rofi acpi acpid acpi_call upower lxappearance-gtk3 \
 jq inotify-tools polkit-gnome xdotool xclip gpick ffmpeg blueman redshift \
 pipewire pipewire-alsa pipewire-pulse alsa-utils brightnessctl feh maim \
-mpv mpd mpc mpdris2 python-mutagen ncmpcpp playerctl --needed
+mpv mopidy mopidy-mpd mopidy-local mopidy-mpris mpc mpdris2 python-mutagen \
+ncmpcpp-git playerctl xss-lock --needed
 ```
 
-> Enable Services
+:Note: If your _AUR Helper_ is [yay](https://github.com/Jguer/yay), you can replace `paru` with `yay`.
 
-```sh
-systemctl --user enable mpd.service
-systemctl --user start mpd.service
-```
 
 </details>
 
