@@ -4,6 +4,62 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local wibox = require("wibox")
 local helpers = require("helpers")
+local user_variables = require("user_variables")
+
+local github_enabled = user_variables.widget.github.enabled
+
+local function makePanel(s)
+	local widget = {}
+	if github_enabled then
+		widget = {
+			{
+				{ ----------- TOP GROUP -----------
+					helpers.ui.vertical_pad(dpi(30)),
+					{
+						require("ui.panels.notification-panel.notif-center")(s),
+						margins = dpi(20),
+						widget = wibox.container.margin,
+					},
+					layout = wibox.layout.fixed.vertical,
+				},
+				{ ----------- MIDDLE GROUP -----------
+					{
+						{
+
+							require("ui.panels.notification-panel.github-activity"),
+							margins = dpi(20),
+							widget = wibox.container.margin,
+						},
+						helpers.ui.vertical_pad(dpi(30)),
+						layout = wibox.layout.fixed.vertical,
+					},
+					shape = helpers.ui.prrect(beautiful.border_radius * 2, true, false, false, false),
+					bg = beautiful.widget_bg,
+					widget = wibox.container.background,
+				},
+				layout = wibox.layout.flex.vertical,
+			},
+			shape = helpers.ui.prrect(beautiful.border_radius * 2, true, false, false, false),
+			bg = beautiful.wibar_bg,
+			widget = wibox.container.background,
+		}
+	elseif not github_enabled then
+		widget = {
+			{
+				{
+					require("ui.panels.notification-panel.notif-center")(s),
+					margins = dpi(20),
+					widget = wibox.container.margin,
+				},
+				layout = wibox.layout.fixed.vertical,
+			},
+			shape = helpers.ui.prrect(beautiful.border_radius * 2, true, false, false, false),
+			bg = beautiful.wibar_bg,
+			widget = wibox.container.background,
+		}
+	end
+	return widget
+end
 
 --- Notification Panel
 --- ~~~~~~~~~~~~~~~~~~
@@ -26,37 +82,7 @@ return function(s)
 				{ honor_workarea = true, margins = { top = beautiful.useless_gap * 2 } }
 			)
 		end,
-		widget = {
-			{
-				{ ----------- TOP GROUP -----------
-					helpers.ui.vertical_pad(dpi(30)),
-					{
-						require("ui.panels.notification-panel.notif-center")(s),
-						margins = dpi(20),
-						widget = wibox.container.margin,
-					},
-					layout = wibox.layout.fixed.vertical,
-				},
-				{ ----------- MIDDLE GROUP -----------
-					{
-						{
-							require("ui.panels.notification-panel.github-activity"),
-							margins = dpi(20),
-							widget = wibox.container.margin,
-						},
-						helpers.ui.vertical_pad(dpi(30)),
-						layout = wibox.layout.fixed.vertical,
-					},
-					shape = helpers.ui.prrect(beautiful.border_radius * 2, true, false, false, false),
-					bg = beautiful.widget_bg,
-					widget = wibox.container.background,
-				},
-				layout = wibox.layout.flex.vertical,
-			},
-			shape = helpers.ui.prrect(beautiful.border_radius * 2, true, false, false, false),
-			bg = beautiful.wibar_bg,
-			widget = wibox.container.background,
-		},
+		widget = makePanel(s),
 	})
 
 	--- Toggle container visibility
