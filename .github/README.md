@@ -41,16 +41,17 @@
 
 <b> Yoru (夜) Aesthetic and Beautiful Awesome Environment </b>
 
-Welcome to my AwesomeWM configuration files!
+Greetings and welcome to "Yoru (夜) Aesthetic and Beautiful Awesome Environment!"
 
-This is my personal collection of configuration files.
+Within these digital pages, you'll discover my meticulously crafted AwesomeWM configuration files—a personal collection honed to perfection.
 
-You might be here looking for my AwesomeWM configuration files or looking for **Linux Rice** reference?
+Whether you've arrived in search of AwesomeWM configuration files or seek inspiration for your Linux Rice journey, you're in the right place.
 
-Feel free to steal anything from here but don't forget to give me **credits** :)
+Feel absolutely free to borrow from my creations, but I kindly ask that you remember to give credit where credit is due :)
 
-AwesomeWM is the most powerful and highly configurable next-generation framework window manager for X.
-Although it takes time and effort to configure it, I am very satisfied with this aesthetic result.
+AwesomeWM stands as a testament to its name—the most formidable and profoundly customizable window manager for X. While configuring it might demand a fair share of your time and dedication, I can confidently say that the aesthetic outcome is well worth the effort.
+
+Thank you for visiting and exploring my world of aesthetics and beauty. May your creative journey be as splendid as the night sky (夜) from which "Yoru" takes its name.
 
 <!-- INFORMATION -->
 
@@ -408,15 +409,15 @@ EndSection
 
 <a href="#--------"><img src="assets/yoru-colorscheme.png" width="500px" alt="colorscheme preview"></a>
 
-Introducing the Yoru (夜) colorscheme!
+Allow me to introduce the enchanting "Yoru (夜) Colorscheme!"
 
-Yoru means night in english. So this beautiful and elegant color schemes are perfect for programmers who live in the middle of the night.
+As the name suggests, "Yoru" translates to "night" in English, and these captivating and refined color schemes are tailor-made for those dedicated programmers who find solace in the depths of the night.
 
-The nearest color combination that it can keep the eyes from getting tired! So you can keep writing code and continue all your work all night!
+Designed with utmost care, this colorscheme offers a harmonious combination of shades that work tirelessly to keep your eyes refreshed and alert. With Yoru, you can write code and pursue your work deep into the night without the fatigue that harsh colors might induce.
 
-This colorscheme is used for all aspects in these environment, yeeaaaah this aesthetic configuration is combined with an aesthetic colorscheme <3
+The elegance of this colorscheme seamlessly integrates with every facet of your environment, ensuring a visually stunning and cohesive experience. It's the perfect complement to your aesthetic configuration, creating a harmonious blend that transcends the ordinary.
 
-This colorscheme was made by me [`rxyhn`](https://github.com/rxyhn)
+I proudly present "Yoru (夜) Colorscheme," a creation born from the hands and heart of none other than myself, rxyhn. Enjoy the beauty it brings to your digital world! <3
 
 <!-- ToDo: Fix Color Pallete -->
 
@@ -619,9 +620,13 @@ You know what? This Font is absolutely Awesome! If combined with Yoru Colorschem
 
 ## :japan: ‎ <samp>History</samp>
 
-Ngl is started when I am felt bored lol and decided to start using Linux, more precisely in January 2022. When it's in [Linuxer Desktop Art](https://facebook.com/groups/linuxart) I saw a Linux setup that caught my eye, then I'm interested in and trying something similar, So yeaaaaaah this is my current setup, I made this with all Aesthetic I have. Yes! You are right! Everything you see here is all about beautiful and aesthetic, and ofc apart from targeting the beautiful UI I also pay attention to the functionality, because I'm targeting an OS that's comfortable to wear and look at. Have a Nice Day! <3
+I must admit that this project had humble beginnings, born out of sheer boredom. It all began in January 2022 when I decided to delve into the world of Linux. While exploring the realm of Linux desktop art, a particular setup captured my attention, igniting a newfound interest in crafting something similar. And thus, here we are today, with my current setup, meticulously designed to embody an aesthetic that truly resonates with me.
 
-I wanna say thank you to those of you who like and love yoru. <3
+As you may have already noticed, aesthetics take center stage in my work. Every element you see has been carefully curated to exude beauty and grace. However, my pursuit doesn't end with aesthetics alone. Functionality is equally vital in my endeavor, as I aim to create an operating system that not only pleases the eye but also ensures a comfortable and seamless user experience.
+
+I genuinely hope that you enjoy my creation, and I wish you a wonderful day filled with positivity and inspiration! <3
+
+I want to extend my heartfelt gratitude to all those who appreciate and support my work. Your love means the world to me. <3
 
 <pre align="center">
 <a href="#japan--history">
