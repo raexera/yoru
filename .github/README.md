@@ -529,11 +529,13 @@ base_16 = {
 
 ## :bookmark_tabs: ‎ <samp>Fonts</samp>
 
-I have created a Custom Font that based on [Iosevka Custom Build](https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md), has two variants `Original` and [`Nerd Font`](https://github.com/ryanoasis/nerd-fonts). This font supports ligatures!
+I am thrilled to share with you my very own custom font, inspired by the Iosevka Custom Build, featuring two distinctive variants: "Original" and "Nerd Font." What sets this font apart is its remarkable support for ligatures, enhancing your coding and text-editing experience.
 
-This is My Favorite Monospace Font! This font is used in my terminal emulator and all my code editor. Yes, for better Code.
+This font holds a special place in my heart—it's my personal favorite among monospace fonts. It graces both my terminal emulator and all my code editors, elevating the quality of my coding endeavors.
 
-You know what? This Font is absolutely Awesome! If combined with Yoru Colorscheme!
+And here's the icing on the cake: when paired with the enchanting Yoru Colorscheme, the synergy between font and colorscheme creates an absolutely mesmerizing visual experience. It's a combination that breathes life into your digital workspace, making it truly awesome!
+
+I invite you to explore and enjoy the beauty and functionality of my custom font, knowing that it was crafted with dedication and passion.
 
 <b>Font Preview:</b>
 
@@ -649,11 +651,11 @@ Yoru is created by <a href="https://github.com/rxyhn">Rxyhn</a>.
 
 ## :money_with_wings: ‎ <samp>TIP JAR</samp>
 
-If you enjoyed it and would like to show your appreciation, you may want to tip me here.
+If you've found joy and value in what I've shared, and you're inclined to express your appreciation, you have the option to provide a tip here.
 
-It is never required but always appreciated.
+Your gesture is never obligatory but forever cherished.
 
-Thanks from the bottom of my heart! ‎ :heartpulse:
+With heartfelt thanks, 💗
 
 [![](https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#EA4AAA)](https://github.com/sponsors/rxyhn)
 [![](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/rxyhn)
