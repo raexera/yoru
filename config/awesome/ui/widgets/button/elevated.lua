@@ -218,7 +218,7 @@ function elevated_button.state(args)
 	end)
 
 	widget:connect_signal("button::press", function(self, lx, ly, button, mods, find_widgets_result)
-		if #mods > 0 then
+		if #mods > 0 and not helpers.misc.table_contains_only(mods, {"Lock", "Mod2",}) then
 			return
 		end
 
