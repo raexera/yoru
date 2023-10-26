@@ -12,6 +12,7 @@ return {
 
 		--- Github activity
 		github = {
+			enabled = true,
 			username = "rxyhn",
 		},
 	},
