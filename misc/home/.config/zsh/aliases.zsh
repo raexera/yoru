@@ -18,7 +18,7 @@ alias pars="paru -Slq | fzf -m --preview 'cat <(paru -Si {1}) <(paru -Fl {1} | a
 alias pacr="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
 alias p="pacman -Q | fzf"
 alias wifi="nmtui-connect"
-alias ls="exa --color=auto --icons"
+alias ls="eza --color=auto --icons"
 alias l="ls -l"
 alias la="ls -a"
 alias lla="ls -la"

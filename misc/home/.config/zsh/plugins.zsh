@@ -39,9 +39,9 @@ zinit light zdharma-continuum/history-search-multi-word
 zinit ice from"gh-r" as"command"
 zinit light junegunn/fzf-bin
 
-# EXA
-zinit ice wait lucid from"gh-r" as"program" mv"bin/exa* -> exa"
-zinit light ogham/exa
+# EZA
+zinit ice wait lucid from"gh-r" as"program" mv"bin/eza* -> eza"
+zinit light eza-community/eza
 
 # BAT
 zinit ice wait lucid from"gh-r" as"program" mv"*/bat -> bat" atload"export BAT_THEME='Nord'"
