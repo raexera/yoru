@@ -303,5 +303,5 @@ return function(s)
 	end)
 
 	client.connect_signal("property::fullscreen", remove_top_panel)
-	client.connect_signal("request::unmanage", add_top_panel)
+	client.connect_signal("unfocus", add_top_panel)
 end
