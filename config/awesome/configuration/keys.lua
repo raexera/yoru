@@ -298,7 +298,7 @@ client.connect_signal("request::default_keybindings", function()
 			-- minimized, since minimized clients can't have the focus.
 			c.minimized = true
 		end, { description = "minimize", group = "client" }),
-
+				
 		--- Un-minimize windows
 		awful.key({ mod, ctrl }, "n", function()
 			local c = awful.client.restore()
@@ -307,6 +307,7 @@ client.connect_signal("request::default_keybindings", function()
 				c:activate({ raise = true, context = "key.unminimize" })
 			end
 		end, { description = "restore minimized", group = "client" }),
+
 
 		--- Keep on top
 		awful.key({ mod }, "p", function(c)
